@@ -1,0 +1,27 @@
+name: 自动标签更新触发器
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  id-token: write
+  issues: write
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  call-label-update:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/script-auto-update-issue-label.yml@master
+    with:
+      repository: ${{ github.repository }}
+      pr_number: ${{ github.event.pull_request.number }}
+      pr_merged: true
+      pr_title: ${{ github.event.pull_request.title }}
+      pr_body: ${{ github.event.pull_request.body || '' }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}

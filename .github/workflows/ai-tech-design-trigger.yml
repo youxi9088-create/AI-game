@@ -1,0 +1,28 @@
+name: AI 技术设计触发器
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  id-token: write
+  issues: write
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  call-tech-design:
+    if: >-
+      github.event.issue != null &&
+      contains(github.event.issue.labels.*.name, 'ai-tech-design') &&
+      github.event.issue.state == 'open'
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/ai-generate-tech-design.yml@master
+    with:
+      repository: ${{ github.repository }}
+      issue_number: ${{ github.event.issue.number }}
+      main_branch: ${{ github.event.repository.default_branch }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AI_PROXY_GATEWAY_URL: ${{ secrets.AI_PROXY_GATEWAY_URL }}

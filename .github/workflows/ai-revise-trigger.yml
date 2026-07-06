@@ -1,0 +1,102 @@
+name: AI 修订触发器
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  id-token: write
+  issues: write
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  detect-and-revise:
+    if: >-
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, format('@{0}', vars.BOT_NAME)) &&
+      !contains(github.event.comment.body, '/review')
+    runs-on: ubuntu-latest
+    outputs:
+      stage: ${{ steps.detect.outputs.stage }}
+    steps:
+      - name: Detect stage from PR
+        id: detect
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.issue.number
+            });
+
+            let stage = '';
+            if (pr.head.ref.includes('requirement-analysis')) {
+              stage = 'requirement-analysis';
+            } else if (pr.head.ref.includes('tech-design')) {
+              stage = 'tech-design';
+            } else if (pr.head.ref.includes('tasks')) {
+              stage = 'task-breakdown';
+            } else if (pr.head.ref.includes('coding')) {
+              stage = 'coding';
+            }
+
+            core.setOutput('stage', stage);
+
+  call-requirement-revise:
+    needs: detect-and-revise
+    if: needs.detect-and-revise.outputs.stage == 'requirement-analysis'
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/ai-revise-requirement-analysis.yml@master
+    with:
+      repository: ${{ github.repository }}
+      pr_number: ${{ github.event.issue.number }}
+      comment_body: ${{ github.event.comment.body }}
+      bot_name: ${{ vars.BOT_NAME }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AI_PROXY_GATEWAY_URL: ${{ secrets.AI_PROXY_GATEWAY_URL }}
+
+  call-tech-design-revise:
+    needs: detect-and-revise
+    if: needs.detect-and-revise.outputs.stage == 'tech-design'
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/ai-revise-tech-design.yml@master
+    with:
+      repository: ${{ github.repository }}
+      pr_number: ${{ github.event.issue.number }}
+      comment_body: ${{ github.event.comment.body }}
+      bot_name: ${{ vars.BOT_NAME }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AI_PROXY_GATEWAY_URL: ${{ secrets.AI_PROXY_GATEWAY_URL }}
+
+  call-task-breakdown-revise:
+    needs: detect-and-revise
+    if: needs.detect-and-revise.outputs.stage == 'task-breakdown'
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/ai-revise-task-breakdown.yml@master
+    with:
+      repository: ${{ github.repository }}
+      pr_number: ${{ github.event.issue.number }}
+      comment_body: ${{ github.event.comment.body }}
+      bot_name: ${{ vars.BOT_NAME }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AI_PROXY_GATEWAY_URL: ${{ secrets.AI_PROXY_GATEWAY_URL }}
+
+  call-coding-revise:
+    needs: detect-and-revise
+    if: needs.detect-and-revise.outputs.stage == 'coding'
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/ai-revise-coding.yml@master
+    with:
+      repository: ${{ github.repository }}
+      pr_number: ${{ github.event.issue.number }}
+      comment_body: ${{ github.event.comment.body }}
+      bot_name: ${{ vars.BOT_NAME }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AI_PROXY_GATEWAY_URL: ${{ secrets.AI_PROXY_GATEWAY_URL }}

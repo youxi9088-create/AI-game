@@ -1,0 +1,24 @@
+name: Issue 功能分支触发器
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  id-token: write
+  issues: write
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  call-create-branch:
+    uses: ndhy-ai-coding/ai-coding-workflows/.github/workflows/script-issue-feature-branch.yml@master
+    with:
+      repository: ${{ github.repository }}
+      issue_number: ${{ github.event.issue.number }}
+      default_branch: ${{ github.event.repository.default_branch }}
+    secrets:
+      CALLER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
