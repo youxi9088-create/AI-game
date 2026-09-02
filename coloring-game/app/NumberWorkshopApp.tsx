@@ -166,7 +166,7 @@ export default function NumberWorkshopApp() {
   const blocked = !file || generating
 
   return <div className="number-workshop-app">
-    <header className="nw-header"><a href="./paint.html">← 数字涂色画册</a><strong>ColorVerse · 数字填色工作坊</strong><a href="./index.html">真人线稿模式</a></header>
+    <header className="nw-header"><a href="./paint.html">← 数字涂色画册</a><strong>coloring game · 数字填色工作坊</strong><a href="./index.html">线框填色模式</a></header>
     <main className="nw-layout">
       <section className="nw-intro"><p>PAINT BY NUMBER PIPELINE</p><h1>把一张图片，做成可玩的数字填色关卡。</h1><span>{cloudMode ? '登录用户的图片会上传至 FN；云端自动裁白边、提取颜色、像素化并生成可直接游玩的数字关卡。' : '系统会自动裁掉留白、提取颜色、像素化并在每个格子写入对应编号；完成后直接放进数字涂色画册。'}</span></section>
       <section className="nw-workspace">

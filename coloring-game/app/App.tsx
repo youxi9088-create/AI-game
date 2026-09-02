@@ -751,7 +751,7 @@ function WorkshopPage({ onBack, onOpenLevel }: { onBack: () => void; onOpenLevel
 
   return <div className="app-shell workshop-shell">
     <header className="topbar">
-      <button className="brand" onClick={onBack} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
+      <button className="brand" onClick={onBack} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
       <nav><button onClick={onBack}>返回首页</button></nav>
     </header>
     <main className="workshop-layout">
@@ -791,16 +791,16 @@ function WorkshopPage({ onBack, onOpenLevel }: { onBack: () => void; onOpenLevel
 function HomePage({ onPlay, onWorkshop, onGallery }: { onPlay: () => void; onWorkshop: () => void; onGallery: () => void }) {
   return <div className="app-shell home-shell">
     <header className="topbar">
-      <button className="brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
+      <button className="brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
       <nav><button onClick={onWorkshop}>关卡工坊</button><button onClick={onGallery}>我的画廊</button><button className="primary small" onClick={onWorkshop}>＋ 创作新图</button></nav>
     </header>
     <main className="home-main">
       <section className="home-hero">
-        <div className="home-hero-copy"><p className="eyebrow">COLORVERSE · CREATE & COLOR</p><h1>把喜欢的画面，<br />变成一关填色游戏。</h1><p>上传一张图片，自动生成干净线稿、可点击区域与建议配色；完成后会保存在你的本地画廊。</p><div className="home-actions"><button className="primary" onClick={onPlay}>开始填色</button><button className="soft-button" onClick={onWorkshop}>去关卡工坊</button></div><small>真人线框填色 · 本地保存 · 可随时继续</small></div>
+        <div className="home-hero-copy"><p className="eyebrow">COLORING GAME · CREATE & COLOR</p><h1>把喜欢的画面，<br />变成一关填色游戏。</h1><p>上传一张图片，自动生成干净线稿、可点击区域与建议配色；完成后会保存在你的本地画廊。</p><div className="home-actions"><button className="primary" onClick={onPlay}>开始填色</button><button className="soft-button" onClick={onWorkshop}>去关卡工坊</button></div><small>线框填色 · 本地保存 · 可随时继续</small></div>
         <div className="home-hero-art"><div className="home-art-note">✦ 今日推荐</div><img src={assetUrl('/ling-ling-garden.png')} alt="女孩与小狗的花园填色作品" /><div className="home-art-caption"><strong>林间的幸福</strong><span>从一张图片开始创作</span></div></div>
       </section>
-      <section className="home-entry-grid" aria-label="ColorVerse 功能入口">
-        <button className="home-entry home-entry--play" onClick={onPlay}><span className="home-entry-icon">✎</span><span><b>真人线框填色</b><small>进入当前关卡，在线稿中自由上色。</small></span><em>开始 →</em></button>
+      <section className="home-entry-grid" aria-label="coloring game 功能入口">
+        <button className="home-entry home-entry--play" onClick={onPlay}><span className="home-entry-icon">✎</span><span><b>线框填色</b><small>进入当前关卡，在线稿中自由上色。</small></span><em>开始 →</em></button>
         <button className="home-entry home-entry--workshop" onClick={onWorkshop}><span className="home-entry-icon">✦</span><span><b>关卡工坊</b><small>把一张图片自动改编为可玩的填色关卡。</small></span><em>创作 →</em></button>
         <button className="home-entry home-entry--gallery" onClick={onGallery}><span className="home-entry-icon">▣</span><span><b>我的画廊</b><small>查看、继续或整理已保存的作品。</small></span><em>查看 →</em></button>
       </section>
@@ -1122,14 +1122,14 @@ export default function App() {
   // 否则正式关卡到达后会产生错误线稿的闪帧。
   if (!hydrated) return <div className="app-shell game-boot-shell">
     <header className="topbar">
-      <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
+      <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
     </header>
     <main className="game-boot" aria-live="polite"><span className="game-boot-spinner" aria-hidden="true" /><strong>正在载入画册…</strong><small>正在准备正式线稿和填色区域</small></main>
   </div>
 
   return <div className="app-shell">
     <header className="topbar">
-      <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
+      <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
       <nav><button onClick={() => navigate('workshop')}>关卡工坊</button><button onClick={() => setShowGallery(true)}>我的画廊</button><button className="primary small" onClick={() => navigate('workshop')}>＋ 创作新图</button></nav>
     </header>
     <main className="game-layout">
