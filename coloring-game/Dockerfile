@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     LEVEL_SERVICE_HOST=0.0.0.0 \
-    LEVEL_SERVICE_PORT=5399
+    LEVEL_SERVICE_PORT=8080
 
 WORKDIR /app
 
@@ -23,9 +23,9 @@ COPY public ./public
 
 RUN mkdir -p /app/public/levels
 
-EXPOSE 5399
+EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-    CMD python -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:5399/api/health', timeout=3)"
+    CMD python -c "import os; from urllib.request import urlopen; urlopen('http://127.0.0.1:%s/api/health' % os.environ.get('LEVEL_SERVICE_PORT', '8080'), timeout=3)"
 
 CMD ["python", "scripts/level_service.py"]
