@@ -1,0 +1,1221 @@
+{
+  "id": "cat-coloring-book-001",
+  "official": true,
+  "title": "甜点猫咪派对",
+  "subtitle": "真人线框自由填色 · 70 个不规则区域",
+  "difficulty": "简单",
+  "palette": [
+    "#F6C85F",
+    "#F4976C",
+    "#B9E3F5",
+    "#8FCB9B",
+    "#CDB4DB",
+    "#F5E8C7",
+    "#667761",
+    "#F3A7B7"
+  ],
+  "regions": [
+    {
+      "id": "r-1",
+      "maskId": 1,
+      "color": 0,
+      "area": 133108,
+      "bbox": [
+        0,
+        0,
+        598,
+        577
+      ],
+      "label": {
+        "x": 283.6,
+        "y": 275.1
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-2",
+      "maskId": 2,
+      "color": 4,
+      "area": 7673,
+      "bbox": [
+        442,
+        105,
+        108,
+        175
+      ],
+      "label": {
+        "x": 502.3,
+        "y": 178.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-3",
+      "maskId": 3,
+      "color": 6,
+      "area": 7370,
+      "bbox": [
+        103,
+        226,
+        88,
+        189
+      ],
+      "label": {
+        "x": 153.6,
+        "y": 292.6
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-4",
+      "maskId": 4,
+      "color": 4,
+      "area": 7162,
+      "bbox": [
+        322,
+        340,
+        91,
+        166
+      ],
+      "label": {
+        "x": 366.9,
+        "y": 423.4
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-5",
+      "maskId": 5,
+      "color": 1,
+      "area": 7081,
+      "bbox": [
+        73,
+        62,
+        132,
+        103
+      ],
+      "label": {
+        "x": 139.4,
+        "y": 116.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-6",
+      "maskId": 6,
+      "color": 2,
+      "area": 6953,
+      "bbox": [
+        174,
+        414,
+        155,
+        96
+      ],
+      "label": {
+        "x": 267.7,
+        "y": 461.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-7",
+      "maskId": 7,
+      "color": 3,
+      "area": 6495,
+      "bbox": [
+        72,
+        367,
+        94,
+        143
+      ],
+      "label": {
+        "x": 114.8,
+        "y": 435.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-8",
+      "maskId": 8,
+      "color": 2,
+      "area": 6181,
+      "bbox": [
+        406,
+        408,
+        146,
+        105
+      ],
+      "label": {
+        "x": 473.2,
+        "y": 459.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-9",
+      "maskId": 9,
+      "color": 2,
+      "area": 6023,
+      "bbox": [
+        174,
+        310,
+        100,
+        128
+      ],
+      "label": {
+        "x": 223.2,
+        "y": 371.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-10",
+      "maskId": 10,
+      "color": 5,
+      "area": 5789,
+      "bbox": [
+        271,
+        257,
+        99,
+        147
+      ],
+      "label": {
+        "x": 325.2,
+        "y": 312.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-11",
+      "maskId": 11,
+      "color": 6,
+      "area": 5534,
+      "bbox": [
+        188,
+        159,
+        97,
+        126
+      ],
+      "label": {
+        "x": 232.3,
+        "y": 208.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-12",
+      "maskId": 12,
+      "color": 4,
+      "area": 5076,
+      "bbox": [
+        417,
+        294,
+        101,
+        138
+      ],
+      "label": {
+        "x": 468.6,
+        "y": 348.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-13",
+      "maskId": 13,
+      "color": 3,
+      "area": 4808,
+      "bbox": [
+        320,
+        56,
+        98,
+        78
+      ],
+      "label": {
+        "x": 363.0,
+        "y": 98.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-14",
+      "maskId": 14,
+      "color": 7,
+      "area": 4768,
+      "bbox": [
+        251,
+        139,
+        165,
+        50
+      ],
+      "label": {
+        "x": 336.5,
+        "y": 157.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-15",
+      "maskId": 15,
+      "color": 0,
+      "area": 4437,
+      "bbox": [
+        214,
+        60,
+        83,
+        108
+      ],
+      "label": {
+        "x": 256.3,
+        "y": 111.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-16",
+      "maskId": 16,
+      "color": 7,
+      "area": 3955,
+      "bbox": [
+        392,
+        169,
+        91,
+        83
+      ],
+      "label": {
+        "x": 434.7,
+        "y": 210.1
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-17",
+      "maskId": 17,
+      "color": 0,
+      "area": 2652,
+      "bbox": [
+        214,
+        205,
+        38,
+        114
+      ],
+      "label": {
+        "x": 233.4,
+        "y": 267.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-18",
+      "maskId": 18,
+      "color": 3,
+      "area": 2279,
+      "bbox": [
+        420,
+        92,
+        70,
+        68
+      ],
+      "label": {
+        "x": 450.5,
+        "y": 118.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-19",
+      "maskId": 19,
+      "color": 5,
+      "area": 2254,
+      "bbox": [
+        89,
+        198,
+        96,
+        38
+      ],
+      "label": {
+        "x": 138.1,
+        "y": 214.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-20",
+      "maskId": 20,
+      "color": 0,
+      "area": 1820,
+      "bbox": [
+        60,
+        205,
+        31,
+        110
+      ],
+      "label": {
+        "x": 75.1,
+        "y": 260.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-21",
+      "maskId": 21,
+      "color": 1,
+      "area": 1550,
+      "bbox": [
+        469,
+        469,
+        83,
+        49
+      ],
+      "label": {
+        "x": 511.0,
+        "y": 497.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-22",
+      "maskId": 22,
+      "color": 5,
+      "area": 1299,
+      "bbox": [
+        84,
+        175,
+        103,
+        24
+      ],
+      "label": {
+        "x": 134.6,
+        "y": 189.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-23",
+      "maskId": 23,
+      "color": 5,
+      "area": 1088,
+      "bbox": [
+        210,
+        479,
+        37,
+        37
+      ],
+      "label": {
+        "x": 227.0,
+        "y": 497.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-24",
+      "maskId": 24,
+      "color": 3,
+      "area": 1054,
+      "bbox": [
+        200,
+        67,
+        45,
+        52
+      ],
+      "label": {
+        "x": 218.3,
+        "y": 85.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-25",
+      "maskId": 25,
+      "color": 7,
+      "area": 1044,
+      "bbox": [
+        401,
+        62,
+        33,
+        48
+      ],
+      "label": {
+        "x": 416.6,
+        "y": 87.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-26",
+      "maskId": 26,
+      "color": 5,
+      "area": 926,
+      "bbox": [
+        388,
+        308,
+        42,
+        34
+      ],
+      "label": {
+        "x": 407.9,
+        "y": 326.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-27",
+      "maskId": 27,
+      "color": 1,
+      "area": 884,
+      "bbox": [
+        167,
+        480,
+        42,
+        33
+      ],
+      "label": {
+        "x": 189.1,
+        "y": 493.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-28",
+      "maskId": 28,
+      "color": 2,
+      "area": 879,
+      "bbox": [
+        303,
+        241,
+        66,
+        22
+      ],
+      "label": {
+        "x": 333.9,
+        "y": 251.4
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-29",
+      "maskId": 29,
+      "color": 0,
+      "area": 858,
+      "bbox": [
+        348,
+        444,
+        36,
+        39
+      ],
+      "label": {
+        "x": 365.8,
+        "y": 462.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-30",
+      "maskId": 30,
+      "color": 3,
+      "area": 799,
+      "bbox": [
+        519,
+        325,
+        39,
+        84
+      ],
+      "label": {
+        "x": 541.4,
+        "y": 358.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-31",
+      "maskId": 31,
+      "color": 2,
+      "area": 764,
+      "bbox": [
+        446,
+        55,
+        32,
+        34
+      ],
+      "label": {
+        "x": 458.6,
+        "y": 70.0
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-32",
+      "maskId": 32,
+      "color": 6,
+      "area": 743,
+      "bbox": [
+        271,
+        203,
+        117,
+        33
+      ],
+      "label": {
+        "x": 329.9,
+        "y": 212.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-33",
+      "maskId": 33,
+      "color": 0,
+      "area": 731,
+      "bbox": [
+        51,
+        306,
+        36,
+        32
+      ],
+      "label": {
+        "x": 66.7,
+        "y": 322.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-34",
+      "maskId": 34,
+      "color": 4,
+      "area": 722,
+      "bbox": [
+        280,
+        228,
+        102,
+        29
+      ],
+      "label": {
+        "x": 327.0,
+        "y": 239.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-35",
+      "maskId": 35,
+      "color": 6,
+      "area": 705,
+      "bbox": [
+        314,
+        172,
+        74,
+        30
+      ],
+      "label": {
+        "x": 360.0,
+        "y": 191.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-36",
+      "maskId": 36,
+      "color": 7,
+      "area": 660,
+      "bbox": [
+        90,
+        161,
+        61,
+        22
+      ],
+      "label": {
+        "x": 118.9,
+        "y": 171.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-37",
+      "maskId": 37,
+      "color": 4,
+      "area": 639,
+      "bbox": [
+        484,
+        67,
+        33,
+        33
+      ],
+      "label": {
+        "x": 499.3,
+        "y": 85.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-38",
+      "maskId": 38,
+      "color": 2,
+      "area": 636,
+      "bbox": [
+        404,
+        346,
+        27,
+        79
+      ],
+      "label": {
+        "x": 417.7,
+        "y": 381.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-39",
+      "maskId": 39,
+      "color": 3,
+      "area": 584,
+      "bbox": [
+        411,
+        136,
+        29,
+        38
+      ],
+      "label": {
+        "x": 425.0,
+        "y": 158.6
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-40",
+      "maskId": 40,
+      "color": 6,
+      "area": 529,
+      "bbox": [
+        184,
+        276,
+        26,
+        41
+      ],
+      "label": {
+        "x": 198.2,
+        "y": 294.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-41",
+      "maskId": 41,
+      "color": 2,
+      "area": 522,
+      "bbox": [
+        360,
+        291,
+        32,
+        40
+      ],
+      "label": {
+        "x": 377.7,
+        "y": 310.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-42",
+      "maskId": 42,
+      "color": 5,
+      "area": 448,
+      "bbox": [
+        368,
+        327,
+        40,
+        28
+      ],
+      "label": {
+        "x": 382.2,
+        "y": 343.0
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-43",
+      "maskId": 43,
+      "color": 2,
+      "area": 435,
+      "bbox": [
+        443,
+        408,
+        41,
+        21
+      ],
+      "label": {
+        "x": 466.0,
+        "y": 418.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-44",
+      "maskId": 44,
+      "color": 5,
+      "area": 379,
+      "bbox": [
+        419,
+        377,
+        21,
+        41
+      ],
+      "label": {
+        "x": 429.1,
+        "y": 396.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-45",
+      "maskId": 45,
+      "color": 5,
+      "area": 376,
+      "bbox": [
+        270,
+        336,
+        18,
+        57
+      ],
+      "label": {
+        "x": 278.4,
+        "y": 365.4
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-46",
+      "maskId": 46,
+      "color": 0,
+      "area": 307,
+      "bbox": [
+        280,
+        214,
+        85,
+        20
+      ],
+      "label": {
+        "x": 319.6,
+        "y": 220.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-47",
+      "maskId": 47,
+      "color": 4,
+      "area": 305,
+      "bbox": [
+        214,
+        397,
+        25,
+        26
+      ],
+      "label": {
+        "x": 225.9,
+        "y": 408.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-48",
+      "maskId": 48,
+      "color": 3,
+      "area": 300,
+      "bbox": [
+        152,
+        160,
+        34,
+        19
+      ],
+      "label": {
+        "x": 167.2,
+        "y": 169.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-49",
+      "maskId": 49,
+      "color": 0,
+      "area": 298,
+      "bbox": [
+        49,
+        403,
+        16,
+        24
+      ],
+      "label": {
+        "x": 56.6,
+        "y": 415.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-50",
+      "maskId": 50,
+      "color": 4,
+      "area": 251,
+      "bbox": [
+        370,
+        195,
+        21,
+        28
+      ],
+      "label": {
+        "x": 383.7,
+        "y": 206.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-51",
+      "maskId": 51,
+      "color": 1,
+      "area": 244,
+      "bbox": [
+        454,
+        342,
+        33,
+        30
+      ],
+      "label": {
+        "x": 467.3,
+        "y": 359.0
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-52",
+      "maskId": 52,
+      "color": 2,
+      "area": 241,
+      "bbox": [
+        393,
+        231,
+        13,
+        35
+      ],
+      "label": {
+        "x": 399.0,
+        "y": 252.6
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-53",
+      "maskId": 53,
+      "color": 6,
+      "area": 240,
+      "bbox": [
+        166,
+        443,
+        15,
+        30
+      ],
+      "label": {
+        "x": 173.0,
+        "y": 454.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-54",
+      "maskId": 54,
+      "color": 7,
+      "area": 239,
+      "bbox": [
+        294,
+        177,
+        18,
+        19
+      ],
+      "label": {
+        "x": 303.2,
+        "y": 186.4
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-55",
+      "maskId": 55,
+      "color": 3,
+      "area": 235,
+      "bbox": [
+        370,
+        257,
+        23,
+        47
+      ],
+      "label": {
+        "x": 378.5,
+        "y": 273.8
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-56",
+      "maskId": 56,
+      "color": 5,
+      "area": 230,
+      "bbox": [
+        434,
+        57,
+        9,
+        37
+      ],
+      "label": {
+        "x": 437.8,
+        "y": 74.6
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-57",
+      "maskId": 57,
+      "color": 0,
+      "area": 228,
+      "bbox": [
+        112,
+        322,
+        31,
+        8
+      ],
+      "label": {
+        "x": 126.5,
+        "y": 325.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-58",
+      "maskId": 58,
+      "color": 3,
+      "area": 227,
+      "bbox": [
+        282,
+        258,
+        12,
+        39
+      ],
+      "label": {
+        "x": 288.0,
+        "y": 275.4
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-59",
+      "maskId": 59,
+      "color": 6,
+      "area": 227,
+      "bbox": [
+        103,
+        345,
+        43,
+        30
+      ],
+      "label": {
+        "x": 117.3,
+        "y": 360.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-60",
+      "maskId": 60,
+      "color": 2,
+      "area": 217,
+      "bbox": [
+        474,
+        126,
+        42,
+        17
+      ],
+      "label": {
+        "x": 496.7,
+        "y": 131.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-61",
+      "maskId": 61,
+      "color": 4,
+      "area": 216,
+      "bbox": [
+        107,
+        333,
+        39,
+        10
+      ],
+      "label": {
+        "x": 126.4,
+        "y": 336.5
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-62",
+      "maskId": 62,
+      "color": 2,
+      "area": 213,
+      "bbox": [
+        294,
+        404,
+        27,
+        15
+      ],
+      "label": {
+        "x": 304.7,
+        "y": 411.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-63",
+      "maskId": 63,
+      "color": 2,
+      "area": 199,
+      "bbox": [
+        472,
+        62,
+        18,
+        26
+      ],
+      "label": {
+        "x": 479.1,
+        "y": 74.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-64",
+      "maskId": 64,
+      "color": 7,
+      "area": 198,
+      "bbox": [
+        190,
+        434,
+        20,
+        14
+      ],
+      "label": {
+        "x": 199.2,
+        "y": 440.0
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-65",
+      "maskId": 65,
+      "color": 2,
+      "area": 198,
+      "bbox": [
+        225,
+        434,
+        23,
+        19
+      ],
+      "label": {
+        "x": 236.3,
+        "y": 441.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-66",
+      "maskId": 66,
+      "color": 4,
+      "area": 195,
+      "bbox": [
+        257,
+        289,
+        13,
+        23
+      ],
+      "label": {
+        "x": 261.5,
+        "y": 300.9
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-67",
+      "maskId": 67,
+      "color": 0,
+      "area": 173,
+      "bbox": [
+        119,
+        475,
+        30,
+        32
+      ],
+      "label": {
+        "x": 134.0,
+        "y": 492.3
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-68",
+      "maskId": 68,
+      "color": 2,
+      "area": 169,
+      "bbox": [
+        290,
+        345,
+        13,
+        17
+      ],
+      "label": {
+        "x": 295.5,
+        "y": 354.2
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-69",
+      "maskId": 69,
+      "color": 6,
+      "area": 165,
+      "bbox": [
+        287,
+        366,
+        17,
+        12
+      ],
+      "label": {
+        "x": 295.3,
+        "y": 371.7
+      },
+      "fillable": true
+    },
+    {
+      "id": "r-70",
+      "maskId": 70,
+      "color": 3,
+      "area": 165,
+      "bbox": [
+        510,
+        410,
+        8,
+        32
+      ],
+      "label": {
+        "x": 513.2,
+        "y": 423.5
+      },
+      "fillable": true
+    }
+  ],
+  "viewBox": "0 0 598 577",
+  "preview": "/levels/cat-coloring-book-001/preview.png",
+  "verify": "/levels/cat-coloring-book-001/verify_fill.png",
+  "reference": "/levels/cat-coloring-book-001/reference.png",
+  "lineart": "/levels/cat-coloring-book-001/lineart.png",
+  "outline": "/levels/cat-coloring-book-001/outline.png",
+  "regionMask": "/levels/cat-coloring-book-001/region_mask.png",
+  "regionMaskWeb": "/levels/cat-coloring-book-001/region_mask_web.png",
+  "regionsMeta": "/levels/cat-coloring-book-001/regions.json",
+  "lineArt": true,
+  "mode": "free-fill-mask",
+  "custom": true
+}

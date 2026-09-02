@@ -1,0 +1,17 @@
+{
+  "sourceImage": "public/ling-ling-garden.png",
+  "lineArt": "public/ling-ling-lineart.png",
+  "pipeline": "coloring-book-lineart+lineart-barrier+slic+v2",
+  "params": {
+    "workSize": [
+      1200,
+      835
+    ],
+    "slicSegments": 280,
+    "mergeThresh": 18,
+    "minAreaRatio": 0.0025,
+    "paletteN": 8,
+    "dpEps": 1.4
+  },
+  "license": "user-provided original artwork"
+}

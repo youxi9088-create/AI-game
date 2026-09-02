@@ -1,3 +1,7 @@
+# AI Game
+
+本次提交的填色游戏工程位于 [coloring-game](./coloring-game)，包括本地关卡工坊、我的画廊与真人线稿填色模式。运行及服务配置说明见 [coloring-game/README.md](./coloring-game/README.md)。
+
 # 组件概述
 ## 组件定义
 ## 组件价值

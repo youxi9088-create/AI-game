@@ -1,0 +1,42 @@
+{
+  "name": "coloring-game",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:lan": "set COLORVERSE_LAN=1&& node scripts/dev.js",
+    "dev:vite": "vite",
+    "level:service": ".\\.venv-ai\\Scripts\\python.exe scripts\\level_service.py",
+    "level:validate": ".\\.venv-ai\\Scripts\\python.exe scripts\\level_validator.py",
+    "generator:node": ".\\.venv-ai\\Scripts\\python.exe scripts\\generation_node.py",
+    "pbn:generate": "node scripts/generate_pbn_level.mjs",
+    "pbn:import": "node scripts/import_pbn_svg.mjs",
+    "pbn:validate": "node scripts/validate_level.mjs",
+    "deploy": "fn deploy",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fn/api": "https://f.new.ndhy.com/-/packages/fn-api-latest.tgz",
+    "@fn/cs": "https://f.new.ndhy.com/-/packages/fn-cs-latest.tgz",
+    "@fn/functions": "https://f.new.ndhy.com/-/packages/fn-functions-latest.tgz",
+    "@fn/mongodb": "https://f.new.ndhy.com/-/packages/fn-mongodb-latest.tgz",
+    "@fn/uc": "https://f.new.ndhy.com/-/packages/fn-uc-latest.tgz",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "@fn/vite": "https://f.new.ndhy.com/-/packages/fn-vite-latest.tgz",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.12"
+  }
+}

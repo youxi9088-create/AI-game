@@ -1,0 +1,9 @@
+# 真人照片 Coloring Book Line Art 本地服务依赖（Python 3.11）
+controlnet_aux==0.0.10
+opencv-python==5.0.0.93
+fastapi==0.141.1
+uvicorn==0.52.4
+pillow==12.3.0
+numpy==2.4.6
+scipy==1.17.1
+scikit-image==0.26.0

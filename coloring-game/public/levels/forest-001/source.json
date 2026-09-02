@@ -1,0 +1,21 @@
+{
+  "source": "user-provided image for local prototype",
+  "author": "user supplied",
+  "rightsStatus": "local prototype only; commercial authorization pending confirmation",
+  "generator": {
+    "name": "paint-by-numbers-generator",
+    "repository": "https://github.com/BenjaminSymons/paintbynumbersgenerator",
+    "revision": "ec4822c14360566d206710b5180a221f01935ed2",
+    "settings": "scripts/pbn-settings-simple.json",
+    "dependencyAudit": "isolated validation found high-severity advisories; not installed as a project dependency"
+  },
+  "assets": {
+    "preview": "preview.svg",
+    "outlineSource": "outline.svg",
+    "outlineRuntime": "outline.png"
+  },
+  "review": {
+    "status": "prototype-approved",
+    "checkedAt": "2026-08-27"
+  }
+}

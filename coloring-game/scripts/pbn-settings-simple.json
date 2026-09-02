@@ -1,0 +1,38 @@
+{
+  "randomSeed": 7707,
+  "kMeansNrOfClusters": 6,
+  "kMeansMinDeltaDifference": 1,
+  "kMeansClusteringColorSpace": 0,
+  "kMeansColorRestrictions": [],
+  "colorAliases": {},
+  "removeFacetsSmallerThanNrOfPoints": 120,
+  "removeFacetsFromLargeToSmall": true,
+  "maximumNumberOfFacets": 60,
+  "nrOfTimesToHalveBorderSegments": 3,
+  "narrowPixelStripCleanupRuns": 3,
+  "resizeImageIfTooLarge": true,
+  "resizeImageWidth": 1024,
+  "resizeImageHeight": 1024,
+  "outputProfiles": [
+    {
+      "name": "preview",
+      "svgShowLabels": false,
+      "svgFillFacets": true,
+      "svgShowBorders": true,
+      "svgSizeMultiplier": 1,
+      "svgFontSize": 16,
+      "svgFontColor": "#333",
+      "filetype": "svg"
+    },
+    {
+      "name": "outline",
+      "svgShowLabels": false,
+      "svgFillFacets": false,
+      "svgShowBorders": true,
+      "svgSizeMultiplier": 1,
+      "svgFontSize": 16,
+      "svgFontColor": "#2d2a26",
+      "filetype": "svg"
+    }
+  ]
+}

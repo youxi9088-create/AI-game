@@ -1,0 +1,17 @@
+{
+  "sourceImage": "public\\ling-ling-garden.png",
+  "lineArt": "public\\ling-ling-lineart.png",
+  "pipeline": "slic+v2",
+  "params": {
+    "workSize": [
+      1200,
+      835
+    ],
+    "slicSegments": 500,
+    "mergeThresh": 14.0,
+    "minAreaRatio": 0.0008,
+    "paletteN": 14,
+    "dpEps": 1.4
+  },
+  "license": "user-provided original artwork"
+}
