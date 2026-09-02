@@ -23,14 +23,14 @@
 3. 在部署平台的 Secret/环境变量中填写以下值（不要提交回 Git）：
 
    - `AIHUB_AGENT_TOKEN`：AIHub 服务端凭证。
-   - `LEVEL_SERVICE_PUBLIC_ORIGIN`：此服务的最终 HTTPS 地址，例如 `https://coloring-level-api.example.com`。
+   - `LEVEL_SERVICE_PUBLIC_ORIGIN`：此服务的最终 HTTPS 地址，当前为 `https://coloring-game.new.ndhy.com`。
    - `LEVEL_SERVICE_ALLOWED_ORIGINS`：FN 前端的 Origin；当前为 `https://f.new.ndhy.com`。
 
 4. 启动服务并确认健康检查：
 
    ```bash
    docker compose up -d --build
-   curl -fsS https://coloring-level-api.example.com/api/health
+   curl -fsS https://coloring-game.new.ndhy.com/api/health
    ```
 
 5. 为该容器绑定 HTTPS 域名，并将反向代理的上传上限调至至少 `20m`，请求超时调至至少 25 分钟。AIHub 工作流本身为异步轮询，但首次创建和状态轮询都依赖这个公网 API。
@@ -38,7 +38,7 @@
 6. 将前端构建环境变量设置为服务的根地址后，再部署 FN 前端：
 
    ```bash
-   VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN=https://coloring-level-api.example.com
+   VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN=https://coloring-game.new.ndhy.com
    ```
 
    这个变量只写服务地址，不含 `/api`，且不会包含 Token。FN 前端部署后会直接请求该地址，不再错误访问访客浏览器自己的 `:5399`。
@@ -47,11 +47,11 @@
 
 ```bash
 # 1. AIHub 具备 Token 与工作流 ID
-curl -fsS https://coloring-level-api.example.com/api/health
+curl -fsS https://coloring-game.new.ndhy.com/api/health
 
 # 2. 浏览器在 https://f.new.ndhy.com 打开关卡工坊，上传一张图片
-# 3. Network 中 POST 请求应指向 https://coloring-level-api.example.com/api/generate-level
-# 4. 完成任务结果的 url 应为 https://coloring-level-api.example.com/levels/upload-.../level.json
+# 3. Network 中 POST 请求应指向 https://coloring-game.new.ndhy.com/api/generate-level
+# 4. 完成任务结果的 url 应为 https://coloring-game.new.ndhy.com/levels/upload-.../level.json
 # 5. 点击“打开并开始填色”后，lineart、region_mask 与 preview 请求也应来自同一服务域名
 ```
 

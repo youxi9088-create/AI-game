@@ -182,14 +182,18 @@ function nearestColorIndex(color: [number, number, number], palette: [number, nu
   return closest
 }
 
+// 已分配给 Linux 关卡生产线的公开 HTTPS 域名。它是公开地址而非凭证，
+// 因此作为生产默认值固化，避免 FN 构建遗漏 VITE 变量后退回本机 :5399。
+const PRODUCTION_LEVEL_SERVICE_ORIGIN = 'https://coloring-game.new.ndhy.com'
+
 function levelServiceOrigin() {
   const configured = import.meta.env.VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN?.trim().replace(/\/$/, '')
   if (configured) return configured
-  // 保留本机与局域网录屏/调试场景；线上必须显式配置公开的 Linux 服务地址。
+  // 保留本机与局域网录屏/调试场景；FN 线上默认走已绑定的 Linux 服务域名。
   if (/^(localhost|127\.0\.0\.1|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.)/i.test(window.location.hostname)) {
     return `http://${window.location.hostname}:5399`
   }
-  return ''
+  return PRODUCTION_LEVEL_SERVICE_ORIGIN
 }
 
 function assetUrl(path?: string, serviceLevelUrl?: string) {
@@ -228,7 +232,7 @@ async function uploadAiReference(file: File) {
 async function startGenerationJob(file: File, difficulty: Difficulty) {
   const serviceOrigin = levelServiceOrigin()
   if (!serviceOrigin) {
-    throw new Error('线上关卡生成服务尚未配置。请部署 Linux 生产线后，在前端构建环境设置 VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN。')
+    throw new Error('关卡生成服务暂未配置，请稍后再试。')
   }
   const referenceUrl = await uploadAiReference(file)
   const params = new URLSearchParams({
