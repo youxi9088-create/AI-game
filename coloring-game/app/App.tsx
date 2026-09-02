@@ -196,7 +196,8 @@ function aiReferenceApi() {
   const isLocal = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname)
   // 本地 Vite 不托管 FN API，开发时直接使用当前已部署站点的同一路由。
   if (isLocal) return 'https://f.new.ndhy.com/a/coloring-game/api/ai-reference'
-  return `${window.location.origin}${import.meta.env.BASE_URL.replace(/\/$/, '')}/api/ai-reference`
+  // FN 构建的 BASE_URL 为 "./"；用 document.baseURI 解析才能保留 /a/coloring-game/ 前缀。
+  return new URL('api/ai-reference', document.baseURI).toString()
 }
 
 async function uploadAiReference(file: File) {
