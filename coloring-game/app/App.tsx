@@ -182,11 +182,22 @@ function nearestColorIndex(color: [number, number, number], palette: [number, nu
   return closest
 }
 
-const LOCAL_SERVICE = `http://${window.location.hostname}:5399`
+function levelServiceOrigin() {
+  const configured = import.meta.env.VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN?.trim().replace(/\/$/, '')
+  if (configured) return configured
+  // 保留本机与局域网录屏/调试场景；线上必须显式配置公开的 Linux 服务地址。
+  if (/^(localhost|127\.0\.0\.1|10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.)/i.test(window.location.hostname)) {
+    return `http://${window.location.hostname}:5399`
+  }
+  return ''
+}
 
-function assetUrl(path?: string) {
+function assetUrl(path?: string, serviceLevelUrl?: string) {
   if (!path) return undefined
   if (/^https?:\/\//i.test(path)) return path
+  // 线上服务返回的是绝对 level.json URL；关卡内部的 /levels/... 资源必须
+  // 随该服务读取，不能错误落到 FN 前端自己的静态目录。
+  if (serviceLevelUrl && /^https?:\/\//i.test(serviceLevelUrl)) return new URL(path, serviceLevelUrl).toString()
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 }
 
@@ -215,18 +226,22 @@ async function uploadAiReference(file: File) {
 }
 
 async function startGenerationJob(file: File, difficulty: Difficulty) {
+  const serviceOrigin = levelServiceOrigin()
+  if (!serviceOrigin) {
+    throw new Error('线上关卡生成服务尚未配置。请部署 Linux 生产线后，在前端构建环境设置 VITE_COLORVERSE_LEVEL_SERVICE_ORIGIN。')
+  }
   const referenceUrl = await uploadAiReference(file)
   const params = new URLSearchParams({
     title: file.name.replace(/\.[^.]+$/, '') || '我的填色画',
     difficulty,
     reference_url: referenceUrl,
   })
-  const serviceUrl = `${LOCAL_SERVICE}/api/generate-level?${params.toString()}`
+  const serviceUrl = `${serviceOrigin}/api/generate-level?${params.toString()}`
   let response: Response
   try {
     response = await fetch(serviceUrl, { method: 'POST', body: file })
   } catch {
-    throw new Error('无法连接本地关卡工坊服务。请确认 npm run dev 正在运行，或打开 http://127.0.0.1:5399/api/health 检查服务状态。')
+    throw new Error(`无法连接关卡生成服务。请检查 ${serviceOrigin}/api/health 是否可访问。`)
   }
   const info = await response.json()
   if (!response.ok) throw new Error(info?.detail ?? info?.error ?? '关卡生成失败')
@@ -234,7 +249,9 @@ async function startGenerationJob(file: File, difficulty: Difficulty) {
 }
 
 async function readGenerationJob(jobId: string) {
-  const response = await fetch(`${LOCAL_SERVICE}/api/jobs/${jobId}`)
+  const serviceOrigin = levelServiceOrigin()
+  if (!serviceOrigin) throw new Error('线上关卡生成服务尚未配置。')
+  const response = await fetch(`${serviceOrigin}/api/jobs/${jobId}`)
   const info = await response.json()
   if (!response.ok) throw new Error(info?.error ?? '无法读取关卡生成状态')
   return info as GenerationJob
@@ -246,13 +263,13 @@ async function loadFreeFillLevel(levelUrl: string): Promise<Level> {
   const level = await levelResponse.json() as Level
   return {
     ...level,
-    preview: assetUrl(level.preview),
-    outline: assetUrl(level.outline),
-    lineart: assetUrl(level.lineart),
-    regionMask: assetUrl(level.regionMask),
-    regionMaskWeb: assetUrl(level.regionMaskWeb),
-    regionsMeta: assetUrl(level.regionsMeta),
-    reference: assetUrl(level.reference),
+    preview: assetUrl(level.preview, levelUrl),
+    outline: assetUrl(level.outline, levelUrl),
+    lineart: assetUrl(level.lineart, levelUrl),
+    regionMask: assetUrl(level.regionMask, levelUrl),
+    regionMaskWeb: assetUrl(level.regionMaskWeb, levelUrl),
+    regionsMeta: assetUrl(level.regionsMeta, levelUrl),
+    reference: assetUrl(level.reference, levelUrl),
     custom: true,
   }
 }
@@ -264,11 +281,11 @@ async function loadGeneratedLevel(result: NonNullable<GenerationJob['result']>, 
     title: level.title || fileName,
     subtitle: `AI 重制 · ${result.regions} 个区域`,
     difficulty,
-    preview: level.preview ?? assetUrl(`/levels/${result.id}/preview.png`),
-    outline: level.outline ?? assetUrl(`/levels/${result.id}/outline.png`),
-    lineart: level.lineart ?? assetUrl(`/levels/${result.id}/lineart.png`),
-    regionMask: level.regionMask ?? assetUrl(`/levels/${result.id}/region_mask.png`),
-    regionMaskWeb: level.regionMaskWeb ?? assetUrl(`/levels/${result.id}/region_mask_web.png`),
+    preview: level.preview ?? assetUrl(`/levels/${result.id}/preview.png`, result.url),
+    outline: level.outline ?? assetUrl(`/levels/${result.id}/outline.png`, result.url),
+    lineart: level.lineart ?? assetUrl(`/levels/${result.id}/lineart.png`, result.url),
+    regionMask: level.regionMask ?? assetUrl(`/levels/${result.id}/region_mask.png`, result.url),
+    regionMaskWeb: level.regionMaskWeb ?? assetUrl(`/levels/${result.id}/region_mask_web.png`, result.url),
   }
 }
 

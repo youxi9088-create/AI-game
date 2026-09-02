@@ -1,0 +1,16 @@
+services:
+  coloring-level-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env.level-service
+    ports:
+      - "5399:5399"
+    volumes:
+      # 生成的 level.json、线稿、Mask 与预览图必须持久化，否则容器重启后画册会失效。
+      - coloring-levels:/app/public/levels
+    restart: unless-stopped
+
+volumes:
+  coloring-levels:

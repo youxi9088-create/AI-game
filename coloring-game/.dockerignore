@@ -1,0 +1,13 @@
+.git
+node_modules
+dist
+.venv-ai
+__pycache__
+*.py[cod]
+aihub.local.env
+.env.level-service
+public/_lineart-candidates
+public/_qa_lineart
+public/levels/_uploads_tmp
+public/levels/upload-*
+public/levels/number-level-*

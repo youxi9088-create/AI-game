@@ -1,6 +1,10 @@
 # ColorVerse 本地填色游戏
 
-本地可运行的 React + Vite 填色游戏原型。当前版本不依赖部署、账号、云端存储或线上 AI 服务。
+## Linux 生产线部署
+
+线上“输入图片 → 自动生成关卡”需要独立的 FastAPI 容器，而不是让访问者浏览器连接本机 `:5399`。服务端交接、Docker 启动和前端对接步骤见 [docs/linux-level-service.md](docs/linux-level-service.md)。
+
+本地可运行的 React + Vite 填色游戏。浏览器端负责游玩与工坊界面；上传图片自动生成关卡时，会调用本机 FastAPI 服务或配置好的 Linux 生产线服务。
 
 ## 本地启动
 
@@ -26,15 +30,7 @@ npm run level:service
 
 真人线框关卡工坊会将用户上传图片作为参考图，通过已安装的 aihub-asset-production Skill 调用 AIHub 即梦 5.0 工作流（run → status → outputs），重绘为 Coloring Book Line Art。凭据只由本机服务读取，不会写入前端。
 
-```powershell
-# 首次配置：模板会随 Git 提交；实际配置文件不会提交。
-Copy-Item aihub.local.env.example aihub.local.env
-
-# 编辑 aihub.local.env，在等号后填写公司分配的 bvk_ 开头 Token。
-npm run dev
-```
-
-`aihub.local.env.example` 会提交到 Git；填写 Token 后的 `aihub.local.env` 被 Git 忽略。服务会根据参考图比例选择即梦 5.0 的画布规格；并从项目已安装 Skill 的 AppId 注册表按 `jimeng` 别名解析工作流，不在业务代码里手写 AppId。可访问 http://127.0.0.1:5399/api/ai-gateway/status 检查 Token 是否已被服务读取。
+本地开发可在被 Git 忽略的 `aihub.local.env` 中配置 `AIHUB_AGENT_TOKEN`；线上容器则通过部署平台 Secret 注入同一个 Token。即梦工作流 App ID 已固定在服务端代码中，无需再由部署平台配置。服务会根据参考图比例选择即梦 5.0 的画布规格；可访问 http://127.0.0.1:5399/api/ai-gateway/status 检查本机配置是否已生效。
 
 ## 当前已实现
 
@@ -116,9 +112,8 @@ npm run pbn:generate -- <source-image> public/levels/<level-id> <level-id>
 
 这些关卡会立即在当前浏览器中加载。若要把某一关变成固定预制关卡，再将其路径加入 `public/levels/index.json`。
 
-## 暂未接入
+## 后续可扩展
 
-- 云端 AI 文生图、图片风格化与内容审核
-- 登录、跨设备同步、分享链接和部署
+- 登录、跨设备同步与分享链接
 - 图生视频完成动画
-- 云端异步队列、跨设备保存与多人协作（当前为单机本地服务）
+- 多副本异步队列、跨设备保存与多人协作（当前 Linux 生产线为单实例任务状态）

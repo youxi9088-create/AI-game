@@ -3,7 +3,8 @@
 
 POST /api/generate-level?title=<标题>&difficulty=<难度>，请求体为图片二进制。
 任务会异步执行，前端用 GET /api/jobs/<job-id> 展示发布流水线进度。
-只监听 127.0.0.1，不对外暴露上传图片或模型服务。
+本地开发默认监听 127.0.0.1；Linux 容器可用环境变量公开 API、跨域白名单和
+生成后的关卡静态文件。
 """
 from __future__ import annotations
 
@@ -23,6 +24,7 @@ from urllib.request import Request as UrlRequest, urlopen
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from ai_gateway import gateway_status, generate_lineart
 from lineart_quality import LineartQualityError, analyse_source_for_lineart, evaluate_lineart, matching_golden_sample
@@ -32,15 +34,29 @@ from subject_preprocess import preprocess_reference_for_lineart
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-PORT = 5399
+PORT = int(os.environ.get("LEVEL_SERVICE_PORT", "5399"))
 HOST = os.environ.get("LEVEL_SERVICE_HOST", "127.0.0.1")
 MAX_SIZE = 15 * 1024 * 1024  # 15MB
+LEVELS_DIR = ROOT / "public" / "levels"
+# 线上必须设置为对浏览器可访问的 HTTPS 服务根地址，例如
+# https://coloring-levels.example.com。未设置时保留相对路径，兼容本地 Vite。
+LEVEL_SERVICE_PUBLIC_ORIGIN = os.environ.get("LEVEL_SERVICE_PUBLIC_ORIGIN", "").strip().rstrip("/")
 AI_REFERENCE_UPLOAD_URL = os.environ.get(
     'COLORVERSE_AI_REFERENCE_UPLOAD_URL',
     'https://f.new.ndhy.com/a/coloring-game/api/ai-reference',
 )
 JOBS: dict[str, dict] = {}
 JOBS_LOCK = Lock()
+
+
+def _csv_env(name: str) -> list[str]:
+    return [item.strip().rstrip("/") for item in os.environ.get(name, "").split(",") if item.strip()]
+
+
+def public_level_url(path: str) -> str:
+    """将服务生成的 /levels 文件路径转换为浏览器可直接读取的 URL。"""
+    normalized = path if path.startswith("/") else f"/{path}"
+    return f"{LEVEL_SERVICE_PUBLIC_ORIGIN}{normalized}" if LEVEL_SERVICE_PUBLIC_ORIGIN else normalized
 
 PIPELINE_STEPS = [
     ("prepare", "接收并校验图片", "检查格式、尺寸与图片内容"),
@@ -90,9 +106,16 @@ COMPLEX_PHOTO_LINEART_PROMPTS = (
     "优先 35–120 个清晰闭合的可填色区域。",
 )
 
-app = FastAPI(title="ColorVerse Local Level Service", docs_url=None, redoc_url=None)
+app = FastAPI(title="ColorVerse Level Generation Service", docs_url=None, redoc_url=None)
+# 默认包含现有 FN 前端和局域网/本地调试地址；生产环境可用
+# LEVEL_SERVICE_ALLOWED_ORIGINS 追加新的 HTTPS 前端域名。
+ALLOWED_ORIGINS = sorted({
+    "https://f.new.ndhy.com",
+    *_csv_env("LEVEL_SERVICE_ALLOWED_ORIGINS"),
+})
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
     allow_origin_regex=r"https?://(?:localhost|127\.0\.0\.1|10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})(:\d+)?$",
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type"],
@@ -172,7 +195,6 @@ def _upload_preprocessed_reference(image_path: Path) -> str:
 
 
 def make_level(image_bytes: bytes, title: str, difficulty: str = "普通", progress=None, reference_url: str | None = None):
-    from coloring_book_lineart import create_lineart
     from generate_level_v2 import generate_level
     from PIL import Image
 
@@ -286,6 +308,9 @@ def make_level(image_bytes: bytes, title: str, difficulty: str = "普通", progr
         if progress:
             progress("preprocess", "completed", "未提供 AIHub 参考图，使用本地线稿检测路径")
             progress("lineart", "running", "正在通过本地 LineartDetector 生成线稿")
+        # 容器的正式路径传入 CS 参考图并使用 AIHub，因此无需为了少数本地
+        # 回退请求而把 Torch/ControlNet 模型预装进所有 Linux 服务实例。
+        from coloring_book_lineart import create_lineart
         lineart_info = create_lineart(src, lineart_path)
         lineart_info["quality"] = evaluate_lineart(lineart_path, source_path=src)
     if progress:
@@ -344,14 +369,14 @@ def run_job(job_id, image_bytes, title, difficulty, reference_url=None):
         level_id, level, lineart_info = make_level(image_bytes, title, difficulty, report, reference_url=reference_url)
         update_job(job_id, "verify", step_status="completed", message=lineart_info['validation']['summary'], job_status="completed", result={
             "id": level_id,
-            "url": f"/levels/{level_id}/level.json",
+            "url": public_level_url(f"/levels/{level_id}/level.json"),
             "title": level["title"],
             "regions": len(level["regions"]),
             "colors": len(level["palette"]),
-            "lineart": f"/levels/{level_id}/lineart.png",
-            "regionMask": f"/levels/{level_id}/region_mask.png",
-            "regionMaskWeb": f"/levels/{level_id}/region_mask_web.png",
-            "verify": f"/levels/{level_id}/verify_fill.png",
+            "lineart": public_level_url(f"/levels/{level_id}/lineart.png"),
+            "regionMask": public_level_url(f"/levels/{level_id}/region_mask.png"),
+            "regionMaskWeb": public_level_url(f"/levels/{level_id}/region_mask_web.png"),
+            "verify": public_level_url(f"/levels/{level_id}/verify_fill.png"),
             "lineCoverage": lineart_info["lineCoverage"],
             "quality": lineart_info["quality"],
             "validation": lineart_info['validation'],
@@ -406,7 +431,14 @@ def run_number_image_job(job_id, image_bytes, title, difficulty, category):
 
 @app.get("/api/health")
 def health():
-    return {"ok": True, "engine": "fastapi", "pipeline": "coloring-book-lineart", "aiGateway": gateway_status()}
+    return {
+        "ok": True,
+        "engine": "fastapi",
+        "pipeline": "coloring-book-lineart",
+        "publicOrigin": LEVEL_SERVICE_PUBLIC_ORIGIN or None,
+        "levelsPath": "/levels",
+        "aiGateway": gateway_status(),
+    }
 
 
 @app.get("/api/jobs/{job_id}")
@@ -465,7 +497,7 @@ async def import_number_image(request: Request, title: str = "", difficulty: str
         raise HTTPException(status_code=400, detail=f"数字填色关卡生成失败：{exc}") from exc
     return JSONResponse(status_code=201, content={
         "id": level_id,
-        "url": f"/levels/{level_id}/level.json",
+        "url": public_level_url(f"/levels/{level_id}/level.json"),
         "title": level["title"],
         "regions": len(level["regions"]),
         "colors": len(level["palette"]),
@@ -499,6 +531,11 @@ async def generate_number_level(request: Request, title: str = "", difficulty: s
         }
     Thread(target=run_number_image_job, args=(job_id, image_bytes, title, difficulty, category), daemon=True).start()
     return JSONResponse(status_code=202, content={"jobId": job_id})
+
+
+# 关卡文件和输出图片必须由生产线服务本身公开；否则前端只能拿到 job 完成
+# 状态，却无法读取新生成的 level.json / lineart / mask。
+app.mount("/levels", StaticFiles(directory=LEVELS_DIR, check_dir=False), name="levels")
 
 
 if __name__ == "__main__":

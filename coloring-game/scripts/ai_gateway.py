@@ -2,7 +2,8 @@
 
 严格遵循 aihub-asset-production 的 run -> status -> outputs 三段式流程。
 鉴权优先读取 AIHUB_AGENT_TOKEN 环境变量；本地开发也可读取被 Git 忽略的
-``aihub.local.env``。AppId 仅从已安装 Skill 的注册表解析。
+``aihub.local.env``。即梦工作流 App ID 是固定的公开能力标识，直接由本模块维护；
+只有 Token 需要由本机文件或 Linux 服务端环境变量提供。
 """
 from __future__ import annotations
 
@@ -22,8 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 LOCAL_TOKEN_FILE = ROOT / 'aihub.local.env'
 AIHUB_BASE_URL = 'https://bv.new.ndhy.com/api/agent/aihub'
 WORKFLOW_ALIAS = 'jimeng'
-SKILL_ROOT = ROOT.parent / '.agents' / 'skills' / 'aihub-asset-production'
-APP_ID_REGISTRY = SKILL_ROOT / 'examples' / '_appids.ps1'
+# AIHub 即梦图生图工作流的公开能力标识；它不是 Token，不能用于鉴权。
+WORKFLOW_APP_ID = 'e5fd4410-b1ac-4418-a83d-b1f7989c2f4a'
 URL_PATTERN = re.compile(r'https?://[^\s"\'<>\]\)]+', re.IGNORECASE)
 
 # 即梦的“黑白线稿”并不等同于能玩填色本。该约束要求封闭、稳定的外轮廓，
@@ -102,29 +103,21 @@ def _token() -> str:
 
 
 def _workflow_app_id() -> str:
-    """从 Skill 唯一注册表解析 AppId，调用方不手写 UUID。"""
-    if not APP_ID_REGISTRY.exists():
-        raise RuntimeError('未找到 aihub-asset-production 的 AppId 注册表，请重新安装该 Skill。')
-    text = APP_ID_REGISTRY.read_text(encoding='utf-8')
-    match = re.search(rf'"{re.escape(WORKFLOW_ALIAS)}"\s*=\s*"([^"]+)"', text)
-    if not match:
-        raise RuntimeError(f'AIHub Skill 注册表中未找到工作流别名：{WORKFLOW_ALIAS}')
-    return match.group(1)
+    """返回固定的即梦工作流标识；鉴权始终由 AIHUB_AGENT_TOKEN 完成。"""
+    return WORKFLOW_APP_ID
 
 
 def gateway_status() -> dict[str, Any]:
-    configured = bool(_token()) and APP_ID_REGISTRY.exists()
+    configured = bool(_token())
     missing = []
     if not _token():
         missing.append('AIHUB_AGENT_TOKEN')
-    if not APP_ID_REGISTRY.exists():
-        missing.append('aihub-asset-production')
     return {
         'configured': configured,
         'workflowAlias': WORKFLOW_ALIAS,
         'model': '即梦5.0',
         'missing': missing,
-        'hint': '在项目根目录的 aihub.local.env 填写 AIHUB_AGENT_TOKEN，或通过服务环境变量配置。',
+        'hint': '本地可在 aihub.local.env 配置 Token；Linux 服务只须配置 AIHUB_AGENT_TOKEN。',
     }
 
 

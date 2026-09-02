@@ -1,0 +1,9 @@
+# Linux 生产线运行时依赖（Python 3.11，CPU 即可）。
+# 生产主路径调用 AIHub 的即梦图生图；不在容器内加载 Torch/ControlNet 模型。
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+pillow==12.3.0
+numpy==2.4.6
+scipy==1.17.1
+scikit-image==0.26.0
+opencv-python-headless>=4.10,<6

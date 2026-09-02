@@ -8,6 +8,7 @@ __pycache__/
 .generation-node-work
 models/lineart/
 aihub.local.env
+.env.level-service
 public/_lineart-candidates/
 public/_qa_lineart/
 public/levels/_uploads_tmp/
