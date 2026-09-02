@@ -1118,6 +1118,15 @@ export default function App() {
 
   if (page === 'home') return <HomePage onPlay={() => navigate('game')} onWorkshop={() => navigate('workshop')} onGallery={() => { setShowGallery(true); navigate('game') }} />
 
+  // #game 首次打开时，关卡清单尚在异步加载。不要先用旧 SVG 兜底关卡渲染，
+  // 否则正式关卡到达后会产生错误线稿的闪帧。
+  if (!hydrated) return <div className="app-shell game-boot-shell">
+    <header className="topbar">
+      <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
+    </header>
+    <main className="game-boot" aria-live="polite"><span className="game-boot-spinner" aria-hidden="true" /><strong>正在载入画册…</strong><small>正在准备正式线稿和填色区域</small></main>
+  </div>
+
   return <div className="app-shell">
     <header className="topbar">
       <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>ColorVerse <em>本地版</em></span></button>
