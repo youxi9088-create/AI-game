@@ -391,6 +391,10 @@ function swatchNumberColor(color: string) {
 function loadImage(source: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image()
+    // 线上关卡的线稿和区域 Mask 位于独立的生产线域名。必须在设置 src
+    // 之前请求 CORS 图片，否则即使图片显示成功，绘入 Canvas 后也会被浏览器
+    // 标记为 tainted，点击时无法读取像素中的区域 ID。
+    image.crossOrigin = 'anonymous'
     image.onload = () => resolve(image)
     image.onerror = () => reject(new Error(`无法加载图片：${source}`))
     image.src = source
