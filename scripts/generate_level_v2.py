@@ -352,7 +352,8 @@ def generate_level(color_src, line_src, out_dir, level_id, title=None,
                    n_seg=None, merge_thresh=None, palette_n=None, min_area_ratio=None,
                    target_range=None, progress=None):
     """彩色原图 + 可选线稿 -> level 文件组。line_src 传 None 为纯照片模式(梯度边缘当墙)
-    target_range=(lo, hi): 期望区域数区间, 聚合阈值会自适应调整以落入区间"""
+    target_range=(lo, hi): 区域数建议值，用于调节聚合强度而非验收条件。
+    hi 可为 None，表示只有建议下限、没有区域数上限。"""
     n_seg = n_seg or N_SEG
     merge_thresh = merge_thresh or MERGE_THRESH
     palette_n = palette_n or PALETTE_N
@@ -421,8 +422,10 @@ def generate_level(color_src, line_src, out_dir, level_id, title=None,
         print(f"[3/6] 照片边缘墙: 阈值 {edge_t:.1f}, 覆盖 {float(lines.mean()) * 100:.1f}%")
     wall = dilate(lines, DILATE_IT)
 
-    # 4. 自适应聚合: 区域数低于目标下限就降阈值重聚, 超过上限就升阈值
-    lo, hi = target_range or (1, 10 ** 9)
+    # 4. 自适应聚合: 区域数建议值只影响生成参数，不作为关卡验收上限。
+    #    困难档没有上限，复杂线稿应保留为可玩的困难关卡，而不是继续强制合并。
+    lo, hi = target_range or (1, None)
+    target_label = f'{lo}+' if hi is None else f'{lo}~{hi}'
     min_area = int(W * H * min_area_ratio)
     thresh = float(merge_thresh)
     final = None
@@ -442,10 +445,10 @@ def generate_level(color_src, line_src, out_dir, level_id, title=None,
         merged = np.vectorize(find)(sp).reshape(H, W).astype(np.int32)
         final, fid = split_by_wall(merged, wall)
         final, nregion = absorb_small(final, fid, min_area, wall)
-        print(f"[4/6] 第{attempt + 1}轮 阈值{thresh:.1f} -> {nregion} 块(目标 {lo}~{hi})", flush=True)
+        print(f"[4/6] 第{attempt + 1}轮 阈值{thresh:.1f} -> {nregion} 块(建议 {target_label})", flush=True)
         if nregion < lo and thresh > 2.5:
             thresh *= 0.6
-        elif nregion > hi and thresh < 80:
+        elif hi is not None and nregion > hi and thresh < 80:
             thresh *= 1.6
         else:
             break

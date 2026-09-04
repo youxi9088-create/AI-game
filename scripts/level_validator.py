@@ -17,6 +17,12 @@ REQUIRED_FILES = (
     'region_mask.png', 'region_mask_web.png', 'regions.json', 'verify_fill.png',
 )
 MIN_CLICK_AREA = {'简单': 120, '普通': 80, '困难': 45}
+# 区域数用于给创作者说明生成密度，不参与通过/失败判定。困难档没有上限。
+REGION_COUNT_GUIDANCE = {
+    '简单': {'recommendedMin': 25, 'recommendedMax': 70, 'label': '建议 25–70 区'},
+    '普通': {'recommendedMin': 45, 'recommendedMax': 130, 'label': '建议 45–130 区'},
+    '困难': {'recommendedMin': 80, 'recommendedMax': None, 'label': '建议 80 区以上（无上限）'},
+}
 
 
 class LevelValidationError(RuntimeError):
@@ -135,6 +141,11 @@ def validate_level(level_dir: str | Path) -> dict[str, Any]:
         'levelId': level.get('id'),
         'difficulty': difficulty,
         'regions': len(regions),
+        'regionGuidance': {
+            **REGION_COUNT_GUIDANCE[difficulty],
+            'actual': len(regions),
+            'policy': 'advisory',
+        },
         'colors': len(palette),
         'fillablePixels': int((mask > 0).sum()),
         'minRegionArea': min(region_areas) if region_areas else 0,

@@ -80,11 +80,12 @@ NUMBER_ART_PIPELINE_STEPS = [
     ("verify", "校验并发布到画册", "确认格子数量、数字和色板一一对应"),
 ]
 
-# 难度 -> 区域数/色数目标。线稿始终是唯一的视觉边界来源。
+# 难度 -> 生成参数。target_range 只是调节区域聚合的建议值，绝不作为打包验收上限。
+# 困难档只有建议下限：密集但通过最小可点击区域校验的复杂图应保留，不应因超过 240 区被拒绝。
 DIFFICULTY_PARAMS = {
     "简单": dict(n_seg=280, merge_thresh=18.0, palette_n=8, min_area_ratio=0.0025, target_range=(25, 70)),
     "普通": dict(n_seg=500, merge_thresh=14.0, palette_n=14, min_area_ratio=0.0008, target_range=(45, 130)),
-    "困难": dict(n_seg=800, merge_thresh=11.0, palette_n=18, min_area_ratio=0.0004, target_range=(80, 240)),
+    "困难": dict(n_seg=800, merge_thresh=11.0, palette_n=18, min_area_ratio=0.0004, target_range=(80, None)),
 }
 
 # 图生图的第一候选优先忠实保留构图；若质量门发现照片纹理仍然过密，第二候选
