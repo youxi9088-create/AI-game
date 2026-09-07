@@ -1,0 +1,7 @@
+{
+  "sourceLineart": "D:\\Desktop\\codex.png",
+  "pipeline": "user-provided-coloring-book-lineart+connected-components-mask-v1",
+  "difficulty": "简单",
+  "lineCoverage": 13.73,
+  "license": "user-provided artwork; user is responsible for usage rights"
+}

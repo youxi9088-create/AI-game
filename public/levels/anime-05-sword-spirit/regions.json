@@ -1,0 +1,9953 @@
+{
+  "version": 1,
+  "width": 1200,
+  "height": 1200,
+  "maskFormat": "uint16_png",
+  "regions": [
+    {
+      "id": 1,
+      "regionId": "r-0001",
+      "area": 583335,
+      "bbox": [
+        0,
+        0,
+        1200,
+        1200
+      ],
+      "centroid": [
+        323.0,
+        567.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 2,
+      "regionId": "r-0002",
+      "area": 187,
+      "bbox": [
+        478,
+        13,
+        35,
+        49
+      ],
+      "centroid": [
+        484.0,
+        36.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 3,
+      "regionId": "r-0003",
+      "area": 330,
+      "bbox": [
+        486,
+        17,
+        32,
+        44
+      ],
+      "centroid": [
+        496.0,
+        35.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 4,
+      "regionId": "r-0004",
+      "area": 795,
+      "bbox": [
+        496,
+        17,
+        52,
+        43
+      ],
+      "centroid": [
+        516.0,
+        36.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 5,
+      "regionId": "r-0005",
+      "area": 231,
+      "bbox": [
+        513,
+        29,
+        42,
+        32
+      ],
+      "centroid": [
+        527.0,
+        42.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 6,
+      "regionId": "r-0006",
+      "area": 235,
+      "bbox": [
+        569,
+        31,
+        17,
+        33
+      ],
+      "centroid": [
+        576.0,
+        45.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 7,
+      "regionId": "r-0007",
+      "area": 212,
+      "bbox": [
+        654,
+        32,
+        32,
+        15
+      ],
+      "centroid": [
+        671.0,
+        38.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 8,
+      "regionId": "r-0008",
+      "area": 493,
+      "bbox": [
+        520,
+        33,
+        49,
+        32
+      ],
+      "centroid": [
+        546.0,
+        44.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 9,
+      "regionId": "r-0009",
+      "area": 182,
+      "bbox": [
+        658,
+        43,
+        25,
+        12
+      ],
+      "centroid": [
+        670.0,
+        49.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 10,
+      "regionId": "r-0010",
+      "area": 2089,
+      "bbox": [
+        936,
+        50,
+        55,
+        105
+      ],
+      "centroid": [
+        961.0,
+        110.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 11,
+      "regionId": "r-0011",
+      "area": 755,
+      "bbox": [
+        527,
+        52,
+        31,
+        39
+      ],
+      "centroid": [
+        542.0,
+        71.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 12,
+      "regionId": "r-0012",
+      "area": 663,
+      "bbox": [
+        805,
+        62,
+        34,
+        47
+      ],
+      "centroid": [
+        820.0,
+        87.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 13,
+      "regionId": "r-0013",
+      "area": 623,
+      "bbox": [
+        1075,
+        65,
+        25,
+        40
+      ],
+      "centroid": [
+        1087.0,
+        85.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 14,
+      "regionId": "r-0014",
+      "area": 210,
+      "bbox": [
+        590,
+        71,
+        31,
+        14
+      ],
+      "centroid": [
+        605.0,
+        77.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 15,
+      "regionId": "r-0015",
+      "area": 672,
+      "bbox": [
+        552,
+        74,
+        37,
+        28
+      ],
+      "centroid": [
+        570.0,
+        87.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 16,
+      "regionId": "r-0016",
+      "area": 489,
+      "bbox": [
+        435,
+        76,
+        67,
+        30
+      ],
+      "centroid": [
+        475.0,
+        87.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 17,
+      "regionId": "r-0017",
+      "area": 727,
+      "bbox": [
+        500,
+        79,
+        36,
+        30
+      ],
+      "centroid": [
+        518.0,
+        93.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 18,
+      "regionId": "r-0018",
+      "area": 162,
+      "bbox": [
+        266,
+        89,
+        27,
+        14
+      ],
+      "centroid": [
+        279.0,
+        95.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 19,
+      "regionId": "r-0019",
+      "area": 177,
+      "bbox": [
+        420,
+        91,
+        19,
+        14
+      ],
+      "centroid": [
+        429.0,
+        96.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 20,
+      "regionId": "r-0020",
+      "area": 967,
+      "bbox": [
+        453,
+        93,
+        64,
+        39
+      ],
+      "centroid": [
+        489.0,
+        107.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 21,
+      "regionId": "r-0021",
+      "area": 549,
+      "bbox": [
+        577,
+        98,
+        69,
+        27
+      ],
+      "centroid": [
+        611.0,
+        107.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 22,
+      "regionId": "r-0022",
+      "area": 1024,
+      "bbox": [
+        629,
+        98,
+        57,
+        31
+      ],
+      "centroid": [
+        662.0,
+        110.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 23,
+      "regionId": "r-0023",
+      "area": 682,
+      "bbox": [
+        83,
+        99,
+        43,
+        33
+      ],
+      "centroid": [
+        105.0,
+        116.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 24,
+      "regionId": "r-0024",
+      "area": 243,
+      "bbox": [
+        264,
+        99,
+        28,
+        17
+      ],
+      "centroid": [
+        276.0,
+        106.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 25,
+      "regionId": "r-0025",
+      "area": 772,
+      "bbox": [
+        547,
+        103,
+        35,
+        30
+      ],
+      "centroid": [
+        563.0,
+        118.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 26,
+      "regionId": "r-0026",
+      "area": 1985,
+      "bbox": [
+        418,
+        105,
+        70,
+        104
+      ],
+      "centroid": [
+        455.0,
+        154.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 27,
+      "regionId": "r-0027",
+      "area": 406,
+      "bbox": [
+        953,
+        106,
+        22,
+        36
+      ],
+      "centroid": [
+        963.0,
+        129.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 28,
+      "regionId": "r-0028",
+      "area": 622,
+      "bbox": [
+        518,
+        107,
+        28,
+        34
+      ],
+      "centroid": [
+        532.0,
+        123.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 29,
+      "regionId": "r-0029",
+      "area": 459,
+      "bbox": [
+        453,
+        109,
+        76,
+        52
+      ],
+      "centroid": [
+        496.0,
+        129.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 30,
+      "regionId": "r-0030",
+      "area": 1755,
+      "bbox": [
+        453,
+        111,
+        80,
+        67
+      ],
+      "centroid": [
+        492.0,
+        147.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 31,
+      "regionId": "r-0031",
+      "area": 1552,
+      "bbox": [
+        395,
+        112,
+        50,
+        126
+      ],
+      "centroid": [
+        418.0,
+        173.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 32,
+      "regionId": "r-0032",
+      "area": 170,
+      "bbox": [
+        608,
+        114,
+        29,
+        12
+      ],
+      "centroid": [
+        621.0,
+        121.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 33,
+      "regionId": "r-0033",
+      "area": 691,
+      "bbox": [
+        363,
+        123,
+        50,
+        27
+      ],
+      "centroid": [
+        385.0,
+        134.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 34,
+      "regionId": "r-0034",
+      "area": 249,
+      "bbox": [
+        652,
+        124,
+        24,
+        19
+      ],
+      "centroid": [
+        664.0,
+        132.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 35,
+      "regionId": "r-0035",
+      "area": 1291,
+      "bbox": [
+        669,
+        124,
+        132,
+        32
+      ],
+      "centroid": [
+        722.0,
+        139.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 36,
+      "regionId": "r-0036",
+      "area": 476,
+      "bbox": [
+        615,
+        128,
+        37,
+        23
+      ],
+      "centroid": [
+        634.0,
+        137.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 37,
+      "regionId": "r-0037",
+      "area": 2441,
+      "bbox": [
+        755,
+        133,
+        93,
+        57
+      ],
+      "centroid": [
+        811.0,
+        155.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 38,
+      "regionId": "r-0038",
+      "area": 740,
+      "bbox": [
+        423,
+        135,
+        16,
+        85
+      ],
+      "centroid": [
+        431.0,
+        176.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 39,
+      "regionId": "r-0039",
+      "area": 1982,
+      "bbox": [
+        526,
+        140,
+        36,
+        170
+      ],
+      "centroid": [
+        546.0,
+        203.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 40,
+      "regionId": "r-0040",
+      "area": 156,
+      "bbox": [
+        648,
+        140,
+        27,
+        16
+      ],
+      "centroid": [
+        659.0,
+        149.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 41,
+      "regionId": "r-0041",
+      "area": 1680,
+      "bbox": [
+        618,
+        142,
+        91,
+        43
+      ],
+      "centroid": [
+        662.0,
+        167.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 42,
+      "regionId": "r-0042",
+      "area": 226,
+      "bbox": [
+        373,
+        143,
+        25,
+        21
+      ],
+      "centroid": [
+        382.0,
+        152.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 43,
+      "regionId": "r-0043",
+      "area": 255,
+      "bbox": [
+        560,
+        145,
+        22,
+        28
+      ],
+      "centroid": [
+        570.0,
+        160.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 44,
+      "regionId": "r-0044",
+      "area": 905,
+      "bbox": [
+        364,
+        146,
+        38,
+        70
+      ],
+      "centroid": [
+        380.0,
+        184.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 45,
+      "regionId": "r-0045",
+      "area": 176,
+      "bbox": [
+        575,
+        149,
+        12,
+        34
+      ],
+      "centroid": [
+        582.0,
+        167.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 46,
+      "regionId": "r-0046",
+      "area": 563,
+      "bbox": [
+        1013,
+        151,
+        35,
+        25
+      ],
+      "centroid": [
+        1029.0,
+        163.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 47,
+      "regionId": "r-0047",
+      "area": 6800,
+      "bbox": [
+        576,
+        166,
+        357,
+        180
+      ],
+      "centroid": [
+        729.0,
+        315.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 48,
+      "regionId": "r-0048",
+      "area": 616,
+      "bbox": [
+        625,
+        172,
+        77,
+        24
+      ],
+      "centroid": [
+        669.0,
+        187.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 49,
+      "regionId": "r-0049",
+      "area": 1977,
+      "bbox": [
+        702,
+        172,
+        85,
+        54
+      ],
+      "centroid": [
+        747.0,
+        198.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 50,
+      "regionId": "r-0050",
+      "area": 513,
+      "bbox": [
+        849,
+        172,
+        50,
+        18
+      ],
+      "centroid": [
+        866.0,
+        179.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 51,
+      "regionId": "r-0051",
+      "area": 585,
+      "bbox": [
+        344,
+        174,
+        37,
+        52
+      ],
+      "centroid": [
+        359.0,
+        201.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 52,
+      "regionId": "r-0052",
+      "area": 164,
+      "bbox": [
+        607,
+        175,
+        24,
+        28
+      ],
+      "centroid": [
+        617.0,
+        186.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 53,
+      "regionId": "r-0053",
+      "area": 237,
+      "bbox": [
+        128,
+        178,
+        18,
+        29
+      ],
+      "centroid": [
+        136.0,
+        193.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 54,
+      "regionId": "r-0054",
+      "area": 337,
+      "bbox": [
+        388,
+        179,
+        20,
+        46
+      ],
+      "centroid": [
+        395.0,
+        208.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 55,
+      "regionId": "r-0055",
+      "area": 4170,
+      "bbox": [
+        451,
+        181,
+        94,
+        89
+      ],
+      "centroid": [
+        502.0,
+        230.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 56,
+      "regionId": "r-0056",
+      "area": 1736,
+      "bbox": [
+        603,
+        181,
+        186,
+        79
+      ],
+      "centroid": [
+        674.0,
+        227.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 57,
+      "regionId": "r-0057",
+      "area": 173,
+      "bbox": [
+        625,
+        184,
+        35,
+        34
+      ],
+      "centroid": [
+        641.0,
+        203.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 58,
+      "regionId": "r-0058",
+      "area": 487,
+      "bbox": [
+        856,
+        185,
+        56,
+        18
+      ],
+      "centroid": [
+        889.0,
+        192.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 59,
+      "regionId": "r-0059",
+      "area": 4497,
+      "bbox": [
+        1076,
+        188,
+        85,
+        171
+      ],
+      "centroid": [
+        1107.0,
+        283.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 60,
+      "regionId": "r-0060",
+      "area": 2087,
+      "bbox": [
+        645,
+        190,
+        114,
+        46
+      ],
+      "centroid": [
+        700.0,
+        210.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 61,
+      "regionId": "r-0061",
+      "area": 213,
+      "bbox": [
+        913,
+        190,
+        24,
+        27
+      ],
+      "centroid": [
+        924.0,
+        203.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 62,
+      "regionId": "r-0062",
+      "area": 163,
+      "bbox": [
+        442,
+        195,
+        21,
+        12
+      ],
+      "centroid": [
+        450.0,
+        200.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 63,
+      "regionId": "r-0063",
+      "area": 195,
+      "bbox": [
+        193,
+        204,
+        16,
+        16
+      ],
+      "centroid": [
+        200.0,
+        211.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 64,
+      "regionId": "r-0064",
+      "area": 1148,
+      "bbox": [
+        787,
+        210,
+        82,
+        38
+      ],
+      "centroid": [
+        838.0,
+        224.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 65,
+      "regionId": "r-0065",
+      "area": 178,
+      "bbox": [
+        606,
+        214,
+        34,
+        16
+      ],
+      "centroid": [
+        619.0,
+        223.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 66,
+      "regionId": "r-0066",
+      "area": 2057,
+      "bbox": [
+        759,
+        222,
+        91,
+        35
+      ],
+      "centroid": [
+        805.0,
+        239.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 67,
+      "regionId": "r-0067",
+      "area": 310,
+      "bbox": [
+        561,
+        226,
+        29,
+        57
+      ],
+      "centroid": [
+        571.0,
+        256.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 68,
+      "regionId": "r-0068",
+      "area": 3906,
+      "bbox": [
+        633,
+        237,
+        271,
+        52
+      ],
+      "centroid": [
+        726.0,
+        267.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 69,
+      "regionId": "r-0069",
+      "area": 303,
+      "bbox": [
+        436,
+        238,
+        20,
+        41
+      ],
+      "centroid": [
+        447.0,
+        257.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 70,
+      "regionId": "r-0070",
+      "area": 170,
+      "bbox": [
+        328,
+        240,
+        26,
+        20
+      ],
+      "centroid": [
+        341.0,
+        248.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 71,
+      "regionId": "r-0071",
+      "area": 397,
+      "bbox": [
+        182,
+        241,
+        24,
+        22
+      ],
+      "centroid": [
+        193.0,
+        251.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 72,
+      "regionId": "r-0072",
+      "area": 244,
+      "bbox": [
+        720,
+        241,
+        41,
+        21
+      ],
+      "centroid": [
+        743.0,
+        251.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 73,
+      "regionId": "r-0073",
+      "area": 220,
+      "bbox": [
+        409,
+        242,
+        27,
+        29
+      ],
+      "centroid": [
+        422.0,
+        258.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 74,
+      "regionId": "r-0074",
+      "area": 251,
+      "bbox": [
+        698,
+        242,
+        47,
+        20
+      ],
+      "centroid": [
+        721.0,
+        250.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 75,
+      "regionId": "r-0075",
+      "area": 189,
+      "bbox": [
+        675,
+        244,
+        45,
+        15
+      ],
+      "centroid": [
+        696.0,
+        250.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 76,
+      "regionId": "r-0076",
+      "area": 762,
+      "bbox": [
+        940,
+        245,
+        72,
+        40
+      ],
+      "centroid": [
+        975.0,
+        266.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 77,
+      "regionId": "r-0077",
+      "area": 359,
+      "bbox": [
+        1006,
+        245,
+        55,
+        28
+      ],
+      "centroid": [
+        1036.0,
+        254.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 78,
+      "regionId": "r-0078",
+      "area": 278,
+      "bbox": [
+        516,
+        246,
+        25,
+        32
+      ],
+      "centroid": [
+        528.0,
+        263.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 79,
+      "regionId": "r-0079",
+      "area": 1038,
+      "bbox": [
+        621,
+        246,
+        131,
+        69
+      ],
+      "centroid": [
+        668.0,
+        280.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 80,
+      "regionId": "r-0080",
+      "area": 167,
+      "bbox": [
+        336,
+        247,
+        29,
+        17
+      ],
+      "centroid": [
+        351.0,
+        254.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 81,
+      "regionId": "r-0081",
+      "area": 296,
+      "bbox": [
+        413,
+        247,
+        29,
+        49
+      ],
+      "centroid": [
+        426.0,
+        273.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 82,
+      "regionId": "r-0082",
+      "area": 179,
+      "bbox": [
+        580,
+        254,
+        24,
+        26
+      ],
+      "centroid": [
+        591.0,
+        269.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 83,
+      "regionId": "r-0083",
+      "area": 158,
+      "bbox": [
+        351,
+        255,
+        25,
+        12
+      ],
+      "centroid": [
+        364.0,
+        260.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 84,
+      "regionId": "r-0084",
+      "area": 747,
+      "bbox": [
+        795,
+        262,
+        73,
+        24
+      ],
+      "centroid": [
+        830.0,
+        273.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 85,
+      "regionId": "r-0085",
+      "area": 427,
+      "bbox": [
+        869,
+        262,
+        43,
+        27
+      ],
+      "centroid": [
+        894.0,
+        271.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 86,
+      "regionId": "r-0086",
+      "area": 427,
+      "bbox": [
+        436,
+        263,
+        51,
+        42
+      ],
+      "centroid": [
+        468.0,
+        283.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 87,
+      "regionId": "r-0087",
+      "area": 165,
+      "bbox": [
+        314,
+        264,
+        29,
+        19
+      ],
+      "centroid": [
+        327.0,
+        275.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 88,
+      "regionId": "r-0088",
+      "area": 412,
+      "bbox": [
+        544,
+        265,
+        29,
+        26
+      ],
+      "centroid": [
+        558.0,
+        276.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 89,
+      "regionId": "r-0089",
+      "area": 2555,
+      "bbox": [
+        290,
+        267,
+        66,
+        104
+      ],
+      "centroid": [
+        312.0,
+        312.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 90,
+      "regionId": "r-0090",
+      "area": 273,
+      "bbox": [
+        476,
+        269,
+        36,
+        26
+      ],
+      "centroid": [
+        493.0,
+        279.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 91,
+      "regionId": "r-0091",
+      "area": 642,
+      "bbox": [
+        853,
+        271,
+        55,
+        22
+      ],
+      "centroid": [
+        880.0,
+        282.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 92,
+      "regionId": "r-0092",
+      "area": 1344,
+      "bbox": [
+        1096,
+        271,
+        44,
+        75
+      ],
+      "centroid": [
+        1124.0,
+        315.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 93,
+      "regionId": "r-0093",
+      "area": 713,
+      "bbox": [
+        545,
+        277,
+        78,
+        52
+      ],
+      "centroid": [
+        584.0,
+        297.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 94,
+      "regionId": "r-0094",
+      "area": 3099,
+      "bbox": [
+        83,
+        278,
+        110,
+        125
+      ],
+      "centroid": [
+        141.0,
+        328.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 95,
+      "regionId": "r-0095",
+      "area": 269,
+      "bbox": [
+        421,
+        278,
+        20,
+        28
+      ],
+      "centroid": [
+        430.0,
+        292.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 96,
+      "regionId": "r-0096",
+      "area": 1160,
+      "bbox": [
+        468,
+        279,
+        65,
+        62
+      ],
+      "centroid": [
+        501.0,
+        312.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 97,
+      "regionId": "r-0097",
+      "area": 1232,
+      "bbox": [
+        121,
+        280,
+        78,
+        104
+      ],
+      "centroid": [
+        163.0,
+        338.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 98,
+      "regionId": "r-0098",
+      "area": 299,
+      "bbox": [
+        972,
+        281,
+        62,
+        52
+      ],
+      "centroid": [
+        1018.0,
+        299.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 99,
+      "regionId": "r-0099",
+      "area": 539,
+      "bbox": [
+        737,
+        282,
+        79,
+        14
+      ],
+      "centroid": [
+        779.0,
+        290.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 100,
+      "regionId": "r-0100",
+      "area": 1262,
+      "bbox": [
+        829,
+        284,
+        127,
+        28
+      ],
+      "centroid": [
+        880.0,
+        299.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 101,
+      "regionId": "r-0101",
+      "area": 323,
+      "bbox": [
+        542,
+        285,
+        39,
+        33
+      ],
+      "centroid": [
+        557.0,
+        299.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 102,
+      "regionId": "r-0102",
+      "area": 527,
+      "bbox": [
+        937,
+        286,
+        41,
+        22
+      ],
+      "centroid": [
+        959.0,
+        297.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 103,
+      "regionId": "r-0103",
+      "area": 227,
+      "bbox": [
+        167,
+        287,
+        36,
+        67
+      ],
+      "centroid": [
+        187.0,
+        332.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 104,
+      "regionId": "r-0104",
+      "area": 205,
+      "bbox": [
+        699,
+        290,
+        48,
+        19
+      ],
+      "centroid": [
+        721.0,
+        298.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 105,
+      "regionId": "r-0105",
+      "area": 1463,
+      "bbox": [
+        550,
+        291,
+        78,
+        52
+      ],
+      "centroid": [
+        590.0,
+        313.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 106,
+      "regionId": "r-0106",
+      "area": 807,
+      "bbox": [
+        795,
+        291,
+        59,
+        25
+      ],
+      "centroid": [
+        825.0,
+        304.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 107,
+      "regionId": "r-0107",
+      "area": 359,
+      "bbox": [
+        325,
+        295,
+        31,
+        26
+      ],
+      "centroid": [
+        340.0,
+        311.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 108,
+      "regionId": "r-0108",
+      "area": 561,
+      "bbox": [
+        626,
+        295,
+        40,
+        50
+      ],
+      "centroid": [
+        646.0,
+        321.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 109,
+      "regionId": "r-0109",
+      "area": 486,
+      "bbox": [
+        645,
+        295,
+        37,
+        46
+      ],
+      "centroid": [
+        665.0,
+        320.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 110,
+      "regionId": "r-0110",
+      "area": 808,
+      "bbox": [
+        733,
+        296,
+        81,
+        20
+      ],
+      "centroid": [
+        776.0,
+        307.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 111,
+      "regionId": "r-0111",
+      "area": 467,
+      "bbox": [
+        410,
+        299,
+        114,
+        82
+      ],
+      "centroid": [
+        472.0,
+        343.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 112,
+      "regionId": "r-0112",
+      "area": 224,
+      "bbox": [
+        445,
+        300,
+        23,
+        21
+      ],
+      "centroid": [
+        455.0,
+        309.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 113,
+      "regionId": "r-0113",
+      "area": 2602,
+      "bbox": [
+        851,
+        309,
+        157,
+        73
+      ],
+      "centroid": [
+        947.0,
+        333.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 114,
+      "regionId": "r-0114",
+      "area": 608,
+      "bbox": [
+        534,
+        310,
+        69,
+        60
+      ],
+      "centroid": [
+        558.0,
+        349.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 115,
+      "regionId": "r-0115",
+      "area": 659,
+      "bbox": [
+        398,
+        311,
+        126,
+        96
+      ],
+      "centroid": [
+        456.0,
+        355.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 116,
+      "regionId": "r-0116",
+      "area": 421,
+      "bbox": [
+        672,
+        311,
+        37,
+        31
+      ],
+      "centroid": [
+        690.0,
+        328.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 117,
+      "regionId": "r-0117",
+      "area": 166,
+      "bbox": [
+        92,
+        313,
+        37,
+        31
+      ],
+      "centroid": [
+        106.0,
+        330.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 118,
+      "regionId": "r-0118",
+      "area": 187,
+      "bbox": [
+        1110,
+        313,
+        14,
+        20
+      ],
+      "centroid": [
+        1117.0,
+        323.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 119,
+      "regionId": "r-0119",
+      "area": 1792,
+      "bbox": [
+        210,
+        314,
+        81,
+        118
+      ],
+      "centroid": [
+        246.0,
+        365.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 120,
+      "regionId": "r-0120",
+      "area": 849,
+      "bbox": [
+        490,
+        314,
+        41,
+        47
+      ],
+      "centroid": [
+        512.0,
+        338.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 121,
+      "regionId": "r-0121",
+      "area": 1710,
+      "bbox": [
+        178,
+        318,
+        155,
+        179
+      ],
+      "centroid": [
+        270.0,
+        416.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 122,
+      "regionId": "r-0122",
+      "area": 286,
+      "bbox": [
+        233,
+        318,
+        39,
+        39
+      ],
+      "centroid": [
+        247.0,
+        336.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 123,
+      "regionId": "r-0123",
+      "area": 557,
+      "bbox": [
+        336,
+        318,
+        68,
+        22
+      ],
+      "centroid": [
+        371.0,
+        329.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 124,
+      "regionId": "r-0124",
+      "area": 2517,
+      "bbox": [
+        567,
+        323,
+        83,
+        91
+      ],
+      "centroid": [
+        611.0,
+        352.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 125,
+      "regionId": "r-0125",
+      "area": 240,
+      "bbox": [
+        397,
+        330,
+        20,
+        23
+      ],
+      "centroid": [
+        407.0,
+        339.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 126,
+      "regionId": "r-0126",
+      "area": 1220,
+      "bbox": [
+        707,
+        330,
+        147,
+        50
+      ],
+      "centroid": [
+        767.0,
+        359.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 127,
+      "regionId": "r-0127",
+      "area": 189,
+      "bbox": [
+        383,
+        333,
+        19,
+        28
+      ],
+      "centroid": [
+        394.0,
+        345.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 128,
+      "regionId": "r-0128",
+      "area": 481,
+      "bbox": [
+        219,
+        334,
+        69,
+        93
+      ],
+      "centroid": [
+        253.0,
+        378.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 129,
+      "regionId": "r-0129",
+      "area": 1270,
+      "bbox": [
+        904,
+        338,
+        53,
+        44
+      ],
+      "centroid": [
+        936.0,
+        356.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 130,
+      "regionId": "r-0130",
+      "area": 834,
+      "bbox": [
+        865,
+        340,
+        58,
+        28
+      ],
+      "centroid": [
+        893.0,
+        353.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 131,
+      "regionId": "r-0131",
+      "area": 2561,
+      "bbox": [
+        222,
+        341,
+        126,
+        134
+      ],
+      "centroid": [
+        301.0,
+        420.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 132,
+      "regionId": "r-0132",
+      "area": 495,
+      "bbox": [
+        346,
+        341,
+        44,
+        82
+      ],
+      "centroid": [
+        372.0,
+        375.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 133,
+      "regionId": "r-0133",
+      "area": 459,
+      "bbox": [
+        618,
+        343,
+        95,
+        40
+      ],
+      "centroid": [
+        668.0,
+        349.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 134,
+      "regionId": "r-0134",
+      "area": 162,
+      "bbox": [
+        382,
+        344,
+        12,
+        27
+      ],
+      "centroid": [
+        388.0,
+        358.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 135,
+      "regionId": "r-0135",
+      "area": 1387,
+      "bbox": [
+        393,
+        344,
+        40,
+        63
+      ],
+      "centroid": [
+        411.0,
+        375.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 136,
+      "regionId": "r-0136",
+      "area": 678,
+      "bbox": [
+        244,
+        345,
+        43,
+        57
+      ],
+      "centroid": [
+        271.0,
+        373.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 137,
+      "regionId": "r-0137",
+      "area": 317,
+      "bbox": [
+        814,
+        345,
+        55,
+        10
+      ],
+      "centroid": [
+        840.0,
+        349.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 138,
+      "regionId": "r-0138",
+      "area": 1254,
+      "bbox": [
+        758,
+        346,
+        113,
+        25
+      ],
+      "centroid": [
+        818.0,
+        359.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 139,
+      "regionId": "r-0139",
+      "area": 279,
+      "bbox": [
+        521,
+        347,
+        24,
+        28
+      ],
+      "centroid": [
+        533.0,
+        361.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 140,
+      "regionId": "r-0140",
+      "area": 353,
+      "bbox": [
+        709,
+        348,
+        31,
+        44
+      ],
+      "centroid": [
+        727.0,
+        365.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 141,
+      "regionId": "r-0141",
+      "area": 229,
+      "bbox": [
+        88,
+        349,
+        13,
+        48
+      ],
+      "centroid": [
+        93.0,
+        377.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 142,
+      "regionId": "r-0142",
+      "area": 874,
+      "bbox": [
+        228,
+        350,
+        94,
+        88
+      ],
+      "centroid": [
+        273.0,
+        402.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 143,
+      "regionId": "r-0143",
+      "area": 248,
+      "bbox": [
+        281,
+        351,
+        34,
+        38
+      ],
+      "centroid": [
+        297.0,
+        374.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 144,
+      "regionId": "r-0144",
+      "area": 913,
+      "bbox": [
+        128,
+        352,
+        42,
+        74
+      ],
+      "centroid": [
+        144.0,
+        393.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 145,
+      "regionId": "r-0145",
+      "area": 576,
+      "bbox": [
+        668,
+        352,
+        58,
+        30
+      ],
+      "centroid": [
+        702.0,
+        364.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 146,
+      "regionId": "r-0146",
+      "area": 410,
+      "bbox": [
+        732,
+        354,
+        39,
+        30
+      ],
+      "centroid": [
+        751.0,
+        371.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 147,
+      "regionId": "r-0147",
+      "area": 258,
+      "bbox": [
+        977,
+        354,
+        33,
+        74
+      ],
+      "centroid": [
+        1001.0,
+        382.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 148,
+      "regionId": "r-0148",
+      "area": 324,
+      "bbox": [
+        349,
+        357,
+        12,
+        78
+      ],
+      "centroid": [
+        354.0,
+        399.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 149,
+      "regionId": "r-0149",
+      "area": 764,
+      "bbox": [
+        411,
+        357,
+        45,
+        55
+      ],
+      "centroid": [
+        432.0,
+        384.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 150,
+      "regionId": "r-0150",
+      "area": 758,
+      "bbox": [
+        610,
+        357,
+        73,
+        58
+      ],
+      "centroid": [
+        650.0,
+        372.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 151,
+      "regionId": "r-0151",
+      "area": 264,
+      "bbox": [
+        578,
+        362,
+        21,
+        25
+      ],
+      "centroid": [
+        590.0,
+        372.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 152,
+      "regionId": "r-0152",
+      "area": 225,
+      "bbox": [
+        106,
+        364,
+        20,
+        42
+      ],
+      "centroid": [
+        113.0,
+        385.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 153,
+      "regionId": "r-0153",
+      "area": 1671,
+      "bbox": [
+        852,
+        366,
+        106,
+        48
+      ],
+      "centroid": [
+        907.0,
+        381.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 154,
+      "regionId": "r-0154",
+      "area": 173,
+      "bbox": [
+        433,
+        370,
+        34,
+        41
+      ],
+      "centroid": [
+        449.0,
+        389.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 155,
+      "regionId": "r-0155",
+      "area": 265,
+      "bbox": [
+        381,
+        371,
+        11,
+        40
+      ],
+      "centroid": [
+        386.0,
+        392.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 156,
+      "regionId": "r-0156",
+      "area": 1487,
+      "bbox": [
+        985,
+        371,
+        70,
+        94
+      ],
+      "centroid": [
+        1001.0,
+        423.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 157,
+      "regionId": "r-0157",
+      "area": 1168,
+      "bbox": [
+        442,
+        374,
+        57,
+        37
+      ],
+      "centroid": [
+        472.0,
+        395.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 158,
+      "regionId": "r-0158",
+      "area": 909,
+      "bbox": [
+        605,
+        374,
+        69,
+        64
+      ],
+      "centroid": [
+        638.0,
+        397.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 159,
+      "regionId": "r-0159",
+      "area": 443,
+      "bbox": [
+        536,
+        376,
+        46,
+        31
+      ],
+      "centroid": [
+        557.0,
+        392.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 160,
+      "regionId": "r-0160",
+      "area": 168,
+      "bbox": [
+        707,
+        376,
+        21,
+        13
+      ],
+      "centroid": [
+        718.0,
+        382.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 161,
+      "regionId": "r-0161",
+      "area": 1817,
+      "bbox": [
+        1011,
+        376,
+        107,
+        70
+      ],
+      "centroid": [
+        1061.0,
+        408.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 162,
+      "regionId": "r-0162",
+      "area": 1842,
+      "bbox": [
+        522,
+        378,
+        273,
+        265
+      ],
+      "centroid": [
+        668.0,
+        506.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 163,
+      "regionId": "r-0163",
+      "area": 872,
+      "bbox": [
+        733,
+        379,
+        108,
+        17
+      ],
+      "centroid": [
+        778.0,
+        387.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 164,
+      "regionId": "r-0164",
+      "area": 223,
+      "bbox": [
+        601,
+        380,
+        20,
+        44
+      ],
+      "centroid": [
+        609.0,
+        399.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 165,
+      "regionId": "r-0165",
+      "area": 956,
+      "bbox": [
+        838,
+        382,
+        77,
+        61
+      ],
+      "centroid": [
+        879.0,
+        407.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 166,
+      "regionId": "r-0166",
+      "area": 294,
+      "bbox": [
+        116,
+        383,
+        13,
+        37
+      ],
+      "centroid": [
+        121.0,
+        400.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 167,
+      "regionId": "r-0167",
+      "area": 318,
+      "bbox": [
+        234,
+        383,
+        51,
+        35
+      ],
+      "centroid": [
+        263.0,
+        398.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 168,
+      "regionId": "r-0168",
+      "area": 1034,
+      "bbox": [
+        609,
+        385,
+        153,
+        57
+      ],
+      "centroid": [
+        712.0,
+        398.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 169,
+      "regionId": "r-0169",
+      "area": 919,
+      "bbox": [
+        803,
+        386,
+        55,
+        36
+      ],
+      "centroid": [
+        837.0,
+        401.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 170,
+      "regionId": "r-0170",
+      "area": 189,
+      "bbox": [
+        883,
+        387,
+        54,
+        29
+      ],
+      "centroid": [
+        918.0,
+        397.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 171,
+      "regionId": "r-0171",
+      "area": 317,
+      "bbox": [
+        328,
+        388,
+        22,
+        27
+      ],
+      "centroid": [
+        338.0,
+        399.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 172,
+      "regionId": "r-0172",
+      "area": 663,
+      "bbox": [
+        884,
+        392,
+        43,
+        52
+      ],
+      "centroid": [
+        910.0,
+        418.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 173,
+      "regionId": "r-0173",
+      "area": 218,
+      "bbox": [
+        529,
+        393,
+        27,
+        22
+      ],
+      "centroid": [
+        539.0,
+        405.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 174,
+      "regionId": "r-0174",
+      "area": 1217,
+      "bbox": [
+        763,
+        395,
+        72,
+        31
+      ],
+      "centroid": [
+        802.0,
+        410.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 175,
+      "regionId": "r-0175",
+      "area": 4811,
+      "bbox": [
+        614,
+        396,
+        134,
+        91
+      ],
+      "centroid": [
+        673.0,
+        434.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 176,
+      "regionId": "r-0176",
+      "area": 277,
+      "bbox": [
+        497,
+        398,
+        40,
+        28
+      ],
+      "centroid": [
+        514.0,
+        412.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 177,
+      "regionId": "r-0177",
+      "area": 237,
+      "bbox": [
+        939,
+        401,
+        24,
+        50
+      ],
+      "centroid": [
+        958.0,
+        426.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 178,
+      "regionId": "r-0178",
+      "area": 211,
+      "bbox": [
+        751,
+        402,
+        48,
+        30
+      ],
+      "centroid": [
+        778.0,
+        420.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 179,
+      "regionId": "r-0179",
+      "area": 395,
+      "bbox": [
+        860,
+        402,
+        40,
+        41
+      ],
+      "centroid": [
+        875.0,
+        425.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 180,
+      "regionId": "r-0180",
+      "area": 317,
+      "bbox": [
+        522,
+        404,
+        68,
+        57
+      ],
+      "centroid": [
+        555.0,
+        432.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 181,
+      "regionId": "r-0181",
+      "area": 284,
+      "bbox": [
+        746,
+        405,
+        40,
+        32
+      ],
+      "centroid": [
+        765.0,
+        421.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 182,
+      "regionId": "r-0182",
+      "area": 614,
+      "bbox": [
+        930,
+        405,
+        25,
+        44
+      ],
+      "centroid": [
+        943.0,
+        430.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 183,
+      "regionId": "r-0183",
+      "area": 370,
+      "bbox": [
+        318,
+        409,
+        34,
+        25
+      ],
+      "centroid": [
+        337.0,
+        423.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 184,
+      "regionId": "r-0184",
+      "area": 204,
+      "bbox": [
+        441,
+        411,
+        42,
+        8
+      ],
+      "centroid": [
+        460.0,
+        414.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 185,
+      "regionId": "r-0185",
+      "area": 369,
+      "bbox": [
+        474,
+        416,
+        71,
+        21
+      ],
+      "centroid": [
+        506.0,
+        423.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 186,
+      "regionId": "r-0186",
+      "area": 292,
+      "bbox": [
+        549,
+        418,
+        36,
+        29
+      ],
+      "centroid": [
+        569.0,
+        430.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 187,
+      "regionId": "r-0187",
+      "area": 466,
+      "bbox": [
+        431,
+        419,
+        27,
+        30
+      ],
+      "centroid": [
+        443.0,
+        432.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 188,
+      "regionId": "r-0188",
+      "area": 902,
+      "bbox": [
+        700,
+        419,
+        62,
+        55
+      ],
+      "centroid": [
+        729.0,
+        450.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 189,
+      "regionId": "r-0189",
+      "area": 301,
+      "bbox": [
+        1092,
+        421,
+        22,
+        49
+      ],
+      "centroid": [
+        1106.0,
+        441.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 190,
+      "regionId": "r-0190",
+      "area": 1247,
+      "bbox": [
+        787,
+        424,
+        95,
+        26
+      ],
+      "centroid": [
+        831.0,
+        436.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 191,
+      "regionId": "r-0191",
+      "area": 268,
+      "bbox": [
+        360,
+        426,
+        29,
+        40
+      ],
+      "centroid": [
+        364.0,
+        441.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 192,
+      "regionId": "r-0192",
+      "area": 162,
+      "bbox": [
+        206,
+        428,
+        22,
+        27
+      ],
+      "centroid": [
+        219.0,
+        440.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 193,
+      "regionId": "r-0193",
+      "area": 1653,
+      "bbox": [
+        751,
+        436,
+        92,
+        66
+      ],
+      "centroid": [
+        781.0,
+        466.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 194,
+      "regionId": "r-0194",
+      "area": 893,
+      "bbox": [
+        325,
+        438,
+        34,
+        58
+      ],
+      "centroid": [
+        340.0,
+        471.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 195,
+      "regionId": "r-0195",
+      "area": 298,
+      "bbox": [
+        502,
+        439,
+        34,
+        20
+      ],
+      "centroid": [
+        522.0,
+        447.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 196,
+      "regionId": "r-0196",
+      "area": 735,
+      "bbox": [
+        796,
+        439,
+        64,
+        30
+      ],
+      "centroid": [
+        828.0,
+        452.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 197,
+      "regionId": "r-0197",
+      "area": 612,
+      "bbox": [
+        36,
+        441,
+        48,
+        52
+      ],
+      "centroid": [
+        49.0,
+        465.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 198,
+      "regionId": "r-0198",
+      "area": 487,
+      "bbox": [
+        311,
+        441,
+        36,
+        65
+      ],
+      "centroid": [
+        322.0,
+        475.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 199,
+      "regionId": "r-0199",
+      "area": 231,
+      "bbox": [
+        445,
+        441,
+        25,
+        20
+      ],
+      "centroid": [
+        458.0,
+        448.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 200,
+      "regionId": "r-0200",
+      "area": 836,
+      "bbox": [
+        52,
+        442,
+        41,
+        48
+      ],
+      "centroid": [
+        71.0,
+        464.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 201,
+      "regionId": "r-0201",
+      "area": 2657,
+      "bbox": [
+        817,
+        446,
+        121,
+        55
+      ],
+      "centroid": [
+        876.0,
+        469.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 202,
+      "regionId": "r-0202",
+      "area": 942,
+      "bbox": [
+        540,
+        447,
+        50,
+        31
+      ],
+      "centroid": [
+        561.0,
+        463.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 203,
+      "regionId": "r-0203",
+      "area": 6274,
+      "bbox": [
+        208,
+        448,
+        126,
+        164
+      ],
+      "centroid": [
+        273.0,
+        528.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 204,
+      "regionId": "r-0204",
+      "area": 537,
+      "bbox": [
+        414,
+        448,
+        28,
+        28
+      ],
+      "centroid": [
+        429.0,
+        461.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 205,
+      "regionId": "r-0205",
+      "area": 247,
+      "bbox": [
+        915,
+        453,
+        32,
+        35
+      ],
+      "centroid": [
+        928.0,
+        474.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 206,
+      "regionId": "r-0206",
+      "area": 2006,
+      "bbox": [
+        588,
+        459,
+        306,
+        391
+      ],
+      "centroid": [
+        765.0,
+        646.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 207,
+      "regionId": "r-0207",
+      "area": 490,
+      "bbox": [
+        662,
+        459,
+        41,
+        33
+      ],
+      "centroid": [
+        679.0,
+        469.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 208,
+      "regionId": "r-0208",
+      "area": 456,
+      "bbox": [
+        887,
+        459,
+        28,
+        25
+      ],
+      "centroid": [
+        901.0,
+        472.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 209,
+      "regionId": "r-0209",
+      "area": 213,
+      "bbox": [
+        248,
+        462,
+        23,
+        21
+      ],
+      "centroid": [
+        258.0,
+        470.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 210,
+      "regionId": "r-0210",
+      "area": 748,
+      "bbox": [
+        688,
+        463,
+        48,
+        30
+      ],
+      "centroid": [
+        712.0,
+        477.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 211,
+      "regionId": "r-0211",
+      "area": 189,
+      "bbox": [
+        355,
+        464,
+        18,
+        23
+      ],
+      "centroid": [
+        362.0,
+        474.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 212,
+      "regionId": "r-0212",
+      "area": 1275,
+      "bbox": [
+        150,
+        465,
+        91,
+        101
+      ],
+      "centroid": [
+        210.0,
+        519.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 213,
+      "regionId": "r-0213",
+      "area": 405,
+      "bbox": [
+        735,
+        465,
+        28,
+        38
+      ],
+      "centroid": [
+        751.0,
+        483.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 214,
+      "regionId": "r-0214",
+      "area": 2551,
+      "bbox": [
+        902,
+        465,
+        112,
+        56
+      ],
+      "centroid": [
+        951.0,
+        494.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 215,
+      "regionId": "r-0215",
+      "area": 887,
+      "bbox": [
+        162,
+        469,
+        53,
+        74
+      ],
+      "centroid": [
+        186.0,
+        509.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 216,
+      "regionId": "r-0216",
+      "area": 392,
+      "bbox": [
+        617,
+        470,
+        47,
+        45
+      ],
+      "centroid": [
+        639.0,
+        490.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 217,
+      "regionId": "r-0217",
+      "area": 207,
+      "bbox": [
+        441,
+        471,
+        24,
+        17
+      ],
+      "centroid": [
+        452.0,
+        482.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 218,
+      "regionId": "r-0218",
+      "area": 573,
+      "bbox": [
+        587,
+        473,
+        22,
+        45
+      ],
+      "centroid": [
+        597.0,
+        494.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 219,
+      "regionId": "r-0219",
+      "area": 507,
+      "bbox": [
+        670,
+        476,
+        30,
+        26
+      ],
+      "centroid": [
+        683.0,
+        489.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 220,
+      "regionId": "r-0220",
+      "area": 787,
+      "bbox": [
+        454,
+        477,
+        45,
+        63
+      ],
+      "centroid": [
+        478.0,
+        509.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 221,
+      "regionId": "r-0221",
+      "area": 461,
+      "bbox": [
+        423,
+        479,
+        29,
+        27
+      ],
+      "centroid": [
+        436.0,
+        494.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 222,
+      "regionId": "r-0222",
+      "area": 464,
+      "bbox": [
+        496,
+        480,
+        45,
+        72
+      ],
+      "centroid": [
+        530.0,
+        512.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 223,
+      "regionId": "r-0223",
+      "area": 860,
+      "bbox": [
+        608,
+        486,
+        38,
+        61
+      ],
+      "centroid": [
+        625.0,
+        515.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 224,
+      "regionId": "r-0224",
+      "area": 1613,
+      "bbox": [
+        902,
+        486,
+        115,
+        67
+      ],
+      "centroid": [
+        961.0,
+        521.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 225,
+      "regionId": "r-0225",
+      "area": 157,
+      "bbox": [
+        541,
+        488,
+        33,
+        16
+      ],
+      "centroid": [
+        557.0,
+        496.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 226,
+      "regionId": "r-0226",
+      "area": 200,
+      "bbox": [
+        169,
+        489,
+        45,
+        63
+      ],
+      "centroid": [
+        196.0,
+        518.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 227,
+      "regionId": "r-0227",
+      "area": 1861,
+      "bbox": [
+        1001,
+        489,
+        54,
+        74
+      ],
+      "centroid": [
+        1029.0,
+        533.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 228,
+      "regionId": "r-0228",
+      "area": 706,
+      "bbox": [
+        681,
+        490,
+        56,
+        22
+      ],
+      "centroid": [
+        709.0,
+        502.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 229,
+      "regionId": "r-0229",
+      "area": 381,
+      "bbox": [
+        774,
+        492,
+        31,
+        24
+      ],
+      "centroid": [
+        790.0,
+        502.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 230,
+      "regionId": "r-0230",
+      "area": 150,
+      "bbox": [
+        414,
+        493,
+        11,
+        23
+      ],
+      "centroid": [
+        418.0,
+        505.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 231,
+      "regionId": "r-0231",
+      "area": 578,
+      "bbox": [
+        180,
+        495,
+        60,
+        64
+      ],
+      "centroid": [
+        210.0,
+        532.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 232,
+      "regionId": "r-0232",
+      "area": 164,
+      "bbox": [
+        398,
+        496,
+        13,
+        16
+      ],
+      "centroid": [
+        404.0,
+        504.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 233,
+      "regionId": "r-0233",
+      "area": 377,
+      "bbox": [
+        543,
+        497,
+        20,
+        38
+      ],
+      "centroid": [
+        552.0,
+        514.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 234,
+      "regionId": "r-0234",
+      "area": 973,
+      "bbox": [
+        981,
+        499,
+        34,
+        43
+      ],
+      "centroid": [
+        999.0,
+        519.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 235,
+      "regionId": "r-0235",
+      "area": 204,
+      "bbox": [
+        502,
+        502,
+        21,
+        16
+      ],
+      "centroid": [
+        512.0,
+        511.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 236,
+      "regionId": "r-0236",
+      "area": 196,
+      "bbox": [
+        356,
+        503,
+        11,
+        23
+      ],
+      "centroid": [
+        361.0,
+        514.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 237,
+      "regionId": "r-0237",
+      "area": 1021,
+      "bbox": [
+        549,
+        507,
+        62,
+        55
+      ],
+      "centroid": [
+        578.0,
+        550.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 238,
+      "regionId": "r-0238",
+      "area": 207,
+      "bbox": [
+        880,
+        507,
+        30,
+        18
+      ],
+      "centroid": [
+        893.0,
+        515.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 239,
+      "regionId": "r-0239",
+      "area": 419,
+      "bbox": [
+        311,
+        509,
+        34,
+        44
+      ],
+      "centroid": [
+        331.0,
+        530.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 240,
+      "regionId": "r-0240",
+      "area": 948,
+      "bbox": [
+        804,
+        510,
+        126,
+        31
+      ],
+      "centroid": [
+        852.0,
+        520.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 241,
+      "regionId": "r-0241",
+      "area": 251,
+      "bbox": [
+        1097,
+        512,
+        20,
+        27
+      ],
+      "centroid": [
+        1108.0,
+        525.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 242,
+      "regionId": "r-0242",
+      "area": 354,
+      "bbox": [
+        691,
+        515,
+        27,
+        24
+      ],
+      "centroid": [
+        708.0,
+        523.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 243,
+      "regionId": "r-0243",
+      "area": 152,
+      "bbox": [
+        229,
+        517,
+        12,
+        27
+      ],
+      "centroid": [
+        235.0,
+        532.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 244,
+      "regionId": "r-0244",
+      "area": 428,
+      "bbox": [
+        571,
+        517,
+        28,
+        30
+      ],
+      "centroid": [
+        585.0,
+        531.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 245,
+      "regionId": "r-0245",
+      "area": 206,
+      "bbox": [
+        132,
+        518,
+        33,
+        18
+      ],
+      "centroid": [
+        150.0,
+        529.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 246,
+      "regionId": "r-0246",
+      "area": 335,
+      "bbox": [
+        405,
+        518,
+        45,
+        99
+      ],
+      "centroid": [
+        423.0,
+        569.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 247,
+      "regionId": "r-0247",
+      "area": 2667,
+      "bbox": [
+        412,
+        520,
+        77,
+        83
+      ],
+      "centroid": [
+        449.0,
+        565.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 248,
+      "regionId": "r-0248",
+      "area": 541,
+      "bbox": [
+        419,
+        520,
+        45,
+        26
+      ],
+      "centroid": [
+        444.0,
+        531.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 249,
+      "regionId": "r-0249",
+      "area": 1004,
+      "bbox": [
+        231,
+        521,
+        37,
+        48
+      ],
+      "centroid": [
+        250.0,
+        546.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 250,
+      "regionId": "r-0250",
+      "area": 1212,
+      "bbox": [
+        251,
+        523,
+        74,
+        82
+      ],
+      "centroid": [
+        287.0,
+        565.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 251,
+      "regionId": "r-0251",
+      "area": 712,
+      "bbox": [
+        348,
+        523,
+        50,
+        100
+      ],
+      "centroid": [
+        373.0,
+        569.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 252,
+      "regionId": "r-0252",
+      "area": 803,
+      "bbox": [
+        363,
+        524,
+        42,
+        86
+      ],
+      "centroid": [
+        387.0,
+        568.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 253,
+      "regionId": "r-0253",
+      "area": 173,
+      "bbox": [
+        494,
+        524,
+        29,
+        24
+      ],
+      "centroid": [
+        508.0,
+        535.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 254,
+      "regionId": "r-0254",
+      "area": 266,
+      "bbox": [
+        637,
+        524,
+        17,
+        40
+      ],
+      "centroid": [
+        644.0,
+        542.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 255,
+      "regionId": "r-0255",
+      "area": 622,
+      "bbox": [
+        767,
+        525,
+        41,
+        76
+      ],
+      "centroid": [
+        780.0,
+        553.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 256,
+      "regionId": "r-0256",
+      "area": 762,
+      "bbox": [
+        777,
+        525,
+        87,
+        80
+      ],
+      "centroid": [
+        800.0,
+        546.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 257,
+      "regionId": "r-0257",
+      "area": 206,
+      "bbox": [
+        508,
+        526,
+        23,
+        17
+      ],
+      "centroid": [
+        522.0,
+        531.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 258,
+      "regionId": "r-0258",
+      "area": 162,
+      "bbox": [
+        864,
+        527,
+        66,
+        20
+      ],
+      "centroid": [
+        901.0,
+        537.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 259,
+      "regionId": "r-0259",
+      "area": 496,
+      "bbox": [
+        292,
+        528,
+        58,
+        53
+      ],
+      "centroid": [
+        320.0,
+        556.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 260,
+      "regionId": "r-0260",
+      "area": 158,
+      "bbox": [
+        612,
+        528,
+        17,
+        14
+      ],
+      "centroid": [
+        620.0,
+        534.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 261,
+      "regionId": "r-0261",
+      "area": 152,
+      "bbox": [
+        1136,
+        529,
+        13,
+        27
+      ],
+      "centroid": [
+        1144.0,
+        546.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 262,
+      "regionId": "r-0262",
+      "area": 396,
+      "bbox": [
+        491,
+        532,
+        27,
+        28
+      ],
+      "centroid": [
+        502.0,
+        548.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 263,
+      "regionId": "r-0263",
+      "area": 351,
+      "bbox": [
+        649,
+        532,
+        16,
+        61
+      ],
+      "centroid": [
+        654.0,
+        556.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 264,
+      "regionId": "r-0264",
+      "area": 377,
+      "bbox": [
+        736,
+        533,
+        24,
+        56
+      ],
+      "centroid": [
+        746.0,
+        565.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 265,
+      "regionId": "r-0265",
+      "area": 1557,
+      "bbox": [
+        831,
+        533,
+        125,
+        28
+      ],
+      "centroid": [
+        884.0,
+        548.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 266,
+      "regionId": "r-0266",
+      "area": 210,
+      "bbox": [
+        335,
+        535,
+        28,
+        22
+      ],
+      "centroid": [
+        350.0,
+        544.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 267,
+      "regionId": "r-0267",
+      "area": 965,
+      "bbox": [
+        687,
+        536,
+        94,
+        101
+      ],
+      "centroid": [
+        732.0,
+        584.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 268,
+      "regionId": "r-0268",
+      "area": 569,
+      "bbox": [
+        960,
+        536,
+        47,
+        22
+      ],
+      "centroid": [
+        982.0,
+        547.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 269,
+      "regionId": "r-0269",
+      "area": 226,
+      "bbox": [
+        109,
+        537,
+        51,
+        35
+      ],
+      "centroid": [
+        140.0,
+        555.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 270,
+      "regionId": "r-0270",
+      "area": 587,
+      "bbox": [
+        87,
+        538,
+        63,
+        25
+      ],
+      "centroid": [
+        121.0,
+        548.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 271,
+      "regionId": "r-0271",
+      "area": 663,
+      "bbox": [
+        658,
+        543,
+        26,
+        70
+      ],
+      "centroid": [
+        664.0,
+        568.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 272,
+      "regionId": "r-0272",
+      "area": 1892,
+      "bbox": [
+        794,
+        543,
+        84,
+        61
+      ],
+      "centroid": [
+        828.0,
+        570.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 273,
+      "regionId": "r-0273",
+      "area": 238,
+      "bbox": [
+        388,
+        546,
+        23,
+        44
+      ],
+      "centroid": [
+        401.0,
+        569.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 274,
+      "regionId": "r-0274",
+      "area": 3346,
+      "bbox": [
+        142,
+        548,
+        101,
+        84
+      ],
+      "centroid": [
+        182.0,
+        593.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 275,
+      "regionId": "r-0275",
+      "area": 875,
+      "bbox": [
+        536,
+        551,
+        106,
+        21
+      ],
+      "centroid": [
+        591.0,
+        564.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 276,
+      "regionId": "r-0276",
+      "area": 654,
+      "bbox": [
+        1010,
+        552,
+        62,
+        46
+      ],
+      "centroid": [
+        1046.0,
+        571.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 277,
+      "regionId": "r-0277",
+      "area": 234,
+      "bbox": [
+        847,
+        555,
+        35,
+        20
+      ],
+      "centroid": [
+        865.0,
+        563.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 278,
+      "regionId": "r-0278",
+      "area": 5327,
+      "bbox": [
+        1096,
+        556,
+        83,
+        157
+      ],
+      "centroid": [
+        1124.0,
+        635.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 279,
+      "regionId": "r-0279",
+      "area": 337,
+      "bbox": [
+        66,
+        557,
+        63,
+        28
+      ],
+      "centroid": [
+        95.0,
+        568.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 280,
+      "regionId": "r-0280",
+      "area": 237,
+      "bbox": [
+        500,
+        558,
+        25,
+        19
+      ],
+      "centroid": [
+        511.0,
+        566.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 281,
+      "regionId": "r-0281",
+      "area": 685,
+      "bbox": [
+        529,
+        559,
+        86,
+        62
+      ],
+      "centroid": [
+        581.0,
+        600.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 282,
+      "regionId": "r-0282",
+      "area": 279,
+      "bbox": [
+        884,
+        562,
+        46,
+        11
+      ],
+      "centroid": [
+        912.0,
+        566.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 283,
+      "regionId": "r-0283",
+      "area": 511,
+      "bbox": [
+        928,
+        562,
+        70,
+        13
+      ],
+      "centroid": [
+        965.0,
+        568.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 284,
+      "regionId": "r-0284",
+      "area": 342,
+      "bbox": [
+        677,
+        563,
+        30,
+        29
+      ],
+      "centroid": [
+        688.0,
+        576.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 285,
+      "regionId": "r-0285",
+      "area": 237,
+      "bbox": [
+        783,
+        564,
+        21,
+        23
+      ],
+      "centroid": [
+        792.0,
+        576.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 286,
+      "regionId": "r-0286",
+      "area": 441,
+      "bbox": [
+        406,
+        565,
+        30,
+        71
+      ],
+      "centroid": [
+        414.0,
+        601.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 287,
+      "regionId": "r-0287",
+      "area": 773,
+      "bbox": [
+        998,
+        566,
+        70,
+        36
+      ],
+      "centroid": [
+        1031.0,
+        581.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 288,
+      "regionId": "r-0288",
+      "area": 280,
+      "bbox": [
+        112,
+        567,
+        35,
+        20
+      ],
+      "centroid": [
+        127.0,
+        576.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 289,
+      "regionId": "r-0289",
+      "area": 238,
+      "bbox": [
+        524,
+        568,
+        15,
+        39
+      ],
+      "centroid": [
+        530.0,
+        588.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 290,
+      "regionId": "r-0290",
+      "area": 289,
+      "bbox": [
+        542,
+        569,
+        84,
+        41
+      ],
+      "centroid": [
+        582.0,
+        590.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 291,
+      "regionId": "r-0291",
+      "area": 770,
+      "bbox": [
+        578,
+        569,
+        70,
+        26
+      ],
+      "centroid": [
+        616.0,
+        581.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 292,
+      "regionId": "r-0292",
+      "area": 1414,
+      "bbox": [
+        894,
+        571,
+        89,
+        38
+      ],
+      "centroid": [
+        946.0,
+        589.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 293,
+      "regionId": "r-0293",
+      "area": 306,
+      "bbox": [
+        339,
+        573,
+        21,
+        22
+      ],
+      "centroid": [
+        350.0,
+        583.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 294,
+      "regionId": "r-0294",
+      "area": 324,
+      "bbox": [
+        417,
+        575,
+        15,
+        45
+      ],
+      "centroid": [
+        422.0,
+        600.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 295,
+      "regionId": "r-0295",
+      "area": 512,
+      "bbox": [
+        106,
+        576,
+        50,
+        35
+      ],
+      "centroid": [
+        125.0,
+        593.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 296,
+      "regionId": "r-0296",
+      "area": 492,
+      "bbox": [
+        841,
+        579,
+        54,
+        30
+      ],
+      "centroid": [
+        870.0,
+        594.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 297,
+      "regionId": "r-0297",
+      "area": 230,
+      "bbox": [
+        879,
+        579,
+        32,
+        21
+      ],
+      "centroid": [
+        893.0,
+        590.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 298,
+      "regionId": "r-0298",
+      "area": 1206,
+      "bbox": [
+        52,
+        580,
+        52,
+        67
+      ],
+      "centroid": [
+        73.0,
+        606.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 299,
+      "regionId": "r-0299",
+      "area": 633,
+      "bbox": [
+        536,
+        580,
+        45,
+        39
+      ],
+      "centroid": [
+        555.0,
+        603.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 300,
+      "regionId": "r-0300",
+      "area": 540,
+      "bbox": [
+        184,
+        582,
+        33,
+        31
+      ],
+      "centroid": [
+        197.0,
+        597.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 301,
+      "regionId": "r-0301",
+      "area": 363,
+      "bbox": [
+        387,
+        583,
+        19,
+        40
+      ],
+      "centroid": [
+        396.0,
+        603.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 302,
+      "regionId": "r-0302",
+      "area": 195,
+      "bbox": [
+        784,
+        583,
+        24,
+        15
+      ],
+      "centroid": [
+        796.0,
+        590.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 303,
+      "regionId": "r-0303",
+      "area": 408,
+      "bbox": [
+        453,
+        584,
+        40,
+        22
+      ],
+      "centroid": [
+        476.0,
+        593.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 304,
+      "regionId": "r-0304",
+      "area": 1562,
+      "bbox": [
+        680,
+        586,
+        56,
+        59
+      ],
+      "centroid": [
+        704.0,
+        613.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 305,
+      "regionId": "r-0305",
+      "area": 765,
+      "bbox": [
+        626,
+        587,
+        41,
+        32
+      ],
+      "centroid": [
+        646.0,
+        602.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 306,
+      "regionId": "r-0306",
+      "area": 251,
+      "bbox": [
+        284,
+        589,
+        38,
+        41
+      ],
+      "centroid": [
+        301.0,
+        604.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 307,
+      "regionId": "r-0307",
+      "area": 260,
+      "bbox": [
+        897,
+        589,
+        41,
+        17
+      ],
+      "centroid": [
+        921.0,
+        597.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 308,
+      "regionId": "r-0308",
+      "area": 249,
+      "bbox": [
+        353,
+        590,
+        40,
+        39
+      ],
+      "centroid": [
+        372.0,
+        609.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 309,
+      "regionId": "r-0309",
+      "area": 398,
+      "bbox": [
+        778,
+        593,
+        78,
+        18
+      ],
+      "centroid": [
+        823.0,
+        602.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 310,
+      "regionId": "r-0310",
+      "area": 2793,
+      "bbox": [
+        108,
+        594,
+        96,
+        71
+      ],
+      "centroid": [
+        154.0,
+        631.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 311,
+      "regionId": "r-0311",
+      "area": 733,
+      "bbox": [
+        508,
+        594,
+        69,
+        85
+      ],
+      "centroid": [
+        545.0,
+        637.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 312,
+      "regionId": "r-0312",
+      "area": 208,
+      "bbox": [
+        299,
+        596,
+        29,
+        34
+      ],
+      "centroid": [
+        309.0,
+        611.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 313,
+      "regionId": "r-0313",
+      "area": 1145,
+      "bbox": [
+        501,
+        597,
+        64,
+        83
+      ],
+      "centroid": [
+        535.0,
+        645.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 314,
+      "regionId": "r-0314",
+      "area": 191,
+      "bbox": [
+        306,
+        599,
+        31,
+        28
+      ],
+      "centroid": [
+        321.0,
+        612.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 315,
+      "regionId": "r-0315",
+      "area": 385,
+      "bbox": [
+        306,
+        601,
+        39,
+        49
+      ],
+      "centroid": [
+        328.0,
+        626.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 316,
+      "regionId": "r-0316",
+      "area": 550,
+      "bbox": [
+        446,
+        601,
+        42,
+        27
+      ],
+      "centroid": [
+        470.0,
+        612.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 317,
+      "regionId": "r-0317",
+      "area": 1311,
+      "bbox": [
+        390,
+        602,
+        34,
+        73
+      ],
+      "centroid": [
+        405.0,
+        639.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 318,
+      "regionId": "r-0318",
+      "area": 2570,
+      "bbox": [
+        856,
+        602,
+        132,
+        48
+      ],
+      "centroid": [
+        934.0,
+        625.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 319,
+      "regionId": "r-0319",
+      "area": 1215,
+      "bbox": [
+        67,
+        603,
+        59,
+        50
+      ],
+      "centroid": [
+        97.0,
+        630.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 320,
+      "regionId": "r-0320",
+      "area": 1136,
+      "bbox": [
+        521,
+        603,
+        74,
+        68
+      ],
+      "centroid": [
+        564.0,
+        632.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 321,
+      "regionId": "r-0321",
+      "area": 256,
+      "bbox": [
+        496,
+        606,
+        46,
+        54
+      ],
+      "centroid": [
+        508.0,
+        642.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 322,
+      "regionId": "r-0322",
+      "area": 422,
+      "bbox": [
+        238,
+        608,
+        24,
+        46
+      ],
+      "centroid": [
+        250.0,
+        630.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 323,
+      "regionId": "r-0323",
+      "area": 987,
+      "bbox": [
+        815,
+        608,
+        70,
+        44
+      ],
+      "centroid": [
+        855.0,
+        625.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 324,
+      "regionId": "r-0324",
+      "area": 1620,
+      "bbox": [
+        361,
+        610,
+        36,
+        93
+      ],
+      "centroid": [
+        378.0,
+        659.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 325,
+      "regionId": "r-0325",
+      "area": 215,
+      "bbox": [
+        665,
+        610,
+        33,
+        28
+      ],
+      "centroid": [
+        679.0,
+        623.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 326,
+      "regionId": "r-0326",
+      "area": 562,
+      "bbox": [
+        729,
+        610,
+        39,
+        48
+      ],
+      "centroid": [
+        745.0,
+        636.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 327,
+      "regionId": "r-0327",
+      "area": 271,
+      "bbox": [
+        447,
+        613,
+        46,
+        25
+      ],
+      "centroid": [
+        474.0,
+        626.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 328,
+      "regionId": "r-0328",
+      "area": 297,
+      "bbox": [
+        606,
+        613,
+        27,
+        22
+      ],
+      "centroid": [
+        623.0,
+        622.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 329,
+      "regionId": "r-0329",
+      "area": 820,
+      "bbox": [
+        807,
+        613,
+        49,
+        71
+      ],
+      "centroid": [
+        829.0,
+        647.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 330,
+      "regionId": "r-0330",
+      "area": 718,
+      "bbox": [
+        781,
+        614,
+        50,
+        66
+      ],
+      "centroid": [
+        807.0,
+        638.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 331,
+      "regionId": "r-0331",
+      "area": 346,
+      "bbox": [
+        581,
+        615,
+        34,
+        28
+      ],
+      "centroid": [
+        598.0,
+        629.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 332,
+      "regionId": "r-0332",
+      "area": 221,
+      "bbox": [
+        317,
+        616,
+        28,
+        40
+      ],
+      "centroid": [
+        331.0,
+        640.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 333,
+      "regionId": "r-0333",
+      "area": 987,
+      "bbox": [
+        883,
+        616,
+        45,
+        39
+      ],
+      "centroid": [
+        908.0,
+        636.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 334,
+      "regionId": "r-0334",
+      "area": 484,
+      "bbox": [
+        1047,
+        616,
+        30,
+        30
+      ],
+      "centroid": [
+        1060.0,
+        633.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 335,
+      "regionId": "r-0335",
+      "area": 251,
+      "bbox": [
+        120,
+        617,
+        24,
+        17
+      ],
+      "centroid": [
+        132.0,
+        625.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 336,
+      "regionId": "r-0336",
+      "area": 1075,
+      "bbox": [
+        435,
+        618,
+        86,
+        151
+      ],
+      "centroid": [
+        479.0,
+        703.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 337,
+      "regionId": "r-0337",
+      "area": 250,
+      "bbox": [
+        292,
+        619,
+        34,
+        28
+      ],
+      "centroid": [
+        307.0,
+        635.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 338,
+      "regionId": "r-0338",
+      "area": 1733,
+      "bbox": [
+        633,
+        619,
+        88,
+        57
+      ],
+      "centroid": [
+        675.0,
+        645.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 339,
+      "regionId": "r-0339",
+      "area": 402,
+      "bbox": [
+        352,
+        620,
+        21,
+        74
+      ],
+      "centroid": [
+        360.0,
+        658.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 340,
+      "regionId": "r-0340",
+      "area": 383,
+      "bbox": [
+        79,
+        623,
+        41,
+        35
+      ],
+      "centroid": [
+        93.0,
+        643.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 341,
+      "regionId": "r-0341",
+      "area": 1618,
+      "bbox": [
+        1117,
+        624,
+        45,
+        74
+      ],
+      "centroid": [
+        1137.0,
+        666.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 342,
+      "regionId": "r-0342",
+      "area": 481,
+      "bbox": [
+        325,
+        629,
+        36,
+        38
+      ],
+      "centroid": [
+        342.0,
+        649.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 343,
+      "regionId": "r-0343",
+      "area": 818,
+      "bbox": [
+        483,
+        629,
+        76,
+        57
+      ],
+      "centroid": [
+        516.0,
+        660.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 344,
+      "regionId": "r-0344",
+      "area": 2271,
+      "bbox": [
+        698,
+        633,
+        112,
+        83
+      ],
+      "centroid": [
+        765.0,
+        682.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 345,
+      "regionId": "r-0345",
+      "area": 301,
+      "bbox": [
+        824,
+        634,
+        62,
+        52
+      ],
+      "centroid": [
+        854.0,
+        672.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 346,
+      "regionId": "r-0346",
+      "area": 1680,
+      "bbox": [
+        574,
+        635,
+        55,
+        100
+      ],
+      "centroid": [
+        602.0,
+        677.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 347,
+      "regionId": "r-0347",
+      "area": 331,
+      "bbox": [
+        471,
+        636,
+        47,
+        46
+      ],
+      "centroid": [
+        493.0,
+        657.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 348,
+      "regionId": "r-0348",
+      "area": 1003,
+      "bbox": [
+        628,
+        638,
+        88,
+        60
+      ],
+      "centroid": [
+        670.0,
+        665.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 349,
+      "regionId": "r-0349",
+      "area": 5215,
+      "bbox": [
+        403,
+        639,
+        93,
+        124
+      ],
+      "centroid": [
+        449.0,
+        710.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 350,
+      "regionId": "r-0350",
+      "area": 658,
+      "bbox": [
+        792,
+        640,
+        81,
+        117
+      ],
+      "centroid": [
+        832.0,
+        696.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 351,
+      "regionId": "r-0351",
+      "area": 414,
+      "bbox": [
+        462,
+        642,
+        41,
+        54
+      ],
+      "centroid": [
+        479.0,
+        667.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 352,
+      "regionId": "r-0352",
+      "area": 356,
+      "bbox": [
+        858,
+        643,
+        38,
+        40
+      ],
+      "centroid": [
+        871.0,
+        664.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 353,
+      "regionId": "r-0353",
+      "area": 2249,
+      "bbox": [
+        873,
+        643,
+        133,
+        38
+      ],
+      "centroid": [
+        928.0,
+        662.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 354,
+      "regionId": "r-0354",
+      "area": 1033,
+      "bbox": [
+        912,
+        647,
+        115,
+        41
+      ],
+      "centroid": [
+        984.0,
+        666.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 355,
+      "regionId": "r-0355",
+      "area": 277,
+      "bbox": [
+        1027,
+        648,
+        37,
+        24
+      ],
+      "centroid": [
+        1041.0,
+        658.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 356,
+      "regionId": "r-0356",
+      "area": 1775,
+      "bbox": [
+        628,
+        650,
+        154,
+        71
+      ],
+      "centroid": [
+        704.0,
+        692.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 357,
+      "regionId": "r-0357",
+      "area": 1527,
+      "bbox": [
+        235,
+        656,
+        118,
+        149
+      ],
+      "centroid": [
+        296.0,
+        702.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 358,
+      "regionId": "r-0358",
+      "area": 1876,
+      "bbox": [
+        159,
+        659,
+        133,
+        160
+      ],
+      "centroid": [
+        212.0,
+        733.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 359,
+      "regionId": "r-0359",
+      "area": 335,
+      "bbox": [
+        285,
+        659,
+        40,
+        33
+      ],
+      "centroid": [
+        308.0,
+        671.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 360,
+      "regionId": "r-0360",
+      "area": 1321,
+      "bbox": [
+        205,
+        660,
+        101,
+        96
+      ],
+      "centroid": [
+        255.0,
+        705.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 361,
+      "regionId": "r-0361",
+      "area": 323,
+      "bbox": [
+        711,
+        660,
+        35,
+        33
+      ],
+      "centroid": [
+        732.0,
+        674.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 362,
+      "regionId": "r-0362",
+      "area": 882,
+      "bbox": [
+        390,
+        664,
+        43,
+        81
+      ],
+      "centroid": [
+        407.0,
+        703.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 363,
+      "regionId": "r-0363",
+      "area": 1171,
+      "bbox": [
+        972,
+        664,
+        105,
+        33
+      ],
+      "centroid": [
+        1031.0,
+        675.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 364,
+      "regionId": "r-0364",
+      "area": 969,
+      "bbox": [
+        490,
+        665,
+        130,
+        73
+      ],
+      "centroid": [
+        569.0,
+        713.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 365,
+      "regionId": "r-0365",
+      "area": 511,
+      "bbox": [
+        166,
+        669,
+        41,
+        30
+      ],
+      "centroid": [
+        186.0,
+        683.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 366,
+      "regionId": "r-0366",
+      "area": 408,
+      "bbox": [
+        169,
+        671,
+        42,
+        34
+      ],
+      "centroid": [
+        195.0,
+        694.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 367,
+      "regionId": "r-0367",
+      "area": 1561,
+      "bbox": [
+        56,
+        672,
+        47,
+        94
+      ],
+      "centroid": [
+        81.0,
+        716.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 368,
+      "regionId": "r-0368",
+      "area": 542,
+      "bbox": [
+        360,
+        675,
+        44,
+        50
+      ],
+      "centroid": [
+        378.0,
+        699.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 369,
+      "regionId": "r-0369",
+      "area": 944,
+      "bbox": [
+        518,
+        676,
+        78,
+        37
+      ],
+      "centroid": [
+        558.0,
+        695.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 370,
+      "regionId": "r-0370",
+      "area": 167,
+      "bbox": [
+        648,
+        676,
+        27,
+        30
+      ],
+      "centroid": [
+        670.0,
+        685.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 371,
+      "regionId": "r-0371",
+      "area": 420,
+      "bbox": [
+        811,
+        676,
+        38,
+        56
+      ],
+      "centroid": [
+        827.0,
+        705.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 372,
+      "regionId": "r-0372",
+      "area": 2116,
+      "bbox": [
+        287,
+        679,
+        62,
+        109
+      ],
+      "centroid": [
+        323.0,
+        729.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 373,
+      "regionId": "r-0373",
+      "area": 2024,
+      "bbox": [
+        480,
+        679,
+        106,
+        132
+      ],
+      "centroid": [
+        516.0,
+        721.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 374,
+      "regionId": "r-0374",
+      "area": 1557,
+      "bbox": [
+        833,
+        682,
+        176,
+        30
+      ],
+      "centroid": [
+        889.0,
+        698.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 375,
+      "regionId": "r-0375",
+      "area": 185,
+      "bbox": [
+        875,
+        682,
+        45,
+        10
+      ],
+      "centroid": [
+        899.0,
+        688.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 376,
+      "regionId": "r-0376",
+      "area": 214,
+      "bbox": [
+        1008,
+        682,
+        73,
+        28
+      ],
+      "centroid": [
+        1051.0,
+        692.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 377,
+      "regionId": "r-0377",
+      "area": 248,
+      "bbox": [
+        646,
+        684,
+        22,
+        16
+      ],
+      "centroid": [
+        657.0,
+        692.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 378,
+      "regionId": "r-0378",
+      "area": 164,
+      "bbox": [
+        606,
+        688,
+        21,
+        27
+      ],
+      "centroid": [
+        609.0,
+        701.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 379,
+      "regionId": "r-0379",
+      "area": 1101,
+      "bbox": [
+        48,
+        689,
+        41,
+        75
+      ],
+      "centroid": [
+        64.0,
+        730.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 380,
+      "regionId": "r-0380",
+      "area": 300,
+      "bbox": [
+        351,
+        690,
+        7,
+        61
+      ],
+      "centroid": [
+        354.0,
+        719.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 381,
+      "regionId": "r-0381",
+      "area": 2712,
+      "bbox": [
+        983,
+        690,
+        100,
+        83
+      ],
+      "centroid": [
+        1048.0,
+        719.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 382,
+      "regionId": "r-0382",
+      "area": 2896,
+      "bbox": [
+        243,
+        692,
+        86,
+        108
+      ],
+      "centroid": [
+        277.0,
+        745.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 383,
+      "regionId": "r-0383",
+      "area": 167,
+      "bbox": [
+        613,
+        695,
+        18,
+        12
+      ],
+      "centroid": [
+        621.0,
+        701.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 384,
+      "regionId": "r-0384",
+      "area": 380,
+      "bbox": [
+        362,
+        698,
+        38,
+        45
+      ],
+      "centroid": [
+        385.0,
+        718.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 385,
+      "regionId": "r-0385",
+      "area": 244,
+      "bbox": [
+        671,
+        701,
+        31,
+        14
+      ],
+      "centroid": [
+        686.0,
+        707.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 386,
+      "regionId": "r-0386",
+      "area": 268,
+      "bbox": [
+        627,
+        703,
+        31,
+        30
+      ],
+      "centroid": [
+        652.0,
+        720.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 387,
+      "regionId": "r-0387",
+      "area": 7181,
+      "bbox": [
+        531,
+        707,
+        225,
+        223
+      ],
+      "centroid": [
+        632.0,
+        823.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 388,
+      "regionId": "r-0388",
+      "area": 7459,
+      "bbox": [
+        174,
+        710,
+        103,
+        270
+      ],
+      "centroid": [
+        218.0,
+        840.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 389,
+      "regionId": "r-0389",
+      "area": 392,
+      "bbox": [
+        661,
+        710,
+        59,
+        22
+      ],
+      "centroid": [
+        698.0,
+        721.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 390,
+      "regionId": "r-0390",
+      "area": 2222,
+      "bbox": [
+        653,
+        717,
+        69,
+        63
+      ],
+      "centroid": [
+        686.0,
+        746.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 391,
+      "regionId": "r-0391",
+      "area": 697,
+      "bbox": [
+        773,
+        721,
+        50,
+        26
+      ],
+      "centroid": [
+        798.0,
+        733.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 392,
+      "regionId": "r-0392",
+      "area": 343,
+      "bbox": [
+        952,
+        723,
+        31,
+        23
+      ],
+      "centroid": [
+        965.0,
+        735.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 393,
+      "regionId": "r-0393",
+      "area": 425,
+      "bbox": [
+        571,
+        725,
+        40,
+        27
+      ],
+      "centroid": [
+        592.0,
+        740.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 394,
+      "regionId": "r-0394",
+      "area": 2121,
+      "bbox": [
+        862,
+        726,
+        78,
+        70
+      ],
+      "centroid": [
+        901.0,
+        756.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 395,
+      "regionId": "r-0395",
+      "area": 267,
+      "bbox": [
+        360,
+        727,
+        35,
+        30
+      ],
+      "centroid": [
+        378.0,
+        740.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 396,
+      "regionId": "r-0396",
+      "area": 378,
+      "bbox": [
+        284,
+        736,
+        65,
+        67
+      ],
+      "centroid": [
+        319.0,
+        761.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 397,
+      "regionId": "r-0397",
+      "area": 333,
+      "bbox": [
+        507,
+        736,
+        82,
+        85
+      ],
+      "centroid": [
+        550.0,
+        784.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 398,
+      "regionId": "r-0398",
+      "area": 158,
+      "bbox": [
+        714,
+        736,
+        23,
+        50
+      ],
+      "centroid": [
+        721.0,
+        763.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 399,
+      "regionId": "r-0399",
+      "area": 341,
+      "bbox": [
+        416,
+        738,
+        40,
+        41
+      ],
+      "centroid": [
+        434.0,
+        752.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 400,
+      "regionId": "r-0400",
+      "area": 4738,
+      "bbox": [
+        721,
+        739,
+        143,
+        66
+      ],
+      "centroid": [
+        787.0,
+        769.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 401,
+      "regionId": "r-0401",
+      "area": 588,
+      "bbox": [
+        583,
+        743,
+        58,
+        40
+      ],
+      "centroid": [
+        610.0,
+        763.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 402,
+      "regionId": "r-0402",
+      "area": 286,
+      "bbox": [
+        606,
+        746,
+        42,
+        48
+      ],
+      "centroid": [
+        628.0,
+        772.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 403,
+      "regionId": "r-0403",
+      "area": 942,
+      "bbox": [
+        317,
+        749,
+        33,
+        67
+      ],
+      "centroid": [
+        331.0,
+        778.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 404,
+      "regionId": "r-0404",
+      "area": 249,
+      "bbox": [
+        393,
+        749,
+        15,
+        25
+      ],
+      "centroid": [
+        401.0,
+        763.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 405,
+      "regionId": "r-0405",
+      "area": 827,
+      "bbox": [
+        924,
+        750,
+        47,
+        41
+      ],
+      "centroid": [
+        948.0,
+        771.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 406,
+      "regionId": "r-0406",
+      "area": 556,
+      "bbox": [
+        1129,
+        752,
+        22,
+        41
+      ],
+      "centroid": [
+        1140.0,
+        772.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 407,
+      "regionId": "r-0407",
+      "area": 314,
+      "bbox": [
+        366,
+        753,
+        18,
+        35
+      ],
+      "centroid": [
+        375.0,
+        772.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 408,
+      "regionId": "r-0408",
+      "area": 466,
+      "bbox": [
+        614,
+        753,
+        36,
+        50
+      ],
+      "centroid": [
+        633.0,
+        784.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 409,
+      "regionId": "r-0409",
+      "area": 930,
+      "bbox": [
+        653,
+        753,
+        71,
+        38
+      ],
+      "centroid": [
+        683.0,
+        775.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 410,
+      "regionId": "r-0410",
+      "area": 191,
+      "bbox": [
+        346,
+        754,
+        19,
+        22
+      ],
+      "centroid": [
+        356.0,
+        765.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 411,
+      "regionId": "r-0411",
+      "area": 210,
+      "bbox": [
+        597,
+        754,
+        38,
+        34
+      ],
+      "centroid": [
+        615.0,
+        773.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 412,
+      "regionId": "r-0412",
+      "area": 421,
+      "bbox": [
+        870,
+        755,
+        30,
+        105
+      ],
+      "centroid": [
+        890.0,
+        803.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 413,
+      "regionId": "r-0413",
+      "area": 478,
+      "bbox": [
+        414,
+        756,
+        56,
+        49
+      ],
+      "centroid": [
+        445.0,
+        781.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 414,
+      "regionId": "r-0414",
+      "area": 892,
+      "bbox": [
+        493,
+        758,
+        55,
+        55
+      ],
+      "centroid": [
+        527.0,
+        792.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 415,
+      "regionId": "r-0415",
+      "area": 198,
+      "bbox": [
+        865,
+        760,
+        16,
+        32
+      ],
+      "centroid": [
+        871.0,
+        778.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 416,
+      "regionId": "r-0416",
+      "area": 344,
+      "bbox": [
+        383,
+        764,
+        25,
+        28
+      ],
+      "centroid": [
+        393.0,
+        780.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 417,
+      "regionId": "r-0417",
+      "area": 1138,
+      "bbox": [
+        402,
+        764,
+        36,
+        55
+      ],
+      "centroid": [
+        421.0,
+        794.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 418,
+      "regionId": "r-0418",
+      "area": 967,
+      "bbox": [
+        459,
+        766,
+        58,
+        54
+      ],
+      "centroid": [
+        479.0,
+        793.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 419,
+      "regionId": "r-0419",
+      "area": 813,
+      "bbox": [
+        281,
+        768,
+        38,
+        60
+      ],
+      "centroid": [
+        303.0,
+        799.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 420,
+      "regionId": "r-0420",
+      "area": 936,
+      "bbox": [
+        645,
+        770,
+        60,
+        47
+      ],
+      "centroid": [
+        672.0,
+        798.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 421,
+      "regionId": "r-0421",
+      "area": 285,
+      "bbox": [
+        433,
+        771,
+        38,
+        42
+      ],
+      "centroid": [
+        442.0,
+        798.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 422,
+      "regionId": "r-0422",
+      "area": 548,
+      "bbox": [
+        756,
+        771,
+        65,
+        34
+      ],
+      "centroid": [
+        787.0,
+        783.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 423,
+      "regionId": "r-0423",
+      "area": 497,
+      "bbox": [
+        253,
+        772,
+        33,
+        37
+      ],
+      "centroid": [
+        271.0,
+        792.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 424,
+      "regionId": "r-0424",
+      "area": 1455,
+      "bbox": [
+        887,
+        772,
+        76,
+        58
+      ],
+      "centroid": [
+        917.0,
+        801.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 425,
+      "regionId": "r-0425",
+      "area": 167,
+      "bbox": [
+        30,
+        782,
+        15,
+        25
+      ],
+      "centroid": [
+        36.0,
+        798.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 426,
+      "regionId": "r-0426",
+      "area": 1176,
+      "bbox": [
+        153,
+        783,
+        34,
+        93
+      ],
+      "centroid": [
+        166.0,
+        839.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 427,
+      "regionId": "r-0427",
+      "area": 322,
+      "bbox": [
+        491,
+        783,
+        21,
+        28
+      ],
+      "centroid": [
+        500.0,
+        798.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 428,
+      "regionId": "r-0428",
+      "area": 2218,
+      "bbox": [
+        945,
+        785,
+        75,
+        49
+      ],
+      "centroid": [
+        982.0,
+        809.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 429,
+      "regionId": "r-0429",
+      "area": 425,
+      "bbox": [
+        724,
+        786,
+        75,
+        32
+      ],
+      "centroid": [
+        762.0,
+        804.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 430,
+      "regionId": "r-0430",
+      "area": 1430,
+      "bbox": [
+        310,
+        787,
+        63,
+        71
+      ],
+      "centroid": [
+        341.0,
+        813.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 431,
+      "regionId": "r-0431",
+      "area": 1105,
+      "bbox": [
+        682,
+        789,
+        87,
+        32
+      ],
+      "centroid": [
+        727.0,
+        805.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 432,
+      "regionId": "r-0432",
+      "area": 1287,
+      "bbox": [
+        636,
+        791,
+        63,
+        70
+      ],
+      "centroid": [
+        666.0,
+        829.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 433,
+      "regionId": "r-0433",
+      "area": 204,
+      "bbox": [
+        524,
+        796,
+        41,
+        23
+      ],
+      "centroid": [
+        549.0,
+        807.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 434,
+      "regionId": "r-0434",
+      "area": 364,
+      "bbox": [
+        355,
+        797,
+        24,
+        83
+      ],
+      "centroid": [
+        365.0,
+        837.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 435,
+      "regionId": "r-0435",
+      "area": 1147,
+      "bbox": [
+        230,
+        799,
+        38,
+        76
+      ],
+      "centroid": [
+        244.0,
+        829.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 436,
+      "regionId": "r-0436",
+      "area": 5317,
+      "bbox": [
+        358,
+        800,
+        80,
+        121
+      ],
+      "centroid": [
+        397.0,
+        861.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 437,
+      "regionId": "r-0437",
+      "area": 387,
+      "bbox": [
+        788,
+        802,
+        82,
+        14
+      ],
+      "centroid": [
+        834.0,
+        807.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 438,
+      "regionId": "r-0438",
+      "area": 2189,
+      "bbox": [
+        244,
+        805,
+        47,
+        153
+      ],
+      "centroid": [
+        252.0,
+        879.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 439,
+      "regionId": "r-0439",
+      "area": 2486,
+      "bbox": [
+        31,
+        806,
+        62,
+        113
+      ],
+      "centroid": [
+        68.0,
+        859.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 440,
+      "regionId": "r-0440",
+      "area": 499,
+      "bbox": [
+        463,
+        807,
+        85,
+        24
+      ],
+      "centroid": [
+        507.0,
+        823.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 441,
+      "regionId": "r-0441",
+      "area": 734,
+      "bbox": [
+        1079,
+        808,
+        51,
+        32
+      ],
+      "centroid": [
+        1106.0,
+        823.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 442,
+      "regionId": "r-0442",
+      "area": 1657,
+      "bbox": [
+        440,
+        810,
+        69,
+        55
+      ],
+      "centroid": [
+        467.0,
+        835.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 443,
+      "regionId": "r-0443",
+      "area": 173,
+      "bbox": [
+        548,
+        812,
+        26,
+        10
+      ],
+      "centroid": [
+        561.0,
+        817.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 444,
+      "regionId": "r-0444",
+      "area": 5003,
+      "bbox": [
+        705,
+        812,
+        212,
+        121
+      ],
+      "centroid": [
+        825.0,
+        847.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 445,
+      "regionId": "r-0445",
+      "area": 2401,
+      "bbox": [
+        747,
+        812,
+        140,
+        34
+      ],
+      "centroid": [
+        829.0,
+        827.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 446,
+      "regionId": "r-0446",
+      "area": 890,
+      "bbox": [
+        926,
+        814,
+        50,
+        46
+      ],
+      "centroid": [
+        948.0,
+        834.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 447,
+      "regionId": "r-0447",
+      "area": 2966,
+      "bbox": [
+        256,
+        815,
+        56,
+        80
+      ],
+      "centroid": [
+        285.0,
+        857.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 448,
+      "regionId": "r-0448",
+      "area": 2747,
+      "bbox": [
+        310,
+        816,
+        48,
+        98
+      ],
+      "centroid": [
+        336.0,
+        860.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 449,
+      "regionId": "r-0449",
+      "area": 1079,
+      "bbox": [
+        675,
+        816,
+        116,
+        61
+      ],
+      "centroid": [
+        732.0,
+        851.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 450,
+      "regionId": "r-0450",
+      "area": 1840,
+      "bbox": [
+        17,
+        817,
+        40,
+        152
+      ],
+      "centroid": [
+        34.0,
+        883.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 451,
+      "regionId": "r-0451",
+      "area": 435,
+      "bbox": [
+        685,
+        819,
+        43,
+        38
+      ],
+      "centroid": [
+        703.0,
+        836.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 452,
+      "regionId": "r-0452",
+      "area": 299,
+      "bbox": [
+        1085,
+        820,
+        34,
+        28
+      ],
+      "centroid": [
+        1098.0,
+        837.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 453,
+      "regionId": "r-0453",
+      "area": 865,
+      "bbox": [
+        556,
+        821,
+        39,
+        43
+      ],
+      "centroid": [
+        577.0,
+        839.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 454,
+      "regionId": "r-0454",
+      "area": 190,
+      "bbox": [
+        586,
+        821,
+        58,
+        47
+      ],
+      "centroid": [
+        611.0,
+        841.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 455,
+      "regionId": "r-0455",
+      "area": 1400,
+      "bbox": [
+        903,
+        821,
+        43,
+        211
+      ],
+      "centroid": [
+        918.0,
+        923.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 456,
+      "regionId": "r-0456",
+      "area": 1031,
+      "bbox": [
+        422,
+        822,
+        34,
+        82
+      ],
+      "centroid": [
+        434.0,
+        863.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 457,
+      "regionId": "r-0457",
+      "area": 269,
+      "bbox": [
+        184,
+        823,
+        21,
+        34
+      ],
+      "centroid": [
+        195.0,
+        841.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 458,
+      "regionId": "r-0458",
+      "area": 662,
+      "bbox": [
+        524,
+        825,
+        56,
+        60
+      ],
+      "centroid": [
+        553.0,
+        845.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 459,
+      "regionId": "r-0459",
+      "area": 1010,
+      "bbox": [
+        934,
+        825,
+        56,
+        57
+      ],
+      "centroid": [
+        965.0,
+        859.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 460,
+      "regionId": "r-0460",
+      "area": 5557,
+      "bbox": [
+        481,
+        832,
+        113,
+        115
+      ],
+      "centroid": [
+        538.0,
+        882.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 461,
+      "regionId": "r-0461",
+      "area": 326,
+      "bbox": [
+        436,
+        833,
+        32,
+        63
+      ],
+      "centroid": [
+        452.0,
+        873.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 462,
+      "regionId": "r-0462",
+      "area": 9611,
+      "bbox": [
+        946,
+        834,
+        126,
+        205
+      ],
+      "centroid": [
+        1011.0,
+        926.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 463,
+      "regionId": "r-0463",
+      "area": 306,
+      "bbox": [
+        910,
+        838,
+        17,
+        59
+      ],
+      "centroid": [
+        920.0,
+        866.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 464,
+      "regionId": "r-0464",
+      "area": 822,
+      "bbox": [
+        577,
+        839,
+        40,
+        47
+      ],
+      "centroid": [
+        596.0,
+        862.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 465,
+      "regionId": "r-0465",
+      "area": 1758,
+      "bbox": [
+        446,
+        846,
+        75,
+        74
+      ],
+      "centroid": [
+        486.0,
+        887.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 466,
+      "regionId": "r-0466",
+      "area": 1012,
+      "bbox": [
+        800,
+        850,
+        49,
+        37
+      ],
+      "centroid": [
+        824.0,
+        866.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 467,
+      "regionId": "r-0467",
+      "area": 872,
+      "bbox": [
+        34,
+        856,
+        40,
+        73
+      ],
+      "centroid": [
+        49.0,
+        895.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 468,
+      "regionId": "r-0468",
+      "area": 194,
+      "bbox": [
+        939,
+        856,
+        12,
+        25
+      ],
+      "centroid": [
+        945.0,
+        870.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 469,
+      "regionId": "r-0469",
+      "area": 709,
+      "bbox": [
+        605,
+        857,
+        34,
+        38
+      ],
+      "centroid": [
+        620.0,
+        876.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 470,
+      "regionId": "r-0470",
+      "area": 247,
+      "bbox": [
+        668,
+        857,
+        39,
+        14
+      ],
+      "centroid": [
+        687.0,
+        865.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 471,
+      "regionId": "r-0471",
+      "area": 271,
+      "bbox": [
+        705,
+        861,
+        32,
+        22
+      ],
+      "centroid": [
+        723.0,
+        871.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 472,
+      "regionId": "r-0472",
+      "area": 290,
+      "bbox": [
+        299,
+        866,
+        21,
+        29
+      ],
+      "centroid": [
+        309.0,
+        884.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 473,
+      "regionId": "r-0473",
+      "area": 1187,
+      "bbox": [
+        611,
+        868,
+        43,
+        66
+      ],
+      "centroid": [
+        632.0,
+        901.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 474,
+      "regionId": "r-0474",
+      "area": 1114,
+      "bbox": [
+        648,
+        872,
+        150,
+        108
+      ],
+      "centroid": [
+        725.0,
+        929.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 475,
+      "regionId": "r-0475",
+      "area": 1495,
+      "bbox": [
+        791,
+        875,
+        79,
+        41
+      ],
+      "centroid": [
+        831.0,
+        897.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 476,
+      "regionId": "r-0476",
+      "area": 6984,
+      "bbox": [
+        153,
+        876,
+        170,
+        200
+      ],
+      "centroid": [
+        223.0,
+        993.0
+      ],
+      "defaultColor": "#ea725c",
+      "fillable": true
+    },
+    {
+      "id": 477,
+      "regionId": "r-0477",
+      "area": 405,
+      "bbox": [
+        175,
+        876,
+        28,
+        20
+      ],
+      "centroid": [
+        189.0,
+        884.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 478,
+      "regionId": "r-0478",
+      "area": 162,
+      "bbox": [
+        737,
+        876,
+        35,
+        19
+      ],
+      "centroid": [
+        756.0,
+        887.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 479,
+      "regionId": "r-0479",
+      "area": 3578,
+      "bbox": [
+        836,
+        876,
+        71,
+        85
+      ],
+      "centroid": [
+        877.0,
+        917.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 480,
+      "regionId": "r-0480",
+      "area": 450,
+      "bbox": [
+        587,
+        878,
+        22,
+        37
+      ],
+      "centroid": [
+        599.0,
+        896.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 481,
+      "regionId": "r-0481",
+      "area": 772,
+      "bbox": [
+        951,
+        878,
+        38,
+        37
+      ],
+      "centroid": [
+        970.0,
+        896.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 482,
+      "regionId": "r-0482",
+      "area": 250,
+      "bbox": [
+        938,
+        880,
+        17,
+        26
+      ],
+      "centroid": [
+        947.0,
+        890.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 483,
+      "regionId": "r-0483",
+      "area": 766,
+      "bbox": [
+        772,
+        884,
+        79,
+        72
+      ],
+      "centroid": [
+        806.0,
+        908.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 484,
+      "regionId": "r-0484",
+      "area": 332,
+      "bbox": [
+        227,
+        885,
+        20,
+        30
+      ],
+      "centroid": [
+        237.0,
+        902.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 485,
+      "regionId": "r-0485",
+      "area": 1241,
+      "bbox": [
+        639,
+        886,
+        54,
+        58
+      ],
+      "centroid": [
+        661.0,
+        917.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 486,
+      "regionId": "r-0486",
+      "area": 1582,
+      "bbox": [
+        432,
+        888,
+        47,
+        96
+      ],
+      "centroid": [
+        457.0,
+        936.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 487,
+      "regionId": "r-0487",
+      "area": 700,
+      "bbox": [
+        350,
+        891,
+        101,
+        64
+      ],
+      "centroid": [
+        410.0,
+        918.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 488,
+      "regionId": "r-0488",
+      "area": 1028,
+      "bbox": [
+        178,
+        894,
+        37,
+        45
+      ],
+      "centroid": [
+        196.0,
+        912.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 489,
+      "regionId": "r-0489",
+      "area": 562,
+      "bbox": [
+        756,
+        894,
+        29,
+        54
+      ],
+      "centroid": [
+        770.0,
+        913.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 490,
+      "regionId": "r-0490",
+      "area": 368,
+      "bbox": [
+        922,
+        895,
+        28,
+        32
+      ],
+      "centroid": [
+        936.0,
+        910.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 491,
+      "regionId": "r-0491",
+      "area": 1137,
+      "bbox": [
+        457,
+        896,
+        44,
+        85
+      ],
+      "centroid": [
+        479.0,
+        939.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 492,
+      "regionId": "r-0492",
+      "area": 1883,
+      "bbox": [
+        343,
+        898,
+        138,
+        116
+      ],
+      "centroid": [
+        430.0,
+        959.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 493,
+      "regionId": "r-0493",
+      "area": 306,
+      "bbox": [
+        736,
+        900,
+        21,
+        24
+      ],
+      "centroid": [
+        745.0,
+        912.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 494,
+      "regionId": "r-0494",
+      "area": 1794,
+      "bbox": [
+        293,
+        901,
+        92,
+        94
+      ],
+      "centroid": [
+        343.0,
+        942.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 495,
+      "regionId": "r-0495",
+      "area": 2246,
+      "bbox": [
+        780,
+        903,
+        62,
+        78
+      ],
+      "centroid": [
+        806.0,
+        940.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 496,
+      "regionId": "r-0496",
+      "area": 1537,
+      "bbox": [
+        1007,
+        903,
+        54,
+        75
+      ],
+      "centroid": [
+        1035.0,
+        933.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 497,
+      "regionId": "r-0497",
+      "area": 3346,
+      "bbox": [
+        478,
+        904,
+        71,
+        99
+      ],
+      "centroid": [
+        516.0,
+        949.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 498,
+      "regionId": "r-0498",
+      "area": 406,
+      "bbox": [
+        526,
+        904,
+        33,
+        37
+      ],
+      "centroid": [
+        542.0,
+        926.0
+      ],
+      "defaultColor": "#b36b67",
+      "fillable": true
+    },
+    {
+      "id": 499,
+      "regionId": "r-0499",
+      "area": 3205,
+      "bbox": [
+        274,
+        905,
+        78,
+        70
+      ],
+      "centroid": [
+        307.0,
+        946.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 500,
+      "regionId": "r-0500",
+      "area": 275,
+      "bbox": [
+        949,
+        906,
+        39,
+        22
+      ],
+      "centroid": [
+        969.0,
+        918.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 501,
+      "regionId": "r-0501",
+      "area": 241,
+      "bbox": [
+        329,
+        908,
+        22,
+        18
+      ],
+      "centroid": [
+        343.0,
+        916.0
+      ],
+      "defaultColor": "#d78c7c",
+      "fillable": true
+    },
+    {
+      "id": 502,
+      "regionId": "r-0502",
+      "area": 2353,
+      "bbox": [
+        351,
+        908,
+        89,
+        74
+      ],
+      "centroid": [
+        394.0,
+        946.0
+      ],
+      "defaultColor": "#d4b692",
+      "fillable": true
+    },
+    {
+      "id": 503,
+      "regionId": "r-0503",
+      "area": 721,
+      "bbox": [
+        34,
+        911,
+        25,
+        58
+      ],
+      "centroid": [
+        45.0,
+        943.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 504,
+      "regionId": "r-0504",
+      "area": 846,
+      "bbox": [
+        55,
+        914,
+        31,
+        58
+      ],
+      "centroid": [
+        66.0,
+        942.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 505,
+      "regionId": "r-0505",
+      "area": 244,
+      "bbox": [
+        596,
+        914,
+        13,
+        28
+      ],
+      "centroid": [
+        602.0,
+        927.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 506,
+      "regionId": "r-0506",
+      "area": 1147,
+      "bbox": [
+        194,
+        915,
+        44,
+        52
+      ],
+      "centroid": [
+        216.0,
+        943.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 507,
+      "regionId": "r-0507",
+      "area": 342,
+      "bbox": [
+        666,
+        916,
+        29,
+        28
+      ],
+      "centroid": [
+        681.0,
+        927.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 508,
+      "regionId": "r-0508",
+      "area": 482,
+      "bbox": [
+        693,
+        917,
+        30,
+        33
+      ],
+      "centroid": [
+        705.0,
+        936.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 509,
+      "regionId": "r-0509",
+      "area": 364,
+      "bbox": [
+        972,
+        917,
+        15,
+        41
+      ],
+      "centroid": [
+        978.0,
+        936.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 510,
+      "regionId": "r-0510",
+      "area": 2027,
+      "bbox": [
+        43,
+        921,
+        85,
+        96
+      ],
+      "centroid": [
+        103.0,
+        967.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 511,
+      "regionId": "r-0511",
+      "area": 359,
+      "bbox": [
+        617,
+        922,
+        26,
+        36
+      ],
+      "centroid": [
+        631.0,
+        932.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 512,
+      "regionId": "r-0512",
+      "area": 505,
+      "bbox": [
+        737,
+        922,
+        41,
+        21
+      ],
+      "centroid": [
+        758.0,
+        932.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 513,
+      "regionId": "r-0513",
+      "area": 3315,
+      "bbox": [
+        996,
+        922,
+        82,
+        107
+      ],
+      "centroid": [
+        1051.0,
+        985.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 514,
+      "regionId": "r-0514",
+      "area": 727,
+      "bbox": [
+        947,
+        924,
+        27,
+        53
+      ],
+      "centroid": [
+        958.0,
+        954.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 515,
+      "regionId": "r-0515",
+      "area": 243,
+      "bbox": [
+        583,
+        929,
+        13,
+        32
+      ],
+      "centroid": [
+        589.0,
+        945.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 516,
+      "regionId": "r-0516",
+      "area": 223,
+      "bbox": [
+        889,
+        937,
+        22,
+        47
+      ],
+      "centroid": [
+        902.0,
+        966.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 517,
+      "regionId": "r-0517",
+      "area": 260,
+      "bbox": [
+        918,
+        937,
+        28,
+        20
+      ],
+      "centroid": [
+        927.0,
+        946.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 518,
+      "regionId": "r-0518",
+      "area": 390,
+      "bbox": [
+        1120,
+        938,
+        27,
+        36
+      ],
+      "centroid": [
+        1136.0,
+        954.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 519,
+      "regionId": "r-0519",
+      "area": 197,
+      "bbox": [
+        545,
+        941,
+        23,
+        22
+      ],
+      "centroid": [
+        555.0,
+        950.0
+      ],
+      "defaultColor": "#cbb0c7",
+      "fillable": true
+    },
+    {
+      "id": 520,
+      "regionId": "r-0520",
+      "area": 472,
+      "bbox": [
+        706,
+        942,
+        37,
+        26
+      ],
+      "centroid": [
+        725.0,
+        955.0
+      ],
+      "defaultColor": "#ae7b45",
+      "fillable": true
+    },
+    {
+      "id": 521,
+      "regionId": "r-0521",
+      "area": 225,
+      "bbox": [
+        760,
+        944,
+        27,
+        19
+      ],
+      "centroid": [
+        775.0,
+        951.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 522,
+      "regionId": "r-0522",
+      "area": 1163,
+      "bbox": [
+        372,
+        949,
+        74,
+        63
+      ],
+      "centroid": [
+        400.0,
+        984.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 523,
+      "regionId": "r-0523",
+      "area": 170,
+      "bbox": [
+        563,
+        950,
+        21,
+        14
+      ],
+      "centroid": [
+        574.0,
+        956.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 524,
+      "regionId": "r-0524",
+      "area": 305,
+      "bbox": [
+        921,
+        951,
+        27,
+        20
+      ],
+      "centroid": [
+        936.0,
+        960.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 525,
+      "regionId": "r-0525",
+      "area": 302,
+      "bbox": [
+        545,
+        952,
+        31,
+        44
+      ],
+      "centroid": [
+        561.0,
+        978.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 526,
+      "regionId": "r-0526",
+      "area": 624,
+      "bbox": [
+        814,
+        952,
+        30,
+        41
+      ],
+      "centroid": [
+        826.0,
+        969.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 527,
+      "regionId": "r-0527",
+      "area": 735,
+      "bbox": [
+        848,
+        953,
+        58,
+        54
+      ],
+      "centroid": [
+        889.0,
+        987.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 528,
+      "regionId": "r-0528",
+      "area": 435,
+      "bbox": [
+        66,
+        956,
+        28,
+        22
+      ],
+      "centroid": [
+        79.0,
+        966.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 529,
+      "regionId": "r-0529",
+      "area": 387,
+      "bbox": [
+        726,
+        956,
+        27,
+        30
+      ],
+      "centroid": [
+        740.0,
+        970.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 530,
+      "regionId": "r-0530",
+      "area": 446,
+      "bbox": [
+        837,
+        960,
+        23,
+        40
+      ],
+      "centroid": [
+        847.0,
+        976.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 531,
+      "regionId": "r-0531",
+      "area": 602,
+      "bbox": [
+        44,
+        961,
+        56,
+        30
+      ],
+      "centroid": [
+        76.0,
+        982.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 532,
+      "regionId": "r-0532",
+      "area": 586,
+      "bbox": [
+        235,
+        961,
+        42,
+        35
+      ],
+      "centroid": [
+        253.0,
+        971.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 533,
+      "regionId": "r-0533",
+      "area": 2795,
+      "bbox": [
+        744,
+        962,
+        71,
+        76
+      ],
+      "centroid": [
+        780.0,
+        1000.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 534,
+      "regionId": "r-0534",
+      "area": 161,
+      "bbox": [
+        855,
+        966,
+        14,
+        16
+      ],
+      "centroid": [
+        861.0,
+        973.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 535,
+      "regionId": "r-0535",
+      "area": 263,
+      "bbox": [
+        921,
+        966,
+        24,
+        24
+      ],
+      "centroid": [
+        931.0,
+        976.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 536,
+      "regionId": "r-0536",
+      "area": 628,
+      "bbox": [
+        228,
+        967,
+        63,
+        49
+      ],
+      "centroid": [
+        275.0,
+        1003.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 537,
+      "regionId": "r-0537",
+      "area": 444,
+      "bbox": [
+        610,
+        968,
+        51,
+        122
+      ],
+      "centroid": [
+        655.0,
+        1031.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 538,
+      "regionId": "r-0538",
+      "area": 608,
+      "bbox": [
+        633,
+        968,
+        22,
+        49
+      ],
+      "centroid": [
+        644.0,
+        990.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 539,
+      "regionId": "r-0539",
+      "area": 252,
+      "bbox": [
+        956,
+        968,
+        19,
+        42
+      ],
+      "centroid": [
+        963.0,
+        987.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 540,
+      "regionId": "r-0540",
+      "area": 1770,
+      "bbox": [
+        339,
+        970,
+        54,
+        61
+      ],
+      "centroid": [
+        363.0,
+        1003.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 541,
+      "regionId": "r-0541",
+      "area": 1477,
+      "bbox": [
+        606,
+        970,
+        41,
+        84
+      ],
+      "centroid": [
+        623.0,
+        1013.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 542,
+      "regionId": "r-0542",
+      "area": 689,
+      "bbox": [
+        472,
+        972,
+        42,
+        28
+      ],
+      "centroid": [
+        494.0,
+        989.0
+      ],
+      "defaultColor": "#325792",
+      "fillable": true
+    },
+    {
+      "id": 543,
+      "regionId": "r-0543",
+      "area": 1201,
+      "bbox": [
+        616,
+        976,
+        57,
+        127
+      ],
+      "centroid": [
+        663.0,
+        1052.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 544,
+      "regionId": "r-0544",
+      "area": 931,
+      "bbox": [
+        795,
+        976,
+        134,
+        48
+      ],
+      "centroid": [
+        862.0,
+        1005.0
+      ],
+      "defaultColor": "#e3b450",
+      "fillable": true
+    },
+    {
+      "id": 545,
+      "regionId": "r-0545",
+      "area": 565,
+      "bbox": [
+        221,
+        978,
+        58,
+        28
+      ],
+      "centroid": [
+        252.0,
+        999.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 546,
+      "regionId": "r-0546",
+      "area": 195,
+      "bbox": [
+        993,
+        984,
+        14,
+        31
+      ],
+      "centroid": [
+        1001.0,
+        997.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 547,
+      "regionId": "r-0547",
+      "area": 455,
+      "bbox": [
+        534,
+        985,
+        27,
+        29
+      ],
+      "centroid": [
+        547.0,
+        998.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 548,
+      "regionId": "r-0548",
+      "area": 408,
+      "bbox": [
+        933,
+        985,
+        22,
+        39
+      ],
+      "centroid": [
+        946.0,
+        1004.0
+      ],
+      "defaultColor": "#4c8bb3",
+      "fillable": true
+    },
+    {
+      "id": 549,
+      "regionId": "r-0549",
+      "area": 424,
+      "bbox": [
+        881,
+        986,
+        42,
+        27
+      ],
+      "centroid": [
+        906.0,
+        1005.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 550,
+      "regionId": "r-0550",
+      "area": 483,
+      "bbox": [
+        584,
+        994,
+        24,
+        39
+      ],
+      "centroid": [
+        597.0,
+        1015.0
+      ],
+      "defaultColor": "#dc514b",
+      "fillable": true
+    },
+    {
+      "id": 551,
+      "regionId": "r-0551",
+      "area": 172,
+      "bbox": [
+        815,
+        998,
+        20,
+        30
+      ],
+      "centroid": [
+        823.0,
+        1011.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 552,
+      "regionId": "r-0552",
+      "area": 1207,
+      "bbox": [
+        729,
+        1000,
+        47,
+        46
+      ],
+      "centroid": [
+        749.0,
+        1026.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 553,
+      "regionId": "r-0553",
+      "area": 187,
+      "bbox": [
+        518,
+        1002,
+        13,
+        26
+      ],
+      "centroid": [
+        524.0,
+        1015.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 554,
+      "regionId": "r-0554",
+      "area": 607,
+      "bbox": [
+        828,
+        1003,
+        39,
+        43
+      ],
+      "centroid": [
+        847.0,
+        1021.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 555,
+      "regionId": "r-0555",
+      "area": 3159,
+      "bbox": [
+        795,
+        1013,
+        109,
+        66
+      ],
+      "centroid": [
+        836.0,
+        1054.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 556,
+      "regionId": "r-0556",
+      "area": 1303,
+      "bbox": [
+        869,
+        1019,
+        84,
+        45
+      ],
+      "centroid": [
+        904.0,
+        1038.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 557,
+      "regionId": "r-0557",
+      "area": 246,
+      "bbox": [
+        618,
+        1024,
+        36,
+        39
+      ],
+      "centroid": [
+        636.0,
+        1039.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 558,
+      "regionId": "r-0558",
+      "area": 259,
+      "bbox": [
+        858,
+        1027,
+        25,
+        24
+      ],
+      "centroid": [
+        867.0,
+        1039.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 559,
+      "regionId": "r-0559",
+      "area": 457,
+      "bbox": [
+        928,
+        1027,
+        45,
+        31
+      ],
+      "centroid": [
+        951.0,
+        1044.0
+      ],
+      "defaultColor": "#a43235",
+      "fillable": true
+    },
+    {
+      "id": 560,
+      "regionId": "r-0560",
+      "area": 552,
+      "bbox": [
+        1081,
+        1027,
+        24,
+        42
+      ],
+      "centroid": [
+        1094.0,
+        1048.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 561,
+      "regionId": "r-0561",
+      "area": 217,
+      "bbox": [
+        532,
+        1029,
+        29,
+        17
+      ],
+      "centroid": [
+        546.0,
+        1037.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 562,
+      "regionId": "r-0562",
+      "area": 905,
+      "bbox": [
+        615,
+        1035,
+        38,
+        50
+      ],
+      "centroid": [
+        635.0,
+        1062.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 563,
+      "regionId": "r-0563",
+      "area": 1761,
+      "bbox": [
+        507,
+        1044,
+        55,
+        72
+      ],
+      "centroid": [
+        536.0,
+        1080.0
+      ],
+      "defaultColor": "#f4e8de",
+      "fillable": true
+    },
+    {
+      "id": 564,
+      "regionId": "r-0564",
+      "area": 1072,
+      "bbox": [
+        893,
+        1046,
+        58,
+        30
+      ],
+      "centroid": [
+        920.0,
+        1061.0
+      ],
+      "defaultColor": "#d93b3e",
+      "fillable": true
+    },
+    {
+      "id": 565,
+      "regionId": "r-0565",
+      "area": 172,
+      "bbox": [
+        485,
+        1050,
+        29,
+        17
+      ],
+      "centroid": [
+        497.0,
+        1057.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 566,
+      "regionId": "r-0566",
+      "area": 328,
+      "bbox": [
+        383,
+        1055,
+        35,
+        35
+      ],
+      "centroid": [
+        395.0,
+        1068.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 567,
+      "regionId": "r-0567",
+      "area": 562,
+      "bbox": [
+        389,
+        1057,
+        34,
+        35
+      ],
+      "centroid": [
+        409.0,
+        1076.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 568,
+      "regionId": "r-0568",
+      "area": 341,
+      "bbox": [
+        556,
+        1062,
+        27,
+        42
+      ],
+      "centroid": [
+        569.0,
+        1086.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 569,
+      "regionId": "r-0569",
+      "area": 379,
+      "bbox": [
+        458,
+        1068,
+        32,
+        20
+      ],
+      "centroid": [
+        474.0,
+        1078.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 570,
+      "regionId": "r-0570",
+      "area": 463,
+      "bbox": [
+        123,
+        1070,
+        42,
+        24
+      ],
+      "centroid": [
+        143.0,
+        1081.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 571,
+      "regionId": "r-0571",
+      "area": 1333,
+      "bbox": [
+        726,
+        1073,
+        48,
+        66
+      ],
+      "centroid": [
+        747.0,
+        1103.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 572,
+      "regionId": "r-0572",
+      "area": 629,
+      "bbox": [
+        970,
+        1082,
+        34,
+        58
+      ],
+      "centroid": [
+        980.0,
+        1110.0
+      ],
+      "defaultColor": "#f3d658",
+      "fillable": true
+    },
+    {
+      "id": 573,
+      "regionId": "r-0573",
+      "area": 300,
+      "bbox": [
+        127,
+        1083,
+        43,
+        22
+      ],
+      "centroid": [
+        146.0,
+        1097.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 574,
+      "regionId": "r-0574",
+      "area": 521,
+      "bbox": [
+        980,
+        1084,
+        28,
+        55
+      ],
+      "centroid": [
+        995.0,
+        1113.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 575,
+      "regionId": "r-0575",
+      "area": 447,
+      "bbox": [
+        283,
+        1095,
+        38,
+        28
+      ],
+      "centroid": [
+        306.0,
+        1104.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 576,
+      "regionId": "r-0576",
+      "area": 520,
+      "bbox": [
+        275,
+        1096,
+        42,
+        32
+      ],
+      "centroid": [
+        292.0,
+        1115.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 577,
+      "regionId": "r-0577",
+      "area": 208,
+      "bbox": [
+        548,
+        1097,
+        30,
+        26
+      ],
+      "centroid": [
+        564.0,
+        1110.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 578,
+      "regionId": "r-0578",
+      "area": 285,
+      "bbox": [
+        510,
+        1104,
+        47,
+        16
+      ],
+      "centroid": [
+        535.0,
+        1110.0
+      ],
+      "defaultColor": "#be393c",
+      "fillable": true
+    },
+    {
+      "id": 579,
+      "regionId": "r-0579",
+      "area": 533,
+      "bbox": [
+        735,
+        1104,
+        38,
+        37
+      ],
+      "centroid": [
+        756.0,
+        1121.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 580,
+      "regionId": "r-0580",
+      "area": 237,
+      "bbox": [
+        552,
+        1110,
+        24,
+        27
+      ],
+      "centroid": [
+        566.0,
+        1124.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 581,
+      "regionId": "r-0581",
+      "area": 244,
+      "bbox": [
+        483,
+        1111,
+        17,
+        26
+      ],
+      "centroid": [
+        491.0,
+        1124.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 582,
+      "regionId": "r-0582",
+      "area": 589,
+      "bbox": [
+        499,
+        1116,
+        48,
+        26
+      ],
+      "centroid": [
+        520.0,
+        1129.0
+      ],
+      "defaultColor": "#fefefe",
+      "fillable": true
+    },
+    {
+      "id": 583,
+      "regionId": "r-0583",
+      "area": 374,
+      "bbox": [
+        829,
+        1118,
+        29,
+        24
+      ],
+      "centroid": [
+        844.0,
+        1131.0
+      ],
+      "defaultColor": "#e34542",
+      "fillable": true
+    },
+    {
+      "id": 584,
+      "regionId": "r-0584",
+      "area": 410,
+      "bbox": [
+        481,
+        1120,
+        74,
+        29
+      ],
+      "centroid": [
+        520.0,
+        1142.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    },
+    {
+      "id": 585,
+      "regionId": "r-0585",
+      "area": 1022,
+      "bbox": [
+        484,
+        1129,
+        74,
+        41
+      ],
+      "centroid": [
+        519.0,
+        1155.0
+      ],
+      "defaultColor": "#c8964d",
+      "fillable": true
+    }
+  ]
+}

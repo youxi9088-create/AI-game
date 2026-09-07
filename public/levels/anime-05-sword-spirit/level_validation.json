@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "levelId": "anime-05-sword-spirit",
+  "difficulty": "困难",
+  "regions": 585,
+  "regionGuidance": {
+    "recommendedMin": 80,
+    "recommendedMax": null,
+    "label": "建议 80 区以上（无上限）",
+    "actual": 585,
+    "policy": "advisory"
+  },
+  "colors": 18,
+  "fillablePixels": 1098900,
+  "minRegionArea": 150,
+  "errors": [],
+  "warnings": [],
+  "summary": "关卡校验通过：585 个区域、18 种颜色、最小可点击区域 150px"
+}

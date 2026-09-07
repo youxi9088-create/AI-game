@@ -36,6 +36,7 @@ type Level = {
   systemStage?: number
   timeLimitSeconds?: number
   placeholder?: boolean
+  unavailable?: boolean
 }
 type Progress = Record<string, string[]>
 type PaintedColors = Record<string, Record<string, number>>
@@ -77,6 +78,11 @@ const DIFFICULTY_SPECS: Record<Difficulty, { colors: number; regions: string }> 
   简单: { colors: 8, regions: '25–70 区' },
   普通: { colors: 14, regions: '45–130 区' },
   困难: { colors: 18, regions: '80 区以上（无上限）' },
+}
+const SYSTEM_DIFFICULTY_COPY: Record<Difficulty, { summary: string; time: string }> = {
+  简单: { summary: '大色块入门', time: '3 分钟' },
+  普通: { summary: '中等细节进阶', time: '5 分钟' },
+  困难: { summary: '高细节、多区域（无上限）', time: '7 分钟' },
 }
 
 const catLevel: Level = {
@@ -328,6 +334,74 @@ async function loadPackagedLevels(): Promise<Level[]> {
   }))
 }
 
+type SystemLevelManifestEntry = {
+  stage: number
+  assetId: string
+  title: string
+  difficulty: Difficulty
+  ready: boolean
+}
+
+type SystemLevelManifest = {
+  levels: SystemLevelManifestEntry[]
+}
+
+// System-level art is served from a long-lived CDN cache. Increment this when
+// replacing source artwork so existing players do not keep an outdated image.
+const SYSTEM_LEVEL_ASSET_VERSION = '20260907-alpha1'
+
+function systemAssetUrl(assetId: string, filename: string) {
+  return `${import.meta.env.BASE_URL}system-levels/${assetId}/${filename}?v=${SYSTEM_LEVEL_ASSET_VERSION}`
+}
+
+async function loadSystemLevels(): Promise<Level[]> {
+  const base = import.meta.env.BASE_URL
+  const response = await fetch(`${base}system-levels/index.json?v=${SYSTEM_LEVEL_ASSET_VERSION}`)
+  if (!response.ok) throw new Error('系统关卡清单加载失败')
+  const manifest = await response.json() as SystemLevelManifest
+
+  const readyLevels = await Promise.all(manifest.levels.filter((entry) => entry.ready).map(async (entry) => {
+    const levelResponse = await fetch(systemAssetUrl(entry.assetId, 'level.json'))
+    if (!levelResponse.ok) throw new Error(`系统关卡读取失败：第 ${entry.stage} 关`)
+    const level = await levelResponse.json() as Level
+    return [entry.stage, {
+      ...level,
+      id: `system-stage-${entry.stage}`,
+      title: entry.title || level.title,
+      subtitle: '系统预制关卡 · 完成参考图已准备',
+      difficulty: entry.difficulty,
+      preview: systemAssetUrl(entry.assetId, 'preview.webp'),
+      reference: systemAssetUrl(entry.assetId, 'reference.webp'),
+      lineart: systemAssetUrl(entry.assetId, 'outline.webp'),
+      outline: systemAssetUrl(entry.assetId, 'outline.webp'),
+      regionMask: systemAssetUrl(entry.assetId, 'region_mask_web.png'),
+      regionMaskWeb: systemAssetUrl(entry.assetId, 'region_mask_web.png'),
+      custom: false,
+      official: true,
+      systemStage: entry.stage,
+      timeLimitSeconds: secondsForDifficulty(entry.difficulty),
+      placeholder: false,
+      unavailable: false,
+    } satisfies Level] as const
+  }))
+  const readyByStage = new Map(readyLevels)
+
+  return manifest.levels.map((entry) => {
+    const ready = readyByStage.get(entry.stage)
+    if (ready) return ready
+    const placeholder = PLACEHOLDER_SYSTEM_LEVELS[entry.stage - 1]
+    if (!placeholder) throw new Error(`系统关卡占位数据缺失：第 ${entry.stage} 关`)
+    return {
+      ...placeholder,
+      title: entry.title || placeholder.title,
+      subtitle: '该关的正式素材正在补齐中。',
+      difficulty: entry.difficulty,
+      timeLimitSeconds: secondsForDifficulty(entry.difficulty),
+      unavailable: !entry.ready,
+    }
+  })
+}
+
 function RegionShape({ region, filled, guide, onPaint }: { region: Region; filled: boolean; guide: boolean; onPaint: () => void }) {
   const shared = {
     className: `region ${filled ? 'region--filled' : ''} ${guide ? 'region--guide' : ''}`,
@@ -416,7 +490,7 @@ function difficultyForStage(stage: number): Difficulty {
 }
 
 function secondsForDifficulty(difficulty: Difficulty) {
-  return difficulty === '简单' ? 60 : difficulty === '普通' ? 120 : 180
+  return difficulty === '简单' ? 180 : difficulty === '普通' ? 300 : 420
 }
 
 function systemDayKey(now = Date.now()) {
@@ -431,7 +505,7 @@ function formatCountdown(seconds: number) {
   return `${minutes}:${String(remainder).padStart(2, '0')}`
 }
 
-const SYSTEM_LEVELS: Level[] = Array.from({ length: 50 }, (_, index) => {
+const PLACEHOLDER_SYSTEM_LEVELS: Level[] = Array.from({ length: 50 }, (_, index) => {
   const stage = index + 1
   const difficulty = difficultyForStage(stage)
   const colorCount = DIFFICULTY_SPECS[difficulty].colors
@@ -455,10 +529,10 @@ function levelCompleted(level: Level, progress: Progress) {
   return level.regions.length > 0 && (progress[level.id]?.length ?? 0) >= level.regions.length
 }
 
-function unlockedSystemStage(progress: Progress) {
+function unlockedSystemStage(progress: Progress, systemLevels: Level[]) {
   let unlocked = 3
-  for (let index = 2; index < SYSTEM_LEVELS.length - 1; index += 1) {
-    if (!levelCompleted(SYSTEM_LEVELS[index], progress)) break
+  for (let index = 2; index < systemLevels.length - 1; index += 1) {
+    if (!levelCompleted(systemLevels[index], progress)) break
     unlocked = index + 2
   }
   return unlocked
@@ -898,28 +972,58 @@ function HomePage({ onPlay, onWorkshop, onGallery }: { onPlay: () => void; onWor
   </div>
 }
 
-function SystemLevelsPage({ progress, onOpen, onBack }: { progress: Progress; onOpen: (level: Level) => void; onBack: () => void }) {
-  const unlockedThrough = unlockedSystemStage(progress)
+function SystemLevelsPage({ levels, progress, onOpen, onBack }: { levels: Level[]; progress: Progress; onOpen: (level: Level) => void; onBack: () => void }) {
+  const unlockedThrough = unlockedSystemStage(progress, levels)
+  const [difficultyChooserOpen, setDifficultyChooserOpen] = useState(false)
+  const [chosenDifficulty, setChosenDifficulty] = useState<Difficulty | null>(null)
+  const directLevels = chosenDifficulty ? levels.filter((item) => item.difficulty === chosenDifficulty) : []
+
+  function openDifficultyChooser() {
+    setChosenDifficulty(null)
+    setDifficultyChooserOpen(true)
+  }
+
+  function openDirectLevel(level: Level) {
+    if (level.unavailable) return
+    setDifficultyChooserOpen(false)
+    onOpen(level)
+  }
+
   return <div className="app-shell levels-shell">
     <header className="topbar">
       <button className="brand" onClick={onBack} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
       <nav><button onClick={onBack}>返回首页</button></nav>
     </header>
     <main className="levels-main">
-      <section className="levels-heading"><p className="eyebrow">SYSTEM COLLECTION · 50 STAGES</p><h1>线框填色关卡</h1><p>前 3 关已解锁。完成上一关后，下一关会自动开放；预制素材将在后续替换为正式线稿与完成参考图。</p><div className="levels-legend"><span><b>简单</b> 1–5 关 · 8 色 · 1 分钟</span><span><b>普通</b> 6–15 关 · 14 色 · 2 分钟</span><span><b>困难</b> 16–50 关 · 18 色 · 3 分钟</span></div></section>
+      <section className="levels-heading"><p className="eyebrow">SYSTEM COLLECTION · 46 STAGES</p><h1>线框填色关卡</h1><p>前 3 关已解锁。完成上一关后，下一关会自动开放；每一关均含正式线稿、完成参考图和可点击区域。</p><div className="levels-legend"><span><b>简单</b> 1–5 关 · 大色块入门 · 3 分钟</span><span><b>普通</b> 6–15 关 · 中等细节进阶 · 5 分钟</span><span><b>困难</b> 16–46 关 · 高细节、多区域（无上限）· 7 分钟</span></div></section>
+      <section className="system-play-mode" aria-label="选择挑战方式">
+        <div><span className="system-play-mode-icon">①</span><div><strong>按顺序闯关</strong><small>从已解锁的关卡开始，完成上一关后自动解锁下一关。</small></div></div>
+        <button className="soft-button system-play-mode-current" type="button">当前模式</button>
+        <div><span className="system-play-mode-icon system-play-mode-icon--challenge">✦</span><div><strong>按难度挑战</strong><small>直接选择简单、普通或困难，挑选任一已准备的关卡开始。</small></div></div>
+        <button className="primary small" type="button" onClick={openDifficultyChooser}>选择难度</button>
+      </section>
       <section className="system-level-grid" aria-label="系统预制关卡列表">
-        {SYSTEM_LEVELS.map((item) => {
+        {levels.map((item) => {
           const stage = item.systemStage ?? 0
-          const locked = stage > unlockedThrough
+          const unavailable = Boolean(item.unavailable)
+          const locked = unavailable || stage > unlockedThrough
           const done = levelCompleted(item, progress)
           const itemProgress = progress[item.id]?.length ?? 0
           return <button className={`system-level-card system-level-card--${item.difficulty} ${locked ? 'system-level-card--locked' : ''} ${done ? 'system-level-card--done' : ''}`} key={item.id} onClick={() => onOpen(item)} disabled={locked}>
             <div className="system-level-image"><img src={item.preview} alt="" />{locked ? <span className="lock-badge">🔒</span> : <span className="stage-badge">{stage}</span>}</div>
-            <div className="system-level-copy"><strong>第 {stage} 关</strong><small>{item.difficulty} · {item.palette.length} 色 · {formatCountdown(item.timeLimitSeconds ?? 0)}</small><em>{done ? '✓ 已完成' : locked ? `完成第 ${stage - 1} 关解锁` : `${itemProgress}/${item.regions.length} 区域`}</em></div>
+            <div className="system-level-copy"><strong>第 {stage} 关</strong><small>{item.difficulty} · {item.palette.length} 色 · {item.regions.length} 区 · {formatCountdown(item.timeLimitSeconds ?? 0)}</small><em>{done ? '✓ 已完成' : unavailable ? '素材生成中' : locked ? `完成第 ${stage - 1} 关解锁` : `${itemProgress}/${item.regions.length} 区域`}</em></div>
           </button>
         })}
       </section>
     </main>
+    {difficultyChooserOpen && <div className="modal-backdrop difficulty-level-backdrop" role="presentation" onPointerDown={() => setDifficultyChooserOpen(false)}>
+      <section className="modal difficulty-level-modal" role="dialog" aria-modal="true" aria-labelledby="difficulty-level-title" onPointerDown={(event) => event.stopPropagation()}>
+        <button className="close-button" type="button" onClick={() => setDifficultyChooserOpen(false)} aria-label="关闭">×</button>
+        <p className="eyebrow">DIRECT CHALLENGE</p><h2 id="difficulty-level-title">选择挑战难度</h2><p>难度模式不受顺序解锁限制；已准备好的关卡可以直接开始挑战。</p>
+        <div className="difficulty-picker difficulty-picker--system">{(Object.keys(SYSTEM_DIFFICULTY_COPY) as Difficulty[]).map((item) => <button key={item} className={chosenDifficulty === item ? 'chosen' : ''} type="button" onClick={() => setChosenDifficulty(item)}><strong>{item}</strong><span>{SYSTEM_DIFFICULTY_COPY[item].summary} · {SYSTEM_DIFFICULTY_COPY[item].time}</span></button>)}</div>
+        {chosenDifficulty && <section className="difficulty-level-list" aria-label={`${chosenDifficulty}关卡`}><div className="difficulty-level-list-head"><strong>{chosenDifficulty}关卡</strong><span>{directLevels.filter((item) => !item.unavailable).length} 个可直接挑战</span></div><div className="difficulty-level-grid">{directLevels.map((item) => <button className={`system-level-card system-level-card--${item.difficulty} ${item.unavailable ? 'system-level-card--locked' : ''}`} key={item.id} type="button" onClick={() => openDirectLevel(item)} disabled={item.unavailable}><div className="system-level-image"><img src={item.preview} alt="" />{item.unavailable ? <span className="lock-badge">⌛</span> : <span className="stage-badge">{item.systemStage}</span>}</div><div className="system-level-copy"><strong>第 {item.systemStage} 关 · {item.title}</strong><small>{item.palette.length} 色 · {item.regions.length} 区 · {formatCountdown(item.timeLimitSeconds ?? 0)}</small><em>{item.unavailable ? '素材生成中' : '直接开始挑战'}</em></div></button>)}</div></section>}
+      </section>
+    </div>}
   </div>
 }
 
@@ -947,6 +1051,7 @@ export default function App() {
     return window.location.hash === '#levels' ? 'levels' : 'home'
   })
   const [customLevels, setCustomLevels] = useState<Level[]>([])
+  const [systemLevels, setSystemLevels] = useState<Level[]>(PLACEHOLDER_SYSTEM_LEVELS)
   const [removedLevelIds, setRemovedLevelIds] = useState<string[]>([])
   const [progress, setProgress] = useState<Progress>({})
   const [paintedColors, setPaintedColors] = useState<PaintedColors>({})
@@ -978,7 +1083,7 @@ export default function App() {
     const removed = new Set(removedLevelIds)
     return [...builtInLevels, ...customLevels].filter((item) => !removed.has(item.id))
   }, [customLevels, removedLevelIds])
-  const rawLevel = SYSTEM_LEVELS.find((item) => item.id === activeId) ?? levels.find((item) => item.id === activeId) ?? catLevel
+  const rawLevel = systemLevels.find((item) => item.id === activeId) ?? levels.find((item) => item.id === activeId) ?? catLevel
   const savedCanvasName = canvasNames[rawLevel.id]?.trim()
   const level = savedCanvasName ? { ...rawLevel, title: savedCanvasName } : rawLevel
   const canvas = useMemo(() => {
@@ -1004,8 +1109,9 @@ export default function App() {
     void (async () => {
       const snapshot = await readSnapshot()
       try {
-        const packagedLevels = await loadPackagedLevels()
+        const [packagedLevels, loadedSystemLevels] = await Promise.all([loadPackagedLevels(), loadSystemLevels()])
         if (!active) return
+        setSystemLevels(loadedSystemLevels)
         const importedUrl = requestedLevelUrl()
         let importedLevel: Level | null = null
         if (importedUrl) {
@@ -1031,11 +1137,12 @@ export default function App() {
         setSystemAttempt(snapshot?.systemAttempt ?? null)
         setTimeCapsules(snapshot?.timeCapsules?.day === systemDayKey() ? snapshot.timeCapsules : { day: systemDayKey(), remaining: 3 })
         const restoredActiveId = snapshot?.activeId
-        const canRestoreActive = Boolean(restoredActiveId && (SYSTEM_LEVELS.some((item) => item.id === restoredActiveId) || nextLevels.some((item) => item.id === restoredActiveId)))
+        const canRestoreActive = Boolean(restoredActiveId && (loadedSystemLevels.some((item) => item.id === restoredActiveId) || nextLevels.some((item) => item.id === restoredActiveId)))
         setActiveId(importedLevel?.id ?? (canRestoreActive ? restoredActiveId! : packagedLevels[0]?.id ?? catLevel.id))
         if (importedLevel) setNotice(`已导入《${importedLevel.title}》：这是真人线框自由填色关卡。`)
       } catch {
         if (!active) return
+        setSystemLevels(PLACEHOLDER_SYSTEM_LEVELS)
         setCustomLevels(snapshot?.customLevels ?? [])
         setRemovedLevelIds(snapshot?.removedLevelIds ?? [])
         setProgress(snapshot?.progress ?? {})
@@ -1063,6 +1170,14 @@ export default function App() {
     const day = systemDayKey(clockNow)
     setTimeCapsules((current) => current.day === day ? current : { day, remaining: 3 })
   }, [clockNow])
+  // 系统关卡除了从关卡列表打开，也可能由刷新页面、浏览器前进/后退或本地快照恢复进入。
+  // 这些路径此前不会经过 openSystemLevel，导致没有 systemAttempt，从而计时与时间胶囊均不生效。
+  useEffect(() => {
+    if (!hydrated || page !== 'game' || !isSystemLevel || attemptForLevel || isFinished) return
+    const now = Date.now()
+    setClockNow(now)
+    setSystemAttempt({ levelId: level.id, endsAt: now + (level.timeLimitSeconds ?? secondsForDifficulty(level.difficulty)) * 1000 })
+  }, [attemptForLevel, hydrated, isFinished, isSystemLevel, level.difficulty, level.id, level.timeLimitSeconds, page])
   useEffect(() => {
     if (completion !== 100 || level.regions.length === 0) return
     setIsFinished(true)
@@ -1293,6 +1408,13 @@ export default function App() {
   }, [])
 
   function navigate(next: 'home' | 'levels' | 'game' | 'workshop' | 'gallery') {
+    // ?level= 是一次性的自由导入关卡入口。离开游戏页时若保留它，hashchange 会再次
+    // 把页面强制切回该自由关卡，导致“系统关卡”页面及其计时玩法无法进入。
+    if (next !== 'game' && requestedLevelUrl()) {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('level')
+      window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`)
+    }
     window.location.hash = next === 'workshop' ? 'workshop' : next === 'game' ? 'game' : next === 'levels' ? 'levels' : next === 'gallery' ? 'gallery' : ''
     setPage(next)
   }
@@ -1304,18 +1426,18 @@ export default function App() {
     navigate('game')
   }} />
 
-  if (page === 'levels') return <SystemLevelsPage progress={progress} onOpen={openSystemLevel} onBack={() => navigate('home')} />
-  if (page === 'gallery') return <GalleryPage levels={levels} progress={progress} canvasNames={canvasNames} onOpen={(item) => { startLevel(item); navigate('game') }} onDelete={deleteGalleryLevel} onBack={() => navigate('home')} onWorkshop={() => navigate('workshop')} />
-  if (page === 'home') return <HomePage onPlay={() => navigate('levels')} onWorkshop={() => navigate('workshop')} onGallery={() => navigate('gallery')} />
-
-  // #game 首次打开时，关卡清单尚在异步加载。不要先用旧 SVG 兜底关卡渲染，
-  // 否则正式关卡到达后会产生错误线稿的闪帧。
+  // 本地快照会异步恢复。所有入口都要等恢复完成后才可操作，否则用户可能在
+  // systemAttempt 仍未恢复时启动关卡，随后被旧快照覆盖为已经超时的倒计时。
   if (!hydrated) return <div className="app-shell game-boot-shell">
     <header className="topbar">
       <button className="brand" onClick={() => navigate('home')} aria-label="回到首页"><span className="brand-mark">✦</span><span>coloring game</span></button>
     </header>
     <main className="game-boot" aria-live="polite"><span className="game-boot-spinner" aria-hidden="true" /><strong>正在载入画册…</strong><small>正在准备正式线稿和填色区域</small></main>
   </div>
+
+  if (page === 'levels') return <SystemLevelsPage levels={systemLevels} progress={progress} onOpen={openSystemLevel} onBack={() => navigate('home')} />
+  if (page === 'gallery') return <GalleryPage levels={levels} progress={progress} canvasNames={canvasNames} onOpen={(item) => { startLevel(item); navigate('game') }} onDelete={deleteGalleryLevel} onBack={() => navigate('home')} onWorkshop={() => navigate('workshop')} />
+  if (page === 'home') return <HomePage onPlay={() => navigate('levels')} onWorkshop={() => navigate('workshop')} onGallery={() => navigate('gallery')} />
 
   return <div className="app-shell">
     <header className="topbar">
@@ -1336,7 +1458,7 @@ export default function App() {
         </div>
         {isEditingTitle && <div className="rename-actions"><button className="soft-button" onClick={saveCanvasName}>保存</button><button className="text-button" onClick={() => setIsEditingTitle(false)}>取消</button>{canvasNames[level.id] && <button className="text-button" onClick={restoreCanvasName}>恢复原名</button>}</div>}
         <p className="muted">{level.subtitle}</p>
-        <p className="difficulty-target">本关：{level.palette.length} 色 · {level.regions.length} 个区域<br />{isSystemLevel ? `${level.difficulty}规则：${level.palette.length} 色 · 限时 ${formatCountdown(level.timeLimitSeconds ?? 0)}${level.placeholder ? ' · 占位素材' : ''}` : `${level.difficulty}建议：${DIFFICULTY_SPECS[level.difficulty].colors} 色 · ${DIFFICULTY_SPECS[level.difficulty].regions}`}</p>
+        <p className="difficulty-target">本关：{level.palette.length} 色 · {level.regions.length} 个区域<br />{isSystemLevel ? `${level.difficulty}说明：${SYSTEM_DIFFICULTY_COPY[level.difficulty].summary} · 限时 ${formatCountdown(level.timeLimitSeconds ?? 0)}${level.placeholder ? ' · 占位素材' : ''}` : `${level.difficulty}建议：${DIFFICULTY_SPECS[level.difficulty].colors} 色 · ${DIFFICULTY_SPECS[level.difficulty].regions}`}</p>
         <div className="progress-block"><div className="progress-label"><span>完成进度</span><strong>{completion}%</strong></div><div className="progress-track"><span style={{ width: `${completion}%` }} /></div><p>{completed.length} / {level.regions.length} 个区域</p></div>
         {isSystemLevel && <><div className={`timer-card ${isTimeUp ? 'timer-card--ended' : ''}`}><div><span>⏱ 限时挑战</span><strong>{formatCountdown(remainingSeconds)}</strong></div><p>{level.difficulty}关卡限时 {formatCountdown(level.timeLimitSeconds ?? 0)}；时间到后本局结束。</p></div><div className="prop-card"><div className="prop-card-head"><span>◒ 道具区</span><strong>{timeCapsules.remaining}/3</strong></div><div className="prop-card-item"><span className="prop-icon">⌛</span><div><strong>时间胶囊</strong><small>为本关增加 30 秒</small></div></div><button className="soft-button" onClick={useTimeCapsule} disabled={isTimeUp || isFinished}>使用时间胶囊 +30 秒</button><small>每天 0 点发放 3 个，未使用数量不会累加。</small></div></>}
         <div className="assist-card"><div className="assist-head"><span>✦ 填色助力</span><strong>{energy}/{manualEnergyTarget}</strong></div><div className="energy-track"><span style={{ width: `${energy / manualEnergyTarget * 100}%` }} /></div><p>手动填色充能；释放后只会补完当前选中色号的细碎区域。</p><button className="soft-button" onClick={releaseAssist} disabled={isTimeUp}>释放助力 <kbd>F</kbd></button></div>

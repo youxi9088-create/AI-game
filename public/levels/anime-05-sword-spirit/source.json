@@ -1,0 +1,20 @@
+{
+  "sourceImage": "E:\\IP项目\\填色游戏\\colored_refs\\anime-05.png",
+  "lineArt": "E:\\IP项目\\填色游戏\\线框填色关卡数据_完整包_v1.2\\level_images\\L23_动漫人物_剑灵少女.png",
+  "pipeline": "prebuilt-color-reference+coloring-book-lineart+lineart-barrier+slic+v2",
+  "params": {
+    "workSize": [
+      1200,
+      1200
+    ],
+    "slicSegments": 800,
+    "mergeThresh": 11.0,
+    "minAreaRatio": 0.0004,
+    "paletteN": 18,
+    "dpEps": 1.4
+  },
+  "license": "user-provided prebuilt level assets",
+  "colorReferenceSource": "E:\\IP项目\\填色游戏\\colored_refs\\anime-05.png",
+  "lineArtSource": "E:\\IP项目\\填色游戏\\线框填色关卡数据_完整包_v1.2\\level_images\\L23_动漫人物_剑灵少女.png",
+  "referenceImage": "reference.png"
+}

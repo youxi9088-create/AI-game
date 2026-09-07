@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" rx="36" fill="#FFFDF8"/>
+  <path d="M80 460C200 386 298 404 408 462C518 520 646 498 720 452" stroke="#CFC6BA" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="186" cy="154" r="54" stroke="#D8CEC2" stroke-width="6"/>
+  <path d="M402 180C402 146 430 118 464 118C486 118 505 130 516 149C525 141 538 136 552 136C584 136 610 162 610 194C610 226 584 252 552 252H460C428 252 402 226 402 194V180Z" stroke="#D8CEC2" stroke-width="6"/>
+  <rect x="260" y="264" width="280" height="178" rx="26" fill="#F6F0E7" stroke="#CFC6BA" stroke-width="6"/>
+  <path d="M290 332L400 238L510 332" stroke="#CFC6BA" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="354" cy="350" r="18" stroke="#CFC6BA" stroke-width="6"/>
+  <circle cx="446" cy="350" r="18" stroke="#CFC6BA" stroke-width="6"/>
+  <path d="M374 396C390 410 410 410 426 396" stroke="#CFC6BA" stroke-width="6" stroke-linecap="round"/>
+  <text x="400" y="530" text-anchor="middle" fill="#A69A8B" font-family="Arial, sans-serif" font-size="28" font-weight="700">正式线稿素材待替换</text>
+</svg>

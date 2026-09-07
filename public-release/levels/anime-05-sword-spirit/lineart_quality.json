@@ -1,0 +1,52 @@
+{
+  "engine": "provided-coloring-book-lineart",
+  "qualityGate": {
+    "version": 1,
+    "passed": true,
+    "summary": "线稿通过可玩性验收",
+    "metrics": {
+      "width": 2048,
+      "height": 2048,
+      "lineCoverage": 10.15,
+      "edgeInkCoverage": 0.0,
+      "inkComponents": 71,
+      "smallComponents": 36,
+      "smallComponentsPerMp": 8.58,
+      "fillableRegionsEstimate": 572
+    },
+    "checks": [
+      {
+        "id": "coverage",
+        "title": "线条密度",
+        "passed": true,
+        "detail": "10.15%（可玩范围 0.45%–12.0%）"
+      },
+      {
+        "id": "edge",
+        "title": "画布边缘残线",
+        "passed": true,
+        "detail": "0.0%（上限 5.5%）"
+      },
+      {
+        "id": "regions",
+        "title": "闭合可填区域",
+        "passed": true,
+        "detail": "估计 572 个闭合区域（至少 12 个）"
+      },
+      {
+        "id": "noise",
+        "title": "碎线与噪点",
+        "passed": true,
+        "detail": "8.58 个/百万像素（上限 260）"
+      }
+    ],
+    "baseline": null,
+    "sourceProfile": null,
+    "userMessage": "线稿结构清晰，可继续进行区域分割。",
+    "inputAdvice": [
+      "优先选择主体清晰、光线均匀、背景不过度拥挤的照片或插画。",
+      "推荐 1–3 个主体、主体占画面约三分之一以上，边缘留有少量空白。",
+      "避免纯风景、密集树叶/草地、毛发特写、强水彩纹理、复杂文字、水印和黑色边框。"
+    ]
+  }
+}

@@ -8,6 +8,7 @@ const rootDir = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [react(), fnVite()],
+  publicDir: resolve(rootDir, 'public-release'),
   build: {
     rollupOptions: {
       input: {
