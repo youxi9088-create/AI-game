@@ -1,0 +1,727 @@
+{
+  "version": 3,
+  "tasks": [
+    {
+      "taskId": "official-mia-gapfill-master",
+      "planId": "official-mia-gapfill",
+      "resourceId": "master-portrait",
+      "label": "角色资料卡（官方上传）",
+      "kind": "image",
+      "planSnapshot": {
+        "planId": "official-mia-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "米娅"
+        },
+        "intent": {
+          "sourceText": "米娅：官方牌友，成年虚构职业舞台女性，棕色短发，薄荷绿短夹克配白色百褶短裙与运动鞋，气质明快",
+          "style": "舞台轻奢",
+          "clothingLabel": "薄荷运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "米娅"
+          },
+          "clothing": {
+            "label": "薄荷运动装",
+            "prompt": "a mint-green cropped stage jacket with a white pleated mini skirt and matching sneakers"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "action-a02",
+            "group": "角色表现",
+            "label": "action-a02",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a03",
+            "group": "角色表现",
+            "label": "action-a03",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a04",
+            "group": "角色表现",
+            "label": "action-a04",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a05",
+            "group": "角色表现",
+            "label": "action-a05",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "official-upload",
+      "provider": "official-upload",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.751Z",
+      "updatedAt": "2026-09-19T08:45:23.751Z",
+      "runId": null,
+      "providerRequestId": null,
+      "publicUrl": "/assets/pals/mia-v1.png",
+      "sourceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=42d337fe-c827-477b-a7fc-52ecd61f2fb4",
+      "sha256": "official-mia-gapfill",
+      "bytes": null,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false
+    },
+    {
+      "taskId": "official-yinlan-gapfill-master",
+      "planId": "official-yinlan-gapfill",
+      "resourceId": "master-portrait",
+      "label": "角色资料卡（官方上传）",
+      "kind": "image",
+      "planSnapshot": {
+        "planId": "official-yinlan-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "银岚"
+        },
+        "intent": {
+          "sourceText": "银岚：官方牌友，成年虚构运动系女性，及腰纯银白色长发（全头银白，绝无黑色、深灰或棕色发丝）、蓝色眼睛、X 形发夹，蓝白运动夹克配深色短裤与白色运动鞋",
+          "style": "舞台轻奢",
+          "clothingLabel": "蓝白运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "银岚"
+          },
+          "clothing": {
+            "label": "蓝白运动装",
+            "prompt": "a navy-and-white sporty track jacket over a dark top, dark shorts and white sneakers; her waist-length hair is uniformly pure silver-white, never black or dark"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "table-standee",
+            "group": "角色表现",
+            "label": "table-standee",
+            "kind": "image",
+            "requiredForSeat": false,
+            "production": "aihub:jimeng",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "official-upload",
+      "provider": "official-upload",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.751Z",
+      "updatedAt": "2026-09-19T08:45:23.751Z",
+      "runId": null,
+      "providerRequestId": null,
+      "publicUrl": "/assets/pals/yinlan-v1.png",
+      "sourceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=7e389c07-4030-4176-ab4a-cb1e05bfe2b0",
+      "sha256": "official-yinlan-gapfill",
+      "bytes": null,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false
+    },
+    {
+      "taskId": "94eded1c-6b0d-4c4f-87bf-20941bd4c781",
+      "planId": "official-mia-gapfill",
+      "resourceId": "action-a02",
+      "label": "action-a02",
+      "kind": "video",
+      "planSnapshot": {
+        "planId": "official-mia-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "米娅"
+        },
+        "intent": {
+          "sourceText": "米娅：官方牌友，成年虚构职业舞台女性，棕色短发，薄荷绿短夹克配白色百褶短裙与运动鞋，气质明快",
+          "style": "舞台轻奢",
+          "clothingLabel": "薄荷运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "米娅"
+          },
+          "clothing": {
+            "label": "薄荷运动装",
+            "prompt": "a mint-green cropped stage jacket with a white pleated mini skirt and matching sneakers"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "action-a02",
+            "group": "角色表现",
+            "label": "action-a02",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a03",
+            "group": "角色表现",
+            "label": "action-a03",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a04",
+            "group": "角色表现",
+            "label": "action-a04",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a05",
+            "group": "角色表现",
+            "label": "action-a05",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "aihub:seedance",
+      "provider": "aihub-seedance",
+      "transport": "aihub-agent",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.754Z",
+      "updatedAt": "2026-09-19T08:51:35.739Z",
+      "runId": "AAABoLjXd_BsUA",
+      "providerRequestId": "AAABoLjXd_BsUA",
+      "publicUrl": "/assets/pals/ugc/米娅/mia-gapfill-action-a02.mp4",
+      "sha256": "97a778d8248dfab5472806a78d4320ac672a61795ff6be8de6d760b165b7d2f5",
+      "bytes": 2974565,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false,
+      "promptRevision": "default-v1",
+      "strategyVersion": "aihub-image-v2",
+      "previousTaskId": null,
+      "profileReferenceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=42d337fe-c827-477b-a7fc-52ecd61f2fb4",
+      "referenceResourceId": "master-portrait",
+      "authFingerprint": "f99c119a98a547fd",
+      "promptSummary": "舞台轻奢",
+      "model": null,
+      "fallbackModel": null,
+      "fallbackUsed": false,
+      "mapping": {
+        "slot": "A02",
+        "usage": "牌桌出牌事件：一种状态对应一个视频，拆分静态图作为回退",
+        "layout": "single-character-video"
+      },
+      "reviewStatus": "AWAITING_REVIEW"
+    },
+    {
+      "taskId": "f179a732-9a84-46eb-ae18-fedcf21e3711",
+      "planId": "official-mia-gapfill",
+      "resourceId": "action-a03",
+      "label": "action-a03",
+      "kind": "video",
+      "planSnapshot": {
+        "planId": "official-mia-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "米娅"
+        },
+        "intent": {
+          "sourceText": "米娅：官方牌友，成年虚构职业舞台女性，棕色短发，薄荷绿短夹克配白色百褶短裙与运动鞋，气质明快",
+          "style": "舞台轻奢",
+          "clothingLabel": "薄荷运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "米娅"
+          },
+          "clothing": {
+            "label": "薄荷运动装",
+            "prompt": "a mint-green cropped stage jacket with a white pleated mini skirt and matching sneakers"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "action-a02",
+            "group": "角色表现",
+            "label": "action-a02",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a03",
+            "group": "角色表现",
+            "label": "action-a03",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a04",
+            "group": "角色表现",
+            "label": "action-a04",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a05",
+            "group": "角色表现",
+            "label": "action-a05",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "aihub:seedance",
+      "provider": "aihub-seedance",
+      "transport": "aihub-agent",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.755Z",
+      "updatedAt": "2026-09-19T08:48:32.268Z",
+      "runId": "AAABoLjXd-Xxcg",
+      "providerRequestId": "AAABoLjXd-Xxcg",
+      "publicUrl": "/assets/pals/ugc/米娅/mia-gapfill-action-a03.mp4",
+      "sha256": "3b12b590a54f074786425e9947710536d0a3720ae9d06fc6f8cae3fbbfe7a8ed",
+      "bytes": 3259083,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false,
+      "promptRevision": "default-v1",
+      "strategyVersion": "aihub-image-v2",
+      "previousTaskId": null,
+      "profileReferenceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=42d337fe-c827-477b-a7fc-52ecd61f2fb4",
+      "referenceResourceId": "master-portrait",
+      "authFingerprint": "f99c119a98a547fd",
+      "promptSummary": "舞台轻奢",
+      "model": null,
+      "fallbackModel": null,
+      "fallbackUsed": false,
+      "mapping": {
+        "slot": "A03",
+        "usage": "牌桌不出事件：一种状态对应一个视频，拆分静态图作为回退",
+        "layout": "single-character-video"
+      },
+      "reviewStatus": "AWAITING_REVIEW"
+    },
+    {
+      "taskId": "0a4ee605-96b5-47f0-b985-e30d384a00e1",
+      "planId": "official-mia-gapfill",
+      "resourceId": "action-a04",
+      "label": "action-a04",
+      "kind": "video",
+      "planSnapshot": {
+        "planId": "official-mia-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "米娅"
+        },
+        "intent": {
+          "sourceText": "米娅：官方牌友，成年虚构职业舞台女性，棕色短发，薄荷绿短夹克配白色百褶短裙与运动鞋，气质明快",
+          "style": "舞台轻奢",
+          "clothingLabel": "薄荷运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "米娅"
+          },
+          "clothing": {
+            "label": "薄荷运动装",
+            "prompt": "a mint-green cropped stage jacket with a white pleated mini skirt and matching sneakers"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "action-a02",
+            "group": "角色表现",
+            "label": "action-a02",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a03",
+            "group": "角色表现",
+            "label": "action-a03",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a04",
+            "group": "角色表现",
+            "label": "action-a04",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a05",
+            "group": "角色表现",
+            "label": "action-a05",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "aihub:seedance",
+      "provider": "aihub-seedance",
+      "transport": "aihub-agent",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.755Z",
+      "updatedAt": "2026-09-19T08:48:30.845Z",
+      "runId": "AAABoLjXeAUHHQ",
+      "providerRequestId": "AAABoLjXeAUHHQ",
+      "publicUrl": "/assets/pals/ugc/米娅/mia-gapfill-action-a04.mp4",
+      "sha256": "cab870b74e607f175bbab904f3e17d734d9bb820edbb8a128df1235afa1938e3",
+      "bytes": 3557592,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false,
+      "promptRevision": "default-v1",
+      "strategyVersion": "aihub-image-v2",
+      "previousTaskId": null,
+      "profileReferenceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=42d337fe-c827-477b-a7fc-52ecd61f2fb4",
+      "referenceResourceId": "master-portrait",
+      "authFingerprint": "f99c119a98a547fd",
+      "promptSummary": "舞台轻奢",
+      "model": null,
+      "fallbackModel": null,
+      "fallbackUsed": false,
+      "mapping": {
+        "slot": "A04",
+        "usage": "牌桌胜利事件：一种状态对应一个视频，拆分静态图作为回退",
+        "layout": "single-character-video"
+      },
+      "reviewStatus": "AWAITING_REVIEW"
+    },
+    {
+      "taskId": "d6e7a3ca-7233-4c6e-8677-6962829a57a7",
+      "planId": "official-mia-gapfill",
+      "resourceId": "action-a05",
+      "label": "action-a05",
+      "kind": "video",
+      "planSnapshot": {
+        "planId": "official-mia-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "米娅"
+        },
+        "intent": {
+          "sourceText": "米娅：官方牌友，成年虚构职业舞台女性，棕色短发，薄荷绿短夹克配白色百褶短裙与运动鞋，气质明快",
+          "style": "舞台轻奢",
+          "clothingLabel": "薄荷运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "米娅"
+          },
+          "clothing": {
+            "label": "薄荷运动装",
+            "prompt": "a mint-green cropped stage jacket with a white pleated mini skirt and matching sneakers"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "action-a02",
+            "group": "角色表现",
+            "label": "action-a02",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a03",
+            "group": "角色表现",
+            "label": "action-a03",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a04",
+            "group": "角色表现",
+            "label": "action-a04",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          },
+          {
+            "id": "action-a05",
+            "group": "角色表现",
+            "label": "action-a05",
+            "kind": "video",
+            "requiredForSeat": false,
+            "production": "aihub:seedance",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "aihub:seedance",
+      "provider": "aihub-seedance",
+      "transport": "aihub-agent",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.755Z",
+      "updatedAt": "2026-09-19T08:49:33.612Z",
+      "runId": "AAABoLjXeAU_9A",
+      "providerRequestId": "AAABoLjXeAU_9A",
+      "publicUrl": "/assets/pals/ugc/米娅/mia-gapfill-action-a05.mp4",
+      "sha256": "b413b59b54271db08abfad586ea9a17771cc757e67b35d9888fa3f0a3b6412e4",
+      "bytes": 3393180,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false,
+      "promptRevision": "default-v1",
+      "strategyVersion": "aihub-image-v2",
+      "previousTaskId": null,
+      "profileReferenceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=42d337fe-c827-477b-a7fc-52ecd61f2fb4",
+      "referenceResourceId": "master-portrait",
+      "authFingerprint": "f99c119a98a547fd",
+      "promptSummary": "舞台轻奢",
+      "model": null,
+      "fallbackModel": null,
+      "fallbackUsed": false,
+      "mapping": {
+        "slot": "A05",
+        "usage": "牌桌失败事件：一种状态对应一个视频，拆分静态图作为回退",
+        "layout": "single-character-video"
+      },
+      "reviewStatus": "AWAITING_REVIEW"
+    },
+    {
+      "taskId": "f126ab25-94cc-4858-a5c5-a2d60baaff7a",
+      "planId": "official-yinlan-gapfill",
+      "resourceId": "table-standee",
+      "label": "table-standee",
+      "kind": "image",
+      "planSnapshot": {
+        "planId": "official-yinlan-gapfill",
+        "identity": {
+          "suffix": 9000,
+          "version": 1,
+          "name": "银岚"
+        },
+        "intent": {
+          "sourceText": "银岚：官方牌友，成年虚构运动系女性，及腰纯银白色长发（全头银白，绝无黑色、深灰或棕色发丝）、蓝色眼睛、X 形发夹，蓝白运动夹克配深色短裤与白色运动鞋",
+          "style": "舞台轻奢",
+          "clothingLabel": "蓝白运动装",
+          "accessoryLabel": "无"
+        },
+        "profileCard": {
+          "character": {
+            "name": "银岚"
+          },
+          "clothing": {
+            "label": "蓝白运动装",
+            "prompt": "a navy-and-white sporty track jacket over a dark top, dark shorts and white sneakers; her waist-length hair is uniformly pure silver-white, never black or dark"
+          },
+          "accessory": {
+            "label": "无",
+            "prompt": "no headwear or novelty accessory"
+          },
+          "actions": {
+            "idle": "待机呼吸与自然眨眼",
+            "play": "向牌桌出牌",
+            "pass": "克制地示意过牌",
+            "win": "克制胜利庆祝",
+            "lose": "失利后保持从容"
+          }
+        },
+        "styleLock": "Match the current Linxing visual direction, not her identity: high-end semi-realistic cinematic game CG with natural skin, hair and fabric materials; premium adult fashion-editorial finish; low-key midnight casino lighting; deep midnight navy and violet color grade with restrained champagne-gold practical lights and rim light; shallow depth of field and soft bokeh; clean readable silhouette; consistent camera language, facial rendering and body proportions across every asset; no cel shading, no thick anime outlines, no chibi proportions, no flat posterized colors.",
+        "productionRoutes": [],
+        "resources": [
+          {
+            "id": "table-standee",
+            "group": "角色表现",
+            "label": "table-standee",
+            "kind": "image",
+            "requiredForSeat": false,
+            "production": "aihub:jimeng",
+            "acceptance": ""
+          }
+        ]
+      },
+      "route": "aihub:jimeng",
+      "provider": "aihub-image",
+      "transport": "aihub-agent",
+      "status": "SUCCEEDED",
+      "attempt": 1,
+      "createdAt": "2026-09-19T08:45:23.762Z",
+      "updatedAt": "2026-09-19T08:47:19.249Z",
+      "runId": "AAABoLjXeATd_w",
+      "providerRequestId": "AAABoLjXeATd_w",
+      "publicUrl": "/assets/pals/ugc/银岚/yinlan-gapfill-table-standee.png",
+      "sha256": "9bf5f5c99309f4f4930d5bbb61c986f1e768cb27ebcea2ec635454c038896f11",
+      "bytes": 2507091,
+      "width": null,
+      "height": null,
+      "error": null,
+      "retryLocked": false,
+      "promptRevision": "single-table-standee-3-4-v3",
+      "strategyVersion": "aihub-image-v2",
+      "previousTaskId": null,
+      "profileReferenceUrl": "https://gcdncs.cn.ndhy.com/v0.1/download?attachment=true&dentryId=7e389c07-4030-4176-ab4a-cb1e05bfe2b0",
+      "referenceResourceId": "master-portrait",
+      "alphaStage": "LOCAL_CUTOUT",
+      "authFingerprint": "f99c119a98a547fd",
+      "promptSummary": "舞台轻奢",
+      "model": "jimeng",
+      "fallbackModel": null,
+      "fallbackUsed": false,
+      "sourceUrl": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedream-5-0/0217898075304645e054c6d0ba743fab13ed8d72af4b8b2c07082_0.jpeg?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=%2F20260919%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260919T084607Z&X-Tos-Expires=86400&X-Tos-Signature=ab93995c1c2b2cbda9af91473aa5e9c02f830226e3bce7cd30da349d6564c983&X-Tos-SignedHeaders=host",
+      "mapping": {
+        "slot": "table",
+        "usage": "牌桌角色默认形象：单人半身、透明背景，统一位置与尺寸",
+        "layout": "single-half-body"
+      },
+      "reviewStatus": "AWAITING_REVIEW"
+    }
+  ],
+  "deletedPlanIds": [],
+  "portraitApprovals": [
+    {
+      "planId": "official-mia-gapfill",
+      "taskId": "official-mia-gapfill-master",
+      "sha256": "official-mia-gapfill",
+      "confirmedAt": "2026-09-19T08:45:23.751Z"
+    },
+    {
+      "planId": "official-yinlan-gapfill",
+      "taskId": "official-yinlan-gapfill-master",
+      "sha256": "official-yinlan-gapfill",
+      "confirmedAt": "2026-09-19T08:45:23.751Z"
+    }
+  ]
+}

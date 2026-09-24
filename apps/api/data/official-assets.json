@@ -1,0 +1,2261 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-18",
+  "description": "官方角色资产的机器可读登记表。每条记录：角色 palId、服装 outfitId、用途 slot（RESOURCE_SLOTS key，见 apps/web/asset-slots.js）、动作 action、来源 source、验收状态 acceptance.status。slot 为 null 的条目不属于运行时展示槽（场景背景等）。file 相对 apps/web/；base=project 时相对项目根（仅源素材，不进入运行时）。验收状态枚举：APPROVED 正式验收 / AWAITING_REVIEW 待验收 / LEGACY_UNREVIEWED 存量未逐项验收 / REJECTED_MANUAL 手工替换不通过 / MISSING 缺项 / SOURCE_ONLY 仅源素材不进运行时。",
+  "assets": [
+    {
+      "id": "linxing-avatar-v1",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "avatar",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/linxing-v1.png",
+      "file": "assets/pals/linxing-v1.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-08 Codex 内建 ImageGen 项目专用生成"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "场景肖像图正式登记为头像槽资产（2026-09-18 决策：肖像图转正）；同时作为 portraitRef、layers.base 与回合特写来源。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-standee-full",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "lounge-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/linxing-standee.png",
+      "file": "assets/pals/linxing-standee.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "官方交付全身透明立绘"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "全身透明立绘，同时兼任大厅与牌桌两槽（displayAsset 官方回退）。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-standee-table",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/linxing-standee.png",
+      "file": "assets/pals/linxing-standee.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "官方交付全身透明立绘"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "与大厅同一全身立绘文件兼任牌桌槽。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-sheet-v1",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-sheet",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/linxing-actions-v1.png",
+      "file": "assets/pals/linxing-actions-v1.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-08 ImageGen 以项目内林星形象为参考生成的六格动作表（1536×1024，固定 3×2 网格 512px/格）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "五态源拼图，仅作源文件；运行时加载拆出的单张，不显示整张拼图。第 6 格（网格坐标 [2,1]）未绑定合同动作坐标，拆分时不导出。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-a01-image",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a01",
+      "action": "idle",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/linxing-A01.png",
+      "file": "assets/pals/actions/linxing-A01.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/linxing-actions-v1.png",
+        "sourceRect": [
+          0,
+          0,
+          512,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "待机。逐张预览验收通过；白底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-action-a02-image",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a02",
+      "action": "play",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/linxing-A02.png",
+      "file": "assets/pals/actions/linxing-A02.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/linxing-actions-v1.png",
+        "sourceRect": [
+          512,
+          0,
+          1024,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "出牌。逐张预览验收通过；白底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-action-a03-image",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a03",
+      "action": "pass",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/linxing-A03.png",
+      "file": "assets/pals/actions/linxing-A03.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/linxing-actions-v1.png",
+        "sourceRect": [
+          1024,
+          0,
+          1536,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "不出。逐张预览验收通过；白底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-action-a04-image",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a04",
+      "action": "win",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/linxing-A04.png",
+      "file": "assets/pals/actions/linxing-A04.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/linxing-actions-v1.png",
+        "sourceRect": [
+          0,
+          512,
+          512,
+          1024
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "胜利。逐张预览验收通过；白底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-action-a05-image",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a05",
+      "action": "lose",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/linxing-A05.png",
+      "file": "assets/pals/actions/linxing-A05.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/linxing-actions-v1.png",
+        "sourceRect": [
+          512,
+          512,
+          1024,
+          1024
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "失败。逐张预览验收通过；白底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-action-a01-video",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a01",
+      "action": "idle",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-A01-idle-v1.webm",
+      "file": "assets/pals/video/linxing-A01-idle-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/linxing，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "待机 WebM。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-a02-video",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a02",
+      "action": "play",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-A02-play-v1.webm",
+      "file": "assets/pals/video/linxing-A02-play-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/linxing，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "出牌 WebM。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-a03-video",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a03",
+      "action": "pass",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-A03-pass-v1.webm",
+      "file": "assets/pals/video/linxing-A03-pass-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/linxing，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "不出 WebM。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-a04-video",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a04",
+      "action": "win",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-A04-win-v1.webm",
+      "file": "assets/pals/video/linxing-A04-win-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/linxing，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "胜利 WebM。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-action-a05-video",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "action-a05",
+      "action": "lose",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-A05-lose-v1.webm",
+      "file": "assets/pals/video/linxing-A05-lose-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/linxing，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "失败 WebM。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-entry-v2",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "entry-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-entry-v2.mp4",
+      "file": "assets/pals/video/linxing-entry-v2.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供入场片，2026-09-12 接入为入场 v2"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "运行时入场视频；播完回到牌桌立绘。",
+        "reviewedAt": "2026-09-12",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-entry-v2-poster",
+      "palId": "pal-linxing",
+      "outfitId": null,
+      "slot": "entry-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/video/linxing-entry-v2-poster.jpg",
+      "file": "assets/pals/video/linxing-entry-v2-poster.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "2026-09-18 ffmpeg 从 linxing-entry-v2.mp4 t=0.5s 取帧",
+        "derivedFrom": "assets/pals/video/linxing-entry-v2.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "人物完整可读；含源片自带「AI生成」水印，与运行时视频画面一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-avatar-v1",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "avatar",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/mia-v1.png",
+      "file": "assets/pals/mia-v1.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-08 Codex 内建 ImageGen 项目专用生成"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "场景肖像图正式登记为头像槽资产（2026-09-18 决策：肖像图转正）；同时作为 portraitRef 与 layers.base。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-standee-full",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "lounge-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/mia-standee.png",
+      "file": "assets/pals/mia-standee.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "官方交付全身透明立绘"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "全身透明立绘，同时兼任大厅与牌桌两槽。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-standee-table",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/mia-standee.png",
+      "file": "assets/pals/mia-standee.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "官方交付全身透明立绘"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "与大厅同一全身立绘文件兼任牌桌槽。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-action-sheet-v1",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-sheet",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/mia-actions-v1.png",
+      "file": "assets/pals/mia-actions-v1.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-08 ImageGen 生成的六格动作表（1536×1024，固定 3×2 网格 512px/格，深色舞台底）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "五态源拼图，仅作源文件；运行时加载拆出的单张。第 6 格未绑定合同动作坐标，拆分时不导出。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-action-a01-image",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a01",
+      "action": "idle",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/mia-A01.png",
+      "file": "assets/pals/actions/mia-A01.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/mia-actions-v1.png",
+        "sourceRect": [
+          0,
+          0,
+          512,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "待机。逐张预览验收通过；深色舞台底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a02-image",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a02",
+      "action": "play",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/mia-A02.png",
+      "file": "assets/pals/actions/mia-A02.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/mia-actions-v1.png",
+        "sourceRect": [
+          512,
+          0,
+          1024,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "出牌。逐张预览验收通过；深色舞台底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a03-image",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a03",
+      "action": "pass",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/mia-A03.png",
+      "file": "assets/pals/actions/mia-A03.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/mia-actions-v1.png",
+        "sourceRect": [
+          1024,
+          0,
+          1536,
+          512
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "不出。逐张预览验收通过；深色舞台底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a04-image",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a04",
+      "action": "win",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/mia-A04.png",
+      "file": "assets/pals/actions/mia-A04.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/mia-actions-v1.png",
+        "sourceRect": [
+          0,
+          512,
+          512,
+          1024
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "胜利。逐张预览验收通过；深色舞台底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a05-image",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a05",
+      "action": "lose",
+      "kind": "image",
+      "publicUrl": "/assets/pals/actions/mia-A05.png",
+      "file": "assets/pals/actions/mia-A05.png",
+      "source": {
+        "kind": "script-split",
+        "detail": "2026-09-18 scripts/split-action-sheet.py 按 3×2 固定网格拆分",
+        "derivedFrom": "assets/pals/mia-actions-v1.png",
+        "sourceRect": [
+          512,
+          512,
+          1024,
+          1024
+        ]
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "失败。主体完整，左下角有源图网格渗边杂点（已附注）；深色舞台底与源图一致。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a01-video",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a01",
+      "action": "idle",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-A01-idle-v1.webm",
+      "file": "assets/pals/video/mia-A01-idle-v1.webm",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/mia，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "米娅仅交付 A01 一态视频。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-action-a02-video",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a02",
+      "action": "play",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-A02-play-v1.mp4",
+      "file": "assets/pals/video/mia-A02-play-v1.mp4",
+      "source": {
+        "kind": "pipeline-gapfill",
+        "detail": "2026-09-19 scripts/produce-official-gaps.mjs：AIHub Seedance，参考图为 CS 上的 mia-v1.png 资料卡",
+        "taskId": "official-mia-gapfill"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "出牌：米娅入座递牌，中后段为手部出牌特写；身份与服装一致。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a03-video",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a03",
+      "action": "pass",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-A03-pass-v1.mp4",
+      "file": "assets/pals/video/mia-A03-pass-v1.mp4",
+      "source": {
+        "kind": "pipeline-gapfill",
+        "detail": "2026-09-19 scripts/produce-official-gaps.mjs：AIHub Seedance",
+        "taskId": "official-mia-gapfill"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "不出：面部可读、手势克制。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a04-video",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a04",
+      "action": "win",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-A04-win-v1.mp4",
+      "file": "assets/pals/video/mia-A04-win-v1.mp4",
+      "source": {
+        "kind": "pipeline-gapfill",
+        "detail": "2026-09-19 scripts/produce-official-gaps.mjs：AIHub Seedance",
+        "taskId": "official-mia-gapfill"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "胜利：前倾欣喜反应，符合胜利反馈。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-action-a05-video",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "action-a05",
+      "action": "lose",
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-A05-lose-v1.mp4",
+      "file": "assets/pals/video/mia-A05-lose-v1.mp4",
+      "source": {
+        "kind": "pipeline-gapfill",
+        "detail": "2026-09-19 scripts/produce-official-gaps.mjs：AIHub Seedance",
+        "taskId": "official-mia-gapfill"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "失败：眨眼从容收尾，符合「失利后保持从容」。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-entry-v1",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "entry-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-entry-v1.mp4",
+      "file": "assets/pals/video/mia-entry-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供：角色五态包/mia 出场片，2026-09-08 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "运行时入场视频；播完回到牌桌立绘。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "mia-entry-v1-poster",
+      "palId": "pal-mia",
+      "outfitId": null,
+      "slot": "entry-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/video/mia-entry-v1-poster.jpg",
+      "file": "assets/pals/video/mia-entry-v1-poster.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "2026-09-18 ffmpeg 从 mia-entry-v1.mp4 t=3.5s 取帧（t=0.5s 为过渡特写，人物不完整，弃用）",
+        "derivedFrom": "assets/pals/video/mia-entry-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "头肩完整、构图可读。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "yinlan-avatar-v1",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "avatar",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/yinlan-v1.png",
+      "file": "assets/pals/yinlan-v1.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-14 ImageGen 图生图（以 linxing_dance02.mp4 收尾帧为参考），抠像后裁边按 3:4 派生"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "肖像图正式登记为头像槽资产（2026-09-18 决策：肖像图转正）；同时作为 portraitRef 与 layers.base。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-standee-full",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "role": "fallback",
+      "publicUrl": "/assets/pals/yinlan-standee.png",
+      "file": "assets/pals/yinlan-standee.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-14 ImageGen 图生图 + prepare-pal-assets.mjs 品红色键抠像"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "全身透明立绘。专用牌桌半身图（yinlan-seat.png）验收不通过撤下后，牌桌槽由本全身立绘回退；同时是 standeeRef 默认立绘。",
+        "reviewedAt": "2026-09-18",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-lounge-v1",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "lounge-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/yinlan-lounge.png",
+      "file": "assets/pals/yinlan-lounge.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-15 ImageGen 以银岚基础立绘与林星首页构图为参考生成，色键抠像"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "首页 L1 半身主视觉。",
+        "reviewedAt": "2026-09-15",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-table-standee-v3",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/yinlan-table-standee.png",
+      "file": "assets/pals/yinlan-table-standee.png",
+      "source": {
+        "kind": "pipeline-gapfill",
+        "detail": "2026-09-19 scripts/produce-official-gaps.mjs：AIHub 即梦 5.0（1728×2304 真透明），参考图为 CS 上的 yinlan-v1.png 资料卡；首轮发色偏差驳回后按全银白发锁定重产",
+        "taskId": "official-yinlan-gapfill"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "专用牌桌半身透明立绘：全银白发、蓝眼、X 发夹、蓝白运动装，与资料卡一致；替换手工撤下图与全身回退。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "yinlan-seat-manual",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/yinlan-seat.png",
+      "source": {
+        "kind": "manual-edit",
+        "detail": "2026-09-15 手工替换图（md5 9af6d078…，与 yinlan-table-standee-v2.png 为同一文件）"
+      },
+      "acceptance": {
+        "status": "REJECTED_MANUAL",
+        "note": "验收不通过：手工裁剪/替换的临时图，人物服装（水手服）与银岚身份不符，不能作为正式验收结果。2026-09-18 从 tableStandeeRef 撤下，文件保留不删；运行时回退 yinlan-standee.png。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "yinlan-table-standee-v2-manual",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/yinlan-table-standee-v2.png",
+      "source": {
+        "kind": "manual-edit",
+        "detail": "与 yinlan-seat.png 同一文件的重复命名（md5 9af6d078…）"
+      },
+      "acceptance": {
+        "status": "REJECTED_MANUAL",
+        "note": "同 yinlan-seat-manual；未被任何代码引用。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "yinlan-entry-v1",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "entry-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/yinlan-entry-v1.mp4",
+      "file": "assets/pals/video/yinlan-entry-v1.mp4",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-15 基于银岚月卡会所镜头生成的横版入场片"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "开局横版入场；不替代写真卡 nova-dance-v1.mp4。",
+        "reviewedAt": "2026-09-15",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-entry-v1-poster",
+      "palId": "pal-yinlan",
+      "outfitId": null,
+      "slot": "entry-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/video/yinlan-entry-v1-poster.jpg",
+      "file": "assets/pals/video/yinlan-entry-v1-poster.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "2026-09-18 ffmpeg 从 yinlan-entry-v1.mp4 t=0.5s 取帧",
+        "derivedFrom": "assets/pals/video/yinlan-entry-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "人物完整可读；含源片右下角「视频由AI生成」水印。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-stage-film-card",
+      "palId": "pal-linxing",
+      "outfitId": "stage-film",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-stage-film-frame.jpg",
+      "file": "assets/pals/outfits/linxing-stage-film-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 linxing-dance-v1.mp4 安全尾帧取 3:4 信箱式静帧",
+        "derivedFrom": "assets/pals/video/linxing-dance-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "舞台实录写真卡面（暗蓝花旗袍）。2026-09-17 曾随误覆盖被女仆装帧顶替，2026-09-19 从恢复的原版视频重取；被顶替文件留档 linxing-stage-film-maid-wrong-frame.jpg。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-stage-film-poster",
+      "palId": "pal-linxing",
+      "outfitId": "stage-film",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-stage-film.jpg",
+      "file": "assets/pals/outfits/linxing-stage-film.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧（2026-09-19 从恢复的原版重取）",
+        "derivedFrom": "assets/pals/video/linxing-dance-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "舞台实录写真视频 poster（旗袍版已恢复）；被顶替文件留档 linxing-stage-film-maid-wrong.jpg。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-stage-film-video",
+      "palId": "pal-linxing",
+      "outfitId": "stage-film",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-dance-v1.mp4",
+      "file": "assets/pals/video/linxing-dance-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing_dance01.mp4，2026-09-14 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "舞台实录（暗蓝花旗袍）结算演出/回放视频。2026-09-17 曾被女仆装小片误覆盖，2026-09-19 从 apps/web/_probe/linxing_dance01.mp4 原版恢复；误覆盖文件留档为 linxing-dance-v1-maid-wrong.mp4。",
+        "reviewedAt": "2026-09-19",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "linxing-stage-film-maid-wrong",
+      "palId": "pal-linxing",
+      "outfitId": "stage-film",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/linxing-dance-v1-maid-wrong.mp4",
+      "source": {
+        "kind": "manual-edit",
+        "detail": "2026-09-17 覆盖在 linxing-dance-v1.mp4 路径上的女仆装小片（与月光女仆内容重复，非舞台实录）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "路径误放的重复内容，已让位给舞台实录原版，仅留档追溯。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-midnight-cabaret-card",
+      "palId": "pal-linxing",
+      "outfitId": "midnight-cabaret",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-midnight-cabaret-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 linxing-cabaret-v1.mp4 取帧的 3:4 静帧",
+        "derivedFrom": "assets/pals/video/linxing-cabaret-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 月兔礼赞（moon-bunny）：经逐帧核对与月兔/汐岸为同一段兔耳旗袍会所表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "moon-bunny"
+    },
+    {
+      "id": "linxing-midnight-cabaret-poster",
+      "palId": "pal-linxing",
+      "outfitId": "midnight-cabaret",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-midnight-cabaret.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 4:7 整帧",
+        "derivedFrom": "assets/pals/video/linxing-cabaret-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 月兔礼赞（moon-bunny）：经逐帧核对与月兔/汐岸为同一段兔耳旗袍会所表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "moon-bunny"
+    },
+    {
+      "id": "linxing-midnight-cabaret-video",
+      "palId": "pal-linxing",
+      "outfitId": "midnight-cabaret",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/linxing-cabaret-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing03.mp4，2026-09-15 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 月兔礼赞（moon-bunny）：经逐帧核对与月兔/汐岸为同一段兔耳旗袍会所表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "moon-bunny"
+    },
+    {
+      "id": "linxing-velvet-nocturne-card",
+      "palId": "pal-linxing",
+      "outfitId": "velvet-nocturne",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-velvet-nocturne-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 linxing-nocturne-v1.mp4 取帧的 3:4 静帧",
+        "derivedFrom": "assets/pals/video/linxing-nocturne-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 汐岸泳装（sunset-swim）：经逐帧核对与月兔/汐岸为同一段海滩比基尼表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "sunset-swim"
+    },
+    {
+      "id": "linxing-velvet-nocturne-poster",
+      "palId": "pal-linxing",
+      "outfitId": "velvet-nocturne",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-velvet-nocturne.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 4:7 整帧",
+        "derivedFrom": "assets/pals/video/linxing-nocturne-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 汐岸泳装（sunset-swim）：经逐帧核对与月兔/汐岸为同一段海滩比基尼表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "sunset-swim"
+    },
+    {
+      "id": "linxing-velvet-nocturne-video",
+      "palId": "pal-linxing",
+      "outfitId": "velvet-nocturne",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/linxing-nocturne-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing04.mp4，2026-09-15 直接拷贝接入"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "DUPLICATE_OF 汐岸泳装（sunset-swim）：经逐帧核对与月兔/汐岸为同一段海滩比基尼表演的两个编码版本；2026-09-20 按用户决策下架套系，文件留档。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "agent-preview"
+      },
+      "duplicateOf": "sunset-swim"
+    },
+    {
+      "id": "mia-sporty-sweetheart-card",
+      "palId": "pal-mia",
+      "outfitId": "sporty-sweetheart",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/mia-sporty-sweetheart-frame.jpg",
+      "file": "assets/pals/outfits/mia-sporty-sweetheart-frame.jpg",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "2026-09-20 用户提供「米娅-导出卡面-粉兔女仆」（干净无框、3:4、全身舞台照）；旧帧留档 mia-sporty-sweetheart-frame-v1.jpg"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "粉兔女仆写真卡面：全身舞台照、人物与身份一致。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-sporty-sweetheart-poster",
+      "palId": "pal-mia",
+      "outfitId": "sporty-sweetheart",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/mia-sporty-sweetheart.jpg",
+      "file": "assets/pals/outfits/mia-sporty-sweetheart.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧（2026-09-19 重取）",
+        "derivedFrom": "assets/pals/video/mia-sporty-sweetheart-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "粉兔女仆写真视频 poster。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-sporty-sweetheart-video",
+      "palId": "pal-mia",
+      "outfitId": "sporty-sweetheart",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/mia-sporty-sweetheart-v1.mp4",
+      "file": "assets/pals/video/mia-sporty-sweetheart-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "2026-09-17 源片换为换装演出片：薄荷运动装开场→粉兔女仆定格（720×1280，4.4s）；2026-09-19 用户确认认领，原「薄荷运动甜心」更名「粉兔女仆」"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "粉兔女仆结算演出/回放视频；原薄荷运动视频已被覆盖不存在。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-sporty-sweetheart-mint-legacy",
+      "palId": "pal-mia",
+      "outfitId": "sporty-sweetheart",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-sporty-sweetheart-mint-legacy-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "2026-09-15 从原薄荷运动视频取帧的卡面（原视频 2026-09-17 被覆盖）"
+      },
+      "acceptance": {
+        "status": "REJECTED_COMPOSITION",
+        "note": "服装与现演出视频不一致（薄荷运动装 vs 粉兔女仆），2026-09-19 撤下留档（frame/poster/silhouette 三件）。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-mint-soiree-card",
+      "palId": "pal-mia",
+      "outfitId": "mint-soiree",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-mint-soiree-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs --mask-footer 3:4 静帧",
+        "derivedFrom": "assets/pals/video/mia-mint-soiree-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-mint-soiree-poster",
+      "palId": "pal-mia",
+      "outfitId": "mint-soiree",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-mint-soiree.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs --mask-footer 4:7 整帧",
+        "derivedFrom": "assets/pals/video/mia-mint-soiree-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-mint-soiree-video",
+      "palId": "pal-mia",
+      "outfitId": "mint-soiree",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/mia-mint-soiree-v1.mp4",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-15 同套服装参考图生成"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-executive-beat-card",
+      "palId": "pal-mia",
+      "outfitId": "executive-beat",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-executive-beat-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs --mask-footer 3:4 静帧",
+        "derivedFrom": "assets/pals/video/mia-executive-beat-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-executive-beat-poster",
+      "palId": "pal-mia",
+      "outfitId": "executive-beat",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-executive-beat.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs --mask-footer 4:7 整帧",
+        "derivedFrom": "assets/pals/video/mia-executive-beat-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-executive-beat-video",
+      "palId": "pal-mia",
+      "outfitId": "executive-beat",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/mia-executive-beat-v1.mp4",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-15 同套服装参考图生成"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "yinlan-court-dusk-card",
+      "palId": "pal-yinlan",
+      "outfitId": "court-dusk",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/yinlan-court-dusk-frame.jpg",
+      "file": "assets/pals/outfits/yinlan-court-dusk-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 nova-dance-v1.mp4 取帧的 3:4 静帧",
+        "derivedFrom": "assets/pals/video/nova-dance-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "暮色球场写真卡面。",
+        "reviewedAt": "2026-09-14",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-court-dusk-poster",
+      "palId": "pal-yinlan",
+      "outfitId": "court-dusk",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/yinlan-court-dusk.jpg",
+      "file": "assets/pals/outfits/yinlan-court-dusk.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 4:7 整帧",
+        "derivedFrom": "assets/pals/video/nova-dance-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "写真视频 poster。",
+        "reviewedAt": "2026-09-14",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-court-dusk-video",
+      "palId": "pal-yinlan",
+      "outfitId": "court-dusk",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/nova-dance-v1.mp4",
+      "file": "assets/pals/video/nova-dance-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing_dance02.mp4，2026-09-14 直接拷贝接入；片中人物即银岚立绘基准"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "暮色球场结算演出/回放视频。",
+        "reviewedAt": "2026-09-14",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "yinlan-golden-court-card",
+      "palId": "pal-yinlan",
+      "outfitId": "golden-court",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/yinlan-golden-court-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 yinlan-golden-court-v1.mp4 取帧的 3:4 静帧",
+        "derivedFrom": "assets/pals/video/yinlan-golden-court-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "yinlan-golden-court-poster",
+      "palId": "pal-yinlan",
+      "outfitId": "golden-court",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/yinlan-golden-court.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 4:7 整帧",
+        "derivedFrom": "assets/pals/video/yinlan-golden-court-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "yinlan-golden-court-video",
+      "palId": "pal-yinlan",
+      "outfitId": "golden-court",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/yinlan-golden-court-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 xx_dance02.mp4，2026-09-15 按用户指定归入银岚第二套写真"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "linxing-moon-maid-card",
+      "palId": "pal-linxing",
+      "outfitId": "moon-maid",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-moon-maid-frame.jpg",
+      "file": "assets/pals/outfits/linxing-moon-maid-frame.jpg",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "2026-09-20 用户提供「linxing-导出卡面-女仆」装饰成品卡（含装饰框与烘焙文字），经 3:4 信箱式处理接入；用户指定装饰版，与无文字规范有偏差，如实记录。旧帧留档 linxing-moon-maid-frame-v1.jpg"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "装饰版卡面：人物与身份一致，装饰框与文字为用户指定保留。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "linxing-moon-maid-poster",
+      "palId": "pal-linxing",
+      "outfitId": "moon-maid",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-moon-maid.jpg",
+      "file": "assets/pals/outfits/linxing-moon-maid.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧",
+        "derivedFrom": "assets/pals/video/linxing-moon-maid-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "写真视频 poster 与信箱模糊底。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-moon-maid-video",
+      "palId": "pal-linxing",
+      "outfitId": "moon-maid",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-moon-maid-v1.mp4",
+      "file": "assets/pals/video/linxing-moon-maid-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing-dance-V2.mp4（720×1280，15.0s），2026-09-18 经 _inbox 交付"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "月光女仆结算演出/回放视频，与卡面同源。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "mia-noir-sport-card",
+      "palId": "pal-mia",
+      "outfitId": "noir-sport",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-noir-sport-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 mia-noir-sport-v1.mp4 安全尾帧（t≈9.5s）取 3:4 信箱式静帧",
+        "derivedFrom": "assets/pals/video/mia-noir-sport-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-noir-sport-poster",
+      "palId": "pal-mia",
+      "outfitId": "noir-sport",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-noir-sport.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧",
+        "derivedFrom": "assets/pals/video/mia-noir-sport-v1.mp4"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "mia-noir-sport-video",
+      "palId": "pal-mia",
+      "outfitId": "noir-sport",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": null,
+      "file": "assets/pals/video/mia-noir-sport-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 mia-dance-V2.mp4（1080×1920，10.0s），2026-09-18 经 _inbox 交付；黑色运动装与薄荷运动甜心不同套，如实另立"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "2026-09-20 用户决策：仅保留当前已解锁套系，本套下架留档；文件保留不删。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "linxing-moon-bunny-card",
+      "palId": "pal-linxing",
+      "outfitId": "moon-bunny",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-moon-bunny-frame.jpg",
+      "file": "assets/pals/outfits/linxing-moon-bunny-frame.jpg",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "2026-09-20 用户提供「linxing-导出卡面-兔子」装饰成品卡（含装饰框与烘焙文字），经 3:4 信箱式处理接入；用户指定装饰版，与无文字规范有偏差，如实记录。旧帧留档 linxing-moon-bunny-frame-v1.jpg"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "装饰版卡面：人物与身份一致，装饰框与文字为用户指定保留。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "linxing-moon-bunny-poster",
+      "palId": "pal-linxing",
+      "outfitId": "moon-bunny",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-moon-bunny.jpg",
+      "file": "assets/pals/outfits/linxing-moon-bunny.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧",
+        "derivedFrom": "assets/pals/video/linxing-moon-bunny-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "写真视频 poster 与信箱模糊底。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-moon-bunny-video",
+      "palId": "pal-linxing",
+      "outfitId": "moon-bunny",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-moon-bunny-v1.mp4",
+      "file": "assets/pals/video/linxing-moon-bunny-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing_兔子.mp4（1280×720，5.1s，2026-09-17 交付）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "月兔礼赞结算演出/回放视频，与卡面同源。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-sunset-swim-card",
+      "palId": "pal-linxing",
+      "outfitId": "sunset-swim",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-sunset-swim-frame.jpg",
+      "file": "assets/pals/outfits/linxing-sunset-swim-frame.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 从 linxing-sunset-swim-v1.mp4 安全尾帧（t≈4.68s）取 3:4 信箱式静帧",
+        "derivedFrom": "assets/pals/video/linxing-sunset-swim-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "汐岸泳装写真卡面：与演出视频同源（比基尼款）；源片左上角「AI生成」水印如实保留。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-sunset-swim-poster",
+      "palId": "pal-linxing",
+      "outfitId": "sunset-swim",
+      "slot": "outfit-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/outfits/linxing-sunset-swim.jpg",
+      "file": "assets/pals/outfits/linxing-sunset-swim.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "make-dance-assets.mjs 同帧 4:7 整帧",
+        "derivedFrom": "assets/pals/video/linxing-sunset-swim-v1.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "写真视频 poster 与信箱模糊底。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "linxing-sunset-swim-video",
+      "palId": "pal-linxing",
+      "outfitId": "sunset-swim",
+      "slot": "outfit-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/video/linxing-sunset-swim-v1.mp4",
+      "file": "assets/pals/video/linxing-sunset-swim-v1.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 linxing_泳衣.mp4（1280×720，5.1s，2026-09-17 交付）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "汐岸泳装结算演出/回放视频，与卡面同源。",
+        "reviewedAt": "2026-09-19",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "ugc-xingheng-entry-v2",
+      "palId": "pal-user-5079-v103",
+      "outfitId": null,
+      "slot": "entry-film",
+      "action": null,
+      "kind": "video",
+      "publicUrl": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-film-V2.mp4",
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-film-V2.mp4",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "用户提供 星恒-开场.mp4（1920×1080，5.0s），2026-09-18 经 _inbox 交付；替换管线旧版入场片"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "横版入场视频：与资料卡同一套蓝西装，V 字手势定格；播完回到牌桌立绘。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "ugc-xingheng-entry-poster-v2",
+      "palId": "pal-user-5079-v103",
+      "outfitId": null,
+      "slot": "entry-poster",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-poster-v2.jpg",
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-poster-v2.jpg",
+      "source": {
+        "kind": "script-frame-extract",
+        "detail": "2026-09-18 ffmpeg 从 entry-film-v2.mp4 t=4.4s 取帧",
+        "derivedFrom": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-film-V2.mp4"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "入场封面：人物完整、构图可读。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "ugc-xingheng-first-outfit-v2",
+      "palId": "pal-user-5079-v103",
+      "outfitId": "starter-look",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-first-outfit-v2.jpg",
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-first-outfit-v2.jpg",
+      "source": {
+        "kind": "user-delivered",
+        "detail": "2026-09-20 用户提供「星恒导出卡面01」装饰成品卡（含装饰框与烘焙文字），经 3:4 信箱式处理接入；用户指定装饰版，与无文字规范有偏差，如实记录。旧帧留档 first-outfit-v2-prev.jpg"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "装饰版卡面：人物与身份一致，装饰框与文字为用户指定保留。",
+        "reviewedAt": "2026-09-20",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "scene-club-night-v2",
+      "palId": null,
+      "outfitId": null,
+      "slot": null,
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/club-night-v2.png",
+      "file": "assets/club-night-v2.png",
+      "source": {
+        "kind": "official-generated",
+        "detail": "2026-09-08 ImageGen 项目专用生成并二次移除筹码/硬币/扑克牌/饮品元素"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "大厅与牌桌场景底图（CSS 引用，不属 RESOURCE_SLOTS 展示槽）。",
+        "reviewedAt": "2026-09-08",
+        "evidence": "ASSET_LICENSES.md"
+      }
+    },
+    {
+      "id": "legacy-linxing-starry-gown",
+      "palId": "pal-linxing",
+      "outfitId": "starry-gown",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-starry-gown.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "legacy-linxing-rose-waltz",
+      "palId": "pal-linxing",
+      "outfitId": "rose-waltz",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-rose-waltz.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "legacy-linxing-dawn-silk",
+      "palId": "pal-linxing",
+      "outfitId": "dawn-silk",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/linxing-dawn-silk.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "legacy-mia-mint-stage",
+      "palId": "pal-mia",
+      "outfitId": "mint-stage",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-mint-stage.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "legacy-mia-violet-rock",
+      "palId": "pal-mia",
+      "outfitId": "violet-rock",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-violet-rock.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "legacy-mia-sailor-wave",
+      "palId": "pal-mia",
+      "outfitId": "sailor-wave",
+      "slot": "first-outfit",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/outfits/mia-sailor-wave.jpg",
+      "source": {
+        "kind": "script-composite",
+        "detail": "generate-outfit-assets.py 程序化换色合成（旧版服装）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "旧版程序化合成服装三件套（jpg/fx/silhouette），当前名册与写真馆均未引用，不属于在用资源；文件保留不删。",
+        "reviewedAt": "2026-09-20"
+      }
+    },
+    {
+      "id": "ugc-moyan-avatar-adhoc",
+      "palId": "pal-user-2632-v100",
+      "outfitId": null,
+      "slot": "avatar",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-avatar.png",
+      "file": "assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-avatar.png",
+      "source": {
+        "kind": "ad-hoc",
+        "detail": "2026-09-18 上一轮在管线任务外单独产出的头像（该计划早于 avatar 资源合同，无任务记录）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "640×640 头肩像，人物身份与资料卡一致、画面干净；低于 1024 合同规格，2026-09-18 用户验收转正。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "ugc-moyan-master-cutout-manual",
+      "palId": "pal-user-2632-v100",
+      "outfitId": null,
+      "slot": "master-portrait",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait-cutout.png",
+      "source": {
+        "kind": "manual-edit",
+        "detail": "2026-09-17 手工变体（黑底版）"
+      },
+      "acceptance": {
+        "status": "REJECTED_MANUAL",
+        "note": "黑底变体不如管线 master-portrait.png（透明底、sha256 可溯源）；运行时引用已回正到管线产物。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "ugc-moyan-table-cutout-manual",
+      "palId": "pal-user-2632-v100",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-table-standee-cutout.png",
+      "source": {
+        "kind": "manual-edit",
+        "detail": "2026-09-17 手工变体（黑底版）"
+      },
+      "acceptance": {
+        "status": "REJECTED_MANUAL",
+        "note": "同上：管线 table-standee.png 为透明底合规产物，运行时引用已回正。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "agent-preview"
+      }
+    },
+    {
+      "id": "ugc-xingheng-avatar-adhoc",
+      "palId": "pal-user-5079-v103",
+      "outfitId": null,
+      "slot": "avatar",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-avatar.png",
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-avatar.png",
+      "source": {
+        "kind": "ad-hoc",
+        "detail": "2026-09-18 上一轮在管线任务外单独产出的头像（无任务记录）"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "640×640 头肩像，身份一致；边缘带总图 alpha 修复残留的彩色噪点、低于 1024 合同，2026-09-18 用户验收转正（规格偏差已如实记录）。",
+        "reviewedAt": "2026-09-18",
+        "reviewer": "user"
+      }
+    },
+    {
+      "id": "ugc-xingheng-table-single-adhoc",
+      "palId": "pal-user-5079-v103",
+      "outfitId": null,
+      "slot": "table-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": null,
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-table-standee-single.png",
+      "source": {
+        "kind": "ad-hoc",
+        "detail": "2026-09-18 上一轮在管线任务外单独产出（无任务记录）"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "临时挂账期间曾验收使用；2026-09-19 管线重产专用单人透明立绘成功后撤下，留档追溯。",
+        "reviewedAt": "2026-09-19"
+      }
+    },
+    {
+      "id": "ugc-xingheng-lounge-single-adhoc",
+      "palId": "pal-user-5079-v103",
+      "outfitId": null,
+      "slot": "lounge-standee",
+      "action": null,
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-lounge-standee.png",
+      "file": "assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-lounge-standee.png",
+      "source": {
+        "kind": "ad-hoc",
+        "detail": "资源目录审计确认的当前大厅立绘；管线任务记录与人工修复文件分开保留。"
+      },
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "同 table-standee-single：2026-09-19 管线重产成功后撤下，留档追溯。",
+        "reviewedAt": "2026-09-19"
+      }
+    },
+    {
+      "id": "ugc-xiaotiantian-video-frame-portrait",
+      "palId": "pal-user-5441-v105",
+      "outfitId": null,
+      "slot": "portrait",
+      "action": "idle",
+      "kind": "image",
+      "publicUrl": "/assets/pals/ugc/甜美卷发小甜甜/xiaotiantian-portrait.png",
+      "file": "assets/pals/ugc/甜美卷发小甜甜/xiaotiantian-portrait.png",
+      "source": {
+        "kind": "derived-from-approved-video",
+        "detail": "从已核验属于甜美卷发小甜甜的 A01 透明 WebM 首帧确定性抽取，替代撤销的错属代娜静态图。"
+      },
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "角色身份与 A01 动作一致；透明通道保留，供头像、牌桌和大厅展示降级共用。",
+        "reviewedAt": "2026-09-23"
+      }
+    }
+  ],
+  "taskOverrides": [
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "entry-film",
+      "acceptance": {
+        "status": "SOURCE_ONLY",
+        "note": "已被用户交付的横版入场片（entry-film-v2.mp4，2026-09-18）替换；任务记录保留追溯。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "first-outfit",
+      "acceptance": {
+        "status": "REJECTED_COMPOSITION",
+        "note": "早期 first-outfit 固定模板产出的卡面是黑裙，与资料卡蓝西装不一致；2026-09-19 已被演出视频同源蓝西装卡面（first-outfit-v2.jpg）替换。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "outfit-poster",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-20 以影片实际开帧（t≈0.4s）重建 poster，消除写真卡播放前的静帧闪图；此前管线生成静帧已缺失。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "outfit-fx",
+      "acceptance": {
+        "status": "REJECTED_COMPOSITION",
+        "note": "管线误产：特效层产出为五姿势人物拼版（含人脸与扑克牌），违反「特效层只含特效」合同；2026-09-20 已从 layers.effect 与写真卡记录撤下，文件留档不删。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "action-a01",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-19 用户交付版待机视频（持卡浅笑）覆盖同路径，验收通过。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "action-a02",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-19 用户交付版出牌视频（前推红桃牌）覆盖同路径；右下角带生成方「Happy Horse」角标，如实保留。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "action-a03",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-19 用户交付版过牌视频覆盖同路径，验收通过。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "action-a04",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-19 用户交付版胜利视频（握拳+持卡）覆盖同路径，验收通过。"
+      }
+    },
+    {
+      "planId": "d508cede-74ee-446a-9eac-feb2a581d7d0",
+      "resourceId": "action-a05",
+      "acceptance": {
+        "status": "APPROVED",
+        "note": "2026-09-19 用户交付版失利视频（托腮持卡、神情从容）覆盖同路径，验收通过。"
+      }
+    }
+  ],
+  "expectations": [],
+  "sourcePackages": [
+    {
+      "id": "src-pack-linxing-five-states",
+      "path": "角色五态包/linxing",
+      "base": "project",
+      "kind": "user-delivery",
+      "note": "林星五态 WebM 与出场片源包（2026-09-08 用户交付）；运行时副本在 assets/pals/video/。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-pack-mia-five-states",
+      "path": "角色五态包/mia",
+      "base": "project",
+      "kind": "user-delivery",
+      "note": "米娅 A01 与出场片源包；A02–A05 未交付（见 expectations）。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-pack-linxing-delivery-batch",
+      "path": "_asset_delivery/linxing_batch",
+      "base": "project",
+      "kind": "vendor-delivery",
+      "note": "林星 A01/A03/A04/A05 无损母带与 4 帧纵向预览拼图；A02 走单独交付。运行时副本为 *-v1-alpha.webm（未接线，SOURCE_ONLY）。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-pack-linxing-a02-deliveries",
+      "path": "_asset_delivery",
+      "base": "project",
+      "kind": "vendor-delivery",
+      "note": "linxing_A02（首轮/返修 custom-green/无损 lossless）多版本交付与 acceptance-report；green 目录无产物。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-pack-yinlan-deliveries",
+      "path": "_asset_delivery",
+      "base": "project",
+      "kind": "vendor-delivery",
+      "note": "yinlan-entry（入场片源）、yinlan-seat-refresh（16:9 场景图）、yinlan-table-cutout（身份一致但白底全身带桌，不合牌桌半身透明槽规格，仅作生产参考）。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-alpha-masters",
+      "path": "apps/web/assets/pals/video",
+      "base": "project",
+      "kind": "derived",
+      "note": "linxing-A0X-v1-alpha.webm 无损母带 5 个（运行时用压缩版）；linxing-entry-v1.mp4 旧版入场（已被 v2 取代）。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-mia-a01-variants",
+      "path": ".",
+      "base": "project",
+      "kind": "derived",
+      "note": "项目根 mia_A01_idle_v1-green.mp4（绿幕原始版）与 mia_A01_idle_v1_兼容.mp4（兼容转码版）。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-mia-standee-refs",
+      "path": "apps/web/assets/pals",
+      "base": "project",
+      "kind": "official-generated",
+      "note": "mia-sporty-standee.png / mia-mint-stage-standee.png / mia-executive-standee.png：三套舞片的服装参考透明立绘，仅作生成参考与追溯。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-generated-sources",
+      "path": "apps/web/assets/pals/generated",
+      "base": "project",
+      "kind": "generation-source",
+      "note": "生成源图（含 yinlan-court-dusk.png 品红底带水印、mia-*-portrait、yinlan-lounge-portrait 等），仅供复现追溯，不得进入可见运行时。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-outfit-generated",
+      "path": "apps/web/assets/pals/outfits/generated",
+      "base": "project",
+      "kind": "generation-source",
+      "note": "6 张 AI 生成换装立绘（apply-generated-outfits.py 的输入源），当前无代码引用。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-video-generated",
+      "path": "apps/web/assets/pals/video/generated",
+      "base": "project",
+      "kind": "generation-source",
+      "note": "米娅三段舞片的生成工程目录。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-yinlan-seat-original",
+      "path": "apps/web/assets/pals/yinlan-seat-v1-original.png",
+      "base": "project",
+      "kind": "manual-edit",
+      "note": "被手工替换前的牌桌图原始版，留存追溯。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-scene-club-night-v1",
+      "path": "apps/web/assets/club-night-v1.png",
+      "base": "project",
+      "kind": "official-generated",
+      "note": "旧版场景底图，已被 v2 取代。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-linxing-new-outfits",
+      "path": "../../linxing",
+      "base": "project",
+      "kind": "user-delivery",
+      "note": "2026-09-17 用户交付新服装源素材。三套已全部接入：女仆（moon-maid，2026-09-18 用竖屏 V2 接入）、兔子（moon-bunny）、泳衣（sunset-swim，均 2026-09-19 接入）；立绘 png/jpeg 留作参考，不进运行时。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-ugc-orphan-junk",
+      "path": "apps/web/assets/pals/ugc/_quarantine/orphan-empty-shell.png",
+      "base": "project",
+      "kind": "residue",
+      "note": "68 字节空壳残留（疑似旧版生成服务失败写入），无任何任务记录；建议删除。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "src-moyan-safe-variants",
+      "path": "apps/web/assets/pals/ugc",
+      "base": "project",
+      "kind": "manual-edit",
+      "note": "5fe85ced 的 outfit-frame-safe.jpg / outfit-poster-safe.jpg（2026-09-17 手工「安全区」海报变体）与 lounge-standee-single.png；运行时引用已回正到管线产物，变体仅留存追溯。",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "id": "daina-v104-master-portrait", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "master-portrait", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png", "file": "assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+      "source": { "kind": "user-delivery-organized", "detail": "2026-09-23 角色归属核对后归档到代娜目录" }, "acceptance": { "status": "APPROVED", "note": "代娜角色资料卡，归属与运行时映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-avatar", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "avatar", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-avatar.jpg", "file": "assets/pals/ugc/代娜/daina-alt-avatar.jpg",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜 1:1 头像" }, "acceptance": { "status": "APPROVED", "note": "头像槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-lounge", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "lounge-standee", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-lounge-standee.png", "file": "assets/pals/ugc/代娜/daina-alt-lounge-standee.png",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜大厅立绘" }, "acceptance": { "status": "APPROVED", "note": "大厅槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-table", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "table-standee", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-table-standee.png", "file": "assets/pals/ugc/代娜/daina-alt-table-standee.png",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜牌桌立绘" }, "acceptance": { "status": "APPROVED", "note": "牌桌槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-entry", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "entry-film", "action": null, "kind": "video", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-entry-film.mp4", "file": "assets/pals/ugc/代娜/daina-alt-entry-film.mp4",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜入场视频" }, "acceptance": { "status": "APPROVED", "note": "入场槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-outfit-film", "palId": "pal-user-daina-v104", "outfitId": "starter-look", "slot": "outfit-film", "action": null, "kind": "video", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-outfit-film.mp4", "file": "assets/pals/ugc/代娜/daina-alt-outfit-film.mp4",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜首套演出视频" }, "acceptance": { "status": "APPROVED", "note": "写真回放槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-outfit-poster", "palId": "pal-user-daina-v104", "outfitId": "starter-look", "slot": "outfit-poster", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-outfit-poster.jpg", "file": "assets/pals/ugc/代娜/daina-alt-outfit-poster.jpg",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜写真视频封面" }, "acceptance": { "status": "APPROVED", "note": "视频封面槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-first-outfit", "palId": "pal-user-daina-v104", "outfitId": "starter-look", "slot": "first-outfit", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-first-outfit.jpg", "file": "assets/pals/ugc/代娜/daina-alt-first-outfit.jpg",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜首套服装卡面" }, "acceptance": { "status": "APPROVED", "note": "写真卡面槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-outfit-fx", "palId": "pal-user-daina-v104", "outfitId": "starter-look", "slot": "outfit-fx", "action": null, "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-outfit-fx.png", "file": "assets/pals/ugc/代娜/daina-alt-outfit-fx.png",
+      "source": { "kind": "user-delivery-organized", "detail": "代娜服装特效层" }, "acceptance": { "status": "APPROVED", "note": "特效层槽映射复核通过。", "reviewedAt": "2026-09-23", "reviewer": "agent-preview" }
+    },
+    {
+      "id": "daina-v104-action-a01", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "action-image-A01", "action": "idle", "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-action-image-A01.png", "file": "assets/pals/ugc/代娜/daina-alt-action-image-A01.png", "source": { "kind": "user-delivery-organized", "detail": "代娜 A01 静态动作" }, "acceptance": { "status": "APPROVED", "note": "动作归属复核通过。", "reviewedAt": "2026-09-23" }
+    },
+    {
+      "id": "daina-v104-action-a02", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "action-image-A02", "action": "play", "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-action-image-A02.png", "file": "assets/pals/ugc/代娜/daina-alt-action-image-A02.png", "source": { "kind": "user-delivery-organized", "detail": "代娜 A02 静态动作" }, "acceptance": { "status": "APPROVED", "note": "动作归属复核通过。", "reviewedAt": "2026-09-23" }
+    },
+    {
+      "id": "daina-v104-action-a03", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "action-image-A03", "action": "pass", "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-action-image-A03.png", "file": "assets/pals/ugc/代娜/daina-alt-action-image-A03.png", "source": { "kind": "user-delivery-organized", "detail": "代娜 A03 静态动作" }, "acceptance": { "status": "APPROVED", "note": "动作归属复核通过。", "reviewedAt": "2026-09-23" }
+    },
+    {
+      "id": "daina-v104-action-a04", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "action-image-A04", "action": "win", "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-action-image-A04.png", "file": "assets/pals/ugc/代娜/daina-alt-action-image-A04.png", "source": { "kind": "user-delivery-organized", "detail": "代娜 A04 静态动作" }, "acceptance": { "status": "APPROVED", "note": "动作归属复核通过。", "reviewedAt": "2026-09-23" }
+    },
+    {
+      "id": "daina-v104-action-a05", "palId": "pal-user-daina-v104", "outfitId": null, "slot": "action-image-A05", "action": "lose", "kind": "image", "publicUrl": "/assets/pals/ugc/代娜/daina-alt-action-image-A05.png", "file": "assets/pals/ugc/代娜/daina-alt-action-image-A05.png", "source": { "kind": "user-delivery-organized", "detail": "代娜 A05 静态动作" }, "acceptance": { "status": "APPROVED", "note": "动作归属复核通过。", "reviewedAt": "2026-09-23" }
+    }
+  ]
+}

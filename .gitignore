@@ -1,0 +1,14 @@
+node_modules/
+.env.production.local
+.env.local
+apps/web/assets/
+_inbox/
+_asset_delivery/
+release/
+test-results*/
+tr-*/
+__pycache__/
+*.log
+refresh.out
+probe.tmp.mjs
+.DS_Store

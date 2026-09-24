@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "牌局输赢 → 角色舞蹈 → 卡牌掉落",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "animation": "none",
+    "views": [
+      { "id": "round-resolution", "label": "牌局结算", "focus": ["round_end", "result_branch", "win_settlement", "lose_settlement"], "note": "服务端判定胜负并生成结算结果。" },
+      { "id": "performance", "label": "角色演出", "focus": ["win_settlement", "lose_settlement", "performance_gate", "dance_play"], "note": "只有结算结果和对应视频都准备好，才进入演出。" },
+      { "id": "collection", "label": "卡牌掉落与回收", "focus": ["dance_play", "card_drop", "gallery_save", "next_round"], "note": "演出结束后发放写真卡，并写入写真馆。" }
+    ]
+  },
+  "lanes": [
+    { "id": "player", "label": "玩家与牌局" },
+    { "id": "game", "label": "服务端牌局状态" },
+    { "id": "performance", "label": "角色演出层" },
+    { "id": "collection", "label": "卡牌与写真馆" },
+    { "id": "exceptions", "label": "失败与恢复", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "play", "label": "进行牌局", "fromCol": 0, "toCol": 1 },
+    { "id": "settle", "label": "判定输赢", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "perform", "label": "演出与掉落", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "result_group", "label": "权威结算", "lane": "game", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "recovery_group", "label": "演出不可用时的恢复", "lane": "exceptions", "fromCol": 3, "toCol": 5, "variant": "security" }
+  ],
+  "mainPath": ["game_start", "deal", "turns", "round_end", "result_branch", "win_settlement", "performance_gate", "dance_play"],
+  "nodes": [
+    { "id": "game_start", "lane": "player", "col": 0, "type": "frontend", "label": "进入牌局", "sublabel": "扣除 1 Token" },
+    { "id": "deal", "lane": "game", "col": 0, "type": "backend", "label": "发牌与叫分", "sublabel": "服务端生成牌局" },
+    { "id": "turns", "lane": "player", "col": 1, "type": "frontend", "label": "轮流出牌", "sublabel": "玩家 + AI 回合" },
+    { "id": "round_end", "lane": "game", "col": 2, "type": "backend", "label": "牌局结束", "sublabel": "检测终局条件" },
+    { "id": "result_branch", "lane": "game", "col": 3, "type": "security", "label": "权威判定输赢", "sublabel": "WIN / LOSE", "tag": "server" },
+    { "id": "win_settlement", "lane": "game", "col": 4, "yOffset": -42, "type": "backend", "label": "赢局结算", "sublabel": "Token 增加 · 可演出" },
+    { "id": "lose_settlement", "lane": "game", "col": 4, "yOffset": 42, "type": "backend", "label": "输局结算", "sublabel": "Token 扣减 · 不演出" },
+    { "id": "performance_gate", "lane": "performance", "col": 5, "yOffset": -42, "type": "security", "label": "演出门禁", "sublabel": "角色 + 服装视频已就绪" },
+    { "id": "dance_play", "lane": "performance", "col": 5, "yOffset": 42, "type": "cloud", "label": "播放角色演出", "sublabel": "按输赢与服装绑定" },
+    { "id": "card_drop", "lane": "collection", "col": 5, "yOffset": -70, "type": "messagebus", "label": "胜局写真卡掉落", "sublabel": "仅胜局 · 绑定演出视频" },
+    { "id": "gallery_save", "lane": "collection", "col": 5, "yOffset": 70, "type": "database", "label": "写入写真馆", "sublabel": "保存本次胜局回放与卡面" },
+    { "id": "next_round", "lane": "player", "col": 5, "width": 124, "type": "frontend", "label": "下一局 / 返回大厅", "sublabel": "输局结算后直接散场" },
+    { "id": "static_fallback", "lane": "exceptions", "col": 4, "type": "security", "label": "静态动作回退", "sublabel": "视频不可用时仍可结算" },
+    { "id": "retry_performance", "lane": "exceptions", "col": 5, "type": "backend", "label": "记录失败并重试", "sublabel": "不重复结算" }
+  ],
+  "edges": [
+    { "from": "game_start", "to": "deal", "label": "create game", "variant": "emphasis" },
+    { "from": "deal", "to": "turns", "label": "deal" },
+    { "from": "turns", "to": "round_end", "label": "last hand", "variant": "emphasis" },
+    { "from": "round_end", "to": "result_branch", "label": "settle", "variant": "emphasis" },
+    { "from": "result_branch", "to": "win_settlement", "label": "WIN", "variant": "emphasis" },
+    { "from": "result_branch", "to": "lose_settlement", "label": "LOSE", "variant": "security" },
+    { "from": "win_settlement", "to": "performance_gate", "label": "胜局进入演出判定" },
+    { "from": "card_drop", "to": "performance_gate", "label": "卡牌已写入，进入演出" },
+    { "from": "performance_gate", "to": "dance_play", "label": "video ready", "variant": "emphasis" },
+    { "from": "card_drop", "to": "gallery_save", "label": "save asset" },
+    { "from": "performance_gate", "to": "static_fallback", "label": "video missing", "variant": "security", "role": "error" },
+    { "from": "static_fallback", "to": "card_drop", "label": "结算不中断", "variant": "dashed", "role": "return" },
+    { "from": "dance_play", "to": "retry_performance", "label": "播放失败", "variant": "security", "role": "error" },
+    { "from": "retry_performance", "to": "gallery_save", "label": "重试后回收", "variant": "dashed", "role": "return" }
+  ],
+  "cards": [
+    { "dot": "amber", "title": "输赢结算事实", "items": ["胜负由服务端终局判定，前端只展示结果", "赢局增加 Token，输局扣减 Token", "演出失败不能重新结算或重复扣 Token"] },
+    { "dot": "violet", "title": "演出绑定事实", "items": ["角色、服装和视频必须按稳定 ID 映射", "胜负结果决定演出分支，不决定角色身份", "视频缺失时回退同角色同状态静态资源"] },
+    { "dot": "cyan", "title": "卡牌掉落事实", "items": ["当前在服务端结算时先生成并写入写真馆，演出只是随后展示", "卡面、回放视频和 outfitId 必须来自同一版本", "写真馆保存的是已批准资源，不是临时 Provider URL"] }
+  ]
+}

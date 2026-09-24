@@ -1,0 +1,1104 @@
+/* ui-ux-pro-max desktop audit: shared visual tokens and keyboard-visible focus. */
+:root {
+  --bg-page: #080c14;
+  --bg-surface: #101827;
+  --bg-surface-raised: #172235;
+  --bg-surface-soft: #202b3d;
+  --text-primary: #fff8eb;
+  --text-secondary: #d8d1c5;
+  --text-muted: #aaa396;
+  --gold: #e8bd68;
+  --gold-strong: #f4cf7e;
+  --purple: #8c68ef;
+  --success: #62d49d;
+  --warning: #e3a34c;
+  --danger: #db6975;
+  --line: #d6b66c42;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+}
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible,
+textarea:focus-visible, [tabindex="0"]:focus-visible {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 3px;
+}
+
+/* Stage-two 1280×720 hand-fit safeguard: cards shrink so the full hand stays observable.
+   Horizontal scroll is intentionally kept as the last resort for unusually long hands. */
+@media (min-width: 1101px) and (max-width: 1320px) {
+  .card { flex-basis: 45px; height: 74px; padding: 6px; }
+  .card b { font-size: 16px; }
+  .card small { font-size: 17px; }
+  .hand .card + .card { margin-left: -13px; }
+}
+
+/* 写真馆是收藏册，不是推荐流：无论筛选后剩几张，都保留同一套 3:4 竖卡、列宽和信息密度。
+   旧的 `.solo` 会在 <=4 张时切为横向大卡；切换“全部/牌友/缺失”会让同一张卡忽大忽小，
+   视觉节奏被打断，因此不再提供第二种卡型。 */
+
+.replay-overlay { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 28px; background: #1c1737b5; backdrop-filter: blur(8px); overscroll-behavior: contain; }
+.card:disabled { cursor: not-allowed; opacity: .58; filter: saturate(.72); }
+.card:disabled:hover { transform: none; border-color: #d4ccdb; box-shadow: 0 3px 5px #302b441c; }
+.turn-wait { color: #655d7b; font-size: 12px; font-weight: 800; }
+.replay-card { width: min(560px, 100%); padding: 34px; border-radius: 28px; background: #fffaf7; text-align: center; box-shadow: 0 24px 80px #120d27a6; }
+.replay-card h2 { margin: 4px 0 16px; font-size: 30px; }
+.replay-card p { color: var(--muted); line-height: 1.7; }
+@keyframes replay-progress { to { transform: translateX(160%); } }
+@media (prefers-reduced-motion: reduce) { }
+
+.pal-avatar.with-video > img { opacity: 1; }
+.action-video { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: 56% top; background: transparent; }
+.pal-avatar.with-video .pal-caption { z-index: 3; }
+.settlement-action-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 56% center; background: #080d16; }
+.settlement-video-modal .settlement-stage-head { position: absolute; z-index: 4; top: 0; right: 0; left: 0; padding: 24px 30px 48px; background: linear-gradient(180deg,#05080fd9,transparent); color: #fff9eb; text-align: left; pointer-events: none; }
+.settlement-video-modal .settlement-stage-head .eyebrow { margin: 0 0 5px; color: #e8c174; }
+.settlement-video-footer { position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; display: flex; align-items: end; justify-content: space-between; gap: 18px; padding: 64px 28px 26px; background: linear-gradient(transparent,#04070eee 45%); color: #f3eadb; text-align: left; }
+.settlement-video-description { max-width: 390px; margin: 0; color: #f4edde !important; font-size: 13px !important; line-height: 1.55 !important; text-shadow: 0 2px 6px #000; }
+.settlement-video-footer .modal-actions { flex: none; margin: 0; }
+.settlement-video-footer .secondary { border-color: #f4d89599; background: #101724cc; color: #fff4d9; }
+.settlement-video-footer .secondary:hover { background: #29334a; }
+
+/* Lounge visual system: scene-first game UI rather than a documentation-style page. */
+body { min-width: 1024px; background: #080c14; color: #f7f1e7; }
+.ambient { display: none; }
+.topbar { height: 68px; padding: 0 4.5vw; gap: 28px; border-bottom: 1px solid #d5ae6540; background: #090d17e6; color: #f7f1e7; box-shadow: 0 8px 28px #00000033; }
+.brand { color: #fff8e9; letter-spacing: .2px; text-decoration: none; }
+.brand span { color: #e6bb68; }
+.brand em { color: #e6bb68; }
+nav a, .secondary { color: #b9b6c6; }
+nav a:hover, nav a.active { background: #d7a74a24; color: #fff5da; }
+.top-token { border-color: #d6a34b8a; background: #211a0e; color: #f4ce7f; }
+
+/* L1 大厅主视觉。此前立绘写死 300×375px，于是它占屏高的比例随窗口一路下滑
+   （实测 1024×720 是 52%，1440×900 是 42%，2560×1440 只有 26%）——「主视觉」在高分屏上
+   退化成一个小摆件。现在高度取 60vh（规范 55–72%），宽度按 4:5 跟随。
+   窄视口（≤1240px）单独降档，因为那里横向净空撑不住：文案容器占 min(510px,46vw)，
+   两侧只剩 (100vw − copy) / 2 − max(5vw,48px)，1024 下算出来是 225px，
+   60vh 需要 432×0.8 = 346px，硬塞会压到标题上。降档值 44vh 是「立绘右缘不越过标题左缘」
+   反推出来的，不是试凑。 */
+/* 首页纵向预算（名册 3 位后新增选人器，实测 720 高视口溢出，故按 dvh 重排）
+   实测 3 位名册：.lounge-copy 高 551.1px（1024×720）/ 576.2px（1280×720），
+   可用高度只有 (100dvh − 68px 顶栏) − padding(72+130) = 450px，分别差 101 / 126px；
+   1440×900 余量 +38px，本来不溢出。修法是让每一处按 dvh 让出份额，而不是把某一块
+   藏起来——选人器正是第三个牌位存在的理由，必须留在首屏。720 高（1dvh = 7.2px）下
+   各部分让出的高度：内边距 −43.6 / 选人器 −38.7 / 节奏间距 −43.7 / 标题（1280）−18.1，
+   合计 ≈ −144，两侧各留约 20px 余量（1024 差 101，1280 差 126）。
+   padding-bottom 下限 84px 由 .lounge-brief 反推：它绝对定位 bottom:28px、自身高 48px，
+   顶边落在距底 76px 处，只有 padding 大于 76 才不会把文案压到它身上。 */
+.lounge-home { --lounge-figure-h: clamp(330px, 60vh, 900px); --lounge-pad-t: clamp(40px, 8dvh, 72px); --lounge-pad-b: clamp(84px, 14dvh, 130px); position: relative; isolation: isolate; min-height: calc(100dvh - 68px); overflow: hidden; display: grid; place-items: center; padding: var(--lounge-pad-t) 8vw var(--lounge-pad-b); background: #090d17 url('./assets/club-night-v2.png') center / cover no-repeat; }
+.lounge-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#080b14ef 0%,#080b1499 35%,#080b142e 68%,#080b14cc 100%), linear-gradient(0deg,#080b14e8 0%,transparent 42%); }
+.lounge-kicker { position: absolute; top: 34px; left: 8vw; margin: 0; color: #e5bb6b; font-size: 11px; font-weight: 900; letter-spacing: 2.4px; }
+.lounge-copy { z-index: 2; width: min(510px, 46vw); text-align: center; text-shadow: 0 3px 18px #000; }
+.lounge-copy .eyebrow { margin: 0 0 clamp(8px, 1.6dvh, 14px); color: #d8bd87; }
+/* 标题字号加一条 dvh 上限：溢出在 1280×720（126px）比 1024×720（101px）多出的 25px
+   几乎全部来自 5vw 的字号。7.6dvh 在 1080 高时 = 82px，已高于字号上限 76px，
+   所以只有矮视口才会被这条约束咬到，大屏与现在完全一致。 */
+.lounge-copy h1 { margin: 0 0 clamp(10px, 1.8dvh, 20px); color: #fffaf0; font-size: clamp(48px, min(5vw, 7.6dvh), 76px); line-height: .98; letter-spacing: -4px; text-wrap: balance; }
+.lounge-copy h1 span { color: #e6b65c; }
+.lounge-copy > p:not(.eyebrow):not(.guard) { margin: 0 auto; color: #d8d2c8; font-size: clamp(14px, 2.1dvh, 16px); line-height: 1.8; max-width: 440px; }
+.hero-actions { justify-content: center; }
+.lounge-cta { min-width: 210px; border: 1px solid #f5d389aa; background: linear-gradient(135deg,#d89b3d,#9f542b); box-shadow: 0 14px 32px #00000070, inset 0 1px #fff1bd88; }
+.lounge-secondary { border-color: #d5ae6566; background: #121724b8; color: #f4e8d4; }
+/* 主按钮上下 28px 与免责说明上下 12px 都是固定 px，矮视口下按比例让出。 */
+.lounge-copy .hero-actions { margin: clamp(16px, 2.4dvh, 28px) 0; }
+.lounge-copy .guard { margin: clamp(6px, 1dvh, 12px) 0; color: #b5ad9f; }
+.lounge-character { position: absolute; z-index: 1; bottom: 118px; filter: drop-shadow(0 25px 34px #000000b0); }
+.lounge-character.left { left: max(5vw, 48px); transform: rotate(-5deg); }
+.lounge-character.right { right: max(5vw, 48px); transform: rotate(5deg); }
+.lounge-pal { width: clamp(150px, 16vw, 245px); height: clamp(230px, 25vw, 360px); border: 2px solid #ebc779aa; border-radius: 32px 32px 16px 16px; background: #151425; box-shadow: inset 0 0 0 4px #080b1499, 0 18px 42px #00000088; }
+.lounge-pal .pal-caption { padding-bottom: 10px; padding-top: 38px; }
+
+/* Seat picker: 首页直接换掉今晚入席的两位牌友。名册不足三人（只有官方两位）时
+   seatPicker() 不渲染，所以这里不需要处理「无可换」的空状态。
+   整块原来全是固定 px，720 高视口下占 22+183 = 205px，是首屏溢出的最大单一来源，
+   现在按 dvh 让出约 39px（720 高、1dvh = 7.2px）：脸 84→57.6、上下内距 10/12→7.2/7.9、
+   间隙 6→3.96、名字 14→12.24、标签 11→10.08、标题 12→10.08、外距 22→15.84。
+   卡片宽度仍是固定 132px：宽度不参与纵向预算，而且收窄会把「官方牌友 · 静态肖像」
+   挤成两行，反而把省下的高度还回去。 */
+.seat-picker { margin: clamp(12px, 2.2dvh, 22px) auto 0; max-width: 440px; }
+.seat-picker-label { margin: 0 0 clamp(5px, .8dvh, 10px); color: #b5ad9f; font-size: clamp(10px, 1.4dvh, 12px); letter-spacing: .18em; text-transform: uppercase; }
+.seat-slots { display: flex; gap: 12px; justify-content: center; }
+.seat-slot { display: flex; flex-direction: column; align-items: center; gap: clamp(3px, .55dvh, 6px); width: 132px; padding: clamp(6px, 1dvh, 10px) 8px clamp(7px, 1.1dvh, 12px); border: 1px solid #d5ae6555; border-radius: 14px; background: #121724b8; color: #f4e8d4; cursor: pointer; transition: border-color .18s, background .18s, transform .18s; }
+.seat-slot:hover { border-color: #f5d389aa; background: #1a2032d0; transform: translateY(-2px); }
+.seat-slot b { font-size: clamp(12px, 1.7dvh, 14px); font-weight: 500; }
+.seat-slot span { color: #b5ad9f; font-size: clamp(10px, 1.4dvh, 11px); }
+/* 座位肖像是 1:1 的圆，而立绘是 3:4：cover 会把高度裁掉 1/3，默认居中裁下去
+   正好落在胸口以下——银岚的立绘头顶紧贴画面上沿，会被整个切掉。
+   取 12% 与 .closeup-portrait img 同一档：保留头部与上半身，三张立绘都落在人物上。 */
+.seat-face { width: clamp(46px, 8dvh, 84px); height: clamp(46px, 8dvh, 84px); border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #0d1018; border: 1px solid #d5ae6555; display: grid; place-items: center; font-size: clamp(15px, 2.6dvh, 24px); color: #0d1018; }
+.seat-face.missing i { font-style: normal; font-size: clamp(9px, 1.3dvh, 12px); line-height: 1.25; letter-spacing: .5px; text-align: center; }
+.lounge-pal .pal-caption strong { font-size: 19px; }
+.lounge-pal .pal-caption i { font-size: 9px; }
+.lounge-brief { position: absolute; right: 8vw; bottom: 28px; left: 8vw; z-index: 2; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid #ddba7350; background: #080b1499; backdrop-filter: blur(10px); }
+.lounge-brief div { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 16px; color: #dfd6c8; font-size: 12px; font-weight: 800; }
+.lounge-brief b { color: #e6b65c; font-size: 17px; }
+
+.table-page { max-width: 1480px; grid-template-columns: minmax(0,1fr); gap: 14px; padding: 18px 4vw 28px; }
+.table-side { display: grid; grid-template-columns: auto auto minmax(260px,1fr); align-items: center; column-gap: 18px; padding: 0 6px; }
+.round-tag { margin: 0; color: #e4b968; font-size: 11px; letter-spacing: 1.3px; }
+.table-side h1 { margin: 0; color: #fff8eb; font-size: 28px; letter-spacing: -1.6px; }
+.table-side p { margin: 0; color: #bcb6ad; font-size: 13px; }
+.table-felt { height: min(50vw, 570px); min-height: 440px; border: 1px solid #e2ba6eaa; border-radius: 28px; background: linear-gradient(180deg,#06111c72,#06101860), url('./assets/club-night-v2.png') center 56% / cover no-repeat; box-shadow: inset 0 0 0 8px #090e18a8, inset 0 0 0 10px #d0a35670, 0 22px 48px #00000070; }
+.table-felt:after { border-color: #eec76a42; width: 300px; height: 300px; left: calc(50% - 150px); top: calc(50% - 130px); }
+.match-hud { position: absolute; z-index: 4; top: 18px; left: 50%; display: flex; align-items: center; gap: 14px; transform: translateX(-50%); padding: 7px 13px; border: 1px solid #e4bd6e80; border-radius: 999px; background: #0b101ccc; color: #cdc6bb; font-size: 10px; white-space: nowrap; backdrop-filter: blur(8px); }
+.match-hud b { color: #f2ca77; font-size: 11px; }
+.felt-label { top: 44%; color: #f4d98d24; font-size: 28px; }
+.opponent { font-size: 12px; }
+/* Seat geometry is owned by the "round 4" block at the end of this file. */
+.opponent.top { top: 62px; }
+.opponent.right { right: 38px; top: 47%; }
+.opponent.left { left: 38px; top: 57%; }
+.opponent .pal-avatar { border: 1px solid #e9ca8d90; box-shadow: inset 0 0 0 2px #090d17aa, 0 8px 20px #00000088; }
+/* The bubble is a child of the seat's flex row, so `left: calc(100% + 8px)` measured from
+   the *row* rather than from the standee. Once the row grew wide (standee + role chip +
+   back-cards), the bubble detached from the character it belongs to. Anchoring it to the
+   standee instead keeps the tail next to the speaker's head at every seat.
+
+   Vertical placement also matters: linxing sits at the table's top edge, so her bubble
+   must hang *below* her head (toward the felt centre) or it reads as belonging to nothing.
+   Mia sits mid-right, so hers floats level with the head. Both then sit on the same side
+   of the table centre as that player's played cards, which is what makes "who played
+   this?" legible at a glance. */
+.opponent .pal-standee { position: relative; }
+.pal-bubble { position: absolute; top: -7px; left: calc(100% + 8px); width: max-content; max-width: 170px; margin: 0; padding: 7px 10px; border: 1px solid #f2d89966; border-radius: 12px 12px 12px 2px; background: #101725e8; color: #f2eee6; font-size: 11px; line-height: 1.35; box-shadow: 0 8px 18px #00000055; }
+/* The top seat's line does not hang below her any more: her bust now ends exactly where
+   her card band starts, and cards outrank seats, so a below-the-chest bubble would be
+   covered by her own played cards. It sits beside her instead — on her left, at chest
+   height, so it reads as her line and not as a chip stacked behind the role chip that the
+   flex row renders on her right. Left of her row is empty felt at both felt heights
+   (the player has no standee, only the .self-seat chip at the felt's bottom edge). */
+.opponent.top .pal-bubble { top: 42%; bottom: auto; right: calc(100% + 12px); left: auto; transform: none; border-radius: 12px 12px 2px 12px; }
+/* mia's line sits *above* her seat box, not beside it. Her card band starts 7–11px below
+   her box top (measured 7px at 1280×720, 11px at 1440×900, which is the `.from-pal-mia`
+   anchor rising with the felt), so a bubble that ends below her box top gets covered by
+   her own cards — cards outrank seats now. 6px of clearance above the box keeps that
+   relation true at both felt heights without a per-viewport number. */
+/* Above her box is where a bubble normally goes, but on a short felt there is no room: her
+   box top is at 30%·H while her own card band starts at 44%·H − 55px, which leaves 11px at
+   1024×720 — less than one line of bubble. It measured as a 22×6px collision with her band.
+   Below the box has room at every supported felt and stays clear of .self-seat (y288 at
+   1024×720) and .turn-dock (x189-281 on short viewports, she is at x688+). */
+.opponent.right .pal-bubble { right: calc(100% + 8px); left: auto; top: calc(100% + 8px); bottom: auto; border-radius: 12px 2px 12px 12px; }
+.play-stage { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.played-stack { position: absolute; display: grid; justify-items: center; min-width: 112px; color: #fbf2de; text-align: center; filter: drop-shadow(0 10px 13px #00000080); }
+.played-stack p,.played-stack>b { margin: 0; border: 1px solid #e8be6e62; background: #0a1019df; color: #eed8a3; font-size: 10px; font-weight: 800; line-height: 1; white-space: nowrap; }
+.played-stack p { padding: 6px 10px; border-radius: 999px; }
+.played-stack>b { margin-top: 5px; padding: 5px 9px; border-radius: 7px; color: #fff8e9; }
+.table-card-fan { display: flex; align-items: flex-end; min-height: 85px; padding: 7px 9px 2px; }
+.table-card { display: grid; width: 57px; height: 78px; margin-left: -18px; padding: 8px 7px; border: 1px solid #d6c6a6; border-radius: 7px; background: linear-gradient(145deg,#fffef9,#e8dcc9); box-shadow: 0 7px 13px #00000077; color: #292435; text-align: left; transform: rotate(-2deg); }
+.table-card:first-child { margin-left: 0; }
+.table-card:nth-child(even) { transform: translateY(-2px) rotate(2deg); }
+.table-card b { font-size: 20px; line-height: .95; }
+.table-card small { margin-top: 3px; font-size: 24px; line-height: .9; }
+.table-card.red { color: #c84958; }
+/* Played-card placement lives in the "round 4: one shared table coordinate system" block
+   near the end of this file. It was originally duplicated here with hard-coded
+   top/left/right values, which silently shadowed the anchored version — do not reintroduce
+   per-seat coordinates here. */
+.lead-marker { position: absolute; top: 48%; left: 50%; transform: translate(-50%,-50%); padding: 9px 14px; border: 1px solid #f1cc7f99; border-radius: 999px; background: #0b111be8; color: #d8c7a6; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.turn-dock { position: absolute; top: 60%; left: 50%; transform: translateX(-50%); padding: 7px 12px; border-radius: 999px; background: #0c1320d9; color: #d7d0c4; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.turn-dock.active { border: 1px solid #e8bb665c; color: #ffd780; }
+.self-seat { position: absolute; z-index: 3; right: 50%; bottom: 14px; transform: translateX(50%); color: #e5dac6; font-size: 11px; font-weight: 800; letter-spacing: .3px; }
+.hand-wrap { margin-top: 12px; border-color: #d3b06c55; background: linear-gradient(180deg,#151d2bea,#0d131ff5); box-shadow: 0 14px 32px #00000070; }
+.hand-header { color: #f2ebde; }
+.hand-header b { background: #3b2b18; color: #f2c972; }
+.hand-wrap .secondary { border-color: #d8b36f88; background: #161d2a; color: #f0d49a; }
+.hand-wrap .secondary:hover { background: #2a2630; color: #fff3d6; }
+.hand-wrap .primary { border: 1px solid #f1cd7d88; background: linear-gradient(135deg,#d79a3e,#9e562d); box-shadow: 0 8px 18px #00000066; }
+.turn-wait { color: #e2bd75; }
+/* ===== entry cinematic: one character at a time, full-bleed ===== */
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.entry-cinematic { position: fixed; z-index: 50; inset: 0; overflow: hidden; background: #04060c; overscroll-behavior: contain; }
+/* 入场片段由本局 seats 生成，不再固定为林星/米娅。普通入场片维持全屏 cover；银岚
+   复用的是 4:7 竖屏舞片，若仍 cover 会在 16:9 视口裁掉头脚，所以该段改为 contain，
+   并由同帧 poster 的放大虚化底补两侧。 */
+.entry-segment { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; background: #04060c; }
+.entry-segment.show { opacity: 1; }
+.entry-segment > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: #04060c; opacity: 0; transition: opacity .18s ease; }
+.entry-segment.ready > video { opacity: 1; }
+.entry-segment.portrait > video { object-fit: contain; }
+.entry-backdrop { position: absolute; inset: -8%; width: 116%; height: 116%; object-fit: cover; filter: blur(32px) saturate(1.2) brightness(.54); transform: scale(1.12); }
+.entry-cinematic::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, #04060c66 0%, transparent 22%, transparent 62%, #04060cd9 100%); }
+.entry-kicker { position: absolute; z-index: 2; top: max(26px, env(safe-area-inset-top)); left: 0; right: 0; margin: 0; text-align: center; color: #e8ba63; font-size: 12px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 0 2px 12px #000; }
+.entry-caption { position: absolute; z-index: 2; left: clamp(24px, 6vw, 72px); bottom: clamp(28px, 7vh, 64px); color: #fff7e7; }
+.entry-caption b { display: block; font-size: clamp(30px, 4.6vw, 52px); font-weight: 900; letter-spacing: 2px; text-shadow: 0 4px 22px #000000cc; }
+.entry-caption span { display: block; margin-top: 6px; color: #f0cf8e; font-size: 13px; font-weight: 800; letter-spacing: 2.4px; text-shadow: 0 2px 10px #000; }
+.entry-skip { position: absolute; z-index: 2; top: max(20px, env(safe-area-inset-top)); right: clamp(18px, 3vw, 36px); padding: 8px 16px; border: 1px solid #d9b46b55; border-radius: 999px; background: #0b111d99; color: #e8cfa0; font-size: 12px; font-weight: 800; letter-spacing: 1px; cursor: pointer; backdrop-filter: blur(6px); }
+.entry-skip:hover { border-color: #f1cd7d; color: #fff3d6; }
+.card { border-color: #cec6b9; background: linear-gradient(145deg,#fffef8,#e9e2d6); box-shadow: 0 4px 10px #00000066; }
+.card:hover,.card.selected { border-color: #e4b454; box-shadow: 0 10px 20px #00000088; }
+
+/* ---- hand fan: overlap is carried by the buttons themselves, so hit-targets stay disjoint.
+   `justify-content: flex-start` is required — without it the overflowing flex row re-centres
+   and steals the leftmost card's hit area. The hand scrolls, so the row can afford to be wider. */
+.hand { justify-content: flex-start; }
+.hand .card { margin-right: 0; }
+.hand .card + .card { margin-left: -18px; }
+.hand .card:hover, .hand .card.selected { z-index: 2; }
+.hand .card:focus-visible { z-index: 3; }
+.event-feed { display: grid; grid-template-columns: 112px repeat(4,minmax(0,1fr)); gap: 0 14px; max-height: none; overflow: hidden; padding: 12px 16px; border: 1px solid #d6b66c36; border-radius: 14px; background: #0d131fe6; }
+.event-feed h2 { grid-row: span 1; align-self: center; margin: 0; color: #e8c174; font-size: 13px; }
+.event { min-width: 0; padding: 4px 12px; border-bottom: 0; border-left: 1px solid #d6b66c2c; }
+.event p { overflow: hidden; margin-top: 3px; color: #c5c0b8; font-size: 11px; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+
+/* empty state: the baseline ships a white card with inherited text; on the dark theme the
+   inherited body color is near-white, so the panel must go dark too or text vanishes. */
+.empty { background: #0d131ff2; border: 1px solid #d6b66c36; box-shadow: 0 18px 50px #00000059; }
+.empty h1 { color: #fff4d6; }
+.empty p { color: #b8b1a4; }
+
+@media (max-width: 1240px) { .lounge-home { --lounge-figure-h: clamp(300px, 44vh, 560px); } .lounge-character { opacity: .72; } .lounge-character.left { left: 24px; } .lounge-character.right { right: 24px; } .table-side { grid-template-columns: auto 1fr; row-gap: 8px; } .table-side p { grid-column: 2; } .table-felt { height: 520px; } }
+
+/* ===== layered pal standee (table & lounge) ===== */
+.pal-standee { overflow: hidden; }
+.pal-standee .layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 56% center; }
+.pal-standee .layer-base { position: relative; }
+/* Table-seat sizing lives in the "round 4" block at the end of this file, expressed in
+   felt-relative units. Sizing it here as well made a short felt crop the characters
+   instead of shrinking them — keep this selector out of the file. */
+.lounge-pal.pal-standee { width: 230px; height: 306px; border-radius: 34px 34px 20px 20px; }
+.pal-standee .pal-caption { position: absolute; z-index: 3; right: 0; bottom: 0; left: 0; }
+
+/* ===== live dress-up settlement stage ===== */
+/* L4 结算全身舞台。此前 .dressup-figure 是 inset:0 + object-fit:cover —— 600×800 的图被
+   塞进 980×560 的舞台后 cover 掉约 57% 的高度，只剩中段，根本不是「全身」；舞台高度又是
+   固定的 min(560px,76vh)，在 2560×1440 只占 39% 视口高，也不在规范区间内。
+   现在人物自身才是被度量的对象：高 = 68vh（规范 60–80%），3:4 不裁切，舞台留 letterbox。
+   --stage-w 与弹窗同宽，--stage-figure-h 取「68vh」与「宽度允许的最大高度」的较小者，
+   因此又窄又高的窗口也不会把人物顶出视口外。 */
+.dressup-modal { width: min(980px, calc(100vw - 48px)); --stage-w: min(980px, calc(100vw - 48px)); --stage-figure-h: min(68vh, calc(var(--stage-w) * 4 / 3)); padding: 0; overflow: hidden; border-radius: 20px; background: transparent; box-shadow: 0 28px 100px #000000aa; }
+.dressup-stage { position: relative; min-height: var(--stage-figure-h); border: 1px solid #f0d18a55; border-radius: inherit; background: #05080f; display: grid; place-items: center; overflow: hidden; }
+.dressup-stage.plain { min-height: 300px; padding: 56px 40px 88px; text-align: center; align-content: center; }
+.dressup-stage .settlement-action-video { position: relative; height: var(--stage-figure-h); width: auto; max-width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 20%; background: #05080f; box-shadow: 0 18px 50px #00000090; }
+/* ===== 信箱式视频帧：4:7 竖屏写真视频装进 3:4 的框 =====
+   主体 contain，全身不裁；两侧空出来的部分由**同一帧**的放大虚化版铺满。
+   虚化层用 poster 静帧而不是第二路视频：blur(26px) 之后动与不动肉眼分不出来，
+   但省掉一路解码（卡面带与画廊同屏可能有好几张录像卡面）。
+   模糊半径按最窄的使用场景推导：画廊单列卡面宽 240px，缺口 = 240 × (1 − 0.5714/0.75) ≈ 57px，
+   要盖住这 57px 的边界，blur 至少取缺口的一半 ≈ 29px；实测 26px 叠 1.18 倍放大已看不出接缝。 */
+.vframe { position: relative; overflow: hidden; background: #05080f; }
+.vframe-blur { position: absolute; inset: -6%; width: 112%; height: 112%; object-fit: cover; filter: blur(26px) saturate(1.25) brightness(.62); transform: scale(1.18); }
+.vframe-blur.plain { background: radial-gradient(ellipse at 50% 40%, #1b2440, #05080f 70%); }
+.vframe::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, #05080fcc 0%, transparent 18%, transparent 82%, #05080fcc 100%); pointer-events: none; }
+/* 写真馆卡面视频按用户要求占满卡框（cover，偏上保留人物头部）；
+   回放、结算舞台等其它 vframe 维持信箱式 contain 不变。 */
+.pcard-art .vframe::after { content: none; }
+.pcard-art .vframe-main { object-fit: cover; object-position: 50% 18%; }
+/* 生成舞片的非叙事来源角标固定在右下。该收光层只覆盖画框底部 10%，并以渐变融入
+   舞台；它和 make-dance-assets 的 poster / frame 收光区保持同一比例。 */
+.vframe.generated-film::before { content: ""; position: absolute; z-index: 3; right: 0; bottom: 0; width: 44%; height: 10%; background: linear-gradient(135deg, transparent 0%, #090d18b8 42%, #090d18f5 100%); pointer-events: none; }
+.vframe-main { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; background: transparent; }
+/* 舞台上的信箱式帧与 --stage-figure-h 共用同一个尺寸变量，和 .dressup-figure 严格同框，
+   所以「演出 → 定格写真」两步之间画面不会跳。 */
+.dressup-stage .stage-vframe { height: var(--stage-figure-h); width: auto; max-width: 100%; aspect-ratio: 3 / 4; border-radius: 0; box-shadow: 0 18px 50px #00000090; }
+.dressup-spotlight { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 30%, #f5d78c2e, transparent 70%), radial-gradient(ellipse 90% 80% at 50% 110%, #7dd3fc14, transparent 60%); pointer-events: none; }
+/* 全身进入画面：3:4 的框配 3:4 的图，cover 与 contain 在此等价，身体不再被裁掉。 */
+.dressup-figure { position: relative; height: var(--stage-figure-h); width: auto; max-width: 100%; aspect-ratio: 3 / 4; margin: 0; border-radius: 0; overflow: hidden; box-shadow: 0 18px 50px #00000090; }
+.dressup-figure .layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; }
+.dressup-figure .layer-base { filter: brightness(.42) saturate(.5) blur(3px); transform: scale(1.05); }
+.dressup-figure .band-1 { clip-path: inset(0 0 66.2% 0); -webkit-mask-image: linear-gradient(180deg, #000 74%, transparent 100%); mask-image: linear-gradient(180deg, #000 74%, transparent 100%); }
+.dressup-figure .band-2 { clip-path: inset(33.2% 0 33.2% 0); -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 74%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 74%, transparent 100%); }
+.dressup-figure .band-3 { clip-path: inset(66.2% 0 0 0); -webkit-mask-image: linear-gradient(0deg, #000 74%, transparent 100%); mask-image: linear-gradient(0deg, #000 74%, transparent 100%); }
+.dressup-figure .layer-fx { opacity: 0; }
+.dressup-figure.assembled .layer-fx { opacity: 1; }
+.dressup-figure.autoplay { animation: figure-drift 16s ease-in-out 2.4s infinite alternate; }
+.dressup-figure.autoplay .band-1 { animation: band-reveal .9s .3s cubic-bezier(.22,.9,.32,1) both; }
+.dressup-figure.autoplay .band-2 { animation: band-reveal .9s .85s cubic-bezier(.22,.9,.32,1) both; }
+.dressup-figure.autoplay .band-3 { animation: band-reveal .9s 1.4s cubic-bezier(.22,.9,.32,1) both; }
+.dressup-figure.autoplay .layer-fx { animation: fx-fade 1.1s 2s both; }
+.dressup-figure.autoplay::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, #fff4d82b 46%, #fff8e172 50%, #fff4d82b 54%, transparent 60%); background-size: 300% 100%; animation: shimmer-sweep 2.2s .5s both; pointer-events: none; }
+@keyframes band-reveal { 0% { opacity: 0; filter: blur(22px) brightness(2.4); transform: translateY(-3%) scale(1.03); } 55% { opacity: 1; } 100% { opacity: 1; filter: blur(0) brightness(1); transform: none; } }
+@keyframes figure-drift { from { transform: scale(1); } to { transform: scale(1.06); } }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes shimmer-sweep { from { background-position: 180% 0; } to { background-position: -120% 0; } }
+.dressup-modal .settlement-stage-head { position: absolute; z-index: 4; top: 0; right: 0; left: 0; padding: 24px 30px 48px; background: linear-gradient(180deg,#05080fd9,transparent); color: #fff9eb; text-align: left; pointer-events: none; }
+.dressup-modal .settlement-stage-head .eyebrow { margin: 0 0 5px; color: #e8c174; }
+.dressup-modal h2 { margin: 0; color: #fffaf0; font-size: clamp(26px,3vw,40px); line-height: 1.08; letter-spacing: -1.2px; text-shadow: 0 3px 14px #000; }
+.dressup-modal .settlement-video-footer { position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; display: flex; align-items: end; justify-content: space-between; gap: 18px; padding: 64px 28px 26px; background: linear-gradient(transparent,#04070eee 45%); color: #f3eadb; text-align: left; }
+.dressup-modal .settlement-video-description { max-width: 390px; margin: 0; color: #f4edde !important; font-size: 13px !important; line-height: 1.55 !important; text-shadow: 0 2px 6px #000; }
+.dressup-modal .settlement-video-footer .modal-actions { flex: none; margin: 0; }
+.photo-card-reveal { position: relative; margin: 64px 0 92px; width: min(300px, 40%); }
+.photo-card-reveal .pcard-art { aspect-ratio: 3 / 4; }
+
+/* ===== gallery: collection book ===== */
+.gallery-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
+.collection-progress { min-width: 240px; text-align: right; }
+.collection-progress b { font-size: 30px; letter-spacing: -1px; }
+.collection-progress span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; }
+.collection-progress .points { color: #b8860b; margin-top: 4px; }
+.progress-track { height: 7px; margin-top: 8px; border-radius: 999px; background: #e8e1f3; overflow: hidden; }
+.progress-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--violet), var(--pink)); transition: width .5s ease; }
+.gallery-filters { display: flex; align-items: center; gap: 8px; margin-top: 22px; }
+.filter-gap { flex: 1; }
+.chip { border: 1px solid #d9d2e8; background: #fff; color: #4d466d; border-radius: 999px; padding: 7px 16px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all .18s ease; }
+.chip:hover { border-color: var(--violet); color: var(--violet); }
+.chip.active { background: #35295b; border-color: #35295b; color: #fff; }
+.gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: 24px; }
+/* 卡面由 3:4 画框决定，标题区由固定最小高度决定；不同命名长度、锁定状态和视频卡不再推挤行高。 */
+.pcard { position: relative; display: grid; grid-template-rows: auto minmax(52px, auto); align-content: start; min-width: 0; cursor: pointer; border-radius: 16px; transition: transform .18s ease, box-shadow .18s ease; outline-offset: 3px; }
+.pcard:hover { transform: translateY(-8px); }
+.pcard:focus-visible { outline: 3px solid var(--violet); }
+.pcard-art { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: #141a2e; box-shadow: 0 10px 26px #20183a33; }
+.pcard-art .layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* z-index 必须给：录像卡面里 .vframe-main 是 z-index:1 的定位元素，
+   而「z-index:auto 的定位元素」排在它下面——不给描边定层，金框会被视频盖掉。 */
+.pcard-frame { position: absolute; inset: 0; z-index: 4; border: 3px solid #c9b8df; border-radius: inherit; pointer-events: none; }
+/* 录像卡面：信箱式帧铺满整张卡（卡本身是 3:4，由 .pcard-art 的 aspect-ratio 决定）。 */
+.pcard-art .card-vframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pcard-art.first .pcard-frame { border-color: #f5d78c; }
+.pcard-art.first::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(115deg, transparent 35%, #f5d78c40 50%, transparent 65%); background-size: 240% 100%; animation: foil-shimmer 3.2s ease-in-out infinite; pointer-events: none; }
+@keyframes foil-shimmer { 0% { background-position: 190% 0; } 55% { background-position: -90% 0; } 100% { background-position: -90% 0; } }
+.pcard-serial { position: absolute; left: 8px; bottom: 6px; z-index: 3; font-size: 10px; font-weight: 800; color: #fff8e9cc; text-shadow: 0 1px 3px #000; letter-spacing: .6px; }
+.pcard-tier { position: absolute; right: 8px; top: 8px; z-index: 6; display: grid; grid-template-columns: auto auto; align-items: center; gap: 1px 6px; min-width: 72px; padding: 5px 7px 4px; border: 1px solid #b4a796; border-radius: 8px 8px 8px 2px; background: linear-gradient(145deg, #0a0f18eb, #151d2bea); color: #eee7dc; box-shadow: 0 3px 10px #0008; text-shadow: 0 1px 2px #000; }
+.pcard-tier b { font: 900 11px/1 system-ui, sans-serif; letter-spacing: .4px; }
+.pcard-tier em { font: 800 10px/1 system-ui, sans-serif; font-style: normal; letter-spacing: .08em; }
+.pcard-level-marks { grid-column: 1 / -1; display: flex; gap: 3px; padding-top: 3px; border-top: 1px solid #ffffff24; }
+.pcard-level-marks i { width: 7px; height: 4px; border-radius: 1px; background: #ffffff20; transform: skewX(-20deg); }
+.pcard-level-marks i.on { background: currentColor; box-shadow: 0 0 5px currentColor; }
+.pcard-first-badge { position: absolute; left: 8px; top: 8px; z-index: 6; padding: 4px 6px; border: 1px solid #f4d58d99; border-radius: 3px; background: #161008d9; color: #f4d58d; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+/* 等级不只换颜色：边框层数、角装饰、材质光效、等级刻度和名称同时递进。 */
+.pcard-art.lv1 .pcard-frame { border-color: #a99172; box-shadow: inset 0 0 0 1px #24190f; }
+.pcard-art.lv1 .pcard-tier { color: #c7ae8c; }
+.pcard-art.lv2 .pcard-frame { border-color: #7dd3fc; box-shadow: inset 0 0 0 2px #0e2538, inset 0 0 18px #7dd3fc24; }
+.pcard-art.lv2 .pcard-tier { color: #8fddff; border-color: #7dd3fcaa; border-radius: 12px 3px 12px 3px; }
+.pcard-art.lv2 .layer-outfit { transform: scale(1.05); transform-origin: 50% 100%; }
+.pcard-art.lv3 .pcard-frame { border: 4px double #b79df5; box-shadow: inset 0 0 20px #6f4fd34d; }
+.pcard-art.lv3 .pcard-tier { color: #c8b5ff; border-color: #b79df5bb; clip-path: polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px); border-radius: 0; }
+.pcard-art.lv3::before { content: ""; position: absolute; inset: 8px; z-index: 4; border: 1px solid #c7b5ff55; pointer-events: none; }
+.pcard-art.lv3:hover .layer-outfit { transform: translate(-3px, -3px) scale(1.04); transition: transform .25s ease; }
+.pcard-art.lv3:hover .layer-fx { transform: translate(4px, 4px) scale(1.06); transition: transform .25s ease; }
+.pcard-art.lv4 .pcard-frame { border: 4px solid #ff9ec7; box-shadow: inset 0 0 0 2px #ffe0ed99, inset 0 0 28px #ff6ea84d, 0 0 14px #ff9ec755; }
+.pcard-art.lv4 .pcard-tier { color: #ffd1e3; border-color: #ff9ec7; background: linear-gradient(135deg,#5b1d3be8,#16101ee8); transform: skewX(-4deg); }
+.pcard-art.lv4 .layer-fx { animation: fx-pulse 2.4s ease-in-out infinite; }
+@keyframes fx-pulse { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+.pcard-art.lv5 .pcard-frame { border-color: transparent; }
+.pcard-art.lv5::after { content: ""; position: absolute; inset: -3px; z-index: 4; border-radius: 16px; padding: 3px; background: conic-gradient(from 0deg, #f5d78c, #ff9ec7, #7dd3fc, #b79df5, #f5d78c); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: border-spin 3.6s linear infinite; pointer-events: none; }
+.pcard-art.lv5 .pcard-tier { color: #fff6c8; border-color: #fff3; border-radius: 2px 12px 2px 12px; background: linear-gradient(110deg,#6c3bdbe8,#d94f97e8 46%,#167fb8e8); box-shadow: 0 0 16px #ad83ff99; }
+.pcard-art.lv5 .pcard-level-marks i.on { width: 9px; }
+@keyframes border-spin { to { transform: rotate(1turn); } }
+.pcard.is-new .pcard-art { box-shadow: 0 0 0 3px #7dd3fc, 0 10px 30px #7dd3fc55; animation: new-glow 1.8s ease-in-out infinite; }
+@keyframes new-glow { 0%, 100% { box-shadow: 0 0 0 3px #7dd3fc, 0 10px 30px #7dd3fc55; } 50% { box-shadow: 0 0 0 5px #7dd3fc88, 0 10px 34px #7dd3fc88; } }
+.pcard-new { position: absolute; top: -9px; right: -7px; z-index: 5; padding: 3px 10px; border-radius: 999px; background: #1f6feb; color: #fff; font-size: 11px; font-weight: 900; box-shadow: 0 4px 10px #1f6feb66; }
+.pcard.locked { cursor: not-allowed; }
+.card-level-legend { display: flex; align-items: center; gap: 8px; margin: 10px 0 18px; color: #958d80; font-size: 11px; font-weight: 700; }
+.card-level-legend > span { margin-right: 2px; }
+.card-level-legend b { display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid currentColor; border-radius: 6px; background: #111722; color: #bda88a; letter-spacing: .06em; }
+.card-level-legend b i { font-style: normal; font-size: 9px; opacity: .82; }
+.card-level-legend .lv2 { color: #7dd3fc; border-radius: 10px 3px 10px 3px; }
+.card-level-legend .lv3 { color: #b79df5; border-style: double; border-width: 3px; }
+.card-level-legend .lv4 { color: #ff9ec7; box-shadow: inset 0 0 8px #ff9ec733; }
+.card-level-legend .lv5 { color: #fff0a5; border-color: #b79df5; background: linear-gradient(110deg,#422989,#862e66 50%,#155f84); box-shadow: 0 0 9px #9b79e366; }
+/* 未解锁卡是“看不清的窥视窗”：保留原片色彩与光影诱因，但必须遮掉人物、服装和动作
+   的可辨识细节。9px blur 的量级来自卡面最窄宽 247px：人物五官约 16–24px，虚焦已足够
+   打散辨识边缘；媒体额外放大，避免 blur 在画框边缘露出清晰接缝。暗幕只压对比、不抹掉色彩。 */
+.pcard.locked .locked-art { background: #0b101b; isolation: isolate; }
+.locked-preview-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.42); filter: blur(9px) saturate(.94) contrast(1.06) brightness(.9); opacity: .96; }
+.locked-art.preview-video .locked-preview-media { transform: scale(1.72); object-position: 50% 34%; }
+.locked-art.preview-static .locked-preview-media { transform: scale(1.47); object-position: 50% 38%; }
+.locked-preview-scrim { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg,#05080f42 0%,#070a1385 58%,#05070ed1 100%), radial-gradient(ellipse at 50% 42%,transparent 0 18%,#05070e42 72%,#05070e94 100%); pointer-events: none; }
+.locked-preview-fog { position: absolute; z-index: 2; inset: 0; background: repeating-linear-gradient(137deg, transparent 0 15px, #d8c6f00b 16px 17px, transparent 18px 32px); backdrop-filter: blur(1px); pointer-events: none; }
+.locked-preview-kind { position: absolute; z-index: 3; top: 10px; left: 10px; padding: 4px 8px; border: 1px solid #f3d58a66; border-radius: 999px; background: #080c15c7; color: #ead6a4; font-size: 10px; font-weight: 900; letter-spacing: .7px; }
+.locked-preview-lock { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid #fff4d677; border-radius: 50%; background: #120f18c7; color: #f4deb0; font-size: 27px; line-height: 1; transform: translate(-50%, -50%); box-shadow: 0 8px 24px #0000008f, inset 0 1px #fff9df44; }
+.locked-preview-unlock { position: absolute; z-index: 3; right: 10px; bottom: 9px; padding: 4px 7px; border-radius: 5px; background: #070a12cf; color: #e3d5bd; font-size: 10px; font-weight: 800; letter-spacing: .4px; }
+.pcard.locked .pcard-frame { border-style: solid; border-color: #d5ae6566; }
+.pcard.locked:hover .locked-preview-media { transform: scale(1.55); transition: transform .25s ease; }
+.pcard.locked:hover .preview-video .locked-preview-media { transform: scale(1.88); }
+.pcard-copy { min-width: 0; min-height: 52px; padding: 12px 4px 0; }
+.pcard-copy h2 { overflow: hidden; margin: 0; font-size: 15px; letter-spacing: -.2px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.pcard-copy p { overflow: hidden; margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ===== card detail modal ===== */
+.card-detail { position: fixed; inset: 0; z-index: 70; display: grid; grid-template-columns: auto minmax(240px, 320px) minmax(300px, 420px) auto; align-items: center; justify-content: center; gap: 26px; padding: 30px; background: #14102bd9; backdrop-filter: blur(10px); overscroll-behavior: contain; }
+.detail-card .pcard-art { width: 100%; aspect-ratio: 3 / 4; }
+.detail-info { color: #f3eadb; }
+.detail-info .eyebrow { color: #e8c174; }
+.detail-info h2 { margin: 0 0 16px; font-size: 26px; letter-spacing: -.6px; color: #fffaf0; }
+.detail-info dl { display: grid; gap: 9px; margin: 0 0 20px; }
+.detail-info dl div { display: flex; gap: 12px; font-size: 13px; }
+.detail-info dt { flex: none; width: 52px; color: #b8a9d9; font-weight: 800; }
+.detail-info dd { margin: 0; color: #f4edde; }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.detail-actions button { min-height: 42px; padding: 0 16px; border-width: 1px; font-weight: 900; text-shadow: 0 1px 2px #0008; }
+.detail-actions .primary { background: linear-gradient(135deg, #8a63ec, #5d42b4); border-color: #cdbbff; color: #fff; box-shadow: 0 8px 20px #4e37a866; }
+.detail-actions .secondary { background: #111b2d; border-color: #dfc27e; color: #fff4d4; box-shadow: inset 0 1px #ffffff18, 0 5px 14px #0005; }
+.detail-actions .secondary:hover { background: #1e2d47; border-color: #f5d994; color: #fffdf5; }
+.detail-hint { margin-top: 14px; color: #8f83b3; font-size: 11px; }
+.detail-nav { width: 46px; height: 46px; border-radius: 50%; border: 1px solid #f0d18a55; background: #0a1019bb; color: #f6dc9f; font-size: 24px; cursor: pointer; }
+.detail-nav:disabled { opacity: .3; cursor: default; }
+.detail-nav:not(:disabled):hover { background: #f0d18a33; }
+
+/* ===== replay overlay (dress-up): full-bleed cinematic ===== */
+.replay-overlay { padding: 0; background: #04060c; backdrop-filter: none; }
+.dressup-replay { position: fixed; inset: 0; width: 100%; background: #04060c; color: #f3eadb; padding: 0; }
+.dressup-stage.inline { position: absolute; inset: 0; min-height: 0; border: 0; border-radius: 0; margin: 0; }
+.dressup-stage.inline > .replay-vframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+.dressup-stage.inline > .replay-vframe .vframe-main { object-fit: contain; background: #04060c; }
+.replay-video-error { position: absolute; z-index: 8; right: 24px; bottom: 92px; left: 24px; display: grid; gap: 10px; justify-items: center; padding: 12px 16px; border: 1px solid #e8bd6866; border-radius: 12px; background: #151a24ee; color: #ffe6ad; text-align: center; }
+.replay-video-error-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.replay-video-error-actions .compact { min-height: 36px; padding-inline: 13px; }
+.image-load-failed { display: grid !important; place-items: center; min-height: 44px; background: linear-gradient(145deg, #202b3d, #0d1420) !important; }
+.image-load-failed::after { content: '图片暂不可用'; color: var(--text-muted); font-size: 12px; font-weight: 700; }
+.replay-head { position: absolute; z-index: 5; top: 0; right: 0; left: 0; padding: 28px 34px 60px; background: linear-gradient(180deg, #04060cd9, transparent); pointer-events: none; }
+.replay-head .eyebrow { margin: 0 0 6px; color: #e8c174; letter-spacing: 3px; }
+.replay-head h2 { margin: 0; color: #fffaf0; font-size: clamp(30px, 4vw, 46px); letter-spacing: -1px; text-shadow: 0 4px 18px #000; }
+.replay-footer { position: absolute; z-index: 5; right: 0; bottom: 0; left: 0; padding: 80px 34px 30px; background: linear-gradient(transparent, #04060cd9 60%); pointer-events: none; }
+.replay-footer p { margin: 0; color: #f4edde; font-size: 13px; text-shadow: 0 2px 6px #000; }
+.replay-close { position: absolute; z-index: 6; top: max(22px, env(safe-area-inset-top)); right: clamp(20px, 3vw, 38px); border-radius: 999px; background: #0b111dcc; backdrop-filter: blur(6px); }
+
+/* ===== gallery nav badge & fly animation ===== */
+.topbar nav a { position: relative; }
+.topbar nav a.has-badge::after { content: attr(data-badge); position: absolute; top: -7px; right: -13px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 999px; background: #1f6feb; color: #fff; font-size: 10px; font-weight: 900; display: grid; place-items: center; }
+.fly-ghost { border-radius: 14px; overflow: hidden; box-shadow: 0 18px 60px #00000099; }
+
+/* ===== reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .dressup-figure.autoplay .band, .dressup-figure.autoplay .layer-fx, .dressup-figure.autoplay::after { animation: none; }
+  .dressup-figure.autoplay .layer-fx { opacity: 1; }
+  .pcard:hover, .pcard-art.lv3:hover .layer-outfit, .pcard-art.lv3:hover .layer-fx { transform: none; }
+  .pcard-art.first::before, .pcard-art.lv4 .layer-fx, .pcard-art.lv5::after, .pcard.is-new .pcard-art { animation: none; }
+}
+
+/* ===== transparent cutout standee: the figure stands on the scene, no card frame ===== */
+.pal-standee.cutout { overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.pal-standee.cutout .layer { object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .58)); }
+.opponent .pal-standee.cutout { border: 0; box-shadow: none; }
+/* 4:5 与立绘 PNG（600×750）一致，所以只需要给高度，宽度由 aspect-ratio 推出。
+   `.opponent .pal-standee` 已经这么做了，这里是同一个规范在大厅的那一档。 */
+.lounge-pal.pal-standee.cutout { width: auto; height: var(--lounge-figure-h); aspect-ratio: 4 / 5; border: 0; box-shadow: none; }
+.lounge-pal.pal-standee[class*="pal-user-"] .layer { object-fit: cover; object-position: 50% 18%; }
+.pal-standee.cutout .pal-caption { padding: 0 0 2px; background: none; text-shadow: 0 2px 7px #000, 0 0 3px #000; }
+.pal-standee.cutout .action-video { border-radius: 18px; box-shadow: 0 14px 34px rgba(0, 0, 0, .6); }
+.pal-standee.cutout.with-video > img.layer { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .pal-standee.cutout .layer { filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .5)); } }
+
+/* ===== round 3 overhaul: bigger table opponents, adaptive felt, unblocked replay text, dark gallery/workshop ===== */
+
+/* opponents read as seated players, not avatars */
+.opponent.right { right: 26px; top: 40%; }
+.opponent.left { left: 26px; top: 50%; }
+.opponent { align-items: flex-end; gap: 12px; }
+.opponent > div:not([class]) { padding: 7px 11px; border: 1px solid #e4bd6e66; border-radius: 10px; background: #0b111ecc; backdrop-filter: blur(6px); }
+.opponent > div:not([class]) b { font-size: 13px; }
+.opponent .back-cards { font-size: 20px; align-self: center; }
+.pal-bubble { max-width: 220px; font-size: 12px; padding: 8px 12px; }
+
+/* ---- topbar runtime controls: pacing + audio ---- */
+.top-controls { display: flex; gap: 8px; margin-left: auto; }
+.ctl-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 12px; border: 1px solid #d5ae6555; border-radius: 999px; background: #101728; color: #f0e6d2; font-size: 12px; font-weight: 800; letter-spacing: .4px; cursor: pointer; transition: border-color .18s, background .18s, color .18s; }
+.ctl-btn:hover { border-color: #e4bd6eaa; background: #1a2336; color: #fff8e9; }
+.ctl-btn:focus-visible { outline: 2px solid #eec76a; outline-offset: 2px; }
+.ctl-btn i { font-style: normal; opacity: .75; }
+.ctl-btn.off { border-color: #ffffff22; background: #0d131ff5; color: #8d8b96; }
+.top-token { margin-left: 0; }
+
+/* Felt height tracks the viewport so nothing is pushed off-screen.
+   Derived from measured geometry (1440×900, verified pixel-exact):
+     scrollHeight = 68 topbar + 18/28 page padding + 60 .table-side
+                  + 14×2 grid gaps + 52 .event-feed
+                  + 12 .hand-wrap margin-top
+                  + handWrap, where handWrap = hand + 77 (2 border + 28 padding + 35 header + 12 header gap)
+                  = 266 + hand + 77 + felt
+   Solving scrollHeight = 100dvh gives felt = 100dvh - 343 - hand, and .hand is
+   clamp(96px, 12dvh, 115px) — both sides share one clamp expression, so the two
+   cannot drift out of sync the way the old hard-coded 330px did.
+
+   The 60px `.table-side` term is reserved explicitly below. It is not decorative: at short
+   viewports that column's round-tag + h1 + copy wrap onto extra lines and grow from 30px to
+   60px, which is exactly where the old 129px overflow at 1080×620 came from. Pinning the
+   band makes the arithmetic viewport-independent.
+
+   The 360px floor is set by the seats, not by taste: linxing is a 40%-of-felt bust, so a
+   felt under ~293px cannot keep her clear of her own card band (see the derivation on
+   `.opponent.top`). Below this floor the page scrolls rather than silently mangling the
+   table. */
+.table-page > .table-side { min-height: 60px; }
+.table-felt {
+  height: clamp(360px, calc(100dvh - 343px - clamp(96px, 12dvh, 115px)), 720px);
+  min-height: 0;
+  /* The felt is a *size container* because the seats and the card anchors are measured on
+     different axes: a figure is a share of the felt's HEIGHT (the clamped axis, 311px at
+     1280×720 up to 720px at 2560×1440) while its card anchor is an offset along the felt's
+     WIDTH. `cqh` is the only unit that can carry a height share into a horizontal offset,
+     which is what --mia-band-x needs. */
+  container-type: size;
+  /* Seat geometry, one variable per measured offset, declared here because this rule
+     precedes the short-viewport block below — a variable declared in that media query would
+     be overwritten by anything declared after it (which is exactly how the old per-seat
+     `.from-*` rules in that block became dead and silently disagreed with the seats).
+
+     --seat-figure: every opponent figure's height, as one share of the felt for ALL seats.
+       One value is the point: the previous rules gave mia a fixed 236×295 (192×240 on short
+       viewports) while linxing was a share of the felt, so the pair measured 1.94× apart at
+       1024×720 and 1.03× at 2560×1440 — the two characters changed relative size with the
+       window. Capped from above by linxing's clearance, see the derivation on
+       `.opponent.top`.
+     --top-seat-shift: half of what the top seat's flex row renders to the *right* of the
+       character (gap 12 + role chip 76 + gap 12 + back-cards 5 = 105 → 52.5), measured at
+       1440×900. It re-centres her against that trailing content, and linxing's card anchor
+       shares it so her cards stay on her x.
+     --mia-band-x: mia's card anchor measured from the felt's right edge: 26px right inset
+       + 5px back-cards + 12px gap + 76px role chip + 12px gap + her figure's WIDTH + 56px
+       half the card stack + 8px clearance = 195px + figure width. The figure is
+       --seat-figure tall and 4/5 as wide, so its width is 40% × 4/5 = 32cqh — a height
+       share inside a horizontal offset, which is what the container above buys. Anchoring
+       to her *seat edge* rather than a share of the felt's width is what keeps her cards
+       off her own bust at 1024×720, where the two seats are proportionally widest. */
+  --seat-figure: 40%;
+  --top-seat-shift: 52.5px;
+  --mia-band-x: calc(195px + 32cqh);
+}
+.dressup-modal { max-height: calc(100dvh - 40px); }
+
+/* replay: title sits low-left over the scrim, face stays clear up top */
+.replay-head { position: absolute; z-index: 5; top: auto; right: 0; bottom: 54px; left: 0; padding: 0 clamp(24px, 4vw, 44px); background: none; pointer-events: none; }
+.replay-head .eyebrow { margin: 0 0 5px; color: #e8c174; letter-spacing: 3px; }
+.replay-head h2 { font-size: clamp(28px, 3.6vw, 42px); }
+.replay-footer { z-index: 4; padding: 130px clamp(24px, 4vw, 44px) 24px; background: linear-gradient(transparent, #04060cd9 62%); }
+
+/* gallery: dark casino theme */
+.gallery h1 { color: #fff8eb; }
+.gallery .eyebrow { color: #e8c174; }
+.gallery-head > div > p { color: #bcb6ad; }
+.collection-progress b { color: #fff4d6; }
+.collection-progress span { color: #b0a692; }
+.progress-track { background: #1c2431; }
+.chip { border-color: #d3b06c55; background: #131a26; color: #d8cfbe; }
+.chip:hover { border-color: #f0c778; color: #ffe9bd; }
+.chip.active { background: #f0c778; border-color: #f0c778; color: #241a08; }
+.pcard-copy h2 { color: #f5eee0; }
+.pcard-copy p { color: #9d9484; }
+.gallery .empty-line { color: #9d9484; }
+
+/* workshop: dark casino theme */
+.resource-actions { display:flex; align-items:center; gap:12px; margin:14px 0 10px; flex-wrap:wrap; }
+.resource-actions small { color:#bcb6ad; font-size:12px; }
+.resource-row { position:relative; }
+.resource-row .resource-status { margin-left:auto; align-self:center; font-style:normal; font-size:11px; white-space:nowrap; color:#a99f90; }
+.resource-row .resource-status.succeeded { color:#79d7a4; }
+.resource-row .resource-status.running, .resource-row .resource-status.submitting, .resource-row .resource-status.queued { color:#e8c174; }
+.resource-row .resource-status.waiting_reference { color:#d9bb82; }
+.resource-row .resource-status.retry_waiting { color:#d6a5ff; }
+.resource-row .resource-status.blocked_reference { color:#ff9f6e; }
+.resource-row .resource-status.failed { color:#ff899e; }
+.resource-row .resource-error { display:block; color:#ff9caf; margin-top:4px; }
+.workshop-intro h1 { color: #fff8eb; }
+.workshop-intro .eyebrow { color: #e8c174; }
+.workshop-intro p { color: #bcb6ad; }
+.workshop-intro li { border-bottom-color: #d3b06c33; color: #cfc6b6; }
+.generator { background: #101725; border: 1px solid #d3b06c55; box-shadow: 0 18px 44px #00000066; }
+.generator textarea { background: #0a101b; color: #f4edde; border: 1px solid #d3b06c44; }
+.generator .form-note { color: #b0a692; }
+.field-error { color: #ff9fb4; }
+.version-chain { background: #0d131f; border-color: #d3b06c44; }
+.version-chain h2 { color: #fff4d6; }
+.candidate { border-top-color: #d3b06c33; }
+.candidate b { color: #f5eee0; }
+.candidate p, .candidate small { color: #9d9484; }
+.candidate.confirmed { background: #1a2334; border-top-color: transparent; box-shadow: inset 3px 0 0 #d3b06c; }
+.candidate-badge { color: #9fdcb4; background: #1d3a2a99; }
+.char-counter { color: #8d8578; }
+.char-counter.short { color: #ff9fb4; }
+.candidate-image { border-color: #d3b06c55; background: #0a101b; }
+.candidate-actions .secondary { border-color: #897bb966; background: #172236; color: #e8ddc9; box-shadow: inset 0 1px #ffffff0d; }
+.candidate-actions .secondary:hover { border-color: #e7c77f99; background: #222f48; color: #fff7e7; }
+.candidate-actions .secondary[data-action="apply-pal"] { border-color: #bca8ff99; background: linear-gradient(135deg, #7659dc, #5840aa); color: #fff; box-shadow: 0 7px 16px #5d45bd55, inset 0 1px #ffffff2e; }
+.candidate-actions .secondary[data-action="apply-pal"]:hover { border-color: #d7caff; background: linear-gradient(135deg, #896cf0, #674dc1); }
+.candidate-actions .secondary[data-action="apply-pal"].is-seated,
+.candidate-actions .secondary[data-action="apply-pal"].is-seated:disabled { border-color: #6fd1a0; background: #173c35; color: #b9f5d7; opacity: 1; cursor: not-allowed; box-shadow: inset 0 1px #ffffff18; }
+.candidate-actions .secondary[data-action="discard"] { border-color: #c7808e66; color: #ffc2ca; }
+.candidate-actions .secondary[data-action="discard"]:hover { border-color: #ff9fb4aa; background: #38202b; color: #ffe4e8; }
+.production-job { border-top-color: #d3b06c33; }
+.production-job p, .production-job small { color: #9d9484; }
+.job-dot { background: #8e69ff; }
+.production-job.ready .job-dot { background: #79c99a; }
+.production-job.failed .job-dot { background: #ff9fb4; }
+.production-task-list { border-color: #d3b06c66; background: #101827; box-shadow: inset 0 1px #ffffff08, 0 12px 28px #0000002e; }
+.production-task-list > summary { color: #f4edde; }
+.production-task-list[open] > summary { border-bottom-color: #d3b06c44; background: #151f31; }
+.production-task-list > summary:hover { background: #19263b; }
+.production-task-list .task-list-meta, .production-task-list > summary .job-chevron { color: #b8ad99; }
+.workshop .empty-line { color: #9d9484; }
+
+/* inspector: dark casino theme */
+.inspector h1 { color: #fff8eb; }
+.inspector .eyebrow { color: #e8c174; }
+.inspector > div > p { color: #bcb6ad; }
+.inspector pre { background: #0d131f; border: 1px solid #d3b06c44; }
+
+/* round 3 fit fixes: opponents clear of the play zone, info chips aligned, mia not clipped */
+.opponent { align-items: center; }
+.opponent.right { right: 26px; top: 29%; }
+.opponent.left { left: 26px; top: 42%; }
+.lead-marker { top: 63%; }
+/* The dock must clear linxing's card band, whose bottom is 64%·H + 55.5px = 343px at
+   1440×900. 74% (332px) sat 11px inside it once her anchor moved onto the band; 80% (359)
+   leaves 16px and still sits 27px above .self-seat at the felt's bottom edge. On short
+   viewports the dock leaves the centre entirely (see the max-height block above). */
+.turn-dock { top: 80%; }
+
+/* ===== round 4: one shared table coordinate system for seats + played cards =====
+   Before this block, seats and played-card anchors were two unrelated sets of magic
+   numbers: `.opponent.*` used edge percentages while `.from-*` hard-coded its own
+   left/right/top. Moving a seat never moved that player's played cards, and
+   `.from-pal-linxing { top: 296px }` sat 14px inside a 310px felt floor — a guaranteed
+   overflow. Both are now derived from the same three anchor positions below.
+
+   Layout contract (all values are % of .table-felt, which is position:relative):
+     - 上家 linxing  : horizontally centred, top edge
+     - 下家 mia      : right edge
+     - 玩家 player   : left edge  (the short end of the felt, opposite .self-seat)
+   Played cards land at the midpoint between the player who played them and the table
+   centre, so "who played this" is readable without consulting the label.
+
+   `.opponent.top` centres its *flex row*, not the character: the row also holds the role
+   chip and the back-cards, so translateX(-50%) left the standee left of true centre.
+   Measured at 1440×900 the trailing content is gap 12 + chip 76 + gap 12 + back-cards 5,
+   so the figure sits 105/2 = 52.5px left of centre and the row shifts right by exactly
+   that. Do not guess this number — the back-cards collapse to ~5px wide at some font
+   metrics, which makes hand-tuned values overshoot. */
+
+/* One figure size for every seat, as a share of the felt height. A pixel size cannot work
+   here: the felt's height is itself clamped over the viewport while the card band below
+   linxing is a fixed ~111px block, so a px-sized figure cannot track the band — and a
+   figure that shrinks per media tier makes the two characters differ in size. */
+.opponent { height: var(--seat-figure); }
+.opponent .pal-standee,
+.opponent .pal-standee.cutout { height: 100%; width: auto; aspect-ratio: 4 / 5; }
+
+/* Top seat is a *bust*, expressed as a share of the felt rather than in pixels.
+   The felt height is itself clamped over the viewport (449px at 1440×900, 311px at
+   1280×720), while the card band below it is a *fixed* ~111px block — the fan's
+   clamp(52px, 17%, 85px) resolves against an auto height, so it never shrinks. A
+   pixel-sized standee therefore cannot track the band. Both contract values are shares
+   of the felt, so their relation holds at every felt height:
+     bust bottom = 3% + 40% = 43%·H          band top = 64%·H − 55.5 (half the stack)
+     43%·H + clearance ≤ 64%·H − 55.5   ⇔   0.21·H ≥ 61.5  ⇔   H ≥ 293px
+   The supported felts are 311px (1280×720) and up, so the 18px of clearance at the floor
+   is the worst case, and the shot-invariants sweep asserts it instead of trusting it.
+   Aspect 4/5 matches the standee PNGs (600×750); `height: 100%` is a real percentage
+   because `.opponent.top` now has a definite height. */
+.opponent.top { top: 3%; transform: translateX(calc(-50% + var(--top-seat-shift))); }
+
+/* Right seat: vertically centred on the felt. `top: 29%` left her body hanging 4px past
+   the bottom of a 311px felt (measured 1024×720: y75..315 of 311, clipped by the felt's
+   overflow) and inside .self-seat's band (1024px² of her at 1024×720). Centring the box on
+   50% puts the same felt at y93..218 — clear of the felt edge and of the chip at y288. */
+.opponent.right { right: 26px; top: 50%; transform: translateY(-50%); }
+
+/* Short viewports: the felt's own floor drops so the play block fits, and the two measured
+   seat offsets get a shorter-felt tier because the font tier shrinks the role chip (76 →
+   69px) and the card stack (112 → 92px wide). The figures themselves are NOT re-sized here
+   — they are a share of the felt (--seat-figure), so they shrink with it automatically, and
+   giving them a pixel size here is exactly what made the two characters different sizes. */
+@media (max-height: 780px) {
+  /* row content right of the character = 12 + 69 + 12 + 5 = 98 → 43px, and
+     mia's band offset = 26 + 5 + 12 + 69 + 12 + 32cqh + 46 (half the 92px stack) + 8. */
+  .table-felt { --top-seat-shift: 43px; --mia-band-x: calc(178px + 32cqh); }
+  .opponent.top { transform: translateX(calc(-50% + var(--top-seat-shift))); }
+  .opponent.left { top: 36%; }
+  .played-stack { min-width: 92px; }
+
+  /* Lowering the floor here is what removes the scroll bar at 1280x720 and 1366x768 — the
+     felt clamp still governs the height, this only relaxes its minimum. */
+  .table-page > .table-side { min-height: 30px; }
+  .table-felt { height: clamp(300px, calc(100dvh - 313px - clamp(96px, 12dvh, 115px)), 720px); }
+  .lead-marker { top: 68%; }
+  /* The dock is centred horizontally, which is exactly where linxing's caption sits on a
+     short felt. Moving it to the lower-left puts it beside .self-seat instead of on top of
+     her caption — both stay readable. */
+  .turn-dock { top: auto; bottom: 6px; left: 25%; transform: translateX(-50%); }
+  .self-seat { right: 25%; bottom: 6px; }
+  .opponent .pal-caption { padding-top: 12px; }
+}
+
+/* One anchor per seat. Each stack is centred with translate(-50%,-50%), so the value below
+   is the stack's CENTRE, not its top-left.
+
+   mia's anchor walks in from the felt's right edge (`--mia-band-x`, derived above from her
+   measured row): 26px inset + her row's trailing content + her standee + half a stack +
+   clearance. It used to be `50% + 17%`, a share of the *felt width*, which only happened to
+   clear her because 17% of 1325px is 225px. On a 942px felt (1024×720) the same share is
+   only 160px and her cards landed on her own bust — the seats do not shrink in step with
+   the felt, so a share of the felt can never track them.
+
+   linxing is the other exception. Her seat is the top-centre one and her standee occupies
+   the felt's middle, so anchoring her cards at her own centre (the "midpoint between player
+   and table centre" rule) puts them inside her own body box (x556-792, y41-336 at
+   1440×900 — the entire stack). She throws onto the shared band *in front of* her instead:
+   64% of the felt, reserved by the bust contract above (bust ends at 43%, band starts at
+   64% − 55.5px). */
+
+/* Anchors are named by SEAT, not by palId. Custom pals can take either seat now, and a
+   `.from-pal-<id>` rule would only ever exist for the two official pals — any custom pal
+   would fall through to no anchor at all and stack her cards at the felt's origin. The
+   `.from-*` class is still emitted (it carries identity for styling and tests); the
+   position lives here, once, per seat. */
+/* top seat: centred on the felt centre (the row shift re-centres her against the role chip
+   and back-cards to her right), and her cards share that x so they read as coming from her. */
+.seat-top {
+  top: 64%;
+  left: calc(50% + var(--top-seat-shift));
+  transform: translate(-50%, -50%);
+}
+
+/* right seat: her cards sit in the gap between the two characters, just inside her own
+   seat edge — see `--mia-band-x` for the derivation. */
+.seat-right {
+  top: calc(50% - 6%);
+  left: calc(100% - var(--mia-band-x));
+  transform: translate(-50%, -50%);
+}
+
+/* player: the human seat is the left edge. At 40% the stack overlapped the top seat, whose
+   character starts at 42% of the felt — the stack's half-width (56px) needs clearing, not
+   just its centre. 30% puts the box at 341-453 on a 1325px felt, well clear of her 556. */
+.seat-player {
+  top: calc(50% + 18%);
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+/* Layer contract, in one place: felt-label < seats (2) < card band (3) < match-hud (4),
+   with .self-seat picking up 3 and winning on tree order because it comes after the stage.
+
+   The card band has to outrank the seats, because a stack anchored in the felt's middle
+   band would otherwise be painted *behind* the top seat's body. The previous version did
+   the opposite — it dropped the stage to z-index 1 and tried to lift individual stacks
+   with `z-index: 3` — and that cannot work: `.play-stage` carries a z-index, so it is a
+   stacking context of its own, and a child can never climb above a sibling of its own
+   parent. mia's stack only *looked* fine because her anchor happens to clear both seats'
+   boxes; linxing's anchor sat inside hers and vanished behind her dress. */
+.play-stage { z-index: 3; }
+.pal-bubble { z-index: 5; }
+/* 特写是临时切镜，压在所有常驻层之上（6），但它 pointer-events: none 且会自己收镜，
+   所以只是「挡一下眼睛」，不夺走任何操作。 */
+.closeup { z-index: 6; }
+
+/* The HUD used to be centred on the felt's top edge, which is exactly where linxing's head
+   is: measured across the supported range it covered 8% of her bust at 2560×1440 and 26%
+   of it at 1024×720 (the whole crown), because .match-hud is z-index 4 and the seats are 2.
+   Moving it to the top-left corner keeps its text on the felt and off both characters —
+   her bust starts at x424 on a 942px felt and x535 on a 1275px one, while the HUD ends at
+   x204. */
+.match-hud { left: 18px; transform: none; }
+
+/* The played stack is a 3-row block (label / cards / owner) and must clear the turn dock.
+   On a short felt it is the *play block* that has to give, not the seats: the seats have a
+   hard minimum below which a character is cropped, while the card fan can shrink freely. */
+/* ===== L3 回合特写：牌桌左上角的一次切镜 =====
+   宽度取 28% 牌桌宽，但被「玩家出牌堆的左缘」卡住：那堆锚在 left:30%，半张牌
+   （1440 下 56px、1024 下 46px）加上本卡自身 left:18px 与 6px 净空，
+   于是可用宽度 = 30cqw − 78px。1440×900 算得 319px（24.1%，落在 24–32% 里）；
+   1024×720 的牌桌只有 942×311，算得 205px（21.8%）——那里净空确实不够，
+   宁可窄一点也不压住玩家刚打出的牌，这比凑到一个好看的百分比重要。
+   高度被牌桌高度夹住：肖像 24cqh，整卡上不过 match-hud（y19–51）、下不压 felt-label。
+   1024×720 这种矮牌桌上肖像取到 76px 的下限，卡片会与 felt-label 的盒子重叠十几像素，
+   但 felt-label 是居中的装饰水印，文本在牌桌正中，不会被压到。 */
+.closeup {
+  position: absolute; top: 56px; left: 18px;
+  display: flex; align-items: center; gap: 12px;
+  width: min(28cqw, calc(30cqw - 78px)); min-width: 180px;
+  padding: 9px 12px 9px 9px; border: 1px solid #f0d18a66; border-radius: 16px;
+  background: linear-gradient(180deg, #0b1020f2, #070b14e6);
+  box-shadow: 0 16px 44px #000000a8, inset 0 1px #ffffff14;
+  pointer-events: none;
+  animation: closeup-in .26s cubic-bezier(.22, .9, .32, 1) both;
+}
+@keyframes closeup-in { from { opacity: 0; transform: translateX(-14px) scale(.96); } to { opacity: 1; transform: none; } }
+.closeup-portrait { flex: none; display: block; width: clamp(76px, 24cqh, 168px); aspect-ratio: 1 / 1; border-radius: 11px; overflow: hidden; background: #141a2e; }
+.closeup-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.closeup-initial { display: grid; place-items: center; width: 100%; height: 100%; color: #0d1018; font-size: 26px; }
+.closeup-copy { min-width: 0; }
+.closeup-copy b { display: block; font-size: 14px; font-weight: 600; color: #f6ead2; }
+.closeup-copy i { display: block; margin-top: 1px; font-style: normal; font-size: 11px; letter-spacing: .4px; color: #e8c174; }
+.closeup-copy > span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 3px; font-size: 12px; line-height: 1.35; color: #c8c2b7; }
+.closeup.tone-bomb { border-color: #ff9e7d99; box-shadow: 0 16px 44px #000000a8, 0 0 0 1px #ff9e7d33, inset 0 1px #ffffff14; }
+.closeup.tone-bomb .closeup-copy i { color: #ffb08c; }
+.closeup.tone-finish { border-color: #f5d78caa; }
+.closeup.tone-alarm .closeup-copy i { color: #7dd3fc; }
+@media (prefers-reduced-motion: reduce) { .closeup { animation: none; } }
+
+.table-card-fan { min-height: clamp(52px, 17%, 85px); }
+.table-card { width: clamp(38px, 12.5%, 57px); height: clamp(52px, 17%, 78px); }
+.table-card b { font-size: clamp(15px, 4.4%, 20px); }
+.table-card small { font-size: clamp(17px, 5.2%, 24px); }
+
+/* ===== 角色组合牌桌主题 =====
+   一局主题只由两名 AI 牌友的组合决定，座位互换不改变主题。
+   基础主题（月夜酒馆）维持原来的背景；另外两组只覆盖色相、光带和内圈，
+   因而不改动任何座位/出牌坐标系。 */
+.felt-label em { display: block; margin-top: 4px; font-size: 10px; font-style: normal; letter-spacing: 2px; opacity: .66; }
+.table-felt.theme-silver-court {
+  border-color: #b8ccff9c;
+  background:
+    radial-gradient(circle at 73% 24%, #b8d5ff44 0 3%, transparent 22%),
+    linear-gradient(132deg, #0a1935e8, #182d5270 45%, #071126d9),
+    url('./assets/club-night-v2.png') center 56% / cover no-repeat;
+  box-shadow: inset 0 0 0 8px #071428b8, inset 0 0 0 10px #a9c4ff8f, 0 22px 48px #00000070, 0 0 46px #7fa8ff24;
+}
+.table-felt.theme-silver-court:after { border-color: #c2d5ff80; box-shadow: 0 0 48px #9ebeff28; }
+.table-felt.theme-silver-court .match-hud { border-color: #bdd2ff8a; background: #091935d9; }
+.table-felt.theme-silver-court .match-hud b, .table-felt.theme-silver-court .felt-label { color: #d8e5ff; }
+.table-felt.theme-mint-neon {
+  border-color: #77efda94;
+  background:
+    radial-gradient(circle at 78% 23%, #dc79ff47 0 3%, transparent 21%),
+    linear-gradient(140deg, #061f24e9, #15414978 46%, #211239c9),
+    url('./assets/club-night-v2.png') center 56% / cover no-repeat;
+  box-shadow: inset 0 0 0 8px #05191cb8, inset 0 0 0 10px #65e6d58a, 0 22px 48px #00000070, 0 0 48px #68f3d72b;
+}
+.table-felt.theme-mint-neon:after { border-color: #7cffe685; box-shadow: 0 0 52px #70efd735; }
+.table-felt.theme-mint-neon .match-hud { border-color: #77efda9b; background: #071c24dc; }
+.table-felt.theme-mint-neon .match-hud b, .table-felt.theme-mint-neon .felt-label { color: #92ffe8; }
+
+/* 银岚 L2 坐席：与另两位同为半身构图；银蓝边光与月卡高光把她从深色牌桌中分离，
+   不改盒子尺寸，避免破坏统一的 40% 高度座位比例。 */
+.table-seat.pal-yinlan { border-color: #c4d5ff9a; border-radius: 18px; background: radial-gradient(circle at 54% 20%, #cbe2ff3b, transparent 48%); box-shadow: 0 14px 30px #00000078, 0 0 18px #aac7ff42; }
+.table-seat.pal-yinlan .layer-base { object-position: 50% 10%; transform: scale(1.04); filter: drop-shadow(0 0 7px #b5ccff6a) saturate(1.06); }
+.table-seat.pal-yinlan .pal-caption { background: linear-gradient(90deg, #07152ccc, #1b3158b8); }
+
+/* ===== 牌友工坊：资源包而非一张肖像 ===== */
+/* 工坊三段式工作台：填写在左，资源计划在右，生产任务/可确认资产在下方整宽展开。 */
+.workshop { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: start; max-width: 1180px; gap: 22px 26px; }
+.workshop-intro { grid-column: 1 / -1; margin-bottom: 0; }
+.workshop-intro h1 { margin-bottom: 0; text-wrap: balance; }
+.workshop .generator { grid-column: 1; grid-row: 2; width: 100%; padding: 24px; border-radius: 20px; }
+.workshop .generator label { margin-bottom: 8px; }
+.workshop .generator textarea { height: 112px; }
+.workshop .generator .form-note { margin: 7px 0 12px; line-height: 1.45; }
+.workshop .version-chain { display: contents; width: 100%; }
+.workshop .resource-plans { grid-column: 2; grid-row: 2; min-width: 0; padding: 18px; border: 1px solid #d3b06c55; border-radius: 20px; background: linear-gradient(160deg, #141d2e, #0b111c 78%); box-shadow: 0 18px 42px #0000003d, inset 0 1px #ffffff0a; }
+.workshop .resource-plans > h2, .workshop .production-tasks > h2, .workshop .confirmed-assets > h2 { margin: 0 0 12px; text-wrap: balance; }
+.workshop .resource-plans > h2 { color: #f4d58f; font-size: 16px; letter-spacing: .04em; }
+.workshop .production-tasks, .workshop .confirmed-assets { grid-column: 1 / -1; min-width: 0; }
+.workshop .production-tasks > h2, .workshop .confirmed-assets > h2 { margin-top: 26px; }
+.workshop .resource-plans > .resource-plan { margin: 0; border-color: #d3b06c66; background: #0a111d; box-shadow: none; }
+.workshop .resource-plan-summary-meta { font-variant-numeric: tabular-nums; }
+.workshop .production-task-list, .workshop .confirmed-assets .candidate { box-shadow: 0 12px 28px #00000024; }
+.production-task-filter { display: grid; grid-template-columns: auto minmax(260px, 430px); align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding: 11px 14px; border: 1px solid #d3b06c55; border-radius: 12px; background: #101827; color: #ddd2bc; }
+.production-task-filter > span { color: #f1d18c; font-size: 12px; font-weight: 700; }
+.production-task-filter select { min-width: 0; width: 100%; border: 1px solid #bca8ff88; border-radius: 8px; padding: 8px 30px 8px 10px; color: #f7f0df; background: #151f31; font: inherit; }
+.production-task-filter select option { color: #f7f0df; background: #151f31; }
+.production-task-filter select:focus-visible { outline: 2px solid #a78bfa; outline-offset: 2px; }
+@media (max-width: 980px) {
+  .workshop { display: block; max-width: 720px; }
+  .workshop-intro { margin-bottom: 24px; }
+  .workshop .generator, .workshop .version-chain { display: block; width: 100%; }
+  .workshop .resource-plans { display: block; height: auto; overflow: visible; margin-top: 24px; }
+}
+.package-picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.package-picker > p { grid-column: 1 / -1; margin: 0; color: #d3b06c; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.package-option { min-height: 92px; padding: 13px; border: 1px solid #d3b06c44; border-radius: 12px; color: #d8d2c7; background: #0a101b; text-align: left; cursor: pointer; transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+.package-option:hover { border-color: #e7c77f99; transform: translateY(-1px); }
+.package-option.selected { border-color: #e7c77f; background: linear-gradient(145deg, #25203c, #0d1624); box-shadow: inset 0 0 0 1px #e7c77f25; }
+.package-option b, .package-option span { display: block; }
+.package-option b { color: #f8e7bd; font-size: 14px; }
+.package-option span { margin-top: 6px; color: #b7ad9c; font-size: 12px; line-height: 1.4; }
+.generator-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.generator-actions .secondary { background: transparent; border-color: #d3b06c77; color: #ecd19a; }
+.resource-plan { margin: 12px 0 22px; padding: 18px; border: 1px solid #d3b06c55; border-radius: 16px; background: linear-gradient(145deg, #11192a, #090e18); box-shadow: 0 16px 42px #00000042; }
+.resource-plan-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.resource-plan-head .eyebrow { margin: 0 0 4px; color: #e7c77f; }
+.resource-plan-head h3 { margin: 0; color: #f4edde; font-size: 18px; }
+.resource-plan-head p { max-width: 620px; margin: 7px 0 0; color: #b8b0a3; line-height: 1.45; }
+.resource-plan-head > b { flex: none; padding: 7px 10px; border: 1px solid #e7c77f66; border-radius: 999px; color: #eed18d; font-size: 12px; white-space: nowrap; }
+.style-lock-note { margin: 12px 0 14px; padding: 10px 12px; border-left: 2px solid #e7c77f; background: linear-gradient(90deg, #e7c77f14, transparent); color: #d9d0c0; font-size: 12px; line-height: 1.55; }
+.style-lock-note b { color: #f1d18c; }
+.plan-next { margin: 15px 0 12px; padding: 9px 11px; border-left: 2px solid #d3b06c; color: #d8d1c2; background: #d3b06c0d; font-size: 13px; }
+.resource-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0; margin: 0; list-style: none; }
+.resource-row { display: grid; grid-template-columns: auto 1fr auto; gap: 9px; align-items: center; min-height: 56px; padding: 9px; border: 1px solid #ffffff12; border-radius: 10px; background: #060b13a6; }
+.resource-row b, .resource-row small { display: block; }
+.resource-row b { color: #e9e2d2; font-size: 13px; }
+.resource-row small { margin-top: 3px; color: #938e85; font-size: 11px; line-height: 1.3; }
+.resource-kind { padding: 3px 5px; border-radius: 4px; color: #9fb6e8; background: #5877ad2b; font-size: 10px; text-transform: uppercase; }
+.resource-row em { font-style: normal; color: #7d9f8f; font-size: 11px; white-space: nowrap; }
+.resource-row em.seat-required { color: #e7c77f; }
+.production-job.pending { border-color: #e7c77f66; background: #251f142e; }
+.production-job.pending .job-dot { background: #e7c77f; box-shadow: 0 0 0 4px #e7c77f22; }
+@media (max-width: 680px) { .package-picker, .resource-grid { grid-template-columns: 1fr; } .resource-plan-head { display: block; } .resource-plan-head > b { display: inline-block; margin-top: 10px; } .resource-row { grid-template-columns: auto 1fr; } .resource-row em { grid-column: 2; } }
+
+/* Portrait approval is a real production gate, not a decorative status chip. */
+.portrait-pipeline-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; list-style:none; padding:0; margin:16px 0 10px; }
+.portrait-pipeline-steps li { display:flex; align-items:center; gap:8px; min-height:40px; padding:7px 10px; border:1px solid #ffffff15; border-radius:9px; color:#96918a; background:#060b1377; font-size:12px; }
+.portrait-pipeline-steps li b { display:grid; place-items:center; width:23px; height:23px; flex:none; border-radius:50%; color:#bdb4a2; background:#ffffff10; font-size:10px; }
+.portrait-pipeline-steps li.current { border-color:#e7c77f88; color:#f3dda8; background:linear-gradient(110deg,#e7c77f18,#151d2a); box-shadow:inset 0 0 0 1px #e7c77f20; }
+.portrait-pipeline-steps li.current b { color:#10131b; background:#e7c77f; }
+.portrait-pipeline-steps li.done { color:#c0f1d3; border-color:#79d7a4aa; background:linear-gradient(110deg,#79d7a41c,#101d1b); box-shadow:inset 0 0 0 1px #79d7a41c; }
+.portrait-pipeline-steps li.done b { color:#071711; background:#79d7a4; }
+.resource-actions.complete .production-complete,
+.resource-actions.complete .production-complete:disabled { border-color:#79d7a4; background:linear-gradient(135deg,#238660,#176447); color:#edfff5; opacity:1; cursor:default; box-shadow:0 7px 16px #1c80524d, inset 0 1px #ffffff2b; }
+.portrait-review { display:grid; grid-template-columns:minmax(180px,.42fr) minmax(0,1fr); gap:18px; align-items:center; margin:14px 0; padding:14px; border:1px solid #e7c77f88; border-radius:13px; background:radial-gradient(ellipse at 12% 50%,#7c62a22a,transparent 60%),linear-gradient(135deg,#141d2d,#0b111c); box-shadow:0 12px 30px #00000032; }
+.portrait-review.confirmed { grid-template-columns:76px minmax(0,1fr); padding:9px 12px; border-color:#79d7a455; background:linear-gradient(110deg,#79d7a40e,#0b111c); box-shadow:none; }
+.portrait-review-image { appearance:none; display:grid; place-items:center; width:100%; min-height:220px; max-height:330px; overflow:hidden; padding:0; border:1px solid #e7c77f55; border-radius:10px; background:radial-gradient(ellipse at 50% 40%,#293247,#080d15); cursor:zoom-in; }
+.portrait-review-image img { display:block; width:100%; height:100%; max-height:330px; object-fit:contain; }
+.portrait-review-image:hover, .portrait-review-image:focus-visible { border-color:#f4d58f; box-shadow:0 0 0 3px #e7c77f2e; outline:none; }
+.portrait-review.confirmed .portrait-review-image { min-height:88px; max-height:92px; }
+.portrait-review.confirmed .portrait-review-image img { max-height:92px; }
+.portrait-review.confirmed .portrait-review-copy .eyebrow { color:#9ce7bc; }
+.portrait-review.confirmed .portrait-review-copy h4 { font-size:14px; }
+.portrait-review-copy { min-width:0; }
+.portrait-review-copy .eyebrow { margin:0 0 6px; color:#e7c77f; }
+.portrait-review-copy h4 { margin:0; color:#fff6df; font-size:17px; }
+.portrait-review-copy p:not(.eyebrow) { color:#c3bcaf; font-size:13px; line-height:1.65; }
+.portrait-review-copy small { display:block; margin:0 0 12px; color:#9c968b; font-size:11px; overflow-wrap:anywhere; }
+.portrait-review-copy button { min-height:44px; white-space:normal; }
+.portrait-gate-note { display:flex; flex-wrap:wrap; gap:6px 12px; align-items:baseline; margin:12px 0; padding:10px 12px; border-left:2px solid #e7c77f; color:#d9d0c0; background:#d3b06c0d; font-size:12px; }
+.portrait-gate-note b { color:#f1d18c; }
+.portrait-gate-note span { color:#b8b0a3; line-height:1.5; }
+.portrait-gate-note.confirmed { border-left-color:#79d7a4; background:#79d7a40c; }
+.portrait-gate-note.confirmed b { color:#9ce7bc; }
+.portrait-gate-note.failed { border-left-color:#ff899e; background:#ff899e0c; }
+.portrait-gate-note.failed b { color:#ff9caf; }
+.resource-row.locked { opacity:.6; }
+.resource-row .resource-status.locked { color:#958e81; font-size:10px; }
+.generator input[type="url"], .generator input[type="text"] { width:100%; min-height:46px; margin:0 0 4px; padding:11px 13px; border:1px solid #e7c77f44; border-radius:10px; outline:none; background:#0a111e; color:#f3ecdf; font:inherit; font-size:12px; }
+.generator input[type="url"]:focus-visible, .generator input[type="text"]:focus-visible { border-color:#e7c77f; box-shadow:0 0 0 3px #e7c77f2e; }
+.image-preview-trigger { appearance:none; position:relative; display:grid; place-items:center; padding:0; border:0; color:inherit; background:transparent; cursor:zoom-in; }
+.image-preview-trigger:focus-visible { outline:2px solid #f4d58f; outline-offset:3px; }
+.review-badge.approved { color:#9fdcb4; background:#1d3a2a99; }
+.review-badge.rejected { color:#ff9fb4; background:#3d1f2899; }
+.review-badge.pending { color:#e7c77f; background:#3a2f1a99; }
+/* 任务详情面板此前没有暗色覆盖：浅色底（rgba(255,255,255,.62)）+ 浅灰字在暗色主题下不可读。 */
+.job-detail { border-color:#d3b06c33; background:#0d1420; }
+.job-detail p > b { color:#9d9484; }
+.job-detail p > span { color:#e8e1d4; }
+.job-detail-actions { border-top-color:#d3b06c33; }
+.job-detail-actions small { color:#9d9484; }
+.job-detail-actions .secondary { border-color:#897bb966; background:#172236; color:#e8ddc9; }
+.job-detail-actions .secondary:hover { border-color:#e7c77f99; background:#222f48; color:#fff7e7; }
+.job-detail-actions .secondary.danger-lite { border-color:#b53c5988; color:#ff9fb4; }
+.job-detail-actions .secondary.danger-lite:hover { border-color:#e0708a; background:#3d1f28; color:#ffc3cf; }
+.rework-panel { border-color:#b53c5966; background:#b53c5914; }
+.rework-panel .rework-title { color:#ffb9c6; }
+.rework-panel textarea { background:#0a111e; border-color:#e7c77f44; color:#f3ecdf; }
+.job-state { background:#2a2540; color:#c9b8ff; }
+.production-job.active .job-state { background:#1c2c44; color:#a9c8f0; }
+.production-job.failed .job-state { background:#3d1f28; color:#ff9fb4; }
+.job-review { border-color:#d3b06c33; background:#ffffff08; }
+.job-review-thumb, .job-derived-thumb { border:1px solid #d3b06c55; background:#0a101b; }
+.job-review-thumb:hover, .job-derived-thumb:hover { border-color:#e7c77f99; filter:brightness(1.08); }
+.job-review-kind { color:#9d9484; }
+.candidate-image-trigger { width:64px; height:64px; border-radius:13px; }
+.candidate-image-trigger:hover { transform:translateY(-1px); filter:brightness(1.08); }
+.image-preview-modal { position:fixed; inset:0; z-index:120; display:grid; place-items:center; padding:28px; background:#050812e8; backdrop-filter:blur(12px); }
+.image-preview-backdrop { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; background:transparent; cursor:zoom-out; }
+.image-preview-dialog { position:relative; z-index:1; display:grid; place-items:center; gap:12px; max-width:min(88vw,820px); max-height:92vh; padding:16px; border:1px solid #e7c77f88; border-radius:18px; background:linear-gradient(145deg,#121b2b,#0a101b); box-shadow:0 24px 80px #00000099; }
+.image-preview-dialog img { display:block; max-width:min(80vw,760px); max-height:78vh; width:auto; height:auto; object-fit:contain; border-radius:10px; }
+.image-preview-dialog p { margin:0; color:#c8bda9; font-size:12px; }
+.image-preview-close { position:absolute; top:8px; right:8px; z-index:2; width:34px; height:34px; padding:0; border:1px solid #e7c77f88; border-radius:50%; color:#fff8e7; background:#1b2740e8; font-size:24px; line-height:1; cursor:pointer; }
+.image-preview-close:hover, .image-preview-close:focus-visible { border-color:#f4d58f; background:#2c3d60; outline:none; }
+.generator .dance-reference-note { margin:4px 0 14px; color:#c8beaa; font-size:11px; line-height:1.45; }
+@media (max-width:680px) { .portrait-pipeline-steps { grid-template-columns:1fr; gap:5px; } .portrait-pipeline-steps li { min-height:36px; } .portrait-review { grid-template-columns:1fr; } .portrait-review-image { min-height:260px; } }
+
+/* 工坊展开态：把右栏的长内容拆成连续的阅读区，避免步骤、资料卡和资源行挤成一团。 */
+.workshop .resource-plan-fold[open] > .resource-plan-head { background: linear-gradient(110deg, #1b2639, #111827); }
+.workshop .resource-plan-content { display: grid; gap: 12px; padding: 16px; background: #0a111d; }
+.workshop .resource-plan-content > * { margin-block: 0; }
+.workshop .portrait-pipeline-steps { grid-template-columns: 1fr; gap: 7px; margin: 0; }
+.workshop .portrait-pipeline-steps li { min-height: 38px; padding: 8px 10px; }
+.workshop .plan-next, .workshop .profile-card-note, .workshop .style-lock-note { margin: 0; }
+.workshop .portrait-review { grid-template-columns: 92px minmax(0, 1fr); gap: 12px; margin: 0; padding: 10px; }
+.workshop .portrait-review.awaiting .portrait-review-image { min-height: 150px; max-height: 180px; }
+.workshop .portrait-review-copy p:not(.eyebrow) { margin: 8px 0; font-size: 12px; line-height: 1.5; }
+.workshop .portrait-review-copy button { width: 100%; }
+.workshop .resource-actions { margin: 0; padding: 10px 0; border-top: 1px solid #d3b06c33; border-bottom: 1px solid #d3b06c33; }
+.workshop .resource-grid { grid-template-columns: 1fr; gap: 7px; }
+.workshop .resource-row { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+.workshop .resource-row em { grid-column: 2; grid-row: 2; justify-self: start; }
+.workshop .resource-row .resource-status { grid-column: 2; grid-row: 3; margin-left: 0; white-space: normal; justify-self: start; }
+.workshop .resource-plan-summary-meta b { color: #e7c77f; }
+@media (max-width: 680px) {
+  .workshop .portrait-review { grid-template-columns: 1fr; }
+  .workshop .portrait-review.awaiting .portrait-review-image { min-height: 220px; max-height: 280px; }
+}
+
+/* 恢复牌友工坊的上下工作流：填写 → 资源计划 → 生产任务 → 可确认资产。 */
+@media (min-width: 981px) {
+  .workshop { display: block; max-width: 1080px; }
+  .workshop .version-chain { display: block; width: 100%; }
+  .workshop .generator, .workshop .resource-plans, .workshop .production-tasks, .workshop .confirmed-assets { display: block; width: 100%; }
+  .workshop .resource-plans { margin-top: 24px; }
+  .workshop .production-tasks, .workshop .confirmed-assets { margin-top: 26px; }
+}
+
+/* 资源计划列表：列表保留摘要，完整生产过程只在详情浮窗中展开。 */
+.resource-plan-list-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: center; min-height: 86px; padding: 16px 18px; border: 1px solid #d3b06c44; border-radius: 14px; background: linear-gradient(145deg, #111a2b, #090f19); }
+.resource-plan-list-copy { min-width: 0; }
+.resource-plan-list-copy .eyebrow { margin: 0 0 4px; color: #e7c77f; font-size: 10px; letter-spacing: .08em; }
+.resource-plan-list-copy h3 { margin: 0; color: #f4edde; font-size: 16px; line-height: 1.35; }
+.resource-plan-list-copy p:last-child { margin: 6px 0 0; color: #a9a193; font-size: 12px; line-height: 1.6; }
+.resource-plan-list-meta { display: grid; gap: 4px; justify-items: end; white-space: nowrap; }
+.resource-plan-list-meta b { color: #f1d18c; font-size: 12px; }
+.resource-plan-list-meta span { color: #a9a193; font-size: 11px; }
+.resource-plan-detail-button { min-width: 88px; border-color: #d3b06c88; background: #172236; color: #f4edde; box-shadow: inset 0 1px #ffffff12, 0 5px 14px #0005; }
+.resource-plan-detail-button:hover, .resource-plan-detail-button:focus-visible { border-color: #f4d58f; background: #24324a; color: #fff7e7; }
+.gallery-result-count { margin-left: 4px; color: var(--text-secondary); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.resource-plan-modal { position: fixed; inset: 0; z-index: 130; display: grid; place-items: center; padding: 24px; background: #050812e8; backdrop-filter: blur(10px); }
+.resource-plan-modal-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-out; }
+.resource-plan-modal-dialog { position: relative; z-index: 1; display: flex; flex-direction: column; width: min(980px, calc(100vw - 48px)); max-height: calc(100dvh - 48px); overflow: hidden; border: 1px solid #d3b06c88; border-radius: 20px; background: linear-gradient(160deg, #141d2e, #090f19 82%); box-shadow: 0 28px 90px #00000099; }
+.resource-plan-modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex: none; padding: 20px 24px 16px; border-bottom: 1px solid #d3b06c44; background: #141f31; }
+.resource-plan-modal-head-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.resource-plan-modal-id { margin: 6px 0 0; color: #a9b4c8; font-size: 12px; line-height: 1.45; font-variant-numeric: tabular-nums; word-break: break-all; }
+.resource-plan-delete-button { border-color: #d88989aa; color: #ffdede; background: #4b222e; }
+.resource-plan-delete-button:hover, .resource-plan-delete-button:focus-visible { border-color: #ffb5b5; color: #fff; background: #713142; }
+.resource-plan-delete-button:disabled { border-color: #6e7280; color: #a5a9b4; background: #2a2f3b; opacity: 1; cursor: not-allowed; }
+.production-job .job-summary-copy small { line-height: 1.55; }
+.resource-plan-modal-head .eyebrow { margin: 0 0 4px; color: #e7c77f; font-size: 10px; letter-spacing: .1em; }
+.resource-plan-modal-head h2 { margin: 0; color: #fff5df; font-size: 20px; }
+.resource-plan-modal-close { flex: none; width: 36px; height: 36px; padding: 0; border: 1px solid #d3b06c66; border-radius: 50%; color: #fff6df; background: #19263a; font-size: 24px; line-height: 1; cursor: pointer; }
+.resource-plan-modal-close:hover, .resource-plan-modal-close:focus-visible { border-color: #f4d58f; background: #273b5b; outline: none; }
+.resource-plan-modal-body { min-height: 0; overflow-y: auto; padding: 18px 24px 24px; scrollbar-gutter: stable; }
+.resource-plan-modal-body .portrait-pipeline-steps { margin-top: 0; }
+.resource-plan-modal-body .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.resource-plan-modal-body::-webkit-scrollbar { width: 9px; }
+.resource-plan-modal-body::-webkit-scrollbar-track { background: #080e18; border-radius: 999px; }
+.resource-plan-modal-body::-webkit-scrollbar-thumb { background: #6f5a9f; border: 2px solid #080e18; border-radius: 999px; }
+.resource-plan-modal-body { scrollbar-color: #6f5a9f #080e18; }
+@media (max-width: 680px) {
+  .production-task-filter { grid-template-columns: 1fr; gap: 6px; }
+  .resource-plan-list-row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+  .resource-plan-list-meta { justify-items: end; }
+  .resource-plan-detail-button { grid-column: 1 / -1; width: 100%; }
+  .resource-plan-modal { padding: 12px; }
+  .resource-plan-modal-dialog { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+  .resource-plan-modal-head { padding: 16px; }
+  .resource-plan-modal-head-actions { gap: 6px; }
+  .resource-plan-modal-head-actions .resource-plan-delete-button { font-size: 11px; padding-inline: 8px; }
+  .resource-plan-modal-body { padding: 14px 16px 18px; }
+  .resource-plan-modal-body .resource-grid { grid-template-columns: 1fr; }
+}
+
+/* 工坊排版基线：与大厅/牌桌/写真馆共用标题、正文、辅助信息的阅读节奏。 */
+.workshop { font-size: 14px; line-height: 1.6; }
+.workshop h1 { font-size: 45px; line-height: 1.06; letter-spacing: -2px; margin-bottom: 22px; }
+.workshop h2 { font-size: 18px; line-height: 1.35; }
+.workshop h3 { font-size: 16px; line-height: 1.35; }
+.workshop p { line-height: 1.6; }
+.workshop label { font-size: 13px; line-height: 1.4; }
+.workshop .form-note, .workshop .char-counter, .workshop .resource-actions small { font-size: 12px; line-height: 1.6; }
+.workshop .resource-plan-list-row { min-height: 78px; padding: 14px 16px; }
+.workshop .resource-plan-list-meta b { font-size: 12px; }
+.workshop .resource-plan-list-meta span { font-size: 11px; }
+.workshop .resource-plan-modal-head h2 { font-size: 20px; line-height: 1.3; }
+.workshop .resource-plan-modal-body { font-size: 13px; line-height: 1.6; }
+
+/* ===== 全屏舞台演出页：赢局后「xxx将为你跳舞」的独立页面 =====
+   不内含在结算浮层里——结算和舞台是两个页面。z-index 必须高过 .settlement(20)
+   与 .replay-overlay/.card-detail(70)。信箱式帧撑满整屏：主体 contain 不裁切，
+   两侧由同帧虚化铺满（沿用 .vframe 既有机制）。 */
+.dance-stage { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; background: #04060c; overscroll-behavior: contain; --stage-figure-h: min(78vh, 128vw); }
+.dance-stage-spotlight { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 30%, #f5d78c2e, transparent 70%), radial-gradient(ellipse 90% 80% at 50% 110%, #7dd3fc14, transparent 60%); pointer-events: none; }
+.dance-stage .vframe.dance-vframe { position: absolute; inset: 0; }
+.dance-stage-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #05080f; }
+.dance-stage-head { position: absolute; z-index: 4; top: 0; right: 0; left: 0; padding: 24px 30px 48px; background: linear-gradient(180deg,#05080fd9,transparent); color: #fff9eb; text-align: center; pointer-events: none; }
+.dance-stage-head .eyebrow { margin: 0 0 5px; color: #e8c174; }
+.dance-stage-head h2 { margin: 0; font-size: clamp(20px, 3vw, 30px); text-shadow: 0 2px 12px #000; }
+.dance-stage-actions { position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0; padding: 64px 28px 26px; background: linear-gradient(transparent,#04070eee 45%); }
+.dance-stage-actions .secondary { border-color: #f4d89599; background: #101724cc; color: #fff4d9; }
+.dance-stage-actions .secondary:hover { background: #29334a; }

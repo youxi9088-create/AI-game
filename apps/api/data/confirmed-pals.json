@@ -1,0 +1,468 @@
+{
+  "version": 1,
+  "pals": [
+    {
+      "contractVersion": "1.5.0",
+      "palId": "pal-user-daina-v104",
+      "version": 104,
+      "readiness": "READY",
+      "auditRecordId": "audit-ownership-correction-daina-v104",
+      "profileCard": {
+        "version": "role-profile-card-v1",
+        "character": {
+          "name": "代娜",
+          "brief": "成年虚构牌友，深色轻奢礼服与猫耳发饰，沉稳而自信。",
+          "adultAppearance": true,
+          "fictional": true
+        },
+        "visualStyle": "舞台轻奢",
+        "clothing": {
+          "id": "dark-evening-dress",
+          "label": "深色轻奢礼服",
+          "prompt": "dark elegant evening dress with restrained gold details"
+        },
+        "accessory": {
+          "id": "cat-ears",
+          "label": "猫耳朵发饰",
+          "prompt": "tasteful cat-ear headband integrated into the hairstyle"
+        },
+        "actions": {
+          "idle": "待机呼吸与自然眨眼",
+          "play": "向牌桌出牌",
+          "pass": "克制地示意过牌",
+          "win": "克制胜利庆祝",
+          "lose": "失利后保持从容"
+        }
+      },
+      "identity": {
+        "name": "代娜",
+        "fictional": true,
+        "adultAppearance": true,
+        "aiLabel": "AI 虚构角色（真实图像产物）"
+      },
+      "appearance": {
+        "accent": "#8e69ff",
+        "outfit": "深色轻奢礼服 · 猫耳朵发饰",
+        "dance": "预设节拍",
+        "portraitRef": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+        "referenceCardRef": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+        "avatarRef": "/assets/pals/ugc/代娜/daina-alt-avatar.jpg",
+        "standeeRef": "/assets/pals/ugc/代娜/daina-alt-lounge-standee.png",
+        "tableStandeeRef": "/assets/pals/ugc/代娜/daina-alt-table-standee.png",
+        "loungeStandeeRef": "/assets/pals/ugc/代娜/daina-alt-lounge-standee.png",
+        "actionSheetRef": null,
+        "entryVideoRef": "/assets/pals/ugc/代娜/daina-alt-entry-film.mp4",
+        "danceVideoRef": "/assets/pals/ugc/代娜/daina-alt-outfit-film.mp4",
+        "dancePosterRef": "/assets/pals/ugc/代娜/daina-alt-outfit-poster.jpg",
+        "layers": {
+          "base": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+          "outfit": "/assets/pals/ugc/代娜/daina-alt-first-outfit.jpg",
+          "effect": "/assets/pals/ugc/代娜/daina-alt-outfit-fx.png"
+        },
+        "outfitLibrary": [
+          {
+            "outfitId": "starter-look",
+            "name": "深色轻奢礼服 · 猫耳朵发饰",
+            "dance": "预设节拍",
+            "auditRecordId": "audit-ownership-correction-daina-v104",
+            "layerSnapshot": {
+              "base": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+              "outfit": "/assets/pals/ugc/代娜/daina-alt-first-outfit.jpg",
+              "effect": "/assets/pals/ugc/代娜/daina-alt-outfit-fx.png",
+              "cardVideo": "/assets/pals/ugc/代娜/daina-alt-outfit-film.mp4",
+              "cardPoster": "/assets/pals/ugc/代娜/daina-alt-outfit-poster.jpg"
+            }
+          }
+        ]
+      },
+      "actionPack": {
+        "A01": {
+          "action": "idle",
+          "sheetRef": null,
+          "frame": [
+            0,
+            0
+          ],
+          "videoRef": null,
+          "imageRef": "/assets/pals/ugc/代娜/daina-alt-action-image-A01.png"
+        },
+        "A02": {
+          "action": "play",
+          "sheetRef": null,
+          "frame": [
+            1,
+            0
+          ],
+          "videoRef": null,
+          "imageRef": "/assets/pals/ugc/代娜/daina-alt-action-image-A02.png"
+        },
+        "A03": {
+          "action": "pass",
+          "sheetRef": null,
+          "frame": [
+            2,
+            0
+          ],
+          "videoRef": null,
+          "imageRef": "/assets/pals/ugc/代娜/daina-alt-action-image-A03.png"
+        },
+        "A04": {
+          "action": "win",
+          "sheetRef": null,
+          "frame": [
+            0,
+            1
+          ],
+          "videoRef": null,
+          "imageRef": "/assets/pals/ugc/代娜/daina-alt-action-image-A04.png"
+        },
+        "A05": {
+          "action": "lose",
+          "sheetRef": null,
+          "frame": [
+            1,
+            1
+          ],
+          "videoRef": null,
+          "imageRef": "/assets/pals/ugc/代娜/daina-alt-action-image-A05.png"
+        }
+      },
+      "dialoguePack": {
+        "idle": [
+          "聚光灯已就位。"
+        ],
+        "play": [
+          "这一手交给我。"
+        ],
+        "pass": [
+          "先观察一下。"
+        ],
+        "win": [
+          "节奏不错。"
+        ],
+        "lose": [
+          "下一轮继续。"
+        ]
+      },
+      "performance": {
+        "mainTrack": "/assets/pals/ugc/代娜/daina-alt-outfit-film.mp4",
+        "fallbackTrack": "preset://production/dance-skeletal"
+      },
+      "fallback": {
+        "actionLevel": "L1",
+        "reason": "静态五态图可用；透明动作 WebM 尚未归入本角色。"
+      }
+    },
+    {
+      "contractVersion": "1.5.0",
+      "palId": "pal-user-2632-v100",
+      "version": 100,
+      "readiness": "READY",
+      "auditRecordId": "audit-production-2632-v100",
+      "profileCard": null,
+      "identity": {
+        "name": "墨鸢",
+        "fictional": true,
+        "adultAppearance": true,
+        "aiLabel": "AI 虚构角色（真实图像产物）"
+      },
+      "appearance": {
+        "accent": "#7ce0a5",
+        "outfit": "暗夜摩登套装",
+        "dance": "预设节拍",
+        "portraitRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait.png",
+        "referenceCardRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait.png",
+        "avatarRef": null,
+        "standeeRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-lounge-standee.png",
+        "tableStandeeRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-table-standee.png",
+        "loungeStandeeRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-lounge-standee.png",
+        "actionSheetRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet.png",
+        "entryVideoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-entry-film.mp4",
+        "entryVideoFit": "landscape",
+        "danceVideoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-film.mp4",
+        "dancePosterRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-poster.png",
+        "layers": {
+          "base": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait.png",
+          "outfit": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-first-outfit.png",
+          "effect": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-fx.png"
+        },
+        "outfitLibrary": [
+          {
+            "outfitId": "starter-look",
+            "name": "暗夜摩登套装",
+            "dance": "预设节拍",
+            "auditRecordId": "audit-production-2632-v100",
+            "layerSnapshot": {
+              "base": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait.png",
+              "outfit": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-first-outfit.png",
+              "effect": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-fx.png",
+              "cardVideo": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-film.mp4",
+              "cardPoster": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-poster.png"
+            }
+          }
+        ]
+      },
+      "actionPack": {
+        "A01": {
+          "action": "idle",
+          "sheetRef": null,
+          "frame": [
+            0,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-a01.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet-A01.png"
+        },
+        "A02": {
+          "action": "play",
+          "sheetRef": null,
+          "frame": [
+            1,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-a02.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet-A02.png"
+        },
+        "A03": {
+          "action": "pass",
+          "sheetRef": null,
+          "frame": [
+            2,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-a03.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet-A03.png"
+        },
+        "A04": {
+          "action": "win",
+          "sheetRef": null,
+          "frame": [
+            0,
+            1
+          ],
+          "videoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-a04.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet-A04.png"
+        },
+        "A05": {
+          "action": "lose",
+          "sheetRef": null,
+          "frame": [
+            1,
+            1
+          ],
+          "videoRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-a05.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-action-sheet-A05.png"
+        }
+      },
+      "dialoguePack": {
+        "idle": [
+          "夜色是我的底牌。",
+          "灯影落下，牌局才刚开始。",
+          "保持安静，观察先行。"
+        ],
+        "play": [
+          "霓虹一闪，牌已落定。",
+          "这一张，送到桌心。",
+          "让夜色替我出牌。"
+        ],
+        "pass": [
+          "这轮让给灯光。",
+          "先按兵不动。",
+          "留一点悬念。"
+        ],
+        "win": [
+          "今夜属于我。",
+          "漂亮，灯光都亮了。",
+          "牌面已经给出答案。"
+        ],
+        "lose": [
+          "夜还长，不急。",
+          "这一局先记下。",
+          "下一轮见真章。"
+        ]
+      },
+      "performance": {
+        "mainTrack": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-film.mp4",
+        "fallbackTrack": "preset://production/dance-skeletal"
+      },
+      "fallback": {
+        "actionLevel": "L2",
+        "reason": "完整资源包已通过落盘规格门禁，牌桌使用角色五态视频与套装演出。"
+      }
+    },
+    {
+      "contractVersion": "1.5.0",
+      "palId": "pal-user-5079-v103",
+      "version": 103,
+      "readiness": "READY",
+      "auditRecordId": "audit-production-5079-v103",
+      "profileCard": {
+        "version": "role-profile-card-v1",
+        "character": {
+          "name": "星恒",
+          "brief": "一位端庄的成年虚构女性牌友，复古优雅气质，深蓝色商务套装，简洁发饰，站立三分之四身姿",
+          "adultAppearance": true,
+          "fictional": true
+        },
+        "visualStyle": "复古优雅",
+        "clothing": {
+          "id": "described",
+          "label": "按文字描述",
+          "prompt": "Use the clothing described in the user brief."
+        },
+        "accessory": {
+          "id": "none",
+          "label": "无",
+          "prompt": "no headwear or novelty accessory"
+        },
+        "actions": {
+          "idle": "待机呼吸与自然眨眼",
+          "play": "向牌桌出牌",
+          "pass": "克制地示意过牌",
+          "win": "克制胜利庆祝",
+          "lose": "失利后保持从容"
+        }
+      },
+      "identity": {
+        "name": "星恒",
+        "fictional": true,
+        "adultAppearance": true,
+        "aiLabel": "AI 虚构角色（真实图像产物）"
+      },
+      "appearance": {
+        "accent": "#7ce0a5",
+        "outfit": "按文字描述",
+        "dance": "预设节拍",
+        "portraitRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-master-portrait.png",
+        "referenceCardRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-master-portrait.png",
+        "avatarRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-avatar.png",
+        "standeeRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-lounge-standee.png",
+        "tableStandeeRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-table-standee.png",
+        "loungeStandeeRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-lounge-standee.png",
+        "actionSheetRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet.png",
+      "entryVideoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-film.webm",
+        "entryPosterRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-entry-poster-v2.jpg",
+        "entryVideoFit": "landscape",
+        "danceVideoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-film.mp4",
+        "dancePosterRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-poster.png",
+        "layers": {
+          "base": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-master-portrait.png",
+          "outfit": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-first-outfit.jpg",
+          "effect": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-fx.png"
+        },
+        "outfitLibrary": [
+          {
+            "outfitId": "starter-look",
+            "name": "按文字描述",
+            "dance": "预设节拍",
+            "auditRecordId": "audit-production-5079-v103",
+            "layerSnapshot": {
+              "base": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-master-portrait.png",
+              "outfit": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-first-outfit.jpg",
+              "effect": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-fx.png",
+              "cardVideo": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-film.mp4",
+              "cardPoster": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-poster.png"
+            }
+          }
+        ]
+      },
+      "actionPack": {
+        "A01": {
+          "action": "idle",
+          "sheetRef": null,
+          "frame": [
+            0,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-a01.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet-A01.png"
+        },
+        "A02": {
+          "action": "play",
+          "sheetRef": null,
+          "frame": [
+            1,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-a02.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet-A02.png"
+        },
+        "A03": {
+          "action": "pass",
+          "sheetRef": null,
+          "frame": [
+            2,
+            0
+          ],
+          "videoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-a03.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet-A03.png"
+        },
+        "A04": {
+          "action": "win",
+          "sheetRef": null,
+          "frame": [
+            0,
+            1
+          ],
+          "videoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-a04.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet-A04.png"
+        },
+        "A05": {
+          "action": "lose",
+          "sheetRef": null,
+          "frame": [
+            1,
+            1
+          ],
+          "videoRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-a05.webm",
+          "alphaVisualApproved": true,
+          "imageRef": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-action-sheet-A05.png"
+        }
+      },
+      "dialoguePack": {
+        "idle": [
+          "旧时光不催人。",
+          "慢一点，牌面会说话。",
+          "今晚的节奏刚刚好。"
+        ],
+        "play": [
+          "这一手，像旧唱片的回旋。",
+          "请看这一张。",
+          "优雅落牌，轮到你了。"
+        ],
+        "pass": [
+          "我留一个休止符。",
+          "这一轮先听牌声。",
+          "暂且不抢节拍。"
+        ],
+        "win": [
+          "优雅地落幕。",
+          "漂亮的一局。",
+          "今晚的掌声属于牌桌。"
+        ],
+        "lose": [
+          "下一支舞再赢回来。",
+          "失手也是节奏的一部分。",
+          "下一轮我会更稳。"
+        ]
+      },
+      "performance": {
+        "mainTrack": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-film.mp4",
+        "fallbackTrack": "preset://production/dance-skeletal"
+      },
+      "fallback": {
+        "actionLevel": "L2",
+        "reason": "完整资源包已通过落盘规格门禁，牌桌使用角色五态视频与套装演出。"
+      }
+    }
+  ]
+}

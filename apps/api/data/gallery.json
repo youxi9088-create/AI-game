@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "player": [
+    {
+      "cardId": "pal-yinlan:court-dusk",
+      "palId": "pal-yinlan",
+      "outfitId": "court-dusk",
+      "outfitName": "暮色球场",
+      "dance": "新月节拍",
+      "layerSnapshot": {
+        "base": "/assets/pals/yinlan-v1.png",
+        "outfit": "/assets/pals/outfits/yinlan-court-dusk-frame.jpg",
+        "cardVideo": "/assets/pals/video/nova-dance-v1.mp4",
+        "cardPoster": "/assets/pals/outfits/yinlan-court-dusk.jpg"
+      },
+      "serialNo": 1,
+      "rarity": "first",
+      "upgradeLevel": 1,
+      "seen": true,
+      "unlockedAt": "2026-09-15T13:39:05.692Z",
+      "auditRecordId": "audit-official-pal-yinlan-v1",
+      "gameStats": {
+        "multiplier": 3,
+        "rounds": 7,
+        "lastCombo": "单张"
+      }
+    },
+    {
+      "cardId": "pal-user-2632-v100:starter-look",
+      "palId": "pal-user-2632-v100",
+      "outfitId": "starter-look",
+      "outfitName": "暗夜摩登初始套装",
+      "dance": "预设节拍",
+      "layerSnapshot": {
+        "base": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-master-portrait.png",
+        "outfit": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-first-outfit.png",
+        "cardVideo": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-film.mp4",
+        "cardPoster": "/assets/pals/ugc/墨鸢/5fe85ced-2ef0-48ec-af65-90cdf3e0fc82-outfit-poster.png"
+      },
+      "serialNo": 2,
+      "rarity": "normal",
+      "upgradeLevel": 5,
+      "seen": true,
+      "unlockedAt": "2026-09-18T13:58:44.821Z",
+      "auditRecordId": "audit-production-2632-v100",
+      "gameStats": {
+        "multiplier": 2,
+        "rounds": 7,
+        "lastCombo": "单张"
+      }
+    },
+    {
+      "cardId": "pal-mia:sporty-sweetheart",
+      "palId": "pal-mia",
+      "outfitId": "sporty-sweetheart",
+      "outfitName": "粉兔女仆",
+      "dance": "甜兔节拍",
+      "layerSnapshot": {
+        "base": "/assets/pals/mia-v1.png",
+        "outfit": "/assets/pals/outfits/mia-sporty-sweetheart-frame.jpg",
+        "cardVideo": "/assets/pals/video/mia-sporty-sweetheart-v1.mp4",
+        "cardPoster": "/assets/pals/outfits/mia-sporty-sweetheart.jpg"
+      },
+      "serialNo": 3,
+      "rarity": "first",
+      "upgradeLevel": 1,
+      "seen": true,
+      "unlockedAt": "2026-09-17T07:14:24.789Z",
+      "auditRecordId": "audit-official-pal-mia-v1",
+      "gameStats": {
+        "multiplier": 6,
+        "rounds": 6,
+        "lastCombo": "单张"
+      }
+    },
+    {
+      "cardId": "pal-linxing:stage-film",
+      "palId": "pal-linxing",
+      "outfitId": "stage-film",
+      "outfitName": "舞台实录",
+      "dance": "月光步",
+      "layerSnapshot": {
+        "base": "/assets/pals/linxing-v1.png",
+        "outfit": "/assets/pals/outfits/linxing-stage-film-frame.jpg",
+        "cardVideo": "/assets/pals/video/linxing-dance-v1.mp4",
+        "cardPoster": "/assets/pals/outfits/linxing-stage-film.jpg"
+      },
+      "serialNo": 4,
+      "rarity": "first",
+      "upgradeLevel": 1,
+      "seen": true,
+      "unlockedAt": "2026-09-17T12:35:33.370Z",
+      "auditRecordId": "audit-official-pal-linxing-v1",
+      "gameStats": {
+        "multiplier": 4,
+        "rounds": 7,
+        "lastCombo": "单张"
+      }
+    },
+    {
+      "cardId": "pal-user-5079-v103:starter-look",
+      "palId": "pal-user-5079-v103",
+      "outfitId": "starter-look",
+      "outfitName": "按文字描述",
+      "dance": "预设节拍",
+      "layerSnapshot": {
+        "base": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-table-standee.png",
+        "outfit": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-first-outfit-v2.jpg",
+        "effect": null,
+        "cardVideo": null,
+        "cardPoster": "/assets/pals/ugc/星恒/d508cede-74ee-446a-9eac-feb2a581d7d0-outfit-poster.png"
+      },
+      "serialNo": 5,
+      "rarity": "normal",
+      "upgradeLevel": 5,
+      "seen": true,
+      "unlockedAt": "2026-09-22T14:17:36.647Z",
+      "auditRecordId": "audit-production-5079-v103",
+      "gameStats": {
+        "multiplier": 3,
+        "rounds": 5,
+        "lastCombo": "单张"
+      }
+    },
+    {
+      "cardId": "pal-linxing:moon-bunny",
+      "palId": "pal-linxing",
+      "outfitId": "moon-bunny",
+      "outfitName": "月兔礼赞",
+      "dance": "兔跃步",
+      "layerSnapshot": {
+        "base": "/assets/pals/linxing-v1.png",
+        "outfit": "/assets/pals/outfits/linxing-moon-bunny-frame.jpg",
+        "cardVideo": "/assets/pals/video/linxing-moon-bunny-v1.mp4",
+        "cardPoster": "/assets/pals/outfits/linxing-moon-bunny.jpg"
+      },
+      "serialNo": 6,
+      "rarity": "first",
+      "upgradeLevel": 1,
+      "seen": true,
+      "unlockedAt": "2026-09-20T05:36:34.186Z",
+      "auditRecordId": "audit-official-pal-linxing-v1",
+      "gameStats": {
+        "multiplier": 6,
+        "rounds": 4,
+        "lastCombo": "炸弹"
+      }
+    },
+    {
+      "cardId": "pal-user-daina-v104:starter-look",
+      "palId": "pal-user-daina-v104",
+      "outfitId": "starter-look",
+      "outfitName": "深色轻奢礼服 · 猫耳朵发饰",
+      "dance": "预设节拍",
+      "layerSnapshot": {
+        "base": "/assets/pals/ugc/代娜/daina-alt-master-portrait.png",
+        "outfit": "/assets/pals/ugc/代娜/daina-alt-first-outfit.jpg",
+        "effect": "/assets/pals/ugc/代娜/daina-alt-outfit-fx.png",
+        "cardVideo": "/assets/pals/ugc/代娜/daina-alt-outfit-film.mp4",
+        "cardPoster": "/assets/pals/ugc/代娜/daina-alt-outfit-poster.jpg"
+      },
+      "serialNo": 7,
+      "rarity": "first",
+      "upgradeLevel": 1,
+      "seen": true,
+      "unlockedAt": "2026-09-23T11:17:26.862Z",
+      "auditRecordId": "audit-ownership-correction-daina-v104",
+      "gameStats": {
+        "multiplier": 1,
+        "rounds": 0,
+        "lastCombo": ""
+      }
+    }
+  ]
+}

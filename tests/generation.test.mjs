@@ -1,0 +1,63 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createMockCandidate, createPalResourcePlan, createProductionPlan, LINXING_STYLE_LOCK, PAL_IDENTITY_SEPARATION_LOCK, validateIntent } from '../packages/pal-generation-core/index.mjs';
+import { providerCapability } from '../apps/api/pal-resource-pipeline.mjs';
+test('mock generation turns safe prompt into audited degraded-ready runtime asset', () => { const candidate = createMockCandidate({ prompt: '一位复古优雅的成年虚构舞台魔术师' }); assert.equal(candidate.status, 'DEGRADED_READY'); assert.equal(candidate.asset.identity.fictional, true); assert.match(candidate.asset.auditRecordId, /^audit-/); assert.doesNotMatch(candidate.asset.identity.name, /^牌友 /); });
+test('pal name is explicit when provided and naturally derived when omitted', () => {
+  const explicit = createProductionPlan({ prompt: '一位暗夜摩登的成年虚构牌友，喜欢紫色灯光', version: 2, name: '夜澜' });
+  assert.equal(explicit.identity.name, '夜澜');
+  const derived = createProductionPlan({ prompt: '一位暗夜摩登的成年虚构牌友墨鸢，28岁女性', version: 2 });
+  assert.equal(derived.identity.name, '墨鸢');
+  const invalid = createProductionPlan({ prompt: '一位暗夜摩登的成年虚构牌友，喜欢紫色灯光', name: 'bad name!' });
+  assert.equal(invalid.gate, 'PL-NAME');
+});
+test('policy gate blocks celebrity, celebrity-equivalent and age-ambiguous requests', () => { assert.equal(validateIntent('模仿某位明星的成人角色').ok, false); assert.equal(validateIntent('名人同款舞台造型').ok, false); assert.equal(validateIntent('一个未成年学生制服角色').ok, false); });
+test('all resource plans use the complete launch package and keep character five-state motion separate from outfit performance', () => {
+  const plan = createPalResourcePlan({ prompt: '一位复古优雅的成年虚构舞台魔术师，喜欢蓝紫色灯光', version: 1, packageTier: 'launch' });
+  assert.equal(plan.status, 'PLANNED');
+  assert.equal(plan.seatGate, 'RICH_ASSETS_READY');
+  assert.equal(plan.resources.filter((entry) => /^action-a0[1-5]$/.test(entry.id)).length, 5);
+  assert.ok(plan.resources.some((entry) => entry.id === 'outfit-film'));
+  assert.ok(plan.resources.some((entry) => entry.id === 'outfit-poster'));
+  assert.equal(plan.counts.video, 7);
+  assert.equal(plan.resources.find((entry) => entry.id === 'entry-film').production, 'aihub:seedance');
+  assert.equal(plan.resources.find((entry) => entry.id === 'action-a01').production, 'aihub:seedance');
+  assert.equal(plan.resources.find((entry) => entry.id === 'outfit-film').production, 'aihub:dressbattle-dance');
+  const legacyMvpRequest = createPalResourcePlan({ prompt: '一位复古优雅的成年虚构舞台魔术师，喜欢蓝紫色灯光', packageTier: 'mvp' });
+  assert.equal(legacyMvpRequest.packageTier, 'launch');
+  assert.equal(legacyMvpRequest.seatGate, 'RICH_ASSETS_READY');
+  assert.equal(legacyMvpRequest.counts.video, 7);
+});
+test('new pal plans lock visual direction to the current Linxing house style', () => {
+  const plan = createProductionPlan({ prompt: '一位复古优雅的成年虚构舞台魔术师，喜欢蓝紫色灯光', version: 1 });
+  assert.match(plan.styleLock, /Linxing/);
+  assert.match(plan.imagePrompt, /semi-realistic cinematic game CG/);
+  assert.match(plan.imagePrompt, /no cel shading/);
+  assert.match(plan.imagePrompt, /cannot be mistaken for Linxing, Yinlan/);
+  assert.ok(plan.imagePrompt.includes(PAL_IDENTITY_SEPARATION_LOCK));
+  assert.ok(plan.imagePrompt.includes(LINXING_STYLE_LOCK));
+  assert.doesNotMatch(plan.imagePrompt, /polished anime game illustration/);
+  const resourcePlan = createPalResourcePlan({ prompt: '一位运动明快的成年虚构牌友，喜欢蓝紫色灯光', version: 1 });
+  assert.equal(resourcePlan.styleLock, plan.styleLock);
+});
+test('clothing and accessory selections become immutable role-profile data for image and video prompts', () => {
+  const plan = createPalResourcePlan({ prompt: '一位暗夜摩登的成年虚构牌友，气质冷静自信', clothingStyle: 'maid', accessory: 'cat-ears', packageTier: 'launch' });
+  assert.equal(plan.intent.clothingStyle, 'maid');
+  assert.equal(plan.intent.accessory, 'cat-ears');
+  assert.equal(plan.profileCard.clothing.label, '优雅女仆装');
+  assert.equal(plan.profileCard.accessory.label, '猫耳朵发饰');
+  assert.match(plan.imagePrompt, /adult maid-inspired dress/);
+  assert.match(plan.imagePrompt, /cat-ear headband/);
+  const invalid = createPalResourcePlan({ prompt: '一位成年虚构牌友，喜欢蓝紫灯光', clothingStyle: 'unknown' });
+  assert.equal(invalid.gate, 'PL-OPTIONS');
+});
+test('AIHub capability exposes separate role-profile and static-image workflow gates', () => {
+  const capability = providerCapability({ AIHUB_AGENT_TOKEN: 'test-token', AIHUB_PROFILE_IMAGE_WORKFLOW_APP_ID: 'gpt-image2-app', AIHUB_STATIC_IMAGE_WORKFLOW_APP_ID: 'jimeng-app', AIHUB_VIDEO_WORKFLOW_APP_ID: 'seedance-app', PAL_DANCE_WORKFLOW_APP_ID: 'dance-app' });
+  assert.equal(capability.image.configured, true);
+  assert.match(capability.image.model, /^gpt-image2（仅角色资料卡） \+ jimeng（头像、立绘、动作图、服装图）$/);
+  assert.equal(capability.image.alpha.configured, true);
+  assert.equal(capability.video.seedance.configured, true);
+  assert.equal(capability.video.dance.configured, true);
+  assert.equal(providerCapability({ AIHUB_AGENT_TOKEN: 'test-token' }).video.seedance.configured, true, 'seedance uses the skill registry alias without a new appId env');
+  assert.deepEqual(providerCapability({}).image.missing, ['AIHUB_AGENT_TOKEN']);
+});

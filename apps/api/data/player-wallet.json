@@ -1,0 +1,1041 @@
+{
+  "version": 1,
+  "initialBalance": 100,
+  "balance": 65,
+  "ledger": [
+    {
+      "id": "receipt-f4901b90-d3e3-4c07-87c9-38889bc0eecc",
+      "gameId": "f4901b90-d3e3-4c07-87c9-38889bc0eecc",
+      "delta": -3,
+      "effective": -3,
+      "balance": 97,
+      "issuedAt": "2026-09-17T03:53:10.821Z",
+      "signature": "e931a9cc7833204767dd1e319dab81b68b8057a6b35cceda95ad737cc596c6f3"
+    },
+    {
+      "id": "receipt-c05db145-6e73-4e5c-9940-d0d305db208d",
+      "gameId": "c05db145-6e73-4e5c-9940-d0d305db208d",
+      "delta": -6,
+      "effective": -6,
+      "balance": 91,
+      "issuedAt": "2026-09-17T07:11:16.483Z",
+      "signature": "0660e7e44f1217aedc53fd17788877418dbfc186729da975f8dfc7652feddc3b"
+    },
+    {
+      "id": "receipt-50ca1a99-8c37-4378-90fa-8cbe1597cd9d",
+      "gameId": "50ca1a99-8c37-4378-90fa-8cbe1597cd9d",
+      "delta": 12,
+      "effective": 12,
+      "balance": 103,
+      "issuedAt": "2026-09-17T07:14:24.790Z",
+      "signature": "97f15a0e801025366db0744064cb89f159d6441872513e3d51505cf868ec31af"
+    },
+    {
+      "id": "receipt-d9d7aa54-ab8d-4956-8070-8de250d92c29",
+      "gameId": "d9d7aa54-ab8d-4956-8070-8de250d92c29",
+      "delta": 6,
+      "effective": 6,
+      "balance": 109,
+      "issuedAt": "2026-09-17T07:14:24.822Z",
+      "signature": "e15aaa04d49cb738ac9d8dd6d48c7b8af62b03df39bcba92ff599069f61c924a"
+    },
+    {
+      "id": "receipt-815915e0-20cd-452b-9f9e-f1994cfac2aa",
+      "gameId": "815915e0-20cd-452b-9f9e-f1994cfac2aa",
+      "delta": -6,
+      "effective": -6,
+      "balance": 103,
+      "issuedAt": "2026-09-17T07:14:24.852Z",
+      "signature": "e0d1fd218ef53634fa2a0ad07a8e4d6d623a722e8e979565f6e260a77c758318"
+    },
+    {
+      "id": "receipt-c041d22a-064c-4564-b5af-86561398ac36",
+      "gameId": "c041d22a-064c-4564-b5af-86561398ac36",
+      "delta": 12,
+      "effective": 12,
+      "balance": 115,
+      "issuedAt": "2026-09-17T08:38:33.000Z",
+      "signature": "9f2f7a6d02d4a2ace1871d26b1a3bdf224156c422611fc07d9b82844ada73ce4"
+    },
+    {
+      "id": "receipt-game_entry-ba224874-05e1-4b94-b5a7-dd07f1bdbdec-7",
+      "type": "GAME_ENTRY",
+      "gameId": "ba224874-05e1-4b94-b5a7-dd07f1bdbdec",
+      "delta": -1,
+      "effective": -1,
+      "balance": 114,
+      "issuedAt": "2026-09-17T10:55:11.624Z",
+      "signature": "80c7bde169a3c76c4e1057930e32138a09bdb739a9e435e5d5ea00d582e80211"
+    },
+    {
+      "id": "receipt-game_entry-e3fbaa54-a528-4c76-b813-74498d4c9c6b-8",
+      "type": "GAME_ENTRY",
+      "gameId": "e3fbaa54-a528-4c76-b813-74498d4c9c6b",
+      "delta": -1,
+      "effective": -1,
+      "balance": 113,
+      "issuedAt": "2026-09-17T11:15:55.756Z",
+      "signature": "e438dfa05f906dcaad7908786897d858f4beb66e9b0f96c9f39b9a14c9f42d7f"
+    },
+    {
+      "id": "receipt-game_entry-c945b91d-00ab-4f0e-9fd6-d22bc3361f15-9",
+      "type": "GAME_ENTRY",
+      "gameId": "c945b91d-00ab-4f0e-9fd6-d22bc3361f15",
+      "delta": -1,
+      "effective": -1,
+      "balance": 112,
+      "issuedAt": "2026-09-17T11:19:13.506Z",
+      "signature": "e770e9e011a804baa27ae9c66f6fcde5ca11ff68d8bb06e83ea9eb459276241e"
+    },
+    {
+      "id": "receipt-game_entry-3c8438c8-162b-4940-9ba5-134e632b34a3-10",
+      "type": "GAME_ENTRY",
+      "gameId": "3c8438c8-162b-4940-9ba5-134e632b34a3",
+      "delta": -1,
+      "effective": -1,
+      "balance": 111,
+      "issuedAt": "2026-09-17T11:19:44.558Z",
+      "signature": "e881b27bb2ec05db9cf86604f9572a9b4e7a0ede1dfeddef46ddc397292892df"
+    },
+    {
+      "id": "receipt-game_entry-ceb689f5-5c36-4512-8b31-ae8226beb684-11",
+      "type": "GAME_ENTRY",
+      "gameId": "ceb689f5-5c36-4512-8b31-ae8226beb684",
+      "delta": -1,
+      "effective": -1,
+      "balance": 110,
+      "issuedAt": "2026-09-17T11:21:36.563Z",
+      "signature": "4add6734156672cb3be1fed5318acf3f3a9b49397465e49aede1b5df7554b84b"
+    },
+    {
+      "id": "receipt-game_entry-6efd81fa-4d78-445e-b955-bae7459b185b-12",
+      "type": "GAME_ENTRY",
+      "gameId": "6efd81fa-4d78-445e-b955-bae7459b185b",
+      "delta": -1,
+      "effective": -1,
+      "balance": 109,
+      "issuedAt": "2026-09-17T12:33:56.905Z",
+      "signature": "893e23b652f92f90d0e63a90164b3f42b17549b9f7e1596a665514eaff3ad4dc"
+    },
+    {
+      "id": "receipt-settlement-6efd81fa-4d78-445e-b955-bae7459b185b-13",
+      "type": "SETTLEMENT",
+      "gameId": "6efd81fa-4d78-445e-b955-bae7459b185b",
+      "delta": 8,
+      "effective": 8,
+      "balance": 117,
+      "issuedAt": "2026-09-17T12:35:33.370Z",
+      "signature": "b2c55417b6d20fe67c9db73d55a57439b72d5384628ece0bf0e26a6bc9a25201"
+    },
+    {
+      "id": "receipt-game_entry-a3ca81a2-03ec-4b16-ad8a-9b19d969eb1d-14",
+      "type": "GAME_ENTRY",
+      "gameId": "a3ca81a2-03ec-4b16-ad8a-9b19d969eb1d",
+      "delta": -1,
+      "effective": -1,
+      "balance": 116,
+      "issuedAt": "2026-09-17T12:46:42.567Z",
+      "signature": "675e04d9b1bf0a0f189cd1d5e42b8efd3aec2681ea31c55877b5d97d86158606"
+    },
+    {
+      "id": "receipt-settlement-a3ca81a2-03ec-4b16-ad8a-9b19d969eb1d-15",
+      "type": "SETTLEMENT",
+      "gameId": "a3ca81a2-03ec-4b16-ad8a-9b19d969eb1d",
+      "delta": 6,
+      "effective": 6,
+      "balance": 122,
+      "issuedAt": "2026-09-17T12:47:55.302Z",
+      "signature": "3091c706f25421b6c44f8a6a6a5fdc133a8aca7048e904fc692ae870305a565d"
+    },
+    {
+      "id": "receipt-game_entry-935668a9-c67e-4f1c-9322-96948708fb3f-16",
+      "type": "GAME_ENTRY",
+      "gameId": "935668a9-c67e-4f1c-9322-96948708fb3f",
+      "delta": -1,
+      "effective": -1,
+      "balance": 121,
+      "issuedAt": "2026-09-18T10:02:27.255Z",
+      "signature": "d704250b3900ae1fa3de71f0a9d3c92b5200cdeadba4aff67df7fb103e42c7b6"
+    },
+    {
+      "id": "receipt-settlement-935668a9-c67e-4f1c-9322-96948708fb3f-17",
+      "type": "SETTLEMENT",
+      "gameId": "935668a9-c67e-4f1c-9322-96948708fb3f",
+      "delta": 12,
+      "effective": 12,
+      "balance": 133,
+      "issuedAt": "2026-09-18T10:04:51.982Z",
+      "signature": "99490c99bc082e80f01e60e1dca694680b0b4bd7d67b610b73a2bc04ace6d174"
+    },
+    {
+      "id": "receipt-game_entry-a5c29d0e-1d7f-44f1-9b57-954a7a6c0f57-18",
+      "type": "GAME_ENTRY",
+      "gameId": "a5c29d0e-1d7f-44f1-9b57-954a7a6c0f57",
+      "delta": -1,
+      "effective": -1,
+      "balance": 132,
+      "issuedAt": "2026-09-18T11:02:33.236Z",
+      "signature": "ed500f77f0e0c38b41a66b623de236a73529d86b1b815a30a120efd548dd37cd"
+    },
+    {
+      "id": "receipt-game_entry-3b38e00d-089f-4c89-9c0a-4443d2a37ea7-19",
+      "type": "GAME_ENTRY",
+      "gameId": "3b38e00d-089f-4c89-9c0a-4443d2a37ea7",
+      "delta": -1,
+      "effective": -1,
+      "balance": 131,
+      "issuedAt": "2026-09-18T12:34:06.968Z",
+      "signature": "b52d1d3a67bf5a9cd7352b98de63bc70fbe00e250c24e256917b708ebbe551cb"
+    },
+    {
+      "id": "receipt-game_entry-1c64b7cb-7232-489e-8285-49907b493d66-20",
+      "type": "GAME_ENTRY",
+      "gameId": "1c64b7cb-7232-489e-8285-49907b493d66",
+      "delta": -1,
+      "effective": -1,
+      "balance": 130,
+      "issuedAt": "2026-09-18T12:34:28.912Z",
+      "signature": "80813b4fb334cd23d2bb89e4ccdd83028f61ce6ed89b2290557e6c0b54b2bcf5"
+    },
+    {
+      "id": "receipt-game_entry-a089a8c7-d208-47f5-b223-686051baa311-21",
+      "type": "GAME_ENTRY",
+      "gameId": "a089a8c7-d208-47f5-b223-686051baa311",
+      "delta": -1,
+      "effective": -1,
+      "balance": 129,
+      "issuedAt": "2026-09-18T12:35:24.374Z",
+      "signature": "ba343f61dc727f851cce153fb3da6dd3535f7aa42c0b63dcf6a4b89f2f668d8a"
+    },
+    {
+      "id": "receipt-settlement-a089a8c7-d208-47f5-b223-686051baa311-22",
+      "type": "SETTLEMENT",
+      "gameId": "a089a8c7-d208-47f5-b223-686051baa311",
+      "delta": -6,
+      "effective": -6,
+      "balance": 123,
+      "issuedAt": "2026-09-18T12:35:24.441Z",
+      "signature": "60a3f86b093eb57de0f44b8b81a05b17aca10481d5d4d9766923978ced3ba0fb"
+    },
+    {
+      "id": "receipt-game_entry-2e7c4dc8-f2ee-4755-a2b6-053761d1030a-23",
+      "type": "GAME_ENTRY",
+      "gameId": "2e7c4dc8-f2ee-4755-a2b6-053761d1030a",
+      "delta": -1,
+      "effective": -1,
+      "balance": 122,
+      "issuedAt": "2026-09-18T12:35:29.640Z",
+      "signature": "b17979b4a89f905e1c505e5c5f4f75658b20246e59daeaec4bed1b3143da0eef"
+    },
+    {
+      "id": "receipt-game_entry-66bfaf17-6b42-41fa-9543-2098c1b567f7-24",
+      "type": "GAME_ENTRY",
+      "gameId": "66bfaf17-6b42-41fa-9543-2098c1b567f7",
+      "delta": -1,
+      "effective": -1,
+      "balance": 121,
+      "issuedAt": "2026-09-18T12:44:50.814Z",
+      "signature": "97ba8b4050486e2f1d028d3a59f6b818c8a12431820403d3fedab5a6c4bf4fda"
+    },
+    {
+      "id": "receipt-game_entry-b69d95ec-3620-4893-bbcc-76e30eeb39bc-25",
+      "type": "GAME_ENTRY",
+      "gameId": "b69d95ec-3620-4893-bbcc-76e30eeb39bc",
+      "delta": -1,
+      "effective": -1,
+      "balance": 120,
+      "issuedAt": "2026-09-18T12:45:04.344Z",
+      "signature": "c4b5850fdc6580df4fc2fab0c65cb72c31a059db948ef38505dd7577a02ee1d9"
+    },
+    {
+      "id": "receipt-game_entry-fe936b23-1637-414c-9632-6cbb43a8c3ae-26",
+      "type": "GAME_ENTRY",
+      "gameId": "fe936b23-1637-414c-9632-6cbb43a8c3ae",
+      "delta": -1,
+      "effective": -1,
+      "balance": 119,
+      "issuedAt": "2026-09-18T12:46:51.827Z",
+      "signature": "37379f86699ffad968206806f28e549aa6b5bed9de13d89d93331376dd5ff7a2"
+    },
+    {
+      "id": "receipt-game_entry-5a722910-189d-4897-96e3-01d82db12917-27",
+      "type": "GAME_ENTRY",
+      "gameId": "5a722910-189d-4897-96e3-01d82db12917",
+      "delta": -1,
+      "effective": -1,
+      "balance": 118,
+      "issuedAt": "2026-09-18T12:56:46.769Z",
+      "signature": "2ea5f9d908f6531990caed1de746209c0e48741f416cce35c7bfb752d3470558"
+    },
+    {
+      "id": "receipt-settlement-5a722910-189d-4897-96e3-01d82db12917-28",
+      "type": "SETTLEMENT",
+      "gameId": "5a722910-189d-4897-96e3-01d82db12917",
+      "delta": -6,
+      "effective": -6,
+      "balance": 112,
+      "issuedAt": "2026-09-18T12:57:43.629Z",
+      "signature": "dd8bc98af6fa34c7c745d601083340c948ea710ca5f6e9c3eb7d932663477055"
+    },
+    {
+      "id": "receipt-game_entry-2afed832-adb7-46dd-b480-7abdb425f73b-29",
+      "type": "GAME_ENTRY",
+      "gameId": "2afed832-adb7-46dd-b480-7abdb425f73b",
+      "delta": -1,
+      "effective": -1,
+      "balance": 111,
+      "issuedAt": "2026-09-18T13:26:03.494Z",
+      "signature": "18fc1295778b6b391d30e96793c3b9d860f36318ae594d3ee387918587a592fd"
+    },
+    {
+      "id": "receipt-game_entry-bee2103a-52cb-4639-ac42-cec1cbf03acf-30",
+      "type": "GAME_ENTRY",
+      "gameId": "bee2103a-52cb-4639-ac42-cec1cbf03acf",
+      "delta": -1,
+      "effective": -1,
+      "balance": 110,
+      "issuedAt": "2026-09-18T13:26:43.004Z",
+      "signature": "bfac42a11731921d5038e72868ba97a3895fbbd862a7bc23cd1f2773b04f4e01"
+    },
+    {
+      "id": "receipt-game_entry-f4aba28e-d411-450a-838f-bf85dd275d56-31",
+      "type": "GAME_ENTRY",
+      "gameId": "f4aba28e-d411-450a-838f-bf85dd275d56",
+      "delta": -1,
+      "effective": -1,
+      "balance": 109,
+      "issuedAt": "2026-09-18T13:37:46.191Z",
+      "signature": "c47b3e5c6da022cf90527cf93b859d6365216f339440c5b5b291927b1e04358a"
+    },
+    {
+      "id": "receipt-settlement-f4aba28e-d411-450a-838f-bf85dd275d56-32",
+      "type": "SETTLEMENT",
+      "gameId": "f4aba28e-d411-450a-838f-bf85dd275d56",
+      "delta": -2,
+      "effective": -2,
+      "balance": 107,
+      "issuedAt": "2026-09-18T13:58:44.821Z",
+      "signature": "f97f920e3614e26563c7757f757ac1e545696c05bf9eec27b2d49fb37eacbd24"
+    },
+    {
+      "id": "receipt-game_entry-ec026391-2f77-4df2-86ae-9f5e6d177054-33",
+      "type": "GAME_ENTRY",
+      "gameId": "ec026391-2f77-4df2-86ae-9f5e6d177054",
+      "delta": -1,
+      "effective": -1,
+      "balance": 106,
+      "issuedAt": "2026-09-18T15:08:01.248Z",
+      "signature": "053b3c65a57c66dbde5e8252f49aba3d83aefc740bff45207bc12b726a7ab63a"
+    },
+    {
+      "id": "receipt-game_entry-27fda993-eacc-4e3f-bf48-2490872873dd-34",
+      "type": "GAME_ENTRY",
+      "gameId": "27fda993-eacc-4e3f-bf48-2490872873dd",
+      "delta": -1,
+      "effective": -1,
+      "balance": 105,
+      "issuedAt": "2026-09-18T15:47:55.283Z",
+      "signature": "5fa1ab6ad07c67b1e277a4d002e683b7adff27aaf2eaf6b384bcb977dc27ad49"
+    },
+    {
+      "id": "receipt-settlement-27fda993-eacc-4e3f-bf48-2490872873dd-35",
+      "type": "SETTLEMENT",
+      "gameId": "27fda993-eacc-4e3f-bf48-2490872873dd",
+      "delta": -6,
+      "effective": -6,
+      "balance": 99,
+      "issuedAt": "2026-09-18T16:34:05.301Z",
+      "signature": "2937698de8ea4f6199315157d085af998f8f19fb1da98af989131239496ccda9"
+    },
+    {
+      "id": "receipt-game_entry-ee939fa2-e463-48d7-9633-084b695ded7c-36",
+      "type": "GAME_ENTRY",
+      "gameId": "ee939fa2-e463-48d7-9633-084b695ded7c",
+      "delta": -1,
+      "effective": -1,
+      "balance": 98,
+      "issuedAt": "2026-09-19T08:27:43.565Z",
+      "signature": "13b6e265b208134700ab7e0be858cbe6f0be10bb368f06e9fb84a4c744e0508c"
+    },
+    {
+      "id": "receipt-game_entry-0f470aad-b87c-4eef-a2ad-3677816ab316-37",
+      "type": "GAME_ENTRY",
+      "gameId": "0f470aad-b87c-4eef-a2ad-3677816ab316",
+      "delta": -1,
+      "effective": -1,
+      "balance": 97,
+      "issuedAt": "2026-09-19T09:13:31.856Z",
+      "signature": "c352e698404ad5c643ed04e21ff555823401cee90dc48262fd2db52def6f3ea3"
+    },
+    {
+      "id": "receipt-game_entry-d8fee915-db55-4181-88db-aa0464452311-38",
+      "type": "GAME_ENTRY",
+      "gameId": "d8fee915-db55-4181-88db-aa0464452311",
+      "delta": -1,
+      "effective": -1,
+      "balance": 96,
+      "issuedAt": "2026-09-19T09:13:34.387Z",
+      "signature": "33ab9fd46bb0efd9231f526bdf2628df379a9a20a63f6bce0bc77f8dede4e6f4"
+    },
+    {
+      "id": "receipt-game_entry-64ad34a2-1b2f-48db-8eba-7c8ecf489f44-39",
+      "type": "GAME_ENTRY",
+      "gameId": "64ad34a2-1b2f-48db-8eba-7c8ecf489f44",
+      "delta": -1,
+      "effective": -1,
+      "balance": 95,
+      "issuedAt": "2026-09-19T09:16:26.703Z",
+      "signature": "92c7084af7bdefd635fa993d7c966c67802ec8670015a415ce8cb34eb5b497f5"
+    },
+    {
+      "id": "receipt-game_entry-b2748e62-9e07-464e-b42a-976cf8d3d2ba-40",
+      "type": "GAME_ENTRY",
+      "gameId": "b2748e62-9e07-464e-b42a-976cf8d3d2ba",
+      "delta": -1,
+      "effective": -1,
+      "balance": 94,
+      "issuedAt": "2026-09-19T09:19:07.727Z",
+      "signature": "e40ba8ea587b5cd0c705a09753837f226b66c12b242443d4fa54c9504bc7c3f6"
+    },
+    {
+      "id": "receipt-game_entry-99e290c4-e454-4db6-a94f-5d4fdf90c93d-41",
+      "type": "GAME_ENTRY",
+      "gameId": "99e290c4-e454-4db6-a94f-5d4fdf90c93d",
+      "delta": -1,
+      "effective": -1,
+      "balance": 93,
+      "issuedAt": "2026-09-19T09:20:25.254Z",
+      "signature": "57c4e0070907506d04f08c65a537cb62e2aadc17f3b2c3064e5f78cc86441860"
+    },
+    {
+      "id": "receipt-game_entry-b5be50ad-3ab4-4f6d-8476-361ed39d102f-42",
+      "type": "GAME_ENTRY",
+      "gameId": "b5be50ad-3ab4-4f6d-8476-361ed39d102f",
+      "delta": -1,
+      "effective": -1,
+      "balance": 92,
+      "issuedAt": "2026-09-19T10:12:12.849Z",
+      "signature": "19cb1ae9728d96d219272635b584dd9f245b165fbfe47f38864c703a36167a3b"
+    },
+    {
+      "id": "receipt-game_entry-340993b9-2995-4607-bcb8-b9cc7e5334e2-43",
+      "type": "GAME_ENTRY",
+      "gameId": "340993b9-2995-4607-bcb8-b9cc7e5334e2",
+      "delta": -1,
+      "effective": -1,
+      "balance": 91,
+      "issuedAt": "2026-09-19T10:14:45.860Z",
+      "signature": "70337405381f0b8e80c6a8f831ba5b43483848b8b85e14b0dcc367952258f069"
+    },
+    {
+      "id": "receipt-game_entry-d60bbc35-64f6-4e49-8d83-f5f709ffcc4b-44",
+      "type": "GAME_ENTRY",
+      "gameId": "d60bbc35-64f6-4e49-8d83-f5f709ffcc4b",
+      "delta": -1,
+      "effective": -1,
+      "balance": 90,
+      "issuedAt": "2026-09-19T10:16:04.381Z",
+      "signature": "2353278ea0c9af3f1bc541dbc2056a77903dead1b2ded5f19be67b3f17f77a5d"
+    },
+    {
+      "id": "receipt-game_entry-42e2ae3e-988b-4d69-a704-5da1090bf86c-45",
+      "type": "GAME_ENTRY",
+      "gameId": "42e2ae3e-988b-4d69-a704-5da1090bf86c",
+      "delta": -1,
+      "effective": -1,
+      "balance": 89,
+      "issuedAt": "2026-09-19T10:16:58.135Z",
+      "signature": "6619357766d9075e3c6d8cf7546a16f95206acc4a3fe93955a2f1054444f5ed5"
+    },
+    {
+      "id": "receipt-game_entry-cba6e7d1-96f2-44a4-98de-ca0d8df36250-46",
+      "type": "GAME_ENTRY",
+      "gameId": "cba6e7d1-96f2-44a4-98de-ca0d8df36250",
+      "delta": -1,
+      "effective": -1,
+      "balance": 88,
+      "issuedAt": "2026-09-19T10:30:03.691Z",
+      "signature": "28d7659a82ed6ab6ccc6459837c3491911b24c1e042b5841c5e996e72801e78f"
+    },
+    {
+      "id": "receipt-game_entry-1a5ec47b-b43c-4b0b-bc3c-8a1fa5e59c98-47",
+      "type": "GAME_ENTRY",
+      "gameId": "1a5ec47b-b43c-4b0b-bc3c-8a1fa5e59c98",
+      "delta": -1,
+      "effective": -1,
+      "balance": 87,
+      "issuedAt": "2026-09-19T10:34:03.101Z",
+      "signature": "e05fa9a1deab6dd106372224bfd92aeb5a79d3c2f2c7a63f478186e618ec8346"
+    },
+    {
+      "id": "receipt-game_entry-15fec561-64b7-4a1f-b73c-3af4832289d1-48",
+      "type": "GAME_ENTRY",
+      "gameId": "15fec561-64b7-4a1f-b73c-3af4832289d1",
+      "delta": -1,
+      "effective": -1,
+      "balance": 86,
+      "issuedAt": "2026-09-19T10:45:07.817Z",
+      "signature": "57db1b3e187b84c7945053fc30f1a2f9cae782d95e1c41f27501542112ee6a7b"
+    },
+    {
+      "id": "receipt-game_entry-b995d22d-ecc3-43bb-b3a6-df52a81e11a7-49",
+      "type": "GAME_ENTRY",
+      "gameId": "b995d22d-ecc3-43bb-b3a6-df52a81e11a7",
+      "delta": -1,
+      "effective": -1,
+      "balance": 85,
+      "issuedAt": "2026-09-19T11:42:52.986Z",
+      "signature": "e4a9e5e9a05aa99ec38a6a72c9c6f1d74a13fc4c96f0264594f6dadc529bc5d7"
+    },
+    {
+      "id": "receipt-settlement-b995d22d-ecc3-43bb-b3a6-df52a81e11a7-50",
+      "type": "SETTLEMENT",
+      "gameId": "b995d22d-ecc3-43bb-b3a6-df52a81e11a7",
+      "delta": 4,
+      "effective": 4,
+      "balance": 89,
+      "issuedAt": "2026-09-19T11:47:02.918Z",
+      "signature": "c640db1d53f3a63567e6706a652365db280c4df156216042e72bef4058b0be0f"
+    },
+    {
+      "id": "receipt-game_entry-2a00c6d4-023d-4571-9da4-d52420bf1677-51",
+      "type": "GAME_ENTRY",
+      "gameId": "2a00c6d4-023d-4571-9da4-d52420bf1677",
+      "delta": -1,
+      "effective": -1,
+      "balance": 88,
+      "issuedAt": "2026-09-19T11:48:51.243Z",
+      "signature": "25af438b7be208c7656fa498c95d9ec00672eb7fa8108b25f50b54946341cc5d"
+    },
+    {
+      "id": "receipt-game_entry-b972b06c-aea5-40ed-aedc-738d49b5f4da-52",
+      "type": "GAME_ENTRY",
+      "gameId": "b972b06c-aea5-40ed-aedc-738d49b5f4da",
+      "delta": -1,
+      "effective": -1,
+      "balance": 87,
+      "issuedAt": "2026-09-19T11:49:14.267Z",
+      "signature": "ddc1e5d0755548d575b3b87f06b55747119d375d1ab158d0079faeeb3e25410b"
+    },
+    {
+      "id": "receipt-game_entry-39a815bb-90e4-4762-855f-62d8f8d66aed-53",
+      "type": "GAME_ENTRY",
+      "gameId": "39a815bb-90e4-4762-855f-62d8f8d66aed",
+      "delta": -1,
+      "effective": -1,
+      "balance": 86,
+      "issuedAt": "2026-09-19T11:49:26.105Z",
+      "signature": "43f3c27cf57292b898287bc71b13f276aca4a0d55dc1627b8156e43bf58aaffc"
+    },
+    {
+      "id": "receipt-game_entry-0c334aa9-9134-42b0-a3f9-b8277ca78f8c-54",
+      "type": "GAME_ENTRY",
+      "gameId": "0c334aa9-9134-42b0-a3f9-b8277ca78f8c",
+      "delta": -1,
+      "effective": -1,
+      "balance": 85,
+      "issuedAt": "2026-09-19T11:49:40.886Z",
+      "signature": "9d791c91fb32ea68ca56264980f4c1505133d74ed6372399ef7056ba31c9159d"
+    },
+    {
+      "id": "receipt-game_entry-40e1abd4-5931-4458-98ff-8c48e78c6f3d-55",
+      "type": "GAME_ENTRY",
+      "gameId": "40e1abd4-5931-4458-98ff-8c48e78c6f3d",
+      "delta": -1,
+      "effective": -1,
+      "balance": 84,
+      "issuedAt": "2026-09-19T11:49:50.321Z",
+      "signature": "8355393964e03e4b392ad10e3cc52fb7f79409166e31d79fd4299f470bddad71"
+    },
+    {
+      "id": "receipt-game_entry-b12ba92a-4f9f-4bbb-b1b2-eabb9302de4b-56",
+      "type": "GAME_ENTRY",
+      "gameId": "b12ba92a-4f9f-4bbb-b1b2-eabb9302de4b",
+      "delta": -1,
+      "effective": -1,
+      "balance": 83,
+      "issuedAt": "2026-09-20T05:11:17.061Z",
+      "signature": "429cb907866de226f44db8a8cbf1af0893e1c075b1aefcb98c91e85eae8a2ee8"
+    },
+    {
+      "id": "receipt-game_entry-cd6bc4be-d96a-4d0b-b0a0-0ace12249a4f-57",
+      "type": "GAME_ENTRY",
+      "gameId": "cd6bc4be-d96a-4d0b-b0a0-0ace12249a4f",
+      "delta": -1,
+      "effective": -1,
+      "balance": 82,
+      "issuedAt": "2026-09-20T05:35:21.360Z",
+      "signature": "14ad1042ffbd037b3ca68a8293fee0ac399141e106275b9c508b3619fdad10cc"
+    },
+    {
+      "id": "receipt-settlement-cd6bc4be-d96a-4d0b-b0a0-0ace12249a4f-58",
+      "type": "SETTLEMENT",
+      "gameId": "cd6bc4be-d96a-4d0b-b0a0-0ace12249a4f",
+      "delta": 12,
+      "effective": 12,
+      "balance": 94,
+      "issuedAt": "2026-09-20T05:36:34.186Z",
+      "signature": "9ed855315851697116ad695aa403e2de90892415d4fa5277da41f9f9d6a1b029"
+    },
+    {
+      "id": "receipt-game_entry-59cd15d0-2522-4ec2-872b-4a42cd2ce752-59",
+      "type": "GAME_ENTRY",
+      "gameId": "59cd15d0-2522-4ec2-872b-4a42cd2ce752",
+      "delta": -1,
+      "effective": -1,
+      "balance": 93,
+      "issuedAt": "2026-09-20T05:37:16.594Z",
+      "signature": "bda5fa80399c2cd70ffc9a881c6f4607cae20113f9171ad7094ddabf1f516ba5"
+    },
+    {
+      "id": "receipt-settlement-59cd15d0-2522-4ec2-872b-4a42cd2ce752-60",
+      "type": "SETTLEMENT",
+      "gameId": "59cd15d0-2522-4ec2-872b-4a42cd2ce752",
+      "delta": 6,
+      "effective": 6,
+      "balance": 99,
+      "issuedAt": "2026-09-20T05:38:50.278Z",
+      "signature": "806b69577cab94e6feb7071472b138d720d5d667ff27efe38deadc2d6a7b43e7"
+    },
+    {
+      "id": "receipt-game_entry-8575be1a-0514-4715-b9fd-1602a7465412-61",
+      "type": "GAME_ENTRY",
+      "gameId": "8575be1a-0514-4715-b9fd-1602a7465412",
+      "delta": -1,
+      "effective": -1,
+      "balance": 98,
+      "issuedAt": "2026-09-20T05:39:57.409Z",
+      "signature": "b6d5ab18fe86bb50a7adb889b4b3fc20bde9b38f6126065d01aa0892af8395c4"
+    },
+    {
+      "id": "receipt-settlement-8575be1a-0514-4715-b9fd-1602a7465412-62",
+      "type": "SETTLEMENT",
+      "gameId": "8575be1a-0514-4715-b9fd-1602a7465412",
+      "delta": 12,
+      "effective": 12,
+      "balance": 110,
+      "issuedAt": "2026-09-20T05:41:08.087Z",
+      "signature": "eb150503477f62d4195d81a0852357e67676af513d2b0d0f2a0778e3315482d8"
+    },
+    {
+      "id": "receipt-game_entry-f778db9d-3648-4a3c-93b9-f2dd31f9f70f-63",
+      "type": "GAME_ENTRY",
+      "gameId": "f778db9d-3648-4a3c-93b9-f2dd31f9f70f",
+      "delta": -1,
+      "effective": -1,
+      "balance": 109,
+      "issuedAt": "2026-09-20T06:11:26.076Z",
+      "signature": "9e6d9358670d8897d34667f0e0ce22648246343847be63772b7448d7129ee9c0"
+    },
+    {
+      "id": "receipt-game_entry-96860b13-3fc5-4321-9356-5060cb855d17-64",
+      "type": "GAME_ENTRY",
+      "gameId": "96860b13-3fc5-4321-9356-5060cb855d17",
+      "delta": -1,
+      "effective": -1,
+      "balance": 108,
+      "issuedAt": "2026-09-20T11:22:09.090Z",
+      "signature": "dd2354b75609184b88f909200e76b551e15902a7b2f7932ae094839b0e3c74e0"
+    },
+    {
+      "id": "receipt-settlement-96860b13-3fc5-4321-9356-5060cb855d17-65",
+      "type": "SETTLEMENT",
+      "gameId": "96860b13-3fc5-4321-9356-5060cb855d17",
+      "delta": 6,
+      "effective": 6,
+      "balance": 114,
+      "issuedAt": "2026-09-20T11:23:47.005Z",
+      "signature": "9f20df0dc0e925b8443ecfda5490e63300d1686ef4dc1d8d6a47881740b69295"
+    },
+    {
+      "id": "receipt-game_entry-20a91cd5-30cb-4730-b81d-41bb78ba25b6-66",
+      "type": "GAME_ENTRY",
+      "gameId": "20a91cd5-30cb-4730-b81d-41bb78ba25b6",
+      "delta": -1,
+      "effective": -1,
+      "balance": 113,
+      "issuedAt": "2026-09-20T13:20:41.972Z",
+      "signature": "193034b6265a1aaa0a0a6aa5e68df93fe5e653c7e9af940ab37ba90c3ea24194"
+    },
+    {
+      "id": "receipt-game_entry-47b5e217-c455-4fff-815d-64662bdc9137-67",
+      "type": "GAME_ENTRY",
+      "gameId": "47b5e217-c455-4fff-815d-64662bdc9137",
+      "delta": -1,
+      "effective": -1,
+      "balance": 112,
+      "issuedAt": "2026-09-20T13:26:17.492Z",
+      "signature": "320818b9d1570ef084eff64ab948d06c8605faec38b8195809bb5b19f3ed469b"
+    },
+    {
+      "id": "receipt-game_entry-3d9db518-6954-4b12-b589-4f876d3b2393-68",
+      "type": "GAME_ENTRY",
+      "gameId": "3d9db518-6954-4b12-b589-4f876d3b2393",
+      "delta": -1,
+      "effective": -1,
+      "balance": 111,
+      "issuedAt": "2026-09-22T02:26:52.253Z",
+      "signature": "3c908ce1790edb44dd2dd10b7a94974b24354c0e519de76ce60894db290954e1"
+    },
+    {
+      "id": "receipt-game_entry-90ef7c01-e12c-40a9-9cb6-2526d0f2088d-69",
+      "type": "GAME_ENTRY",
+      "gameId": "90ef7c01-e12c-40a9-9cb6-2526d0f2088d",
+      "delta": -1,
+      "effective": -1,
+      "balance": 110,
+      "issuedAt": "2026-09-22T02:30:58.306Z",
+      "signature": "1464333159cab48f477500050e4e96268c529c5f296a61944e625b3edd157555"
+    },
+    {
+      "id": "receipt-game_entry-45021fd7-6792-4c80-b09b-f38f9a437872-70",
+      "type": "GAME_ENTRY",
+      "gameId": "45021fd7-6792-4c80-b09b-f38f9a437872",
+      "delta": -1,
+      "effective": -1,
+      "balance": 109,
+      "issuedAt": "2026-09-22T08:52:49.645Z",
+      "signature": "67981c8d2e01ee93dc61121455a1efaad1b0a7e08dabbe0cee6e400f4cac3d46"
+    },
+    {
+      "id": "receipt-settlement-45021fd7-6792-4c80-b09b-f38f9a437872-71",
+      "type": "SETTLEMENT",
+      "gameId": "45021fd7-6792-4c80-b09b-f38f9a437872",
+      "delta": 6,
+      "effective": 6,
+      "balance": 115,
+      "issuedAt": "2026-09-22T08:53:44.530Z",
+      "signature": "8fefc689fe7d22010d261e454ef28a2625affa58accb65238f3a732c100b158b"
+    },
+    {
+      "id": "receipt-game_entry-e96ccaaa-bd21-4298-9ea9-f6a307dfdac2-72",
+      "type": "GAME_ENTRY",
+      "gameId": "e96ccaaa-bd21-4298-9ea9-f6a307dfdac2",
+      "delta": -1,
+      "effective": -1,
+      "balance": 114,
+      "issuedAt": "2026-09-22T12:50:43.507Z",
+      "signature": "2e2e7f3376983728e3307d5b32cca32d1686cddade1bcad29a951f776463329d"
+    },
+    {
+      "id": "receipt-settlement-e96ccaaa-bd21-4298-9ea9-f6a307dfdac2-73",
+      "type": "SETTLEMENT",
+      "gameId": "e96ccaaa-bd21-4298-9ea9-f6a307dfdac2",
+      "delta": -6,
+      "effective": -6,
+      "balance": 108,
+      "issuedAt": "2026-09-22T12:53:02.442Z",
+      "signature": "5a81bdc73d97884c1075cb3f8b172337c96d0045b1dbbbb3f27a98da8d19cc6d"
+    },
+    {
+      "id": "receipt-game_entry-e2779426-5a2f-40dd-bb07-d6c560a3e2ad-74",
+      "type": "GAME_ENTRY",
+      "gameId": "e2779426-5a2f-40dd-bb07-d6c560a3e2ad",
+      "delta": -1,
+      "effective": -1,
+      "balance": 107,
+      "issuedAt": "2026-09-22T14:16:03.283Z",
+      "signature": "c8857d532c8c655b8c932d72749dffe13e59155af2ed3365bbf42a525cd6934e"
+    },
+    {
+      "id": "receipt-settlement-e2779426-5a2f-40dd-bb07-d6c560a3e2ad-75",
+      "type": "SETTLEMENT",
+      "gameId": "e2779426-5a2f-40dd-bb07-d6c560a3e2ad",
+      "delta": -3,
+      "effective": -3,
+      "balance": 104,
+      "issuedAt": "2026-09-22T14:17:36.647Z",
+      "signature": "4cc0a999c362ccae1dfcb29f2452ed3180264c833ae0c94a81b1c5857d1aa607"
+    },
+    {
+      "id": "receipt-game_entry-41f1dccc-c98d-49d9-acef-1089637edc4e-76",
+      "type": "GAME_ENTRY",
+      "gameId": "41f1dccc-c98d-49d9-acef-1089637edc4e",
+      "delta": -1,
+      "effective": -1,
+      "balance": 103,
+      "issuedAt": "2026-09-23T04:43:55.533Z",
+      "signature": "d7c6ac60e9b1d4859c131e72c2d575bded356f4db7f03b950ca701f91503773f"
+    },
+    {
+      "id": "receipt-game_entry-dc8f6fa3-8d1d-4de7-baf7-b2761df68b5c-77",
+      "type": "GAME_ENTRY",
+      "gameId": "dc8f6fa3-8d1d-4de7-baf7-b2761df68b5c",
+      "delta": -1,
+      "effective": -1,
+      "balance": 102,
+      "issuedAt": "2026-09-23T04:46:14.368Z",
+      "signature": "a7cd674d1c4d491b554af71f06fa42acb2df4aa16bd4717075c01a19af5bf82c"
+    },
+    {
+      "id": "receipt-game_entry-11f9a15d-ca11-4534-a25e-4aea9bff3dae-78",
+      "type": "GAME_ENTRY",
+      "gameId": "11f9a15d-ca11-4534-a25e-4aea9bff3dae",
+      "delta": -1,
+      "effective": -1,
+      "balance": 101,
+      "issuedAt": "2026-09-23T04:54:01.349Z",
+      "signature": "6b834dbbbe871194f2bc98daa7b363f23c46e1f82c4f0e0d586f3b94453a988a"
+    },
+    {
+      "id": "receipt-game_entry-83cb1759-36e8-4d28-9a99-c8bdf51fddec-79",
+      "type": "GAME_ENTRY",
+      "gameId": "83cb1759-36e8-4d28-9a99-c8bdf51fddec",
+      "delta": -1,
+      "effective": -1,
+      "balance": 100,
+      "issuedAt": "2026-09-23T04:55:50.183Z",
+      "signature": "3490b22b8013486e7a7e588a3ad063ac410e260cc3553beca7b63ce3550693f3"
+    },
+    {
+      "id": "receipt-game_entry-c25106bb-fbc8-42c5-b065-eb0a209bf661-80",
+      "type": "GAME_ENTRY",
+      "gameId": "c25106bb-fbc8-42c5-b065-eb0a209bf661",
+      "delta": -1,
+      "effective": -1,
+      "balance": 99,
+      "issuedAt": "2026-09-23T04:57:22.730Z",
+      "signature": "d51073cfa1bae173eedb4dcd0873aabf629fd65f5ac1ef141bf49169c1250928"
+    },
+    {
+      "id": "receipt-game_entry-350f9339-8c32-4aef-8fba-df27dd52e95c-81",
+      "type": "GAME_ENTRY",
+      "gameId": "350f9339-8c32-4aef-8fba-df27dd52e95c",
+      "delta": -1,
+      "effective": -1,
+      "balance": 98,
+      "issuedAt": "2026-09-23T05:50:47.879Z",
+      "signature": "81e8018a7ff01612fd0707384a2c2649fa56fc11aeb9c31ce244b1361ae30bae"
+    },
+    {
+      "id": "receipt-game_entry-e313be81-767f-4a69-bda7-11affc471dda-82",
+      "type": "GAME_ENTRY",
+      "gameId": "e313be81-767f-4a69-bda7-11affc471dda",
+      "delta": -1,
+      "effective": -1,
+      "balance": 97,
+      "issuedAt": "2026-09-23T05:51:03.622Z",
+      "signature": "5033ef8512b1086e27ac5bd2ace41347143e753a4d8213d5c57168c8a3269209"
+    },
+    {
+      "id": "receipt-game_entry-afc32950-886d-42ab-a120-85f1b5a57a55-83",
+      "type": "GAME_ENTRY",
+      "gameId": "afc32950-886d-42ab-a120-85f1b5a57a55",
+      "delta": -1,
+      "effective": -1,
+      "balance": 96,
+      "issuedAt": "2026-09-23T05:52:06.474Z",
+      "signature": "558e32caacea5ebb78cbdaa90832353f9d7bca7d15b5a1a2484271a71dcf4c91"
+    },
+    {
+      "id": "receipt-game_entry-46db5739-664e-4b6b-b247-429cb2e39ea5-84",
+      "type": "GAME_ENTRY",
+      "gameId": "46db5739-664e-4b6b-b247-429cb2e39ea5",
+      "delta": -1,
+      "effective": -1,
+      "balance": 95,
+      "issuedAt": "2026-09-23T07:59:38.765Z",
+      "signature": "aac417a8f1e831ed631837da69e0fdf2564eec0e04f982736fd87e4a18b28944"
+    },
+    {
+      "id": "receipt-settlement-46db5739-664e-4b6b-b247-429cb2e39ea5-85",
+      "type": "SETTLEMENT",
+      "gameId": "46db5739-664e-4b6b-b247-429cb2e39ea5",
+      "delta": -6,
+      "effective": -6,
+      "balance": 89,
+      "issuedAt": "2026-09-23T08:01:11.809Z",
+      "signature": "5c9f8970e773bb77d3f3ff33db173bc4567beab99fd78bcdf96101fb792171a9"
+    },
+    {
+      "id": "receipt-game_entry-74b79b64-41cd-441a-b243-12573637e0f0-86",
+      "type": "GAME_ENTRY",
+      "gameId": "74b79b64-41cd-441a-b243-12573637e0f0",
+      "delta": -1,
+      "effective": -1,
+      "balance": 88,
+      "issuedAt": "2026-09-23T08:01:23.152Z",
+      "signature": "f6373a13b3bf6f6da7056351bfa6280043f48b03a41d22d14b31484c28c470d8"
+    },
+    {
+      "id": "receipt-game_entry-260c4b8f-24b7-4374-b243-63a022aecaf0-87",
+      "type": "GAME_ENTRY",
+      "gameId": "260c4b8f-24b7-4374-b243-63a022aecaf0",
+      "delta": -1,
+      "effective": -1,
+      "balance": 87,
+      "issuedAt": "2026-09-23T08:09:52.443Z",
+      "signature": "fca0070b43649dc20c49dc8a3d9f2899426ede5c349d302065cb1fb8d8aadffd"
+    },
+    {
+      "id": "receipt-game_entry-b22f0daf-5f06-4b75-a495-6fd8211d4d56-88",
+      "type": "GAME_ENTRY",
+      "gameId": "b22f0daf-5f06-4b75-a495-6fd8211d4d56",
+      "delta": -1,
+      "effective": -1,
+      "balance": 86,
+      "issuedAt": "2026-09-23T08:11:55.799Z",
+      "signature": "7a04cd3378f6358dba79c3b4f10733344ca057c3b9a7243a0fb216b986774aab"
+    },
+    {
+      "id": "receipt-game_entry-d0817430-8f21-4753-a84d-45c66d38fbf7-89",
+      "type": "GAME_ENTRY",
+      "gameId": "d0817430-8f21-4753-a84d-45c66d38fbf7",
+      "delta": -1,
+      "effective": -1,
+      "balance": 85,
+      "issuedAt": "2026-09-23T08:26:31.597Z",
+      "signature": "8b0d60bf2ac464c5649ce1e47d0dc80b59fda38890a984fe0b3cdd96c138db72"
+    },
+    {
+      "id": "receipt-game_entry-b5ede451-397a-47d8-ab57-3fe1b6a127ed-90",
+      "type": "GAME_ENTRY",
+      "gameId": "b5ede451-397a-47d8-ab57-3fe1b6a127ed",
+      "delta": -1,
+      "effective": -1,
+      "balance": 84,
+      "issuedAt": "2026-09-23T09:23:55.032Z",
+      "signature": "2766939ec21778b2de8ca25dbe3b834f75df0c0a774b09d12ec78d98c160afec"
+    },
+    {
+      "id": "receipt-game_entry-d099cc1a-8f6c-46c3-86bb-50446e158073-91",
+      "type": "GAME_ENTRY",
+      "gameId": "d099cc1a-8f6c-46c3-86bb-50446e158073",
+      "delta": -1,
+      "effective": -1,
+      "balance": 83,
+      "issuedAt": "2026-09-23T09:52:10.945Z",
+      "signature": "d19d8cddf228a5bc409a1f2a4fd12d02f3761fa802889236390d4bbdb55e1bf0"
+    },
+    {
+      "id": "receipt-game_entry-fc91ee74-bc19-461a-b3b5-6d5985e411b4-92",
+      "type": "GAME_ENTRY",
+      "gameId": "fc91ee74-bc19-461a-b3b5-6d5985e411b4",
+      "delta": -1,
+      "effective": -1,
+      "balance": 82,
+      "issuedAt": "2026-09-23T09:52:40.975Z",
+      "signature": "5a60bbb2831bc5c8447351c3a2aafee65679a48c0736faf31728d8ca82b324f9"
+    },
+    {
+      "id": "receipt-game_entry-1a9d01e7-df9d-4de0-9159-5849d8e0ba51-93",
+      "type": "GAME_ENTRY",
+      "gameId": "1a9d01e7-df9d-4de0-9159-5849d8e0ba51",
+      "delta": -1,
+      "effective": -1,
+      "balance": 81,
+      "issuedAt": "2026-09-23T10:04:16.284Z",
+      "signature": "f71418d0322415e561022697fb7d7aeca09fc78219b674539511e38853c8312b"
+    },
+    {
+      "id": "receipt-game_entry-60109661-35ed-46c4-8f30-1602c35497ca-94",
+      "type": "GAME_ENTRY",
+      "gameId": "60109661-35ed-46c4-8f30-1602c35497ca",
+      "delta": -1,
+      "effective": -1,
+      "balance": 80,
+      "issuedAt": "2026-09-23T10:11:06.176Z",
+      "signature": "5c2b92991c6b7296b8ab82715cbc9a82a251f50656f612037bd32c5faa54ed84"
+    },
+    {
+      "id": "receipt-game_entry-150d1f8b-8ded-44e4-848a-ba491a6bad98-95",
+      "type": "GAME_ENTRY",
+      "gameId": "150d1f8b-8ded-44e4-848a-ba491a6bad98",
+      "delta": -1,
+      "effective": -1,
+      "balance": 79,
+      "issuedAt": "2026-09-23T10:15:29.916Z",
+      "signature": "6e24e6d6f7d35294ca9c50052a8cc0f3378a681bcbaee52dbd6acb2877f5d500"
+    },
+    {
+      "id": "receipt-game_entry-da9cd5a1-152e-4324-885a-1dd770f3f538-96",
+      "type": "GAME_ENTRY",
+      "gameId": "da9cd5a1-152e-4324-885a-1dd770f3f538",
+      "delta": -1,
+      "effective": -1,
+      "balance": 78,
+      "issuedAt": "2026-09-23T10:15:37.566Z",
+      "signature": "2234778a0420d10cebcef65ae8e94a81929b9223faba7a58cdf2ed61153a658d"
+    },
+    {
+      "id": "receipt-game_entry-ca7407f9-f5f4-41a6-b05e-21795edce94e-97",
+      "type": "GAME_ENTRY",
+      "gameId": "ca7407f9-f5f4-41a6-b05e-21795edce94e",
+      "delta": -1,
+      "effective": -1,
+      "balance": 77,
+      "issuedAt": "2026-09-23T11:14:15.369Z",
+      "signature": "f57494f29b1eb1788a8db3fdd4cb47ac625b6023b95e37c357d65a9730ae5645"
+    },
+    {
+      "id": "receipt-settlement-ca7407f9-f5f4-41a6-b05e-21795edce94e-98",
+      "type": "SETTLEMENT",
+      "gameId": "ca7407f9-f5f4-41a6-b05e-21795edce94e",
+      "delta": -6,
+      "effective": -6,
+      "balance": 71,
+      "issuedAt": "2026-09-23T11:15:55.470Z",
+      "signature": "2d1600db2b33d225511d4ad67f35318d6859a3a35b5b665b1c78d45a22450787"
+    },
+    {
+      "id": "receipt-game_entry-621d43df-16a1-410b-840f-fdf38368ee08-99",
+      "type": "GAME_ENTRY",
+      "gameId": "621d43df-16a1-410b-840f-fdf38368ee08",
+      "delta": -1,
+      "effective": -1,
+      "balance": 70,
+      "issuedAt": "2026-09-23T11:21:09.422Z",
+      "signature": "94e1133bc0f9fbd948b30db9af41ca6a3f7fab72a5ee5eb46aebc4d1d4387489"
+    },
+    {
+      "id": "receipt-game_entry-54773716-d3b8-400b-9bc3-afb1e9254a65-100",
+      "type": "GAME_ENTRY",
+      "gameId": "54773716-d3b8-400b-9bc3-afb1e9254a65",
+      "delta": -1,
+      "effective": -1,
+      "balance": 69,
+      "issuedAt": "2026-09-23T11:21:24.871Z",
+      "signature": "2c8f69ff7a6232b1b8d2f16288db8fad31b0225c51ba23467efb2a1440f868ed"
+    },
+    {
+      "id": "receipt-game_entry-2629dff1-b2bd-4f55-9cf1-9a14a566931e-101",
+      "type": "GAME_ENTRY",
+      "gameId": "2629dff1-b2bd-4f55-9cf1-9a14a566931e",
+      "delta": -1,
+      "effective": -1,
+      "balance": 68,
+      "issuedAt": "2026-09-23T11:21:32.266Z",
+      "signature": "cd0464d5487f869805d56732e6532aa52aefca8f107bee7c01fe87916d43c967"
+    },
+    {
+      "id": "receipt-game_entry-99f6edf9-6e4d-41e7-8f9b-0085d25c3d90-102",
+      "type": "GAME_ENTRY",
+      "gameId": "99f6edf9-6e4d-41e7-8f9b-0085d25c3d90",
+      "delta": -1,
+      "effective": -1,
+      "balance": 67,
+      "issuedAt": "2026-09-24T03:00:24.081Z",
+      "signature": "b6c0703c59c1cc23b6c876982b808ed7130445f209b39c29eeb7ecf6a4e0a051"
+    },
+    {
+      "id": "receipt-game_entry-3e8754b5-35c1-4992-83e6-093826723117-103",
+      "type": "GAME_ENTRY",
+      "gameId": "3e8754b5-35c1-4992-83e6-093826723117",
+      "delta": -1,
+      "effective": -1,
+      "balance": 66,
+      "issuedAt": "2026-09-24T03:03:25.083Z",
+      "signature": "8af6460f4bc3db9f106e52d4cbddf468eda2e555f388385a35279a3b4df3bedb"
+    },
+    {
+      "id": "receipt-game_entry-654c80ab-092e-4852-bb12-86105cfd9c76-104",
+      "type": "GAME_ENTRY",
+      "gameId": "654c80ab-092e-4852-bb12-86105cfd9c76",
+      "delta": -1,
+      "effective": -1,
+      "balance": 65,
+      "issuedAt": "2026-09-24T03:40:35.264Z",
+      "signature": "a28ffd1bf3a039cd86f7d99e65ff8c8463382f2b4d627853b1a013a76f6a819c"
+    }
+  ]
+}
