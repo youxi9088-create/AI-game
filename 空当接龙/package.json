@@ -1,0 +1,29 @@
+{
+  "name": "theme-freecell-mvp",
+  "version": "0.7.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:aihub": "node --env-file=../hidden-object-web/.env scripts/dev-aihub.mjs",
+    "dev:web": "node scripts/serve.mjs",
+    "dev:api": "node api/server.mjs",
+    "api": "node api/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "node scripts/quality-check.mjs",
+    "typecheck": "node scripts/quality-check.mjs",
+    "build": "node scripts/fn-static-build.mjs && node scripts/build-check.mjs",
+    "oracle": "node scripts/oracle-check.mjs",
+    "test:e2e": "playwright test",
+    "test:visual": "playwright test --grep 视觉基线",
+    "release:preflight": "node scripts/release-preflight.mjs --strict"
+  },
+  "dependencies": {
+    "@fn/cs": "https://f.new.ndhy.com/-/packages/fn-cs-latest.tgz",
+    "@fn/mongodb": "https://f.new.ndhy.com/-/packages/fn-mongodb-latest.tgz",
+    "fastify": "5.12.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

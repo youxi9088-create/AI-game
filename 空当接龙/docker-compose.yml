@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    command: node scripts/serve.mjs
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4173
+    ports: ["4173:4173"]
+  api:
+    build: .
+    command: node api/server.mjs
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4174
+      THEME_DB_PATH: /app/.data/theme-freecell.sqlite
+      THEME_ASSET_DIR: /app/.data/theme-assets
+      THEME_GENERATOR_MODE: ${THEME_GENERATOR_MODE:-mock}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_TEXT_MODEL: ${OPENAI_TEXT_MODEL:-}
+      OPENAI_IMAGE_MODEL: ${OPENAI_IMAGE_MODEL:-gpt-image-2}
+    ports: ["4174:4174"]
+    volumes: ["theme-data:/app/.data"]
+volumes:
+  theme-data:

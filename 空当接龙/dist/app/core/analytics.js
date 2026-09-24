@@ -1,0 +1,4 @@
+const KEY = 'theme-freecell-analytics-v1';
+const read = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } };
+export function track(eventName, props = {}) { if (typeof localStorage === 'undefined') return; const events = read(); events.push({ id: crypto.randomUUID(), eventName, props, createdAt: new Date().toISOString() }); localStorage.setItem(KEY, JSON.stringify(events.slice(-200))); }
+export async function flushAnalytics(endpoint = 'http://127.0.0.1:4174/v1/analytics') { const events = read(); if (!events.length) return { sent: 0 }; try { const response = await fetch(endpoint, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ events }) }); if (!response.ok) throw new Error(String(response.status)); localStorage.removeItem(KEY); return { sent: events.length }; } catch { return { sent: 0, queued: events.length }; } }

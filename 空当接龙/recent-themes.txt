@@ -1,0 +1,58 @@
+[
+  {
+    "id": "generated-1789385379855",
+    "title": "原创复古卡通派对纸牌",
+    "prompt": "米老鼠主题插画设计，经典迪士尼卡通风格：画面中心是米奇经典形象——圆耳朵剪影、红色短裤配白色纽扣、黄色大鞋子、白手套，笑容开朗挥手致意；周围环绕米奇头形轮廓的气球、星星、波点彩带等装饰元素，红黄黑白经典配色，线条圆润流畅，色彩明快饱和，扁平矢量插画质感，白色干净背景，居中构图，高清卡通素材，无文字无水印",
+    "provider": "aihub-gateway",
+    "ranks": 13
+  },
+  {
+    "id": "generated-1789383467504",
+    "title": "秋日暖阳枫叶书房",
+    "prompt": "秋日暖阳的枫叶书房，木质书桌与温暖落叶氛围",
+    "provider": "aihub-gateway",
+    "ranks": 13
+  },
+  {
+    "id": "generated-1789364477877-degraded",
+    "title": "定制经典主题",
+    "prompt": "海盗航海主题",
+    "provider": "Object",
+    "ranks": 0
+  },
+  {
+    "id": "generated-1789364476453",
+    "title": "定制经典主题",
+    "prompt": "签名地址脱敏回归",
+    "provider": "mock",
+    "ranks": 0
+  },
+  {
+    "id": "generated-1789364474955",
+    "title": "水墨山水主题",
+    "prompt": "水墨山水牌桌",
+    "provider": "mock",
+    "ranks": 0
+  },
+  {
+    "id": "generated-1789364462023-degraded",
+    "title": "定制经典主题",
+    "prompt": "海盗航海主题",
+    "provider": "Object",
+    "ranks": 0
+  },
+  {
+    "id": "generated-1789364460508",
+    "title": "定制经典主题",
+    "prompt": "签名地址脱敏回归",
+    "provider": "mock",
+    "ranks": 0
+  },
+  {
+    "id": "generated-1789364458836",
+    "title": "水墨山水主题",
+    "prompt": "水墨山水牌桌",
+    "provider": "mock",
+    "ranks": 0
+  }
+]

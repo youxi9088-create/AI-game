@@ -1,0 +1,67 @@
+(node:15544) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"level":30,"time":1789444676796,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677152,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":354.98479999999995,"msg":"request completed"}
+{"level":30,"time":1789444677177,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677178,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.7316999999999325,"msg":"request completed"}
+{"level":30,"time":1789444677447,"pid":15544,"hostname":"BC0301010103","reqId":"req-3","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677448,"pid":15544,"hostname":"BC0301010103","reqId":"req-3","res":{"statusCode":200},"responseTime":0.3654000000000224,"msg":"request completed"}
+{"level":30,"time":1789444677461,"pid":15544,"hostname":"BC0301010103","reqId":"req-4","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677462,"pid":15544,"hostname":"BC0301010103","reqId":"req-4","res":{"statusCode":200},"responseTime":0.38999999999998636,"msg":"request completed"}
+{"level":30,"time":1789444677609,"pid":15544,"hostname":"BC0301010103","reqId":"req-5","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677610,"pid":15544,"hostname":"BC0301010103","reqId":"req-5","res":{"statusCode":200},"responseTime":0.38400000000001455,"msg":"request completed"}
+{"level":30,"time":1789444677633,"pid":15544,"hostname":"BC0301010103","reqId":"req-6","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444677634,"pid":15544,"hostname":"BC0301010103","reqId":"req-6","res":{"statusCode":200},"responseTime":0.4616000000000895,"msg":"request completed"}
+{"level":30,"time":1789444678238,"pid":15544,"hostname":"BC0301010103","reqId":"req-7","req":{"method":"GET","url":"/v1/theme-jobs/1b2d1083-9974-4b6e-b062-db0985825eac","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678238,"pid":15544,"hostname":"BC0301010103","reqId":"req-7","res":{"statusCode":200},"responseTime":0.4578999999998814,"msg":"request completed"}
+{"level":30,"time":1789444678238,"pid":15544,"hostname":"BC0301010103","reqId":"req-8","req":{"method":"GET","url":"/v1/themes/generated-1789444677311","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678239,"pid":15544,"hostname":"BC0301010103","reqId":"req-8","res":{"statusCode":200},"responseTime":0.35349999999994,"msg":"request completed"}
+{"level":30,"time":1789444678239,"pid":15544,"hostname":"BC0301010103","reqId":"req-9","req":{"method":"GET","url":"/v1/themes","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678245,"pid":15544,"hostname":"BC0301010103","reqId":"req-9","res":{"statusCode":200},"responseTime":5.5896999999999935,"msg":"request completed"}
+{"level":30,"time":1789444678246,"pid":15544,"hostname":"BC0301010103","reqId":"req-a","req":{"method":"GET","url":"/v1/inspect/themes/generated-1789444677311","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678246,"pid":15544,"hostname":"BC0301010103","reqId":"req-a","res":{"statusCode":200},"responseTime":0.644800000000032,"msg":"request completed"}
+{"level":30,"time":1789444678246,"pid":15544,"hostname":"BC0301010103","reqId":"req-b","req":{"method":"POST","url":"/v1/analytics","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 主题任务 API 会排队、完成并返回校验后的主题 (1728.7575ms)
+{"level":30,"time":1789444678368,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"GET","url":"/health","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678365,"pid":15544,"hostname":"BC0301010103","reqId":"req-b","res":{"statusCode":202},"responseTime":118.34900000000016,"msg":"request completed"}
+{"level":30,"time":1789444678368,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":200},"responseTime":0.14039999999999964,"msg":"request completed"}
+{"level":30,"time":1789444678368,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 未配置真实 Provider 时健康检查明确阻断伪生成 (3.4132ms)
+{"level":30,"time":1789444678373,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678369,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":503},"responseTime":0.7001999999999953,"msg":"request completed"}
+{"level":30,"time":1789444678629,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":255.84649999999988,"msg":"request completed"}
+{"level":30,"time":1789444678643,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678644,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.5016000000000531,"msg":"request completed"}
+{"level":30,"time":1789444678907,"pid":15544,"hostname":"BC0301010103","reqId":"req-3","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678908,"pid":15544,"hostname":"BC0301010103","reqId":"req-3","res":{"statusCode":200},"responseTime":0.4837999999999738,"msg":"request completed"}
+{"level":30,"time":1789444678928,"pid":15544,"hostname":"BC0301010103","reqId":"req-4","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444678929,"pid":15544,"hostname":"BC0301010103","reqId":"req-4","res":{"statusCode":200},"responseTime":0.5356999999999061,"msg":"request completed"}
+{"level":30,"time":1789444679049,"pid":15544,"hostname":"BC0301010103","reqId":"req-5","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444679049,"pid":15544,"hostname":"BC0301010103","reqId":"req-5","res":{"statusCode":200},"responseTime":0.3886999999999716,"msg":"request completed"}
+{"level":30,"time":1789444679070,"pid":15544,"hostname":"BC0301010103","reqId":"req-6","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444679071,"pid":15544,"hostname":"BC0301010103","reqId":"req-6","res":{"statusCode":200},"responseTime":0.5927999999998974,"msg":"request completed"}
+✔ 主题 API 不向浏览器暴露上游临时签名地址 (1357.0553ms)
+{"level":30,"time":1789444679725,"pid":15544,"hostname":"BC0301010103","reqId":"req-7","req":{"method":"GET","url":"/v1/theme-jobs/4592728c-b1a4-465f-90d4-f0959020b653","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444679726,"pid":15544,"hostname":"BC0301010103","reqId":"req-7","res":{"statusCode":200},"responseTime":0.4454999999998108,"msg":"request completed"}
+{"level":30,"time":1789444679726,"pid":15544,"hostname":"BC0301010103","reqId":"req-8","req":{"method":"GET","url":"/v1/themes/generated-1789444678775","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444679726,"pid":15544,"hostname":"BC0301010103","reqId":"req-8","res":{"statusCode":200},"responseTime":0.2867999999998574,"msg":"request completed"}
+✔ OpenAI adapter 使用结构化文本和图片端点并生成可追踪资产 (64.1439ms)
+✔ AIHub adapter 使用文本网关并保留图片工作流 runId (71.3402ms)
+{"level":30,"time":1789444679865,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444680083,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":217.3195999999998,"msg":"request completed"}
+{"level":30,"time":1789444680502,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/d573be64-048d-4da0-a4e3-196e5cba922a","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 真实 Provider 失败时任务完成为可解释的降级主题 (641.0277ms)
+{"level":30,"time":1789444680505,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789444680503,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.7716999999997824,"msg":"request completed"}
+{"level":30,"time":1789444680628,"pid":15544,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":123.38280000000032,"msg":"request completed"}
+{"level":30,"time":1789444680784,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/00bc56f5-5545-4e35-8833-92ee276e3bdf","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 真实 Provider 默认失败而不是伪装成本地降级成功 (281.5117ms)
+{"level":30,"time":1789444680784,"pid":15544,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.47479999999995925,"msg":"request completed"}
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4470.7181

@@ -1,0 +1,26 @@
+node_modules/
+.data/
+test-results/
+playwright-report/
+*.log
+*.txt.bak
+.env.production
+.env.local
+.env.*.local
+
+# 本地运行与验收输出
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+pid.txt
+port-*.txt
+health*.json
+debug-*.txt
+*-stdout.txt
+*-result.txt
+*-check.txt
+*-sample.jpg
+
+# 本地调试产物（勿提交）
+runner-result.txt
+diff-highlight.png

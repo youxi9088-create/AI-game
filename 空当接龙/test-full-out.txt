@@ -1,0 +1,92 @@
+(node:48288) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"level":30,"time":1789452164505,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452164854,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":348.76449999999994,"msg":"request completed"}
+{"level":30,"time":1789452164876,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452164877,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":1.0489999999999782,"msg":"request completed"}
+{"level":30,"time":1789452165139,"pid":48288,"hostname":"BC0301010103","reqId":"req-3","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165140,"pid":48288,"hostname":"BC0301010103","reqId":"req-3","res":{"statusCode":200},"responseTime":0.37400000000002365,"msg":"request completed"}
+{"level":30,"time":1789452165159,"pid":48288,"hostname":"BC0301010103","reqId":"req-4","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165160,"pid":48288,"hostname":"BC0301010103","reqId":"req-4","res":{"statusCode":200},"responseTime":0.6125000000001819,"msg":"request completed"}
+{"level":30,"time":1789452165266,"pid":48288,"hostname":"BC0301010103","reqId":"req-5","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165266,"pid":48288,"hostname":"BC0301010103","reqId":"req-5","res":{"statusCode":200},"responseTime":0.3686000000000149,"msg":"request completed"}
+{"level":30,"time":1789452165286,"pid":48288,"hostname":"BC0301010103","reqId":"req-6","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165286,"pid":48288,"hostname":"BC0301010103","reqId":"req-6","res":{"statusCode":200},"responseTime":0.8089999999999691,"msg":"request completed"}
+{"level":30,"time":1789452165772,"pid":48288,"hostname":"BC0301010103","reqId":"req-7","req":{"method":"GET","url":"/v1/theme-jobs/cf5b1a7a-9f58-4e5c-8130-d31a6d0531ba","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165772,"pid":48288,"hostname":"BC0301010103","reqId":"req-7","res":{"statusCode":200},"responseTime":0.46100000000001273,"msg":"request completed"}
+{"level":30,"time":1789452165773,"pid":48288,"hostname":"BC0301010103","reqId":"req-8","req":{"method":"GET","url":"/v1/themes/generated-1789452165030","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165773,"pid":48288,"hostname":"BC0301010103","reqId":"req-8","res":{"statusCode":200},"responseTime":0.36550000000011096,"msg":"request completed"}
+{"level":30,"time":1789452165773,"pid":48288,"hostname":"BC0301010103","reqId":"req-9","req":{"method":"GET","url":"/v1/themes","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165777,"pid":48288,"hostname":"BC0301010103","reqId":"req-9","res":{"statusCode":200},"responseTime":3.3795000000000073,"msg":"request completed"}
+{"level":30,"time":1789452165777,"pid":48288,"hostname":"BC0301010103","reqId":"req-a","req":{"method":"GET","url":"/v1/inspect/themes/generated-1789452165030","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165784,"pid":48288,"hostname":"BC0301010103","reqId":"req-a","res":{"statusCode":200},"responseTime":6.809700000000021,"msg":"request completed"}
+{"level":30,"time":1789452165785,"pid":48288,"hostname":"BC0301010103","reqId":"req-b","req":{"method":"POST","url":"/v1/analytics","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 主题任务 API 会排队、完成并返回校验后的主题 (1634.6166ms)
+{"level":30,"time":1789452165908,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"GET","url":"/health","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165905,"pid":48288,"hostname":"BC0301010103","reqId":"req-b","res":{"statusCode":202},"responseTime":120.11339999999996,"msg":"request completed"}
+{"level":30,"time":1789452165908,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":200},"responseTime":0.13210000000003674,"msg":"request completed"}
+{"level":30,"time":1789452165908,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 未配置真实 Provider 时健康检查明确阻断伪生成 (3.8009ms)
+{"level":30,"time":1789452165912,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452165909,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":503},"responseTime":1.1367999999999938,"msg":"request completed"}
+{"level":30,"time":1789452166143,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":231.14419999999996,"msg":"request completed"}
+{"level":30,"time":1789452166166,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452166166,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.47860000000014224,"msg":"request completed"}
+{"level":30,"time":1789452166406,"pid":48288,"hostname":"BC0301010103","reqId":"req-3","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452166406,"pid":48288,"hostname":"BC0301010103","reqId":"req-3","res":{"statusCode":200},"responseTime":0.32930000000033033,"msg":"request completed"}
+{"level":30,"time":1789452166431,"pid":48288,"hostname":"BC0301010103","reqId":"req-4","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452166431,"pid":48288,"hostname":"BC0301010103","reqId":"req-4","res":{"statusCode":200},"responseTime":0.36380000000008295,"msg":"request completed"}
+{"level":30,"time":1789452166528,"pid":48288,"hostname":"BC0301010103","reqId":"req-5","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452166528,"pid":48288,"hostname":"BC0301010103","reqId":"req-5","res":{"statusCode":200},"responseTime":0.3340999999995802,"msg":"request completed"}
+{"level":30,"time":1789452166542,"pid":48288,"hostname":"BC0301010103","reqId":"req-6","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452166542,"pid":48288,"hostname":"BC0301010103","reqId":"req-6","res":{"statusCode":200},"responseTime":0.359599999999773,"msg":"request completed"}
+{"level":30,"time":1789452167025,"pid":48288,"hostname":"BC0301010103","reqId":"req-7","req":{"method":"GET","url":"/v1/theme-jobs/29dbeb80-b95f-4bd4-b8e9-b7b9c34d0726","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 主题 API 不向浏览器暴露上游临时签名地址 (1116.2818ms)
+{"level":30,"time":1789452167025,"pid":48288,"hostname":"BC0301010103","reqId":"req-7","res":{"statusCode":200},"responseTime":0.43919999999980064,"msg":"request completed"}
+{"level":30,"time":1789452167026,"pid":48288,"hostname":"BC0301010103","reqId":"req-8","req":{"method":"GET","url":"/v1/themes/generated-1789452166291","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452167026,"pid":48288,"hostname":"BC0301010103","reqId":"req-8","res":{"statusCode":200},"responseTime":0.2717999999999847,"msg":"request completed"}
+✔ OpenAI adapter 使用结构化文本和图片端点并生成可追踪资产 (58.3058ms)
+✔ AIHub adapter 使用文本网关并保留图片工作流 runId (64.9784ms)
+{"level":30,"time":1789452167152,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452167416,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":263.2474000000002,"msg":"request completed"}
+{"level":30,"time":1789452167834,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/622dbe31-bf9a-4604-b552-47ae9c19c621","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 真实 Provider 失败时任务完成为可解释的降级主题 (685.0105ms)
+{"level":30,"time":1789452167840,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","req":{"method":"POST","url":"/v1/theme-jobs","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1789452167834,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.4444000000003143,"msg":"request completed"}
+{"level":30,"time":1789452167965,"pid":48288,"hostname":"BC0301010103","reqId":"req-1","res":{"statusCode":202},"responseTime":124.94039999999995,"msg":"request completed"}
+{"level":30,"time":1789452168101,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","req":{"method":"GET","url":"/v1/theme-jobs/94f07056-8959-4545-92ee-10589e9cab21","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+✔ 真实 Provider 默认失败而不是伪装成本地降级成功 (267.0952ms)
+{"level":30,"time":1789452168101,"pid":48288,"hostname":"BC0301010103","reqId":"req-2","res":{"statusCode":200},"responseTime":0.4749000000001615,"msg":"request completed"}
+✔ fc-solve 输入采用标准 Foundation/Freecells/8 cascade 格式 (0.6799ms)
+✔ 未安装 fc-solve 时 oracle 明确报告不可用 (7.2383ms)
+✔ 编号发牌固定且完整 (1.5091ms)
+✔ 编号 1 使用 Microsoft 抽取剩余牌的基线顺序 (0.1179ms)
+✔ 自定义规则不限制连续牌组的搬运张数 (0.0855ms)
+✔ 连续的多张牌可作为同一组移动到目标牌列 (0.4137ms)
+✔ 100 个编号牌局各有完整唯一的 Microsoft 兼容发牌 (1.7501ms)
+✔ 连续牌即使没有空自由单元或空列，也能整体移动 (0.1877ms)
+✔ 50 次合法移动可完整撤销回原始牌局 (11.3936ms)
+✔ 回收堆只接受同花色下一个点数 (0.1624ms)
+✔ 非法移动边界不会改变牌局 (0.2499ms)
+✔ 自由单元移出的牌不会残留或复制 (0.1931ms)
+✔ 自动收牌不会提前锁住高点数 (0.165ms)
+✔ 无合法移动时会被检测为死局 (0.1224ms)
+✔ 四个回收堆完成后进入胜利状态 (0.2949ms)
+✔ 提示只能返回可执行走法 (0.1325ms)
+✔ 预置 ThemePackage 满足可读性、资源和七层契约 (2.453ms)
+✔ 11 个主题合同样本和 20 条主题描述均能通过质量门 (1.4032ms)
+✔ 损坏的主题不能通过质量门 (0.178ms)
+✔ 高风险主题描述会降级为原创 ThemePackage (0.1573ms)
+✔ 主题合同包含 A-K、四花色与 12 张 J/Q/K 插画规格 (0.1141ms)
+✔ 每套主题可组合出 52 张均含七层的牌面描述 (1.1945ms)
+✔ 可选牌面图片资产必须映射到合法花色、点数与 J/Q/K 牌位 (0.3171ms)
+✔ 质量失败时可生成仍可玩的降级主题 (0.1645ms)
+✔ 主题库两套真实资源存在、哈希匹配且各自包体低于 20MB (6.681ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4165.2304

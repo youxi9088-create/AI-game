@@ -1,0 +1,225 @@
+{
+  "id": "generated-1789394703684",
+  "title": "Cheerful Sailor Duck Cloud-Cut Deck",
+  "rev": 1,
+  "source": "generated",
+  "items": [
+    {
+      "id": "background",
+      "kind": "background",
+      "url": "/v1/assets/2e58a5c89dd82d47d6a858e69b8a27566284279e35cf5f140aef7e8f498e7155.jpg",
+      "bytes": 316314,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "cardBack",
+      "kind": "cardBack",
+      "url": "/v1/assets/46c525303849d6b620bbd4cee3dbd4cacc4aa28f1b8ef47cb95077e745200be1.jpg",
+      "bytes": 432757,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "suit-S",
+      "kind": "suitMotif",
+      "url": "/v1/assets/39971d6b5dd6d05aca505aec1c10758a7ae18eec36b33f436113098e693774fa.jpg",
+      "bytes": 316372,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "suit-H",
+      "kind": "suitMotif",
+      "url": "/v1/assets/5978495c94b3ba83e31fe10bc40475fe7a871f0369ffd768ed857ba81ef60018.jpg",
+      "bytes": 254937,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "suit-D",
+      "kind": "suitMotif",
+      "url": "/v1/assets/2758f3cd36238bb7945105a6f2deb4c43d8cd7347c6b0a7372b44f54dd32b5e0.jpg",
+      "bytes": 268427,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "suit-C",
+      "kind": "suitMotif",
+      "url": "/v1/assets/e546e33eb9f72ddf0943ce9f3f923007ccf28b9a4ed8e1f260ad16c45dec55c4.jpg",
+      "bytes": 284725,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-1",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/2ce22873c7f4f403c2590a539963d053d61fb471ee22115ae6cecf2dd9c4ab2b.jpg",
+      "bytes": 210563,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-2",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/f5f5f1269e043cbb2d5bb0170e82bb2b8dbfecdae87bfafb53a415d3535d6da7.jpg",
+      "bytes": 275953,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-3",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/b2ab9a234130adc9cdf8afd1c9acbb2af0cf66e5f3088efb8abdbad8f96f5038.jpg",
+      "bytes": 292352,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-4",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/aaed3297cf3092c6e19c8929ad428b4efca8b7c6831bc6b2fcebb8d60908fc90.jpg",
+      "bytes": 285678,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-5",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/f0db25073669bf0338bf1de45258c3fff428d3fc2d6946fe2c153d9d082103eb.jpg",
+      "bytes": 273769,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-6",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/c648a993bf0bde4c1e0c3371b600d64fe0e7fa0a62dc9ccb251c147a5100e894.jpg",
+      "bytes": 277574,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-7",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/e00e247d2d48865c3da4df56fe3e6e54d3a48d55a16f1b336e51e79b229965b9.jpg",
+      "bytes": 314350,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-8",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/e3a7444f9bfd5b254fcdf3a44c60a931b595b93afb8d34e1d16847f513692484.jpg",
+      "bytes": 242618,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-9",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/d685494e76b5c373939ba37dee6f9cb0b40c740d6ab5f658f844512390a0aef8.jpg",
+      "bytes": 343315,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-10",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/3c1d82d4f7f6dc10e5f3866ae4dd54cf7bc7af1b5948a5f6ae5cc742f7842940.jpg",
+      "bytes": 286963,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-11",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/b7d9e704608e374be15854405c568b58d571c55908c3ae07fe0b4090d79b27ab.jpg",
+      "bytes": 209918,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-12",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/8ad03cadc14ebba65045cfaee2f90a83b53ca263daab65089b408e3cf618cc5f.jpg",
+      "bytes": 257092,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "rank-13",
+      "kind": "rankGlyph",
+      "url": "/v1/assets/0e13e3c36062883b7e52a79c28f95b22889fb79c2eaac2aea5c2faf4df3cd243.jpg",
+      "bytes": 244062,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-S11",
+      "kind": "faceCard",
+      "url": "/v1/assets/868fe52da7c779914dde7c17d2c0907e2866bb15ea93e31c642ed74c38300732.jpg",
+      "bytes": 294475,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-S12",
+      "kind": "faceCard",
+      "url": "/v1/assets/3edac26c5341a291058ace0576536d67e23aa06634ae2950b2e58f4d4e095abf.jpg",
+      "bytes": 331140,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-S13",
+      "kind": "faceCard",
+      "url": "/v1/assets/7c3aed5d10e4381e99e3373c0dd6dc7f9cb604b6307f97c703f8419e837b391c.jpg",
+      "bytes": 346960,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-H11",
+      "kind": "faceCard",
+      "url": "/v1/assets/5533ed44973f9a0457ae68589bd40978a286392fcb3353d62ae08f9bd4d2bc50.jpg",
+      "bytes": 358120,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-H12",
+      "kind": "faceCard",
+      "url": "/v1/assets/35070056c5c56bbd2cf598cb679bf99922f3ad96b4bfa437a18e8873d9c32898.jpg",
+      "bytes": 339483,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-H13",
+      "kind": "faceCard",
+      "url": "/v1/assets/3b170ab9907afc1277c9198a851dafad4b3b957be81753ca02bbeafe13ccab53.jpg",
+      "bytes": 419396,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-D11",
+      "kind": "faceCard",
+      "url": "/v1/assets/848643ef96e6accb23d738fbc06b83d50156ad6f66744df6320a2c01bcb63e36.jpg",
+      "bytes": 389043,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-D12",
+      "kind": "faceCard",
+      "url": "/v1/assets/f0fca5dba979704670b69c0d6026e045366089070c689fc702b6d650efb050d4.jpg",
+      "bytes": 406870,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-D13",
+      "kind": "faceCard",
+      "url": "/v1/assets/75f86dd1218412524210f319905deedb46ecda1167ac3313d7277b773613bbba.jpg",
+      "bytes": 425735,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-C11",
+      "kind": "faceCard",
+      "url": "/v1/assets/35e72ab38cf0aef2ace76c2a93ed4fc67febdc40a607cdd0957037ec6a37e7ce.jpg",
+      "bytes": 280787,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-C12",
+      "kind": "faceCard",
+      "url": "/v1/assets/dcbba9b3ce5c6b56b419658b8a29fda3f4b232b7467e02174d67bd2f2a07ca03.jpg",
+      "bytes": 336120,
+      "mime": "image/jpeg"
+    },
+    {
+      "id": "face-C13",
+      "kind": "faceCard",
+      "url": "/v1/assets/f4ef7de93e2c3860c29876ce6010b23fd2c2e81c4bda460834d8dac752e9d608.jpg",
+      "bytes": 324163,
+      "mime": "image/jpeg"
+    }
+  ]
+}

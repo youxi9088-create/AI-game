@@ -1,0 +1,22 @@
+type: array | keys: 0,1,2,3,4,5,6,7,8,9
+list len: 113
+generated: 78
+[
+ {
+  "id": "generated-1789445992889",
+  "title": "开朗水手鸭的夜海冒险",
+  "src": "generated",
+  "bg": "/v1/assets/7682e3faa629ff07a360213fa4eda640ec9dd3a473a04891299bbd15d08a32b5.jpg"
+ },
+ {
+  "id": "generated-1789444869369",
+  "title": "定制经典主题",
+  "src": "generated",
+  "bg": "/app/assets/classic-table-bg.png"
+ },
+ {
+  "id": "generated-1789444867892",
+  "title": "水墨山水主题",
+  "src": "generated"
+ }
+]

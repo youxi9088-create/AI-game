@@ -1,0 +1,6 @@
+﻿PASS env example
+PASS container compose
+BLOCKED docker engine
+BLOCKED fc-solve
+PASS real provider configured
+exit=1

@@ -1,0 +1,4611 @@
+[
+  {
+    "themeId": "generated-8b1f6f62-79f6-467e-8d26-eb95ee28cd45",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：主题化暖象牙纸牌面、柔蓝珐琅质感桌面、温暖木质包边、轻柔云朵与星空边缘装饰。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKe7nIBMcw",
+          "mime": "image/jpeg",
+          "bytes": 461510,
+          "contentHash": "048e6c5000a7017904cca7bfe31892b61877cbff1f51966ae4a62ef73098509c",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/048e6c5000a7017904cca7bfe31892b61877cbff1f51966ae4a62ef73098509c.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：主题化暖象牙纸牌面、柔蓝珐琅质感桌面、温暖木质包边、轻柔云朵与星空边缘装饰。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKe7nGd7_A",
+          "mime": "image/jpeg",
+          "bytes": 410932,
+          "contentHash": "63f4bef9d8807b5b6fbc5bcb5189ce4ad8f47d6dc9110089ddab5cbd8d6bd3bc",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/63f4bef9d8807b5b6fbc5bcb5189ce4ad8f47d6dc9110089ddab5cbd8d6bd3bc.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKe7nH8jBw",
+          "mime": "image/jpeg",
+          "bytes": 110308,
+          "contentHash": "b19b0143482f8c3b5462c5b0e9ed6c722e9c8db868ca5490fc74748c94e965a9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b19b0143482f8c3b5462c5b0e9ed6c722e9c8db868ca5490fc74748c94e965a9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKe7nGCvHA",
+          "mime": "image/jpeg",
+          "bytes": 122623,
+          "contentHash": "19d09cbcf23a124cdbbc3cf090f18d71478a2f67ad05fb21d67be10ebb8cd61a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/19d09cbcf23a124cdbbc3cf090f18d71478a2f67ad05fb21d67be10ebb8cd61a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKe7nOPgjA",
+          "mime": "image/jpeg",
+          "bytes": 122005,
+          "contentHash": "aa0ab42cf6b610b9d43eee6a3bc9a22fef701e6d1c2ad011607fa50829d332c7",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/aa0ab42cf6b610b9d43eee6a3bc9a22fef701e6d1c2ad011607fa50829d332c7.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKe7nGt4zA",
+          "mime": "image/jpeg",
+          "bytes": 109469,
+          "contentHash": "5caab0150b9d0260934cbdf7a2e4495c82896906eafc86308d6d0f8a77e9e36c",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5caab0150b9d0260934cbdf7a2e4495c82896906eafc86308d6d0f8a77e9e36c.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7neBYiQ",
+          "mime": "image/jpeg",
+          "bytes": 116954,
+          "contentHash": "5af8c2a08b01aa36efad6074d0ce86804f7fa6609eba016c91715e8b68228a1a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5af8c2a08b01aa36efad6074d0ce86804f7fa6609eba016c91715e8b68228a1a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nI3Yyw",
+          "mime": "image/jpeg",
+          "bytes": 109843,
+          "contentHash": "d13712bda656f0da03baa7445b57df439e81675fb98e99b4a8ab9b10b15c51b4",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d13712bda656f0da03baa7445b57df439e81675fb98e99b4a8ab9b10b15c51b4.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHkYxQ",
+          "mime": "image/jpeg",
+          "bytes": 117759,
+          "contentHash": "8be29c62ac1683857b2993dd3c798a84f25216be7ed073807925377f737efbf2",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8be29c62ac1683857b2993dd3c798a84f25216be7ed073807925377f737efbf2.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nH_Y7w",
+          "mime": "image/jpeg",
+          "bytes": 106040,
+          "contentHash": "b0cabded62451a776f590484ff49a36a954e52abc18c5442cbf2d9d5ded8a3ff",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b0cabded62451a776f590484ff49a36a954e52abc18c5442cbf2d9d5ded8a3ff.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHUNUQ",
+          "mime": "image/jpeg",
+          "bytes": 113376,
+          "contentHash": "595df58842f6c65f14aa842fc62ded6f9945f41182bfa252ec9b2f3defe33359",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/595df58842f6c65f14aa842fc62ded6f9945f41182bfa252ec9b2f3defe33359.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7ncrNYg",
+          "mime": "image/jpeg",
+          "bytes": 126275,
+          "contentHash": "d2aa9318f057d600a87b55335702c5413f045a3981980f62bed097d1da106245",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d2aa9318f057d600a87b55335702c5413f045a3981980f62bed097d1da106245.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nF38Wg",
+          "mime": "image/jpeg",
+          "bytes": 106911,
+          "contentHash": "8085f7f9fde5ad06babef1dc97075dd9d6bf68bc18fa8736b2a3e917a55606d2",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8085f7f9fde5ad06babef1dc97075dd9d6bf68bc18fa8736b2a3e917a55606d2.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHmYkA",
+          "mime": "image/jpeg",
+          "bytes": 121349,
+          "contentHash": "e0fb65af0733be5e777dda472635a441a608547dff39fa9ba8cc8bc52cb2a71a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e0fb65af0733be5e777dda472635a441a608547dff39fa9ba8cc8bc52cb2a71a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHmRQQ",
+          "mime": "image/jpeg",
+          "bytes": 121699,
+          "contentHash": "3e1c41159936f703679d134584449c2b8a83711c2cdd029e32eadb44399df4dd",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3e1c41159936f703679d134584449c2b8a83711c2cdd029e32eadb44399df4dd.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHnVpw",
+          "mime": "image/jpeg",
+          "bytes": 114859,
+          "contentHash": "42a4fc653dd1a645df258d9136be1aaf057bf77f4705d122b2bf8c5bdc525748",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/42a4fc653dd1a645df258d9136be1aaf057bf77f4705d122b2bf8c5bdc525748.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHZI6A",
+          "mime": "image/jpeg",
+          "bytes": 100287,
+          "contentHash": "3f0271f9b20b93487383dba6c0b56250f58c61d83077f65cdcc7d69bdddd78b3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3f0271f9b20b93487383dba6c0b56250f58c61d83077f65cdcc7d69bdddd78b3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nGiB3Q",
+          "mime": "image/jpeg",
+          "bytes": 131875,
+          "contentHash": "141d978c8dc4f9e6dde00130089670d1e5e0084c601c42321807178caa4ef66e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/141d978c8dc4f9e6dde00130089670d1e5e0084c601c42321807178caa4ef66e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKe7nHOJmw",
+          "mime": "image/jpeg",
+          "bytes": 108309,
+          "contentHash": "d0be91f14d53808dd60b000da5c8b051f5a34e5474ac33be7d3a06a964ab0d00",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d0be91f14d53808dd60b000da5c8b051f5a34e5474ac33be7d3a06a964ab0d00.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGdnFg",
+          "mime": "image/jpeg",
+          "bytes": 466916,
+          "contentHash": "9caefda76573b05829485b027d54b7f3b2c731d64db369d5a0ca5a176998e098",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/9caefda76573b05829485b027d54b7f3b2c731d64db369d5a0ca5a176998e098.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGi4Ug",
+          "mime": "image/jpeg",
+          "bytes": 362313,
+          "contentHash": "f20dfd44812b1cb56ca4c21393a74c6ac6a39ab31a50a48c898942a10b2ee767",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f20dfd44812b1cb56ca4c21393a74c6ac6a39ab31a50a48c898942a10b2ee767.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGsM5g",
+          "mime": "image/jpeg",
+          "bytes": 449192,
+          "contentHash": "19179801ba6d2de7cbe670f5b2cb8082b6c5c845ffb35c982170e84c031b27f8",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/19179801ba6d2de7cbe670f5b2cb8082b6c5c845ffb35c982170e84c031b27f8.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGxMKw",
+          "mime": "image/jpeg",
+          "bytes": 378697,
+          "contentHash": "e38a7a0227ab4e9e70ee9f9efffc89fd21946c29a750c13eff4a45947832c913",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e38a7a0227ab4e9e70ee9f9efffc89fd21946c29a750c13eff4a45947832c913.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nH_TTg",
+          "mime": "image/jpeg",
+          "bytes": 378910,
+          "contentHash": "ccff2476447b56cb2727a00f3bc5c1893471f2bed27459be25debe19090317bd",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ccff2476447b56cb2727a00f3bc5c1893471f2bed27459be25debe19090317bd.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGh4zQ",
+          "mime": "image/jpeg",
+          "bytes": 578909,
+          "contentHash": "8ebb3a5cda8ef8af108b16dc3eb8600b55181532904e2914489cfdc075eb3965",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8ebb3a5cda8ef8af108b16dc3eb8600b55181532904e2914489cfdc075eb3965.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nHFZ_g",
+          "mime": "image/jpeg",
+          "bytes": 494952,
+          "contentHash": "6a7dd5a8d66ee0aab5610b6056d15fe7229b33deb7f37bf7284ea12337e98a5a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6a7dd5a8d66ee0aab5610b6056d15fe7229b33deb7f37bf7284ea12337e98a5a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nHxxaQ",
+          "mime": "image/jpeg",
+          "bytes": 512751,
+          "contentHash": "b1a67f8c8ba6a3ba71d76116739d71858526aec9def09948be9a3c04c5b55656",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b1a67f8c8ba6a3ba71d76116739d71858526aec9def09948be9a3c04c5b55656.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nILQ7g",
+          "mime": "image/jpeg",
+          "bytes": 456243,
+          "contentHash": "846583d62a7942f6dc825b64b31bf5d2d318232a2c1b0b3343c48330337e6657",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/846583d62a7942f6dc825b64b31bf5d2d318232a2c1b0b3343c48330337e6657.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nGDVgA",
+          "mime": "image/jpeg",
+          "bytes": 354741,
+          "contentHash": "1e249f17f5a0b641ce5f799f92ce0839fdc3ebac95253051c602e88223c78057",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/1e249f17f5a0b641ce5f799f92ce0839fdc3ebac95253051c602e88223c78057.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nHzZVw",
+          "mime": "image/jpeg",
+          "bytes": 307578,
+          "contentHash": "100c8f8486aacccae98f613c1c7a4b3ff8b1e6e4463ee4faeaa6ea19b6c6355b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/100c8f8486aacccae98f613c1c7a4b3ff8b1e6e4463ee4faeaa6ea19b6c6355b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKe7nH8YwA",
+          "mime": "image/jpeg",
+          "bytes": 457038,
+          "contentHash": "587673c50b591dd9f19d7e3e1a9387583448a0a91b73316a1b4970bc0f3fa543",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/587673c50b591dd9f19d7e3e1a9387583448a0a91b73316a1b4970bc0f3fa543.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKe7nIBMcw"
+        ],
+        "cardBack": [
+          "AAABoKe7nGd7_A"
+        ],
+        "suit-S": [
+          "AAABoKe7nH8jBw"
+        ],
+        "suit-H": [
+          "AAABoKe7nGCvHA"
+        ],
+        "suit-D": [
+          "AAABoKe7nOPgjA"
+        ],
+        "suit-C": [
+          "AAABoKe7nGt4zA"
+        ],
+        "rank-1": [
+          "AAABoKe7neBYiQ"
+        ],
+        "rank-2": [
+          "AAABoKe7nI3Yyw"
+        ],
+        "rank-3": [
+          "AAABoKe7nHkYxQ"
+        ],
+        "rank-4": [
+          "AAABoKe7nH_Y7w"
+        ],
+        "rank-5": [
+          "AAABoKe7nHUNUQ"
+        ],
+        "rank-6": [
+          "AAABoKe7ncrNYg"
+        ],
+        "rank-7": [
+          "AAABoKe7nF38Wg"
+        ],
+        "rank-8": [
+          "AAABoKe7nHmYkA"
+        ],
+        "rank-9": [
+          "AAABoKe7nHmRQQ"
+        ],
+        "rank-10": [
+          "AAABoKe7nHnVpw"
+        ],
+        "rank-11": [
+          "AAABoKe7nHZI6A"
+        ],
+        "rank-12": [
+          "AAABoKe7nGiB3Q"
+        ],
+        "rank-13": [
+          "AAABoKe7nHOJmw"
+        ],
+        "face-S11": [
+          "AAABoKe7nGdnFg"
+        ],
+        "face-S12": [
+          "AAABoKe7nGi4Ug"
+        ],
+        "face-S13": [
+          "AAABoKe7nGsM5g"
+        ],
+        "face-H11": [
+          "AAABoKe7nGxMKw"
+        ],
+        "face-H12": [
+          "AAABoKe7nH_TTg"
+        ],
+        "face-H13": [
+          "AAABoKe7nGh4zQ"
+        ],
+        "face-D11": [
+          "AAABoKe7nHFZ_g"
+        ],
+        "face-D12": [
+          "AAABoKe7nHxxaQ"
+        ],
+        "face-D13": [
+          "AAABoKe7nILQ7g"
+        ],
+        "face-C11": [
+          "AAABoKe7nGDVgA"
+        ],
+        "face-C12": [
+          "AAABoKe7nHzZVw"
+        ],
+        "face-C13": [
+          "AAABoKe7nH8YwA"
+        ]
+      },
+      "createdAt": "2026-09-16T01:04:06.181Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "user-directed",
+      "prompt": "哆啦A梦童年梦境，蓝色星空、云朵、任意门和温暖木质包边。桌面背景仅生成16:9专业空牌桌，中央70%干净、装饰仅在边缘，绝无牌/牌堆/文字/Logo/水印（此限制仅针对背景）。圆形视觉，A-K与花色清晰可读。"
+    },
+    "quality": {
+      "pass": true,
+      "degraded": false,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": true,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": true,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.755Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 8030623,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#0E2A5C",
+        "surface": "#3B79C9",
+        "card": "#F3E6C8",
+        "accent": "#D79B4A",
+        "redSuit": "#D84A3A",
+        "blackSuit": "#26324A",
+        "text": "#1E2A3A"
+      },
+      "cardDesign": {
+        "rankFont": "classic",
+        "suitFont": "classic",
+        "shape": "soft",
+        "cardShape": "soft",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "classic",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "主题化暖象牙纸牌面、柔蓝珐琅质感桌面、温暖木质包边、轻柔云朵与星空边缘装饰",
+        "logo": "无背景Logo；牌面可使用圆形梦境视觉徽记：蓝色星空圆窗、白云与任意门轮廓，仅作"
+      },
+      "complianceNotes": "阶段二代表性真实资源样本；背景与牌背由 Codex ImageGen 生成并完成人工可读性复核。",
+      "generationNotes": "生成16:9专业空牌桌背景：中央约70%区域保持干净、平整、无装饰，适合发牌与UI叠加；装饰严格限制在边缘，包括深蓝星空、柔软云朵、任意门意象与温暖木质包边。背景中绝无扑克牌、牌堆、筹码、文字、Logo、水印或任何可读标识。整体采用圆形视觉语言，边缘装饰可使用圆窗、星点、云团弧线形成童年梦境感。牌面设计使用非纯白的暖象"
+    },
+    "title": "哆啦A梦童年梦境空牌桌",
+    "updatedAt": "2026-09-16T01:04:06.181Z"
+  },
+  {
+    "themeId": "generated-587127cb-0dc1-48b3-875b-e65bd0779862",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：柔和粉彩渐变、云朵纹理、星星闪粉、彩虹丝带、童话草地与魔法光晕元素。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKUm8fLxCw",
+          "mime": "image/jpeg",
+          "bytes": 580560,
+          "contentHash": "d1c985db6eb35248f6357a7b1e13075f5fd3a9f6e7f685395017b73c405e4ab1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d1c985db6eb35248f6357a7b1e13075f5fd3a9f6e7f685395017b73c405e4ab1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：柔和粉彩渐变、云朵纹理、星星闪粉、彩虹丝带、童话草地与魔法光晕元素。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKUm8fPwnA",
+          "mime": "image/jpeg",
+          "bytes": 377629,
+          "contentHash": "805fb74276a6b4b131e2835daab425608a678df6df600d8ae0f852822574a255",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/805fb74276a6b4b131e2835daab425608a678df6df600d8ae0f852822574a255.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKUm8ffi6g",
+          "mime": "image/jpeg",
+          "bytes": 106222,
+          "contentHash": "ea39d4156f4c6c87933f58beac7ddff1e4cb21ac858b4b82e32e9ea7ba98df3c",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ea39d4156f4c6c87933f58beac7ddff1e4cb21ac858b4b82e32e9ea7ba98df3c.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKUm8fKwHw",
+          "mime": "image/jpeg",
+          "bytes": 123635,
+          "contentHash": "12d7bba8940d1560c1ec1f4e8f448a89e66420eabdee408bcf292d37f092ea63",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/12d7bba8940d1560c1ec1f4e8f448a89e66420eabdee408bcf292d37f092ea63.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKUm8gIJDg",
+          "mime": "image/jpeg",
+          "bytes": 118452,
+          "contentHash": "716ba1098c2f8540993e364324cef27e9d365d372106b26122ca6b24b682d103",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/716ba1098c2f8540993e364324cef27e9d365d372106b26122ca6b24b682d103.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKUm8fQTQw",
+          "mime": "image/jpeg",
+          "bytes": 116175,
+          "contentHash": "10cc50df8ba5f43222879c78c8a4104c7ffa53d24e6fb0e5197bfdbfa9c5f200",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/10cc50df8ba5f43222879c78c8a4104c7ffa53d24e6fb0e5197bfdbfa9c5f200.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8daXJA",
+          "mime": "image/jpeg",
+          "bytes": 119352,
+          "contentHash": "f0d5f8fd381e8c1238aea3f0bfda4ae4958c43d56c46097682c044c26c63440d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f0d5f8fd381e8c1238aea3f0bfda4ae4958c43d56c46097682c044c26c63440d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8h5GRg",
+          "mime": "image/jpeg",
+          "bytes": 119321,
+          "contentHash": "08880f0fcfd4f8cb090f00fa1452c433a5989e93b54c7295196077efca6dcf4e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/08880f0fcfd4f8cb090f00fa1452c433a5989e93b54c7295196077efca6dcf4e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8h6GvQ",
+          "mime": "image/jpeg",
+          "bytes": 111909,
+          "contentHash": "3fc3ff019a4f847252d3f50ff7046789a527be5d0be93df1ac9641579b4a07fc",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3fc3ff019a4f847252d3f50ff7046789a527be5d0be93df1ac9641579b4a07fc.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8ePTbg",
+          "mime": "image/jpeg",
+          "bytes": 103679,
+          "contentHash": "346d4983e05d4e42cbb914064e2652fb60405be5e74931f84444bd373a7ba08d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/346d4983e05d4e42cbb914064e2652fb60405be5e74931f84444bd373a7ba08d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8fZ0Bg",
+          "mime": "image/jpeg",
+          "bytes": 111822,
+          "contentHash": "ba423d1cbf39c7416d4969615f887ede525ac3071245e212fe111f32a1d3efba",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ba423d1cbf39c7416d4969615f887ede525ac3071245e212fe111f32a1d3efba.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8fM3Lg",
+          "mime": "image/jpeg",
+          "bytes": 120804,
+          "contentHash": "5aff21917c10189c2beea45dfb5ee07c61b9f2e3031addf182e7168ddd4e6270",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5aff21917c10189c2beea45dfb5ee07c61b9f2e3031addf182e7168ddd4e6270.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8jbMZw",
+          "mime": "image/jpeg",
+          "bytes": 108672,
+          "contentHash": "ae82cab4d20ebfc78089446382b4c5ba25ceada8abd38250a1ee524a1ad5fb0b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ae82cab4d20ebfc78089446382b4c5ba25ceada8abd38250a1ee524a1ad5fb0b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8h6m4w",
+          "mime": "image/jpeg",
+          "bytes": 118834,
+          "contentHash": "7af99187d98af3831cb9ba9e8f1a033d736a21968b082fd4028afec92f48bfeb",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7af99187d98af3831cb9ba9e8f1a033d736a21968b082fd4028afec92f48bfeb.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8mjnNQ",
+          "mime": "image/jpeg",
+          "bytes": 121448,
+          "contentHash": "d1320789f389a18bea366ea0b80cd36a066d03a5e94602c4bb8218f6255742ae",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d1320789f389a18bea366ea0b80cd36a066d03a5e94602c4bb8218f6255742ae.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8ffIEQ",
+          "mime": "image/jpeg",
+          "bytes": 114016,
+          "contentHash": "d41f20629c2c1384dcfa82ac541e1e7c2be74ab4ca52b5fe7d3df0bad4ae95e2",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d41f20629c2c1384dcfa82ac541e1e7c2be74ab4ca52b5fe7d3df0bad4ae95e2.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8f-EHw",
+          "mime": "image/jpeg",
+          "bytes": 107158,
+          "contentHash": "f18c691271bc6c8f81e22a4f4e3e3ea347e9229ab425c057c320af7487fcd412",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f18c691271bc6c8f81e22a4f4e3e3ea347e9229ab425c057c320af7487fcd412.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8f-3Jw",
+          "mime": "image/jpeg",
+          "bytes": 126879,
+          "contentHash": "65e1bdfb749e892b69975ff0cbdea7f7625be71244fa8dace8e0ae0bdf0be828",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/65e1bdfb749e892b69975ff0cbdea7f7625be71244fa8dace8e0ae0bdf0be828.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUm8le1wg",
+          "mime": "image/jpeg",
+          "bytes": 108935,
+          "contentHash": "21f739c1c70ab3763e2267c9819da97353ad37ec2fca07cf624477791e0252a7",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/21f739c1c70ab3763e2267c9819da97353ad37ec2fca07cf624477791e0252a7.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8ghl1Q",
+          "mime": "image/jpeg",
+          "bytes": 234987,
+          "contentHash": "ef4804c1f5bbafc5908be504730e9b0a5db9cbc00eb9b949a3f8677e7cefd2db",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ef4804c1f5bbafc5908be504730e9b0a5db9cbc00eb9b949a3f8677e7cefd2db.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8gKwMg",
+          "mime": "image/jpeg",
+          "bytes": 321020,
+          "contentHash": "56c6581a409451f0a23ed08b67756f30adc2e5a6006a4842410632482bff6a45",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/56c6581a409451f0a23ed08b67756f30adc2e5a6006a4842410632482bff6a45.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8gL3jQ",
+          "mime": "image/jpeg",
+          "bytes": 788922,
+          "contentHash": "86c46de34e21a3a99a04f6b29a6eeb244409738cc8497e03bee87f15bb244848",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/86c46de34e21a3a99a04f6b29a6eeb244409738cc8497e03bee87f15bb244848.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8faM9w",
+          "mime": "image/jpeg",
+          "bytes": 231132,
+          "contentHash": "c7ca7ba8683a062df2996d8b926b994cc9c50efcf0afa696e08f9010e563f135",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c7ca7ba8683a062df2996d8b926b994cc9c50efcf0afa696e08f9010e563f135.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8le97w",
+          "mime": "image/jpeg",
+          "bytes": 317252,
+          "contentHash": "312263f36830a2416ff60de64b4ff78f7681e647988da4e18445a5e4fec3fc85",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/312263f36830a2416ff60de64b4ff78f7681e647988da4e18445a5e4fec3fc85.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8fdKWA",
+          "mime": "image/jpeg",
+          "bytes": 401999,
+          "contentHash": "f14acd3a03d9949bb2d3e30b7e75972f192beb7e926458555c6019e91fd3ead5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f14acd3a03d9949bb2d3e30b7e75972f192beb7e926458555c6019e91fd3ead5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8fbKKw",
+          "mime": "image/jpeg",
+          "bytes": 315303,
+          "contentHash": "894fe160c8140933c65c454cb7dd0041ba8caf332792ea0886453ec1f14fb629",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/894fe160c8140933c65c454cb7dd0041ba8caf332792ea0886453ec1f14fb629.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8fd67g",
+          "mime": "image/jpeg",
+          "bytes": 546199,
+          "contentHash": "5cf1cf6ef270fd4a7024dacdb463f4fe403ce41449367d408cdc59decdd67beb",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5cf1cf6ef270fd4a7024dacdb463f4fe403ce41449367d408cdc59decdd67beb.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8evnxw",
+          "mime": "image/jpeg",
+          "bytes": 412999,
+          "contentHash": "77774d24ac42b23ea27304f9a3e8c1cea62aefa79aff44956a49867ef3e3c054",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/77774d24ac42b23ea27304f9a3e8c1cea62aefa79aff44956a49867ef3e3c054.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8dZQMg",
+          "mime": "image/jpeg",
+          "bytes": 269329,
+          "contentHash": "b248c9ed89b9d454dea50084e526f4664804fa496fbf1971dcb322239df4c03a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b248c9ed89b9d454dea50084e526f4664804fa496fbf1971dcb322239df4c03a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8giRRw",
+          "mime": "image/jpeg",
+          "bytes": 501680,
+          "contentHash": "f4fa9645933f7a32586b8d3edf60ca8ac0826c18e38cdbf556cd4be690b91484",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f4fa9645933f7a32586b8d3edf60ca8ac0826c18e38cdbf556cd4be690b91484.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想生成一个小马宝莉风格的主题。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUm8euCJA",
+          "mime": "image/jpeg",
+          "bytes": 387360,
+          "contentHash": "5807d205a74be249079865ab228243ee933a538c8344c693308975e459c0dfce",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5807d205a74be249079865ab228243ee933a538c8344c693308975e459c0dfce.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKUm8fLxCw"
+        ],
+        "cardBack": [
+          "AAABoKUm8fPwnA"
+        ],
+        "suit-S": [
+          "AAABoKUm8ffi6g"
+        ],
+        "suit-H": [
+          "AAABoKUm8fKwHw"
+        ],
+        "suit-D": [
+          "AAABoKUm8gIJDg"
+        ],
+        "suit-C": [
+          "AAABoKUm8fQTQw"
+        ],
+        "rank-1": [
+          "AAABoKUm8daXJA"
+        ],
+        "rank-2": [
+          "AAABoKUm8h5GRg"
+        ],
+        "rank-3": [
+          "AAABoKUm8h6GvQ"
+        ],
+        "rank-4": [
+          "AAABoKUm8ePTbg"
+        ],
+        "rank-5": [
+          "AAABoKUm8fZ0Bg"
+        ],
+        "rank-6": [
+          "AAABoKUm8fM3Lg"
+        ],
+        "rank-7": [
+          "AAABoKUm8jbMZw"
+        ],
+        "rank-8": [
+          "AAABoKUm8h6m4w"
+        ],
+        "rank-9": [
+          "AAABoKUm8mjnNQ"
+        ],
+        "rank-10": [
+          "AAABoKUm8ffIEQ"
+        ],
+        "rank-11": [
+          "AAABoKUm8f-EHw"
+        ],
+        "rank-12": [
+          "AAABoKUm8f-3Jw"
+        ],
+        "rank-13": [
+          "AAABoKUm8le1wg"
+        ],
+        "face-S11": [
+          "AAABoKUm8ghl1Q"
+        ],
+        "face-S12": [
+          "AAABoKUm8gKwMg"
+        ],
+        "face-S13": [
+          "AAABoKUm8gL3jQ"
+        ],
+        "face-H11": [
+          "AAABoKUm8faM9w"
+        ],
+        "face-H12": [
+          "AAABoKUm8le97w"
+        ],
+        "face-H13": [
+          "AAABoKUm8fdKWA"
+        ],
+        "face-D11": [
+          "AAABoKUm8fbKKw"
+        ],
+        "face-D12": [
+          "AAABoKUm8fd67g"
+        ],
+        "face-D13": [
+          "AAABoKUm8evnxw"
+        ],
+        "face-C11": [
+          "AAABoKUm8dZQMg"
+        ],
+        "face-C12": [
+          "AAABoKUm8giRRw"
+        ],
+        "face-C13": [
+          "AAABoKUm8euCJA"
+        ]
+      },
+      "createdAt": "2026-09-15T13:03:21.486Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "user-directed",
+      "prompt": "我想生成一个小马宝莉风格的主题"
+    },
+    "quality": {
+      "pass": true,
+      "degraded": false,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": true,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": true,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.756Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 7643684,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#0b4f6c",
+        "surface": "#E6F7FF",
+        "card": "#FFF4C7",
+        "accent": "#B78CFF",
+        "redSuit": "#c72f3d",
+        "blackSuit": "#18242a",
+        "text": "#3E2F5B"
+      },
+      "cardDesign": {
+        "rankFont": "classic",
+        "suitFont": "classic",
+        "shape": "gothic",
+        "cardShape": "gothic",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "classic",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "柔和粉彩渐变、云朵纹理、星星闪粉、彩虹丝带、童话草地与魔法光晕元素",
+        "logo": "原创圆形徽章：一匹可爱卷鬃小马剪影搭配彩虹、星星与爱心，不使用任何现有角色或官方"
+      },
+      "complianceNotes": "已保留原始主题描述。采用“魔法小马、彩虹、友谊、粉彩童话”氛围进行原创设计，避免直接复制《小马宝莉》角色、名称、 Cutie Mark、官方Logo或具体画面。"
+    },
+    "title": "梦幻彩虹小马主题",
+    "updatedAt": "2026-09-15T13:03:21.487Z"
+  },
+  {
+    "themeId": "generated-a43e49f2-557b-400f-b127-d945b515e4a0",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：深色橡木长桌、做旧黄铜烛台、拱形石墙、彩绘玻璃、墨绿色天鹅绒椅面、羊皮纸纹理牌垫、悬浮烛光氛围灯。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKUiDFp_qw",
+          "mime": "image/jpeg",
+          "bytes": 505284,
+          "contentHash": "612415fff7ff64a7346b556676a165e4bda1c3a9ea623332ec28414a45ed5cfa",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/612415fff7ff64a7346b556676a165e4bda1c3a9ea623332ec28414a45ed5cfa.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：深色橡木长桌、做旧黄铜烛台、拱形石墙、彩绘玻璃、墨绿色天鹅绒椅面、羊皮纸纹理牌垫、悬浮烛光氛围灯。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKUiC_fDqg",
+          "mime": "image/jpeg",
+          "bytes": 666552,
+          "contentHash": "e937550524a5cdc7e7101106a6d15f465c5969f12f85089cc6191711a248d520",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e937550524a5cdc7e7101106a6d15f465c5969f12f85089cc6191711a248d520.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKUiDA4lXA",
+          "mime": "image/jpeg",
+          "bytes": 104981,
+          "contentHash": "d7f2d9ed794d3c306e9cc82b67014cf5dc363314d882f15e31459b4eb9f34d14",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d7f2d9ed794d3c306e9cc82b67014cf5dc363314d882f15e31459b4eb9f34d14.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKUiC9mO7g",
+          "mime": "image/jpeg",
+          "bytes": 121969,
+          "contentHash": "bd7cd331747bdfc5a80282dcf5e74873727fd955ff422f4e0f158786a4c1487b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/bd7cd331747bdfc5a80282dcf5e74873727fd955ff422f4e0f158786a4c1487b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKUiC_d89g",
+          "mime": "image/jpeg",
+          "bytes": 114704,
+          "contentHash": "63e733b5e606717ed6f7b3f2fe84179b50f6c45b9d017335dd8121f2d66a8930",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/63e733b5e606717ed6f7b3f2fe84179b50f6c45b9d017335dd8121f2d66a8930.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKUiDCQ1Rw",
+          "mime": "image/jpeg",
+          "bytes": 117004,
+          "contentHash": "c1ce87c8ca2589d083626061d8599937b8007b1420628901a35ae373e66884b9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c1ce87c8ca2589d083626061d8599937b8007b1420628901a35ae373e66884b9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDEs0aA",
+          "mime": "image/jpeg",
+          "bytes": 111163,
+          "contentHash": "2e7108ce580893717869496ccac757209103dc2bd29a5bbebeddd461c1a87884",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/2e7108ce580893717869496ccac757209103dc2bd29a5bbebeddd461c1a87884.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDAOVdg",
+          "mime": "image/jpeg",
+          "bytes": 119247,
+          "contentHash": "90d7d85c089cdb3d3daaf6701235eff5646490fba36da71c816cb47fd3f48fe5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/90d7d85c089cdb3d3daaf6701235eff5646490fba36da71c816cb47fd3f48fe5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC_bbvQ",
+          "mime": "image/jpeg",
+          "bytes": 116615,
+          "contentHash": "11b95d39d4fbe39e20ecad8a49ee58f169565bda66677d0e5c5b22f12d034cbf",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/11b95d39d4fbe39e20ecad8a49ee58f169565bda66677d0e5c5b22f12d034cbf.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDA7P9g",
+          "mime": "image/jpeg",
+          "bytes": 110308,
+          "contentHash": "34dd28b789db0df089c8ae572e6782a428cee48dd4882bbfb297035a1c6ad91e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/34dd28b789db0df089c8ae572e6782a428cee48dd4882bbfb297035a1c6ad91e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC9yvEg",
+          "mime": "image/jpeg",
+          "bytes": 110801,
+          "contentHash": "a043439b7814a336ab2e754fbc8fa8d9e2a4c50b59d05458ed971dcfaa97d15a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/a043439b7814a336ab2e754fbc8fa8d9e2a4c50b59d05458ed971dcfaa97d15a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC_fwyw",
+          "mime": "image/jpeg",
+          "bytes": 118503,
+          "contentHash": "9115785f4e822b0e3c2baa28d015309cdd7df31d498c567dc43751a2bf69c7eb",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/9115785f4e822b0e3c2baa28d015309cdd7df31d498c567dc43751a2bf69c7eb.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC-mGeA",
+          "mime": "image/jpeg",
+          "bytes": 105335,
+          "contentHash": "18d6ffdf6999a421b1109421915ac5419d06499b5514368411980d4c14e08815",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/18d6ffdf6999a421b1109421915ac5419d06499b5514368411980d4c14e08815.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC_b3Vg",
+          "mime": "image/jpeg",
+          "bytes": 125220,
+          "contentHash": "d3b8c89b2ffc69ad778177caf69f0fd2f6b7a7ef6aac28ba58939b6439a22ac9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d3b8c89b2ffc69ad778177caf69f0fd2f6b7a7ef6aac28ba58939b6439a22ac9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDEnFGQ",
+          "mime": "image/jpeg",
+          "bytes": 127018,
+          "contentHash": "f51fd52620c119af7aa2d4eb9b0023d327d36b724464043d47e90daef6d65bb5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f51fd52620c119af7aa2d4eb9b0023d327d36b724464043d47e90daef6d65bb5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDDo1VQ",
+          "mime": "image/jpeg",
+          "bytes": 112926,
+          "contentHash": "d79c3576ef9837e339152cf403d2c5b37cd8be51f64252f64c1036e741f66037",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d79c3576ef9837e339152cf403d2c5b37cd8be51f64252f64c1036e741f66037.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDFq0Rg",
+          "mime": "image/jpeg",
+          "bytes": 99306,
+          "contentHash": "f1c14643a03ccd8e69608855f42c783c640b61144e8d990f0b136a62a0f21aa3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f1c14643a03ccd8e69608855f42c783c640b61144e8d990f0b136a62a0f21aa3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiC-k7PQ",
+          "mime": "image/jpeg",
+          "bytes": 115620,
+          "contentHash": "22a1fc880e46d3ecf7f4025ab1e8417fe9c44ccb88f839eefc1560527eae73e3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/22a1fc880e46d3ecf7f4025ab1e8417fe9c44ccb88f839eefc1560527eae73e3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKUiDHuGcA",
+          "mime": "image/jpeg",
+          "bytes": 119355,
+          "contentHash": "6549415171af16bac6110b354ecfe8dc86e933194a5af43df952f95be9b58008",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6549415171af16bac6110b354ecfe8dc86e933194a5af43df952f95be9b58008.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_j4aQ",
+          "mime": "image/jpeg",
+          "bytes": 500278,
+          "contentHash": "1d28eeae6ad6121b1395008dc903dccaf3b13e648fba3abcc54dda2046b0128e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/1d28eeae6ad6121b1395008dc903dccaf3b13e648fba3abcc54dda2046b0128e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUiDC5V2A",
+          "mime": "image/jpeg",
+          "bytes": 383038,
+          "contentHash": "dc63fc09bcf8eead0776dd8b1b58b8b6e519f30f715d60776a8ecf94700432e2",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/dc63fc09bcf8eead0776dd8b1b58b8b6e519f30f715d60776a8ecf94700432e2.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUiDHtYOA",
+          "mime": "image/jpeg",
+          "bytes": 547664,
+          "contentHash": "437e2f9367c7a0b0ff80e199c0501f17b4c74079304bcfd1d4ce69f2b7ac58da",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/437e2f9367c7a0b0ff80e199c0501f17b4c74079304bcfd1d4ce69f2b7ac58da.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_aMMA",
+          "mime": "image/jpeg",
+          "bytes": 329646,
+          "contentHash": "693ad5469a2ea2cb0f5b7c636a9f316ad834618e61187d0c0b4dc095e2e965e3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/693ad5469a2ea2cb0f5b7c636a9f316ad834618e61187d0c0b4dc095e2e965e3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUiDBK58A",
+          "mime": "image/jpeg",
+          "bytes": 455451,
+          "contentHash": "12dd87568c87ef0772379166128fb2e50f6646b96bd6519b62f03b8a2e312dfe",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/12dd87568c87ef0772379166128fb2e50f6646b96bd6519b62f03b8a2e312dfe.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUiDEpNYg",
+          "mime": "image/jpeg",
+          "bytes": 447470,
+          "contentHash": "7c6e87cc6868f08fb1f918f4e305e2e1a0e9e05b6c3641bc7a5bffb363d5520e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7c6e87cc6868f08fb1f918f4e305e2e1a0e9e05b6c3641bc7a5bffb363d5520e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_tbjQ",
+          "mime": "image/jpeg",
+          "bytes": 423479,
+          "contentHash": "192638a320993feaa07fda747a581f1193f6499e972ef078aeead9bf5a005de9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/192638a320993feaa07fda747a581f1193f6499e972ef078aeead9bf5a005de9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUiDFphAQ",
+          "mime": "image/jpeg",
+          "bytes": 393850,
+          "contentHash": "b0cdd9f5f000d2f782df00a21c80fb0483ab851b1ff06b0185fca1dc717fd28f",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b0cdd9f5f000d2f782df00a21c80fb0483ab851b1ff06b0185fca1dc717fd28f.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_cQlw",
+          "mime": "image/jpeg",
+          "bytes": 408634,
+          "contentHash": "74a0892e3dd65bc6d7df8a08ea7833e093614ec0d7c39aa6ece0b7cc40025bc9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/74a0892e3dd65bc6d7df8a08ea7833e093614ec0d7c39aa6ece0b7cc40025bc9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_hu_g",
+          "mime": "image/jpeg",
+          "bytes": 390021,
+          "contentHash": "bafd3b279f73966ff5dcf36c5cc27c9ba7683256d14d4e52fedaae3f4da71379",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/bafd3b279f73966ff5dcf36c5cc27c9ba7683256d14d4e52fedaae3f4da71379.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_ZnEw",
+          "mime": "image/jpeg",
+          "bytes": 359448,
+          "contentHash": "f1c207347c496e2d649b4869c44f053fa4b5af87a8b7483b163e4c6c74b588f3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f1c207347c496e2d649b4869c44f053fa4b5af87a8b7483b163e4c6c74b588f3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：我想进入哈利波特中，霍格沃茨这样风格的牌室。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKUiC_YsOQ",
+          "mime": "image/jpeg",
+          "bytes": 736890,
+          "contentHash": "d1c50e4f495b4d0af7921efc05ee5e75ea61d3b5762c81fc1324c2e1b629ba8a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d1c50e4f495b4d0af7921efc05ee5e75ea61d3b5762c81fc1324c2e1b629ba8a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKUiDFp_qw"
+        ],
+        "cardBack": [
+          "AAABoKUiC_fDqg"
+        ],
+        "suit-S": [
+          "AAABoKUiDA4lXA"
+        ],
+        "suit-H": [
+          "AAABoKUiC9mO7g"
+        ],
+        "suit-D": [
+          "AAABoKUiC_d89g"
+        ],
+        "suit-C": [
+          "AAABoKUiDCQ1Rw"
+        ],
+        "rank-1": [
+          "AAABoKUiDEs0aA"
+        ],
+        "rank-2": [
+          "AAABoKUiDAOVdg"
+        ],
+        "rank-3": [
+          "AAABoKUiC_bbvQ"
+        ],
+        "rank-4": [
+          "AAABoKUiDA7P9g"
+        ],
+        "rank-5": [
+          "AAABoKUiC9yvEg"
+        ],
+        "rank-6": [
+          "AAABoKUiC_fwyw"
+        ],
+        "rank-7": [
+          "AAABoKUiC-mGeA"
+        ],
+        "rank-8": [
+          "AAABoKUiC_b3Vg"
+        ],
+        "rank-9": [
+          "AAABoKUiDEnFGQ"
+        ],
+        "rank-10": [
+          "AAABoKUiDDo1VQ"
+        ],
+        "rank-11": [
+          "AAABoKUiDFq0Rg"
+        ],
+        "rank-12": [
+          "AAABoKUiC-k7PQ"
+        ],
+        "rank-13": [
+          "AAABoKUiDHuGcA"
+        ],
+        "face-S11": [
+          "AAABoKUiC_j4aQ"
+        ],
+        "face-S12": [
+          "AAABoKUiDC5V2A"
+        ],
+        "face-S13": [
+          "AAABoKUiDHtYOA"
+        ],
+        "face-H11": [
+          "AAABoKUiC_aMMA"
+        ],
+        "face-H12": [
+          "AAABoKUiDBK58A"
+        ],
+        "face-H13": [
+          "AAABoKUiDEpNYg"
+        ],
+        "face-D11": [
+          "AAABoKUiC_tbjQ"
+        ],
+        "face-D12": [
+          "AAABoKUiDFphAQ"
+        ],
+        "face-D13": [
+          "AAABoKUiC_cQlw"
+        ],
+        "face-C11": [
+          "AAABoKUiC_hu_g"
+        ],
+        "face-C12": [
+          "AAABoKUiC_ZnEw"
+        ],
+        "face-C13": [
+          "AAABoKUiC_YsOQ"
+        ]
+      },
+      "createdAt": "2026-09-15T12:57:38.775Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "user-directed",
+      "prompt": "我想进入哈利波特中，霍格沃茨这样风格的牌室"
+    },
+    "quality": {
+      "pass": false,
+      "degraded": true,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": false,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": true,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.757Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 8497780,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#1B1420",
+        "surface": "#2A1E2F",
+        "card": "#F2E6C9",
+        "accent": "#C49A3A",
+        "redSuit": "#c72f3d",
+        "blackSuit": "#18242a",
+        "text": "#F7EED6"
+      },
+      "cardDesign": {
+        "rankFont": "classic",
+        "suitFont": "classic",
+        "shape": "gothic",
+        "cardShape": "gothic",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "classic",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "深色橡木长桌、做旧黄铜烛台、拱形石墙、彩绘玻璃、墨绿色天鹅绒椅面、羊皮纸纹理牌垫",
+        "logo": "以尖顶古堡、展开的书卷、星芒与四象限盾形纹章组成的原创徽记，不使用任何现有影视或"
+      },
+      "complianceNotes": "已保留原始主题描述。整体采用“英伦哥特魔法学院、古堡公共休息室、烛光书房”的泛风格灵感；避免直接使用哈利波特、霍格沃茨、院徽、角色、咒语、校名等受保护元素。"
+    },
+    "title": "古堡魔法学院牌室",
+    "updatedAt": "2026-09-15T12:57:38.776Z"
+  },
+  {
+    "themeId": "generated-5732034d-928e-4f89-8b03-0023a8931f88",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：宣纸质感底纹，水墨干湿浓淡笔触，淡金局部点睛与纹样描边，适用于高清游戏图腾素材。。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKTTkkslFg",
+          "mime": "image/jpeg",
+          "bytes": 934711,
+          "contentHash": "5e7f1a80effca838639c33962a6759e27cbc7ad1757e22714967a685fbf815af",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5e7f1a80effca838639c33962a6759e27cbc7ad1757e22714967a685fbf815af.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：宣纸质感底纹，水墨干湿浓淡笔触，淡金局部点睛与纹样描边，适用于高清游戏图腾素材。。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKTTkkncpg",
+          "mime": "image/jpeg",
+          "bytes": 1012769,
+          "contentHash": "f96d483c769b758affaea72391964f47bb9a5fe223fa9e8aff892177e8af5dec",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f96d483c769b758affaea72391964f47bb9a5fe223fa9e8aff892177e8af5dec.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKTTkljjkA",
+          "mime": "image/jpeg",
+          "bytes": 114111,
+          "contentHash": "be3aa524c15068bb761b96d89e399546fb4ccbe6ada83101853c2a6b0060be78",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/be3aa524c15068bb761b96d89e399546fb4ccbe6ada83101853c2a6b0060be78.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKTTklEaEQ",
+          "mime": "image/jpeg",
+          "bytes": 117986,
+          "contentHash": "e6d31018a51609afdc6c249b04d9a8cdc0cd3b57b93c1ce5d8c64a08320061bf",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e6d31018a51609afdc6c249b04d9a8cdc0cd3b57b93c1ce5d8c64a08320061bf.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKTTkoOy6Q",
+          "mime": "image/jpeg",
+          "bytes": 122091,
+          "contentHash": "0effe4924e4371dd6831ac610d65a3b49704e8ae9be821b31d23e9597f8415d3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/0effe4924e4371dd6831ac610d65a3b49704e8ae9be821b31d23e9597f8415d3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKTTklLJBA",
+          "mime": "image/jpeg",
+          "bytes": 111546,
+          "contentHash": "52adb17491b53bfe58ad851628a0528dff988b9762209a099d78a0390995b881",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/52adb17491b53bfe58ad851628a0528dff988b9762209a099d78a0390995b881.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkot0Sg",
+          "mime": "image/jpeg",
+          "bytes": 115027,
+          "contentHash": "3aabae15988d260d83e4314ad4314485fc5deff61d4197c22992d91354ed40c1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3aabae15988d260d83e4314ad4314485fc5deff61d4197c22992d91354ed40c1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTklpHtA",
+          "mime": "image/jpeg",
+          "bytes": 110475,
+          "contentHash": "36331cf3c38af420c4f3a3ae8417e1030eb9233689ff02dc132a9eede32b48ee",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/36331cf3c38af420c4f3a3ae8417e1030eb9233689ff02dc132a9eede32b48ee.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkmCmNg",
+          "mime": "image/jpeg",
+          "bytes": 116128,
+          "contentHash": "d99af8bd6bc1d75e53548eec7583645fcc40cd325573a9a9d261a554cd18f14e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d99af8bd6bc1d75e53548eec7583645fcc40cd325573a9a9d261a554cd18f14e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkloxTA",
+          "mime": "image/jpeg",
+          "bytes": 110006,
+          "contentHash": "d6362df50ab2751141ec4bf9bfac2cd5f5647215398cf11bc2a0165a1ecd895d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d6362df50ab2751141ec4bf9bfac2cd5f5647215398cf11bc2a0165a1ecd895d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkkjfVQ",
+          "mime": "image/jpeg",
+          "bytes": 115142,
+          "contentHash": "c56652da69ac594dda877a01bf61659dcf7ee5f824e6a59efcfbf0b66b292180",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c56652da69ac594dda877a01bf61659dcf7ee5f824e6a59efcfbf0b66b292180.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkmUAlw",
+          "mime": "image/jpeg",
+          "bytes": 121737,
+          "contentHash": "6452fa4c2d9a9b6619b866d3d4d6582789f3aeb49c8e7eca5ffa696418139c0b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6452fa4c2d9a9b6619b866d3d4d6582789f3aeb49c8e7eca5ffa696418139c0b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkljapQ",
+          "mime": "image/jpeg",
+          "bytes": 109561,
+          "contentHash": "c08f9d72b1f488e59ef43bfc790911f3be1e24960277a1ac521ba38e563d64f9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c08f9d72b1f488e59ef43bfc790911f3be1e24960277a1ac521ba38e563d64f9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkljioA",
+          "mime": "image/jpeg",
+          "bytes": 126167,
+          "contentHash": "021c52878663955162a038b9a2809e8147559fb93af78c5073d0d50093412d81",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/021c52878663955162a038b9a2809e8147559fb93af78c5073d0d50093412d81.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkkth4w",
+          "mime": "image/jpeg",
+          "bytes": 115070,
+          "contentHash": "6a17730e5dda3adb8570445a079d4efc54d8433a90c989ac0f73222679f2f0e3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6a17730e5dda3adb8570445a079d4efc54d8433a90c989ac0f73222679f2f0e3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkmOm0A",
+          "mime": "image/jpeg",
+          "bytes": 114145,
+          "contentHash": "9c899c5f2eb123eb3cfcab95dfb7504fae65f1462d90da91b42946c00dfa45ef",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/9c899c5f2eb123eb3cfcab95dfb7504fae65f1462d90da91b42946c00dfa45ef.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkoT1wQ",
+          "mime": "image/jpeg",
+          "bytes": 99355,
+          "contentHash": "ac4ce6cbebece389b4e958bc1d247c33addde929b05d5b470153b25deac69ab1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ac4ce6cbebece389b4e958bc1d247c33addde929b05d5b470153b25deac69ab1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkmtO3w",
+          "mime": "image/jpeg",
+          "bytes": 118026,
+          "contentHash": "4be40d27197970bf465afc054a8e092bbc89d9768db66f236a0a20d10152c4bf",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/4be40d27197970bf465afc054a8e092bbc89d9768db66f236a0a20d10152c4bf.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKTTkmJRsQ",
+          "mime": "image/jpeg",
+          "bytes": 110383,
+          "contentHash": "76371b34d2244b7d2098253ac5c594651549a227d41cf10d5e4c1af8a40e51aa",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/76371b34d2244b7d2098253ac5c594651549a227d41cf10d5e4c1af8a40e51aa.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkmbYuA",
+          "mime": "image/jpeg",
+          "bytes": 827297,
+          "contentHash": "013db639cb97b3f1f03fd38457dd4e529150a0d2295c868fbb5e8fac7ed29638",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/013db639cb97b3f1f03fd38457dd4e529150a0d2295c868fbb5e8fac7ed29638.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkn0xwg",
+          "mime": "image/jpeg",
+          "bytes": 639940,
+          "contentHash": "997d6ba7f95517438104d9f9acd667892c4898cce4e62007b01b94f72934fcb1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/997d6ba7f95517438104d9f9acd667892c4898cce4e62007b01b94f72934fcb1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKTTklSSWg",
+          "mime": "image/jpeg",
+          "bytes": 749569,
+          "contentHash": "7ebb1cf3d7101c254b90453026688c15cfd519d473d6e8184fefce79298cc4e5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7ebb1cf3d7101c254b90453026688c15cfd519d473d6e8184fefce79298cc4e5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkk0sDw",
+          "mime": "image/jpeg",
+          "bytes": 1127460,
+          "contentHash": "7168a099e3e352928a075140fcc61c4e014900ce331115d5da40e09fb7ed71a1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7168a099e3e352928a075140fcc61c4e014900ce331115d5da40e09fb7ed71a1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkkQfsQ",
+          "mime": "image/jpeg",
+          "bytes": 665909,
+          "contentHash": "5c1ad24380f4479906785068b9a7d761a162d53c8f1b794fdfc10d204f92f4a7",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5c1ad24380f4479906785068b9a7d761a162d53c8f1b794fdfc10d204f92f4a7.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkkNc7A",
+          "mime": "image/jpeg",
+          "bytes": 766121,
+          "contentHash": "8b11c8d26a1cdf98d9f28a356f6a4a71145ca82ad5c2004664d4da3e1016d91d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8b11c8d26a1cdf98d9f28a356f6a4a71145ca82ad5c2004664d4da3e1016d91d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKTTknAs9w",
+          "mime": "image/jpeg",
+          "bytes": 700568,
+          "contentHash": "df2678ba9ff7da2c48eafb5a5ec838c0b2104169245612600338cc6345c0d6d0",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/df2678ba9ff7da2c48eafb5a5ec838c0b2104169245612600338cc6345c0d6d0.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkou8KQ",
+          "mime": "image/jpeg",
+          "bytes": 1036986,
+          "contentHash": "7886459259c31cadfcb1bcbeb70b4333101db38a8ddb2ac03289e391a0099401",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7886459259c31cadfcb1bcbeb70b4333101db38a8ddb2ac03289e391a0099401.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKTTknDlVg",
+          "mime": "image/jpeg",
+          "bytes": 793568,
+          "contentHash": "6065a8bac78d6374494f87d17db312445513a9eaa28dbdb63556c38273ff85b2",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6065a8bac78d6374494f87d17db312445513a9eaa28dbdb63556c38273ff85b2.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 J。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkms6SA",
+          "mime": "image/jpeg",
+          "bytes": 906181,
+          "contentHash": "2478beba086a47f03ae5fc048860ff504c49381fbf2294bbda91bd064656ca82",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/2478beba086a47f03ae5fc048860ff504c49381fbf2294bbda91bd064656ca82.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 Q。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkkSlog",
+          "mime": "image/jpeg",
+          "bytes": 776821,
+          "contentHash": "d79043c8ce2b696a8a8600b0124f45b2b9767fba1e94b556f68baf9f1c192c71",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d79043c8ce2b696a8a8600b0124f45b2b9767fba1e94b556f68baf9f1c192c71.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "纸牌头牌插画，主题：中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印。装饰性构图，四周留白，适用于 K。无文字、无数字、无水印。",
+          "runId": "AAABoKTTkoCpag",
+          "mime": "image/jpeg",
+          "bytes": 866304,
+          "contentHash": "c347d69e29282fa817a80f0064cae32240429469b9dc89dd13c1f70b3f7428c3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c347d69e29282fa817a80f0064cae32240429469b9dc89dd13c1f70b3f7428c3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKTTkkslFg"
+        ],
+        "cardBack": [
+          "AAABoKTTkkncpg"
+        ],
+        "suit-S": [
+          "AAABoKTTkljjkA"
+        ],
+        "suit-H": [
+          "AAABoKTTklEaEQ"
+        ],
+        "suit-D": [
+          "AAABoKTTkoOy6Q"
+        ],
+        "suit-C": [
+          "AAABoKTTklLJBA"
+        ],
+        "rank-1": [
+          "AAABoKTTkot0Sg"
+        ],
+        "rank-2": [
+          "AAABoKTTklpHtA"
+        ],
+        "rank-3": [
+          "AAABoKTTkmCmNg"
+        ],
+        "rank-4": [
+          "AAABoKTTkloxTA"
+        ],
+        "rank-5": [
+          "AAABoKTTkkjfVQ"
+        ],
+        "rank-6": [
+          "AAABoKTTkmUAlw"
+        ],
+        "rank-7": [
+          "AAABoKTTkljapQ"
+        ],
+        "rank-8": [
+          "AAABoKTTkljioA"
+        ],
+        "rank-9": [
+          "AAABoKTTkkth4w"
+        ],
+        "rank-10": [
+          "AAABoKTTkmOm0A"
+        ],
+        "rank-11": [
+          "AAABoKTTkoT1wQ"
+        ],
+        "rank-12": [
+          "AAABoKTTkmtO3w"
+        ],
+        "rank-13": [
+          "AAABoKTTkmJRsQ"
+        ],
+        "face-S11": [
+          "AAABoKTTkmbYuA"
+        ],
+        "face-S12": [
+          "AAABoKTTkn0xwg"
+        ],
+        "face-S13": [
+          "AAABoKTTklSSWg"
+        ],
+        "face-H11": [
+          "AAABoKTTkk0sDw"
+        ],
+        "face-H12": [
+          "AAABoKTTkkQfsQ"
+        ],
+        "face-H13": [
+          "AAABoKTTkkNc7A"
+        ],
+        "face-D11": [
+          "AAABoKTTknAs9w"
+        ],
+        "face-D12": [
+          "AAABoKTTkou8KQ"
+        ],
+        "face-D13": [
+          "AAABoKTTknDlVg"
+        ],
+        "face-C11": [
+          "AAABoKTTkms6SA"
+        ],
+        "face-C12": [
+          "AAABoKTTkkSlog"
+        ],
+        "face-C13": [
+          "AAABoKTTkoCpag"
+        ]
+      },
+      "createdAt": "2026-09-15T11:31:45.627Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "user-directed",
+      "prompt": "中国风图腾设计，水墨画风格，圆形对称构图：中心一条金色蟠龙盘绕成环，四周青龙、白虎、朱雀、玄武四神兽呈环形对称排布，外围以水墨祥云纹与回纹边框收束；墨色浓淡干湿层次分明，笔触苍劲留白意境，仅在龙眼与纹样关键处点缀淡金，黑白灰主色调，宣纸质感背景，庄重空灵，居中构图，高清游戏图腾素材，无文字无水印"
+    },
+    "quality": {
+      "pass": true,
+      "degraded": false,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": true,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": true,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.758Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 13751160,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#062f25",
+        "surface": "#0a4637",
+        "card": "#fffdf7",
+        "accent": "#d6ae62",
+        "redSuit": "#c72f3d",
+        "blackSuit": "#18242a",
+        "text": "#f5f1e8"
+      },
+      "cardDesign": {
+        "rankFont": "ink",
+        "suitFont": "ink",
+        "shape": "shield",
+        "cardShape": "shield",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "ink",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "宣纸质感底纹，水墨干湿浓淡笔触，淡金局部点睛与纹样描边，适用于高清游戏图腾素材。",
+        "logo": "圆形对称构图：中心金色蟠龙盘绕成环，龙眼以淡金点亮；四周青龙、白虎、朱雀、玄武环"
+      },
+      "complianceNotes": "已保留原始主题描述。原创中国风水墨图腾设计描述；不包含文字、水印、商标或现实品牌元素；神兽与纹样为传统文化题材，可用于游戏素材方向。"
+    },
+    "title": "水墨四象蟠龙图腾",
+    "updatedAt": "2026-09-15T11:31:45.628Z"
+  },
+  {
+    "themeId": "generated-fb9ca532-af77-423e-871b-afd4f2ca7929",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：扁平矢量插画质感，圆润粗线条，高饱和蓝白黄红配色；卡牌外轮廓采用云朵与波浪感异形剪裁，表面可设轻微哑光覆膜与局部亮面装饰，营造清爽、活泼、童趣的海洋氛围。。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKSsiAaA4w",
+          "mime": "image/jpeg",
+          "bytes": 461705,
+          "contentHash": "a64c207b86340c29c4faa1f1c6ee8db6feca9e9cee4218a470ef96bca9ab0d21",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/a64c207b86340c29c4faa1f1c6ee8db6feca9e9cee4218a470ef96bca9ab0d21.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：扁平矢量插画质感，圆润粗线条，高饱和蓝白黄红配色；卡牌外轮廓采用云朵与波浪感异形剪裁，表面可设轻微哑光覆膜与局部亮面装饰，营造清爽、活泼、童趣的海洋氛围。。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKSsiAYsfg",
+          "mime": "image/jpeg",
+          "bytes": 473113,
+          "contentHash": "daa7de788c3af34f9e50ab4524c235d69bc5b21df7d32eb776877246de177a88",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/daa7de788c3af34f9e50ab4524c235d69bc5b21df7d32eb776877246de177a88.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKSsiCIfAg",
+          "mime": "image/jpeg",
+          "bytes": 107723,
+          "contentHash": "2dbb7f6a759b1fdb6bec1cf5b366a4fae53234594bf13a6e40d12c4ec2879e6e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/2dbb7f6a759b1fdb6bec1cf5b366a4fae53234594bf13a6e40d12c4ec2879e6e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKSsiCcilA",
+          "mime": "image/jpeg",
+          "bytes": 123316,
+          "contentHash": "bccb201a1e4a85ccc06049f875a86365bb89a95c24e9981f127a10eecd6cdc45",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/bccb201a1e4a85ccc06049f875a86365bb89a95c24e9981f127a10eecd6cdc45.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKSsiFSydA",
+          "mime": "image/jpeg",
+          "bytes": 118674,
+          "contentHash": "0ddfa6e4a9f84de939f90d18947112638faac9bebc7b535192f4cb7ee6f61cad",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/0ddfa6e4a9f84de939f90d18947112638faac9bebc7b535192f4cb7ee6f61cad.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKSsiGFRjQ",
+          "mime": "image/jpeg",
+          "bytes": 109809,
+          "contentHash": "11aaecfa885befb0884c7fafcd2015d592d4033d3b954df57df95ad952d99b04",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/11aaecfa885befb0884c7fafcd2015d592d4033d3b954df57df95ad952d99b04.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiGHyMw",
+          "mime": "image/jpeg",
+          "bytes": 118679,
+          "contentHash": "e43a0d36fa28b6dd78e1a4d4c5131a58c39b2bef5db34fd8422eb17863ce6080",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e43a0d36fa28b6dd78e1a4d4c5131a58c39b2bef5db34fd8422eb17863ce6080.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiD4nqA",
+          "mime": "image/jpeg",
+          "bytes": 121359,
+          "contentHash": "860e33d57f1663d9548897e1db9e92e443455ffa14d38c7d8b2ab5ad9680729b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/860e33d57f1663d9548897e1db9e92e443455ffa14d38c7d8b2ab5ad9680729b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiGEtcg",
+          "mime": "image/jpeg",
+          "bytes": 121795,
+          "contentHash": "0b0c8122e9062a0299b4fdf59c512b93d242b42b707133a4368c52e9c355b07e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/0b0c8122e9062a0299b4fdf59c512b93d242b42b707133a4368c52e9c355b07e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiCYF-w",
+          "mime": "image/jpeg",
+          "bytes": 110349,
+          "contentHash": "8950a81785a36c23e4566afbce54b0dcb8dff8c0fd4014fd35ecf87fbd9298b1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8950a81785a36c23e4566afbce54b0dcb8dff8c0fd4014fd35ecf87fbd9298b1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiDiQzQ",
+          "mime": "image/jpeg",
+          "bytes": 118239,
+          "contentHash": "6e52de2ea1f8c7920298fbd93cded1af02aa53bf04accb487d740621e49705e3",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/6e52de2ea1f8c7920298fbd93cded1af02aa53bf04accb487d740621e49705e3.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiEO8pA",
+          "mime": "image/jpeg",
+          "bytes": 118247,
+          "contentHash": "67354e86d11be962df4956f4ee673f2db20b312344bd32aa2bb3cf7735eafc0e",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/67354e86d11be962df4956f4ee673f2db20b312344bd32aa2bb3cf7735eafc0e.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiKw-Zw",
+          "mime": "image/jpeg",
+          "bytes": 106236,
+          "contentHash": "d836b61c63dde192f5501e399eb857581a7eccc108c69636b03d9ce9de5f8071",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d836b61c63dde192f5501e399eb857581a7eccc108c69636b03d9ce9de5f8071.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiFWcJQ",
+          "mime": "image/jpeg",
+          "bytes": 123416,
+          "contentHash": "47aba6e47099b53e1a21f48d0e3a4f3b8c342255e93fdb91a38671defc357f7f",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/47aba6e47099b53e1a21f48d0e3a4f3b8c342255e93fdb91a38671defc357f7f.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiJO4Sw",
+          "mime": "image/jpeg",
+          "bytes": 121499,
+          "contentHash": "7ca91707fedbc411bebacdf33e9ab0afc903360bb09e42cc8e0ddc621170ee7b",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/7ca91707fedbc411bebacdf33e9ab0afc903360bb09e42cc8e0ddc621170ee7b.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiGFerw",
+          "mime": "image/jpeg",
+          "bytes": 115128,
+          "contentHash": "a05074843421b648376fc836adaa56ee78b7eff40d938cb1f1487872e5839b25",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/a05074843421b648376fc836adaa56ee78b7eff40d938cb1f1487872e5839b25.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiImNgw",
+          "mime": "image/jpeg",
+          "bytes": 109370,
+          "contentHash": "f0fea9e0a9875feb801a6ba4b018158b977562fd1178e2984f97599efb4c89b4",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f0fea9e0a9875feb801a6ba4b018158b977562fd1178e2984f97599efb4c89b4.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiJ-t2g",
+          "mime": "image/jpeg",
+          "bytes": 131554,
+          "contentHash": "53da73dc0e2b738a6e5cca3c64c0673d60d29b4da6890e5b5e4c1c56ce022a91",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/53da73dc0e2b738a6e5cca3c64c0673d60d29b4da6890e5b5e4c1c56ce022a91.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSsiE_QEw",
+          "mime": "image/jpeg",
+          "bytes": 109314,
+          "contentHash": "68e54dd378ce89c96fccdf44046d118c42008e59305c5aaff86a7e1bf8044c3f",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/68e54dd378ce89c96fccdf44046d118c42008e59305c5aaff86a7e1bf8044c3f.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiCeHdg",
+          "mime": "image/jpeg",
+          "bytes": 265092,
+          "contentHash": "d4e23216c689bbe872fb6259d1cdf3c53857d7d3ef365e18a71452d005e1597a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/d4e23216c689bbe872fb6259d1cdf3c53857d7d3ef365e18a71452d005e1597a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiGFy1g",
+          "mime": "image/jpeg",
+          "bytes": 220864,
+          "contentHash": "bd20612e2ddb762a734210ec92cf59f11ea4d1e41da1116d5aca3272055dc2a9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/bd20612e2ddb762a734210ec92cf59f11ea4d1e41da1116d5aca3272055dc2a9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiCcP-Q",
+          "mime": "image/jpeg",
+          "bytes": 316149,
+          "contentHash": "30440926e5947415fa2901ff4a86065264239b079a599d5f3f5941138436ec3a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/30440926e5947415fa2901ff4a86065264239b079a599d5f3f5941138436ec3a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiFTpfw",
+          "mime": "image/jpeg",
+          "bytes": 272527,
+          "contentHash": "33755541f5fa29d78e1433450ef9acdfc54c305bce0c1104b923215fdba50ec7",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/33755541f5fa29d78e1433450ef9acdfc54c305bce0c1104b923215fdba50ec7.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiJ_uJw",
+          "mime": "image/jpeg",
+          "bytes": 312018,
+          "contentHash": "9c2bb005400a8f323ad1d655e354aa1fd653fe0fa41453362f965bcf5d163bfd",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/9c2bb005400a8f323ad1d655e354aa1fd653fe0fa41453362f965bcf5d163bfd.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiGFUTw",
+          "mime": "image/jpeg",
+          "bytes": 273990,
+          "contentHash": "54e81c6aed9090f2f38a439f8fac49eb297d32742c47e8e8c6f33a5a4bc226e0",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/54e81c6aed9090f2f38a439f8fac49eb297d32742c47e8e8c6f33a5a4bc226e0.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiDkICA",
+          "mime": "image/jpeg",
+          "bytes": 249142,
+          "contentHash": "fa49d6ea79c03ba9b1513e80c11be34636b331457306fa2bc3c419b013db3bab",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/fa49d6ea79c03ba9b1513e80c11be34636b331457306fa2bc3c419b013db3bab.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiM3baA",
+          "mime": "image/jpeg",
+          "bytes": 281230,
+          "contentHash": "781da685ac1efd0934bfa2dd2ddf5b88576bfcb3b65daa3f8fa1b71e3ecf8112",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/781da685ac1efd0934bfa2dd2ddf5b88576bfcb3b65daa3f8fa1b71e3ecf8112.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiGFcEg",
+          "mime": "image/jpeg",
+          "bytes": 260559,
+          "contentHash": "f43d27ac93e539295191712e3971d4549beb473ce9d9624109de19af71e4333d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/f43d27ac93e539295191712e3971d4549beb473ce9d9624109de19af71e4333d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiDjjUA",
+          "mime": "image/jpeg",
+          "bytes": 266520,
+          "contentHash": "b6f997b32e42038d4a112a4ebcf389c30f3c960515eeea9785fe50eac9700be9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b6f997b32e42038d4a112a4ebcf389c30f3c960515eeea9785fe50eac9700be9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiCLfow",
+          "mime": "image/jpeg",
+          "bytes": 275666,
+          "contentHash": "3c1a92a16b0857b06c2eab53556bf1690768c12101b54e176b9aa972d4603cfc",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3c1a92a16b0857b06c2eab53556bf1690768c12101b54e176b9aa972d4603cfc.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：主题异形卡牌设计，经典 卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是 经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印。仅提炼配色、材质与氛围；不得出现品牌、角色、标识或受保护构图。。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSsiGIQkw",
+          "mime": "image/jpeg",
+          "bytes": 280593,
+          "contentHash": "ab730bec430d38d31443e4cb3296cb861c5d36b6b8ec361a9eedbf59b4192fab",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ab730bec430d38d31443e4cb3296cb861c5d36b6b8ec361a9eedbf59b4192fab.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKSsiAaA4w"
+        ],
+        "cardBack": [
+          "AAABoKSsiAYsfg"
+        ],
+        "suit-S": [
+          "AAABoKSsiCIfAg"
+        ],
+        "suit-H": [
+          "AAABoKSsiCcilA"
+        ],
+        "suit-D": [
+          "AAABoKSsiFSydA"
+        ],
+        "suit-C": [
+          "AAABoKSsiGFRjQ"
+        ],
+        "rank-1": [
+          "AAABoKSsiGHyMw"
+        ],
+        "rank-2": [
+          "AAABoKSsiD4nqA"
+        ],
+        "rank-3": [
+          "AAABoKSsiGEtcg"
+        ],
+        "rank-4": [
+          "AAABoKSsiCYF-w"
+        ],
+        "rank-5": [
+          "AAABoKSsiDiQzQ"
+        ],
+        "rank-6": [
+          "AAABoKSsiEO8pA"
+        ],
+        "rank-7": [
+          "AAABoKSsiKw-Zw"
+        ],
+        "rank-8": [
+          "AAABoKSsiFWcJQ"
+        ],
+        "rank-9": [
+          "AAABoKSsiJO4Sw"
+        ],
+        "rank-10": [
+          "AAABoKSsiGFerw"
+        ],
+        "rank-11": [
+          "AAABoKSsiImNgw"
+        ],
+        "rank-12": [
+          "AAABoKSsiJ-t2g"
+        ],
+        "rank-13": [
+          "AAABoKSsiE_QEw"
+        ],
+        "face-S11": [
+          "AAABoKSsiCeHdg"
+        ],
+        "face-S12": [
+          "AAABoKSsiGFy1g"
+        ],
+        "face-S13": [
+          "AAABoKSsiCcP-Q"
+        ],
+        "face-H11": [
+          "AAABoKSsiFTpfw"
+        ],
+        "face-H12": [
+          "AAABoKSsiJ_uJw"
+        ],
+        "face-H13": [
+          "AAABoKSsiGFUTw"
+        ],
+        "face-D11": [
+          "AAABoKSsiDkICA"
+        ],
+        "face-D12": [
+          "AAABoKSsiM3baA"
+        ],
+        "face-D13": [
+          "AAABoKSsiGFcEg"
+        ],
+        "face-C11": [
+          "AAABoKSsiDjjUA"
+        ],
+        "face-C12": [
+          "AAABoKSsiCLfow"
+        ],
+        "face-C13": [
+          "AAABoKSsiGIQkw"
+        ]
+      },
+      "createdAt": "2026-09-15T10:49:30.229Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "brand-inspired",
+      "prompt": "唐老鸭主题异形卡牌设计，经典迪士尼卡通风格：卡牌外轮廓为不规则异形剪裁，边缘呈云朵与波浪造型，中心是唐老鸭经典形象——白色鸭子、蓝色水手服配红色蝴蝶结、歪戴蓝色水手帽，表情活泼张开双手；卡面点缀船锚、救生圈、泡泡与星星装饰，蓝白黄红经典配色，线条圆润，色彩明快饱和，扁平矢量插画质感，居中构图，高清卡牌素材，无文字无水印"
+    },
+    "quality": {
+      "pass": false,
+      "degraded": true,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": true,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": false,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.759Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 6193875,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#0b4f6c",
+        "surface": "#FFFFFF",
+        "card": "#FFE66D",
+        "accent": "#1E9BFF",
+        "redSuit": "#E53935",
+        "blackSuit": "#1F2A44",
+        "text": "#12324A"
+      },
+      "cardDesign": {
+        "rankFont": "classic",
+        "suitFont": "classic",
+        "shape": "soft",
+        "cardShape": "soft",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "classic",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "classic",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "classic",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "classic",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "扁平矢量插画质感，圆润粗线条，高饱和蓝白黄红配色；卡牌外轮廓采用云朵与波浪感异形",
+        "logo": "无品牌、无文字、无水印；仅使用通用海洋元素，如船锚、救生圈、泡泡、星星与抽象卡通"
+      },
+      "complianceNotes": "已将品牌或角色诉求改写为原创抽象风格，不含名称、标识或受保护角色。"
+    },
+    "title": "云浪异形剪裁卡牌｜明快海洋卡通氛围",
+    "updatedAt": "2026-09-15T10:49:30.229Z"
+  },
+  {
+    "themeId": "generated-a467c6e0-6e6b-4aa2-9bf0-95751c392a80",
+    "assets": {
+      "manifestVersion": "1.0",
+      "required": [
+        "background",
+        "cardBack",
+        "suitMotifs",
+        "cardFaces",
+        "ui"
+      ],
+      "items": [
+        {
+          "id": "background",
+          "kind": "background",
+          "aspect": "4096x2304",
+          "prompt": "纸牌游戏桌面横向环境背景，材质与氛围：宣纸纹理背景、深青灰桌面材质、柔和暖灯光晕、细腻水墨晕染与雨夜窗影，辅以少量朱砂点缀，整体营造原创东方雅致氛围。。中央安静空旷，纯环境与材质纹理，无文字、无数字、无Logo、无水印、没有人物或动物。",
+          "runId": "AAABoKSn6kEjVA",
+          "mime": "image/jpeg",
+          "bytes": 1133603,
+          "contentHash": "3eeaea23c1543c5a13db6dd4c0c82d24fa1decd416aef39f14daf7f0b5c74f39",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3eeaea23c1543c5a13db6dd4c0c82d24fa1decd416aef39f14daf7f0b5c74f39.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "cardBack",
+          "kind": "cardBack",
+          "aspect": "2048x2048",
+          "prompt": "正方形可平铺纸牌背面纹样，材质与氛围：宣纸纹理背景、深青灰桌面材质、柔和暖灯光晕、细腻水墨晕染与雨夜窗影，辅以少量朱砂点缀，整体营造原创东方雅致氛围。。中心对称、纯纹样、无文字、无数字、无Logo、无水印。",
+          "runId": "AAABoKSn6j3wiw",
+          "mime": "image/jpeg",
+          "bytes": 564030,
+          "contentHash": "b4b13610251cccf4cccacc098a84eb7157d1fe5eca955e5af3df3d190ac6ee02",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b4b13610251cccf4cccacc098a84eb7157d1fe5eca955e5af3df3d190ac6ee02.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-S",
+          "kind": "suitMotif",
+          "suit": "S",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 黑桃，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKSn6iky3w",
+          "mime": "image/jpeg",
+          "bytes": 112812,
+          "contentHash": "816a5cc1d87acb4dff2bfc9af076292e1bc4c8a521a89a4e5b716aa60762d46a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/816a5cc1d87acb4dff2bfc9af076292e1bc4c8a521a89a4e5b716aa60762d46a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-H",
+          "kind": "suitMotif",
+          "suit": "H",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 红桃，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKSn6j2G-w",
+          "mime": "image/jpeg",
+          "bytes": 121452,
+          "contentHash": "3c2761f0c068368b7d683c28343136e8bf6d8c292ae24783e563cf0fa64faa23",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/3c2761f0c068368b7d683c28343136e8bf6d8c292ae24783e563cf0fa64faa23.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-D",
+          "kind": "suitMotif",
+          "suit": "D",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 方块，纯白背景，居中，占满画面80%，深绯红纯色填充。无任何其他元素。",
+          "runId": "AAABoKSn6jSGXQ",
+          "mime": "image/jpeg",
+          "bytes": 115180,
+          "contentHash": "03dd1e8237e8ddc4f3c2de933ab19ead71c09dec855b417e775a59f1be0ab607",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/03dd1e8237e8ddc4f3c2de933ab19ead71c09dec855b417e775a59f1be0ab607.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "suit-C",
+          "kind": "suitMotif",
+          "suit": "C",
+          "aspect": "2048x2048",
+          "prompt": "单个纸牌花色符号 梅花，纯白背景，居中，占满画面80%，深炭黑纯色填充。无任何其他元素。",
+          "runId": "AAABoKSn6irDzQ",
+          "mime": "image/jpeg",
+          "bytes": 108316,
+          "contentHash": "e38e821db813f5ea8316c41ca3faebbed6c6ad46049e0278d1de7cf6e6b64f5f",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/e38e821db813f5ea8316c41ca3faebbed6c6ad46049e0278d1de7cf6e6b64f5f.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-1",
+          "kind": "rankGlyph",
+          "rank": 1,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“A”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6iX59Q",
+          "mime": "image/jpeg",
+          "bytes": 118527,
+          "contentHash": "17530623a846146e58a7013ea75af01daa09b11a05c2edcc4840389e6304aea5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/17530623a846146e58a7013ea75af01daa09b11a05c2edcc4840389e6304aea5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-2",
+          "kind": "rankGlyph",
+          "rank": 2,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“2”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jtDBw",
+          "mime": "image/jpeg",
+          "bytes": 112778,
+          "contentHash": "b04aa55fa3bfcde523b9b90356b082b8b6d0bb9ec4f9fefa4a020ec326d5b685",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b04aa55fa3bfcde523b9b90356b082b8b6d0bb9ec4f9fefa4a020ec326d5b685.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-3",
+          "kind": "rankGlyph",
+          "rank": 3,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“3”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6i8HjQ",
+          "mime": "image/jpeg",
+          "bytes": 118800,
+          "contentHash": "33281688c43f6745169b234bb1bf933d7a4dc71a303b5b6f2208f7a16dd7abaa",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/33281688c43f6745169b234bb1bf933d7a4dc71a303b5b6f2208f7a16dd7abaa.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-4",
+          "kind": "rankGlyph",
+          "rank": 4,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“4”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6iu2Ew",
+          "mime": "image/jpeg",
+          "bytes": 102715,
+          "contentHash": "4fc6523da7d2585d25909b0aad374d539d5dbafed61a9e6d2df3f81105f11054",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/4fc6523da7d2585d25909b0aad374d539d5dbafed61a9e6d2df3f81105f11054.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-5",
+          "kind": "rankGlyph",
+          "rank": 5,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“5”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6ingLA",
+          "mime": "image/jpeg",
+          "bytes": 119682,
+          "contentHash": "815c45b69ad2fd63c03eaad53493260b5e47bbb31dfb31c603a04afdc10ace83",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/815c45b69ad2fd63c03eaad53493260b5e47bbb31dfb31c603a04afdc10ace83.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-6",
+          "kind": "rankGlyph",
+          "rank": 6,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“6”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6iz6jg",
+          "mime": "image/jpeg",
+          "bytes": 117048,
+          "contentHash": "23bb7526783d0021e8432c115f58c302c696dea2056de3106c1d25fd868774ec",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/23bb7526783d0021e8432c115f58c302c696dea2056de3106c1d25fd868774ec.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-7",
+          "kind": "rankGlyph",
+          "rank": 7,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“7”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jh5tw",
+          "mime": "image/jpeg",
+          "bytes": 102549,
+          "contentHash": "b57695c10d7f9748c817830756a4e7174095d12e39b016daf3fc3debc9c70ebd",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b57695c10d7f9748c817830756a4e7174095d12e39b016daf3fc3debc9c70ebd.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-8",
+          "kind": "rankGlyph",
+          "rank": 8,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“8”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jQjXg",
+          "mime": "image/jpeg",
+          "bytes": 123580,
+          "contentHash": "b58ab209000272e177f9f6b6ccbbfba486bc2b4be5fb2d373797d89d7caaa870",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b58ab209000272e177f9f6b6ccbbfba486bc2b4be5fb2d373797d89d7caaa870.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-9",
+          "kind": "rankGlyph",
+          "rank": 9,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“9”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jkZNw",
+          "mime": "image/jpeg",
+          "bytes": 126559,
+          "contentHash": "ed498a373fd8905290eee92b23877acc76bb787d6398a30859ce051dd74a08c1",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ed498a373fd8905290eee92b23877acc76bb787d6398a30859ce051dd74a08c1.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-10",
+          "kind": "rankGlyph",
+          "rank": 10,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“10”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jWQWQ",
+          "mime": "image/jpeg",
+          "bytes": 111059,
+          "contentHash": "c18b06fea6692efa59bd059ae1fb2b35d324fad50aca4b4dff489a7548495510",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c18b06fea6692efa59bd059ae1fb2b35d324fad50aca4b4dff489a7548495510.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-11",
+          "kind": "rankGlyph",
+          "rank": 11,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“J”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6jzntQ",
+          "mime": "image/jpeg",
+          "bytes": 99433,
+          "contentHash": "5b4ddb6599aac22c7532af21fdb0f567988d151856ae0c0db2ea1ce109c03596",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/5b4ddb6599aac22c7532af21fdb0f567988d151856ae0c0db2ea1ce109c03596.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-12",
+          "kind": "rankGlyph",
+          "rank": 12,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“Q”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6iwLBA",
+          "mime": "image/jpeg",
+          "bytes": 133096,
+          "contentHash": "8bf12deab36675a61ac17f63101e6778570e2871214ac68b1086df589b354edd",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8bf12deab36675a61ac17f63101e6778570e2871214ac68b1086df589b354edd.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "rank-13",
+          "kind": "rankGlyph",
+          "rank": 13,
+          "aspect": "2048x2048",
+          "prompt": "纸牌点数字形“K”，只有一个完整粗体字符，深炭黑、居中、占满画面85%、纯白背景。无其他元素、无水印。",
+          "runId": "AAABoKSn6le09Q",
+          "mime": "image/jpeg",
+          "bytes": 119918,
+          "contentHash": "8754bd1533d742b78d17889286374be60a6d9e3c02e7fc20b64e4a4bd37a751d",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/8754bd1533d742b78d17889286374be60a6d9e3c02e7fc20b64e4a4bd37a751d.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S11",
+          "kind": "faceCard",
+          "cardId": "S11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6il82Q",
+          "mime": "image/jpeg",
+          "bytes": 895058,
+          "contentHash": "faa482c6f4c492cdaf3c8eac1833c2cf492ece52bdd936d4159b8fc1181f357a",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/faa482c6f4c492cdaf3c8eac1833c2cf492ece52bdd936d4159b8fc1181f357a.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S12",
+          "kind": "faceCard",
+          "cardId": "S12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6j2aVw",
+          "mime": "image/jpeg",
+          "bytes": 553789,
+          "contentHash": "80683a3243bf46f95e17520838d96064de5067a16b9e691bed97bb1647ae0a55",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/80683a3243bf46f95e17520838d96064de5067a16b9e691bed97bb1647ae0a55.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-S13",
+          "kind": "faceCard",
+          "cardId": "S13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6jaQFA",
+          "mime": "image/jpeg",
+          "bytes": 780291,
+          "contentHash": "ed01842db09e53ec2fa82c5e6311bc155f96bd628a2abf5d34358373868d952c",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ed01842db09e53ec2fa82c5e6311bc155f96bd628a2abf5d34358373868d952c.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H11",
+          "kind": "faceCard",
+          "cardId": "H11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6iZhfA",
+          "mime": "image/jpeg",
+          "bytes": 542289,
+          "contentHash": "11b04db55e0e84199db79c9dc1a270bcefecec8b476aea9ac63322df9e2ec1f7",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/11b04db55e0e84199db79c9dc1a270bcefecec8b476aea9ac63322df9e2ec1f7.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H12",
+          "kind": "faceCard",
+          "cardId": "H12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6hgQbg",
+          "mime": "image/jpeg",
+          "bytes": 767980,
+          "contentHash": "1f47214317b7b635ea4df3b00709aca95c87e4fcd15a9bf025bebfa253d759c6",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/1f47214317b7b635ea4df3b00709aca95c87e4fcd15a9bf025bebfa253d759c6.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-H13",
+          "kind": "faceCard",
+          "cardId": "H13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6kRuXg",
+          "mime": "image/jpeg",
+          "bytes": 532336,
+          "contentHash": "712bdd19e823dfa0080d7884cad1ad792a145fe958dc80a57a0483bc2860cbc9",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/712bdd19e823dfa0080d7884cad1ad792a145fe958dc80a57a0483bc2860cbc9.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D11",
+          "kind": "faceCard",
+          "cardId": "D11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6jdpWg",
+          "mime": "image/jpeg",
+          "bytes": 694413,
+          "contentHash": "ecb4cd7fc081c8e0003792f23908d19d31ffc7a4a62fd6ebe5ffcaff265221c5",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/ecb4cd7fc081c8e0003792f23908d19d31ffc7a4a62fd6ebe5ffcaff265221c5.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D12",
+          "kind": "faceCard",
+          "cardId": "D12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6jhrvw",
+          "mime": "image/jpeg",
+          "bytes": 607379,
+          "contentHash": "26e5db418f5373e856af59239c1b2bb01ca97ce459d4b942faf769aad74a8a29",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/26e5db418f5373e856af59239c1b2bb01ca97ce459d4b942faf769aad74a8a29.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-D13",
+          "kind": "faceCard",
+          "cardId": "D13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6j37TQ",
+          "mime": "image/jpeg",
+          "bytes": 479083,
+          "contentHash": "b84aa2f0bedee05272df327c1e72e971749c3695df9567b64d4c13c37f7bc2a0",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/b84aa2f0bedee05272df327c1e72e971749c3695df9567b64d4c13c37f7bc2a0.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C11",
+          "kind": "faceCard",
+          "cardId": "C11",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 J。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6i7Igg",
+          "mime": "image/jpeg",
+          "bytes": 560681,
+          "contentHash": "52e106a867344d4396d65ec98ed005f805bf2c91ceee330e48362c8a78fd0a34",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/52e106a867344d4396d65ec98ed005f805bf2c91ceee330e48362c8a78fd0a34.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C12",
+          "kind": "faceCard",
+          "cardId": "C12",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 Q。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6jowLw",
+          "mime": "image/jpeg",
+          "bytes": 548893,
+          "contentHash": "c3b6c16378f78d60c6b7513487f942258564e48fed6bbdd6b0e742ff3c7fd4ca",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/c3b6c16378f78d60c6b7513487f942258564e48fed6bbdd6b0e742ff3c7fd4ca.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        },
+        {
+          "id": "face-C13",
+          "kind": "faceCard",
+          "cardId": "C13",
+          "aspect": "2048x2048",
+          "prompt": "原创纸牌头牌插画，主题：水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围。抽象装饰性人物剪影与材质，四周留白，适用于 K。无文字、无数字、无Logo、无水印、不得出现受保护角色。",
+          "runId": "AAABoKSn6j_Hnw",
+          "mime": "image/jpeg",
+          "bytes": 455693,
+          "contentHash": "32de2bfdb6735a384773517bb1fa22b1f1007812dd286ba5c34b4a426a29e8b6",
+          "url": "https://gcdncs.cn.ndhy.com/v0.1/static/fn_app/theme-freecell-mvp/production/theme-freecell/generated/32de2bfdb6735a384773517bb1fa22b1f1007812dd286ba5c34b4a426a29e8b6.jpg",
+          "provider": "aihub",
+          "model": "jimeng",
+          "reviewStatus": "stored-fn-cs"
+        }
+      ]
+    },
+    "compose": {
+      "layers": [
+        "L1 Base",
+        "L2 Material",
+        "L3 Border",
+        "L4 Content",
+        "L5 Gloss",
+        "L6 Outline",
+        "L7 Shadow"
+      ]
+    },
+    "generation": {
+      "provider": "aihub-gateway",
+      "models": {
+        "text": "gpt-5.5-2026-04-24",
+        "image": "jimeng"
+      },
+      "runs": {
+        "background": [
+          "AAABoKSn6kEjVA"
+        ],
+        "cardBack": [
+          "AAABoKSn6j3wiw"
+        ],
+        "suit-S": [
+          "AAABoKSn6iky3w"
+        ],
+        "suit-H": [
+          "AAABoKSn6j2G-w"
+        ],
+        "suit-D": [
+          "AAABoKSn6jSGXQ"
+        ],
+        "suit-C": [
+          "AAABoKSn6irDzQ"
+        ],
+        "rank-1": [
+          "AAABoKSn6iX59Q"
+        ],
+        "rank-2": [
+          "AAABoKSn6jtDBw"
+        ],
+        "rank-3": [
+          "AAABoKSn6i8HjQ"
+        ],
+        "rank-4": [
+          "AAABoKSn6iu2Ew"
+        ],
+        "rank-5": [
+          "AAABoKSn6ingLA"
+        ],
+        "rank-6": [
+          "AAABoKSn6iz6jg"
+        ],
+        "rank-7": [
+          "AAABoKSn6jh5tw"
+        ],
+        "rank-8": [
+          "AAABoKSn6jQjXg"
+        ],
+        "rank-9": [
+          "AAABoKSn6jkZNw"
+        ],
+        "rank-10": [
+          "AAABoKSn6jWQWQ"
+        ],
+        "rank-11": [
+          "AAABoKSn6jzntQ"
+        ],
+        "rank-12": [
+          "AAABoKSn6iwLBA"
+        ],
+        "rank-13": [
+          "AAABoKSn6le09Q"
+        ],
+        "face-S11": [
+          "AAABoKSn6il82Q"
+        ],
+        "face-S12": [
+          "AAABoKSn6j2aVw"
+        ],
+        "face-S13": [
+          "AAABoKSn6jaQFA"
+        ],
+        "face-H11": [
+          "AAABoKSn6iZhfA"
+        ],
+        "face-H12": [
+          "AAABoKSn6hgQbg"
+        ],
+        "face-H13": [
+          "AAABoKSn6kRuXg"
+        ],
+        "face-D11": [
+          "AAABoKSn6jdpWg"
+        ],
+        "face-D12": [
+          "AAABoKSn6jhrvw"
+        ],
+        "face-D13": [
+          "AAABoKSn6j37TQ"
+        ],
+        "face-C11": [
+          "AAABoKSn6i7Igg"
+        ],
+        "face-C12": [
+          "AAABoKSn6jowLw"
+        ],
+        "face-C13": [
+          "AAABoKSn6j_Hnw"
+        ]
+      },
+      "createdAt": "2026-09-15T10:45:09.701Z",
+      "storage": "fn-mongodb+cs"
+    },
+    "intent": {
+      "themeType": "generic",
+      "prompt": "水墨江南雨夜牌室，宣纸纹理、深青灰桌面、朱砂点缀、柔和灯影，原创东方雅致氛围"
+    },
+    "quality": {
+      "pass": false,
+      "degraded": true,
+      "checks": [
+        {
+          "id": "schema",
+          "pass": true,
+          "detail": "schemaVersion 与 themeId 合法"
+        },
+        {
+          "id": "palette",
+          "pass": true,
+          "detail": "七项色彩令牌完整"
+        },
+        {
+          "id": "layers",
+          "pass": true,
+          "detail": "七层牌面模板固定"
+        },
+        {
+          "id": "assets",
+          "pass": true,
+          "detail": "主题资源清单完整"
+        },
+        {
+          "id": "card-design",
+          "pass": true,
+          "detail": "A-K 字形、四花色符号、12 张头牌插画与多形状牌面规格完整"
+        },
+        {
+          "id": "readability",
+          "pass": true,
+          "detail": "黑色与红色牌面可读性达标"
+        },
+        {
+          "id": "red-black-delta",
+          "pass": false,
+          "detail": "红黑花色 CIEDE2000 色差达到 40"
+        },
+        {
+          "id": "background-separation",
+          "pass": true,
+          "detail": "牌面与桌面背景保持视觉分离"
+        },
+        {
+          "id": "package-size",
+          "pass": true,
+          "detail": "ThemePackage 不超过 20MB"
+        },
+        {
+          "id": "asset-trace",
+          "pass": true,
+          "detail": "外部生成资产均有来源、格式、hash 与地址"
+        },
+        {
+          "id": "face-asset-map",
+          "pass": true,
+          "detail": "可选头牌图片资产均映射到合法 J/Q/K 牌位"
+        },
+        {
+          "id": "suit-asset-map",
+          "pass": true,
+          "detail": "可选花色符号资产均映射到合法花色"
+        },
+        {
+          "id": "rank-asset-map",
+          "pass": true,
+          "detail": "可选 A-K 字形资产均映射到合法点数"
+        }
+      ],
+      "checkedAt": "2026-09-16T02:34:37.76Z"
+    },
+    "revision": 1,
+    "schemaVersion": "1.0",
+    "sizeBytes": 11079022,
+    "source": "generated",
+    "spec": {
+      "palette": {
+        "bg": "#1F2A2B",
+        "surface": "#2E3A3A",
+        "card": "#E8E0CF",
+        "accent": "#A63A2A",
+        "redSuit": "#c72f3d",
+        "blackSuit": "#18242a",
+        "text": "#F1E8D6"
+      },
+      "cardDesign": {
+        "rankFont": "ink",
+        "suitFont": "ink",
+        "shape": "soft",
+        "cardShape": "soft",
+        "rankGlyphs": {
+          "1": "A",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "10",
+          "11": "J",
+          "12": "Q",
+          "13": "K"
+        },
+        "suitSymbols": {
+          "S": "♠",
+          "H": "♥",
+          "D": "♦",
+          "C": "♣"
+        },
+        "faceCards": {
+          "S11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "S12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "S13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "H11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "H12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "H13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "D11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "D12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "D13": {
+            "style": "ink",
+            "portrait": "king"
+          },
+          "C11": {
+            "style": "ink",
+            "portrait": "jack"
+          },
+          "C12": {
+            "style": "ink",
+            "portrait": "queen"
+          },
+          "C13": {
+            "style": "ink",
+            "portrait": "king"
+          }
+        }
+      },
+      "motifs": {
+        "material": "宣纸纹理背景、深青灰桌面材质、柔和暖灯光晕、细腻水墨晕染与雨夜窗影，辅以少量朱砂",
+        "logo": "以江南雨檐、墨色水波与一枚朱砂印章构成简洁标识，线条含蓄留白，避免复杂牌面符号堆"
+      },
+      "complianceNotes": "视觉元素保持原创，不使用真实品牌、商标或受版权保护的棋牌图案；氛围偏艺术化与休闲空间表达，避免暗示赌博、盈利或现实赌场经营。"
+    },
+    "title": "水墨江南雨夜牌室",
+    "updatedAt": "2026-09-15T10:45:09.701Z"
+  }
+]

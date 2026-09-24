@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "title": "秋日暖阳枫叶书房",
+  "counts": {
+    "background": 1,
+    "cardBack": 1,
+    "suitMotif": 4,
+    "rankGlyph": 13,
+    "faceCard": 12
+  },
+  "total": 31,
+  "errors": [],
+  "sampleRank": {
+    "id": "rank-1",
+    "kind": "rankGlyph",
+    "provider": "aihub",
+    "model": "jimeng",
+    "mime": "image/jpeg",
+    "bytes": 203336,
+    "contentHash": "5d3c8528c041dfedfa9a0aa2d1ff49d97be78b09512cd03201b67d4fc5928897",
+    "url": "/v1/assets/5d3c8528c041dfedfa9a0aa2d1ff49d97be78b09512cd03201b67d4fc5928897.jpg",
+    "runId": "AAABoJ985gD-LA",
+    "runIds": [
+      "AAABoJ985gD-LA"
+    ],
+    "attempt": 1,
+    "rank": 1
+  },
+  "qualityPass": true
+}

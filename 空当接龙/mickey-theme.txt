@@ -1,0 +1,125 @@
+{
+  "cardDesign": {
+    "rankFont": "classic",
+    "suitFont": "classic",
+    "rankGlyphs": {
+      "1": "A",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "J",
+      "12": "Q",
+      "13": "K"
+    },
+    "suitSymbols": {
+      "S": "♠",
+      "H": "♥",
+      "D": "♦",
+      "C": "♣"
+    },
+    "faceCards": {
+      "S11": {
+        "style": "classic",
+        "portrait": "jack"
+      },
+      "S12": {
+        "style": "classic",
+        "portrait": "queen"
+      },
+      "S13": {
+        "style": "classic",
+        "portrait": "king"
+      },
+      "H11": {
+        "style": "classic",
+        "portrait": "jack"
+      },
+      "H12": {
+        "style": "classic",
+        "portrait": "queen"
+      },
+      "H13": {
+        "style": "classic",
+        "portrait": "king"
+      },
+      "D11": {
+        "style": "classic",
+        "portrait": "jack"
+      },
+      "D12": {
+        "style": "classic",
+        "portrait": "queen"
+      },
+      "D13": {
+        "style": "classic",
+        "portrait": "king"
+      },
+      "C11": {
+        "style": "classic",
+        "portrait": "jack"
+      },
+      "C12": {
+        "style": "classic",
+        "portrait": "queen"
+      },
+      "C13": {
+        "style": "classic",
+        "portrait": "king"
+      }
+    }
+  },
+  "rankSample": {
+    "id": "rank-7",
+    "kind": "rankGlyph",
+    "provider": "aihub",
+    "model": "jimeng",
+    "mime": "image/jpeg",
+    "bytes": 269110,
+    "contentHash": "50dc542b466bace360a0c9aadd63eb9103898edd4260cfda0c06905acf6dc737",
+    "url": "/v1/assets/50dc542b466bace360a0c9aadd63eb9103898edd4260cfda0c06905acf6dc737.jpg",
+    "runId": "AAABoJ-m0BeAUA",
+    "runIds": [
+      "AAABoJ-m0BeAUA"
+    ],
+    "attempt": 1,
+    "rank": 7
+  },
+  "faceSample": {
+    "id": "face-H12",
+    "kind": "faceCard",
+    "provider": "aihub",
+    "model": "jimeng",
+    "mime": "image/jpeg",
+    "bytes": 347388,
+    "contentHash": "182d3fdfe9db6fcfa380d6a98dbd3ef5d7e59aec41fbf7a54b43bf5563daf80b",
+    "url": "/v1/assets/182d3fdfe9db6fcfa380d6a98dbd3ef5d7e59aec41fbf7a54b43bf5563daf80b.jpg",
+    "runId": "AAABoJ-qkOyKBw",
+    "runIds": [
+      "AAABoJ-qkOyKBw"
+    ],
+    "attempt": 1,
+    "cardId": "H12"
+  },
+  "suitSample": {
+    "id": "suit-H",
+    "kind": "suitMotif",
+    "provider": "aihub",
+    "model": "jimeng",
+    "mime": "image/jpeg",
+    "bytes": 255573,
+    "contentHash": "90395b4a49d2652d33ea201591f0512c995c406bbf85f4c910a3c9b9469b88c7",
+    "url": "/v1/assets/90395b4a49d2652d33ea201591f0512c995c406bbf85f4c910a3c9b9469b88c7.jpg",
+    "runId": "AAABoJ-kaAYghw",
+    "runIds": [
+      "AAABoJ-kaAYghw"
+    ],
+    "attempt": 1,
+    "suit": "H"
+  }
+}
