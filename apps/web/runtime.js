@@ -10,7 +10,7 @@ export const SPEED_STEPS = { fast: 320, normal: 850, slow: 1500 };
 export const SPEED_ORDER = ['fast', 'normal', 'slow'];
 export const SPEED_LABEL = { fast: '快速', normal: '标准', slow: '慢速' };
 
-const DEFAULTS = { speed: 'normal', sfx: true };
+const DEFAULTS = { speed: 'normal', sfx: true, masterVolume: .8, sfxVolume: .8, uiVolume: .6 };
 let cache = null;
 
 export function prefs() {
@@ -18,7 +18,8 @@ export function prefs() {
   try {
     const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     const speed = SPEED_ORDER.includes(raw.speed) ? raw.speed : DEFAULTS.speed;
-    cache = { speed, sfx: typeof raw.sfx === 'boolean' ? raw.sfx : DEFAULTS.sfx };
+    const volume = (key) => Number.isFinite(raw[key]) ? Math.max(0, Math.min(1, raw[key])) : DEFAULTS[key];
+    cache = { masterVolume: volume('masterVolume'), sfxVolume: volume('sfxVolume'), uiVolume: volume('uiVolume'), speed, sfx: typeof raw.sfx === 'boolean' ? raw.sfx : DEFAULTS.sfx };
   } catch {
     cache = { ...DEFAULTS };
   }

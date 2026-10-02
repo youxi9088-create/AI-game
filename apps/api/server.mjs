@@ -362,7 +362,8 @@ async function api(req, res, pathname) {
     const removed = confirmedPalStore.remove(palId);
     return send(res, 200, { status: removed ? 'DELETED' : 'NOT_FOUND', palId });
   }
-  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals });
+  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals, collection: game.getCollection() });
+  if (req.method === 'POST' && pathname === '/api/gallery/compose') { const data = await body(req); return send(res, 200, { creation: game.savePhoto(data) }); }
   if (req.method === 'POST' && pathname === '/api/gallery/seen') { const data = await body(req); return send(res, 200, { cards: game.markCardSeen(data.cardId) }); }
   if (req.method === 'GET' && pathname === '/api/inspect') {
     if (guarded(res)) return error(res, '调试入口已关闭：生产环境不开放运行检查器。', 403);

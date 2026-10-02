@@ -12,7 +12,8 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4176',
     browserName: 'chromium',
-    channel: 'chrome',
+    launchOptions: process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH, args: ['--no-sandbox', '--disable-dev-shm-usage'] } : {},
+    channel: process.env.PLAYWRIGHT_CHANNEL === 'bundled' ? undefined : 'chrome',
     viewport: { width: 1440, height: 900 },
     screenshot: 'only-on-failure'
     /* 这里刻意**不**加 --autoplay-policy=no-user-gesture-required：实测在本环境的

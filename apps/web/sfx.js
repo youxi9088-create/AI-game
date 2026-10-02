@@ -1,87 +1,54 @@
-/**
- * Minimal synthesised SFX — no audio files, no third-party library, no licence surface.
- * Everything is generated with oscillators so the Docker image and the
- * "honest boundary" asset story stay unchanged.
- *
- * Audio is muted when the player turns it off, and also when the OS asks for
- * reduced motion (matching the existing presentation-degradation policy).
- */
+// Semantic event boundary; the existing synthesis remains an explicit preview fallback.
 import { prefs } from './runtime.js';
-
-let ctx = null;
-let mutedForSession = false;
-
-const audible = () => prefs().sfx && !mutedForSession;
-const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function audio() {
-  if (!ctx) {
-    const Ctor = window.AudioContext || window.webkitAudioContext;
-    if (!Ctor) { mutedForSession = true; return null; }
-    try { ctx = new Ctor(); } catch { mutedForSession = true; return null; }
-  }
-  if (ctx.state === 'suspended') ctx.resume().catch(() => {});
-  return ctx;
-}
-
-/** One shaped tone. `to` different from `from` glides the pitch. */
-function tone({ wave = 'sine', from, to = from, dur = 0.12, gain = 0.06, delay = 0 }) {
-  const ac = audio();
-  if (!ac) return;
-  const start = ac.currentTime + delay;
-  const osc = ac.createOscillator();
-  const amp = ac.createGain();
-  osc.type = wave;
-  osc.frequency.setValueAtTime(from, start);
-  if (to !== from) osc.frequency.exponentialRampToValueAtTime(Math.max(1, to), start + dur);
-  amp.gain.setValueAtTime(0.0001, start);
-  amp.gain.exponentialRampToValueAtTime(gain, start + Math.min(0.02, dur / 3));
-  amp.gain.exponentialRampToValueAtTime(0.0001, start + dur);
-  osc.connect(amp).connect(ac.destination);
-  osc.start(start);
-  osc.stop(start + dur + 0.02);
-}
-
-/** Short filtered noise burst — gives the bomb some body. */
-function noise({ dur = 0.6, gain = 0.09 }) {
-  const ac = audio();
-  if (!ac) return;
-  const start = ac.currentTime;
-  const frames = Math.floor(ac.sampleRate * dur);
-  const buffer = ac.createBuffer(1, frames, ac.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < frames; i += 1) data[i] = (Math.random() * 2 - 1) * (1 - i / frames) ** 2;
-  const src = ac.createBufferSource();
-  src.buffer = buffer;
-  const filter = ac.createBiquadFilter();
-  filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(900, start);
-  filter.frequency.exponentialRampToValueAtTime(180, start + dur);
-  const amp = ac.createGain();
-  amp.gain.setValueAtTime(gain, start);
-  amp.gain.exponentialRampToValueAtTime(0.0001, start + dur);
-  src.connect(filter).connect(amp).connect(ac.destination);
-  src.start(start);
-}
-
-const RECIPES = {
-  select: () => tone({ wave: 'square', from: 880, dur: 0.06, gain: 0.035 }),
-  play: () => tone({ wave: 'triangle', from: 440, to: 660, dur: 0.12, gain: 0.055 }),
-  pass: () => tone({ wave: 'sine', from: 300, to: 210, dur: 0.14, gain: 0.05 }),
-  bomb: () => { noise({ dur: 0.6, gain: 0.09 }); tone({ wave: 'sawtooth', from: 120, to: 60, dur: 0.5, gain: 0.07 }); },
-  win: () => [523.25, 659.25, 783.99].forEach((freq, index) => tone({ wave: 'triangle', from: freq, dur: 0.22, gain: 0.06, delay: index * 0.11 })),
-  lose: () => [392, 329.63, 261.63].forEach((freq, index) => tone({ wave: 'sine', from: freq, dur: 0.26, gain: 0.055, delay: index * 0.13 })),
-  unlock: () => [659.25, 987.77].forEach((freq, index) => tone({ wave: 'triangle', from: freq, dur: 0.3, gain: 0.06, delay: index * 0.12 }))
+import { synthEvent, primeSynth, syncMix } from './audio-synth.js';
+export const EVENTS = {
+  select: 'event:/UI/Button_Click', pass: 'event:/SFX/Card/Pass',
+  play: 'event:/SFX/Card/Play_Single', pair: 'event:/SFX/Card/Play_Pair', trio: 'event:/SFX/Card/Play_Trio',
+  straight: 'event:/SFX/Card/Play_Straight', bomb: 'event:/SFX/Card/Play_Bomb', rocket: 'event:/SFX/Card/Play_Rocket',
+  win: 'event:/SFX/Result/Win', lose: 'event:/SFX/Result/Lose', unlock: 'event:/SFX/Album/Card_Collect',
+  cloth: 'event:/SFX/Dress/Cloth_Rustle', shutter: 'event:/SFX/Dress/Reveal_Sting', deal: 'event:/SFX/Deal/Deal_Card'
 };
-
-/** Fire a named sound. Silent no-op when muted or unsupported. */
-export function sfx(name) {
-  if (!audible() || reducedMotion()) return;
-  try { RECIPES[name]?.(); } catch { mutedForSession = true; }
+let backend = null;
+let target = 0, tension = 0, reveal = 0, bombUntil = 0;
+let audioError = null;
+export function installAudioBackend(value) {
+  if (!value || !['play', 'parameters', 'mix', 'resume', 'pause', 'dispose'].every((key) => typeof value[key] === 'function')) throw new Error('音频后端接口不完整');
+  backend?.dispose(); backend = value; audioError = null; syncAudio();
 }
-
-/** Called from the settings toggle so the AudioContext is created inside a user gesture. */
+export function audioStatus() { return { mode: backend ? 'fmod' : 'synth-preview', error: audioError, tension, reveal }; }
+function run(fn) { try { fn(); } catch (error) { audioError = String(error.message); try { backend?.dispose(); } catch {} backend = null; } }
+export function syncAudio() {
+  syncMix();
+  run(() => backend?.mix({ master: prefs().sfx && !document.hidden ? prefs().masterVolume : 0, sfx: prefs().sfxVolume, ui: prefs().uiVolume }));
+}
 export function primeAudio() {
-  if (!audible()) return;
-  audio();
+  if (!prefs().sfx) { syncAudio(); return; }
+  if (backend) run(() => backend.resume()); else primeSynth();
+  syncAudio();
 }
+export function sfx(name, options = {}) {
+  if (!EVENTS[name] || !prefs().sfx || document.hidden) return;
+  if (backend) run(() => backend.play(EVENTS[name], options));
+  else synthEvent(name, { ...options, bus: name === 'select' ? 'ui' : 'sfx' });
+}
+export function playCardAudio(combo, { ai = false } = {}) {
+  const type = combo?.type || '';
+  const name = type === 'ROCKET' ? 'rocket' : type === 'BOMB' ? 'bomb' : type === 'PAIR' ? 'pair' : /TRIPLE|AIRPLANE|FOUR_TWO/.test(type) ? 'trio' : /STRAIGHT/.test(type) ? 'straight' : 'play';
+  if (name === 'bomb' || name === 'rocket') bombUntil = Date.now() + 1800;
+  sfx(name, { volume: ai ? .65 : 1 });
+}
+export function updateAudioScene(game, route, videoPlaying = false) {
+  const counts = game?.players?.map((p) => p.count).filter((n) => n > 0) || [];
+  const remaining = counts.length ? Math.min(...counts) : 20;
+  target = route === 'table' && game?.phase === 'PLAYING' ? (remaining <= 2 ? .8 : remaining <= 5 ? .6 : .3) : 0;
+  const stage = game?.settlementStage;
+  reveal = route === 'table' && game?.settlement?.winnerId === 'player' && ['PERFORMANCE', 'PHOTO_REVEAL'].includes(stage) ? 1 : 0;
+  run(() => backend?.parameters({ TableTension: tension, PerformanceReveal: reveal, VideoPlaying: videoPlaying ? 1 : 0 }));
+}
+const smoothingTimer = setInterval(() => {
+  if (document.hidden || !prefs().sfx) return;
+  tension += ((Date.now() < bombUntil ? 1 : target) - tension) * .3;
+  run(() => backend?.parameters({ TableTension: tension, PerformanceReveal: reveal }));
+}, 500);
+smoothingTimer.unref?.();
+document.addEventListener('visibilitychange', () => { syncAudio(); if (document.hidden) run(() => backend?.pause()); });

@@ -1,3 +1,4 @@
+import { emptyCollection, recordWin, composePhoto, collectionSummary } from '../../packages/collection-core/index.mjs';
 import { createHmac, randomBytes, randomUUID } from 'node:crypto';
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
@@ -55,6 +56,7 @@ export class GameService {
     this.gameEntryTokenCost = Math.max(0, Math.floor(Number(gameEntryTokenCost) || 0));
     this.games = new Map();
     this.gallery = new Map();
+    this.collection = emptyCollection();
     this.ledger = [];
     this.walletBalance = this.initialTokenBalance;
     this.restoreWallet();
@@ -85,16 +87,21 @@ export class GameService {
     if (!this.galleryPath) return;
     try {
       const parsed = JSON.parse(readFileSync(this.galleryPath, 'utf8'));
-      if (Array.isArray(parsed?.player)) this.gallery.set('player', parsed.player);
+      if (!Array.isArray(parsed?.player)) throw new Error('写真馆存档格式无效。');
+      this.gallery.set('player', parsed.player);
+      if (parsed.collection) {
+        if (!Number.isSafeInteger(parsed.collection.wins) || parsed.collection.wins < 0 || !Array.isArray(parsed.collection.creations) || !parsed.collection.bonds || !parsed.collection.rewards) throw new Error('收藏进度存档格式无效。');
+        this.collection = parsed.collection;
+      }
     } catch (error) {
-      if (error?.code !== 'ENOENT') console.warn(`写真馆存档读取失败，使用空收藏：${error.message}`);
+      if (error?.code !== 'ENOENT') throw error; // Never overwrite an unreadable collection.
     }
   }
   persistGallery() {
     if (!this.galleryPath) return;
     mkdirSync(dirname(this.galleryPath), { recursive: true });
     const temp = `${this.galleryPath}.${randomUUID()}.tmp`;
-    writeFileSync(temp, JSON.stringify({ version: 1, player: this.getGallery() }, null, 2), 'utf8');
+    writeFileSync(temp, JSON.stringify({ version: 2, player: this.getGallery(), collection: this.collection }, null, 2), 'utf8');
     renameSync(temp, this.galleryPath);
   }
   /* 座位解析：形状由契约校验，资格由名册校验，两者缺一不可。 */
@@ -395,12 +402,13 @@ export class GameService {
     const dynamicOutfits = { ...this.palOutfits };
     this.registryAssets().forEach((asset) => { if (asset?.appearance?.outfitLibrary?.length) dynamicOutfits[asset.palId] = asset.appearance.outfitLibrary; });
     game.settlement = planSettlement({
-      gameId: game.id, winnerId, loserPalIds, multiplier: game.multiplier, breakdown,
+      gameId: game.id, winnerId: (winnerId === 'player' || (landlordId !== 'player' && !winnerIsLandlord)) ? 'player' : winnerId, loserPalIds, multiplier: game.multiplier, breakdown,
       playerIsLandlord: landlordId === 'player',
       alreadyUnlocked: unlocked, outfitLibrary: dynamicOutfits,
       gameStats: { rounds, lastCombo: game.currentCombo?.label || null },
       unlockedAt: new Date().toISOString()
     });
+    game.settlement.finisherId = winnerId;
     game.settlementStage = 'RESULT';
     if (game.settlement.tokenDelta !== 0) {
       const receipt = this.recordLedger(game, game.settlement.tokenDelta, { type: 'SETTLEMENT' });
@@ -409,6 +417,7 @@ export class GameService {
     if (game.settlement.card) {
       const cards = [...unlocked];
       const index = cards.findIndex((entry) => entry.cardId === game.settlement.card.cardId);
+      this.collection = recordWin(this.collection, { gameId: game.id, palId: game.settlement.card.palId, cardId: game.settlement.card.cardId });
       if (index >= 0) cards[index] = { ...game.settlement.card, serialNo: cards[index].serialNo };
       else cards.push(game.settlement.card);
       this.gallery.set('player', cards);
@@ -479,6 +488,17 @@ export class GameService {
     const result = fn(game);
     game.commandCache.set(commandId, { kind, result });
     return result;
+  }
+  getCollection() {
+    const libraries = { ...this.palOutfits };
+    this.registryAssets().forEach((asset) => { if (asset?.appearance?.outfitLibrary?.length) libraries[asset.palId] = asset.appearance.outfitLibrary; });
+    return { ...collectionSummary(this.collection, this.getGallery(), libraries), creations: this.collection.creations, pending: Object.entries(this.collection.rewards).filter(([gameId]) => !this.collection.creations.some((c) => c.gameId === gameId)).map(([gameId, reward]) => ({ gameId, ...reward })) };
+  }
+  savePhoto(input) {
+    const before = this.collection;
+    this.collection = composePhoto(before, this.getGallery(), input);
+    try { this.persistGallery(); } catch (error) { this.collection = before; throw error; }
+    return this.collection.creations.find((item) => item.gameId === input.gameId);
   }
   getGallery() { return this.gallery.get('player') || []; }
   markCardSeen(cardId) {

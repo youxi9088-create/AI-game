@@ -1,5 +1,6 @@
+import { studioMarkup, collectionMarkup, exportPhoto } from './photo-studio.js';
 import { npcDelay, prefs, SPEED_LABEL, cycleSpeed, setPref } from './runtime.js';
-import { sfx, primeAudio } from './sfx.js';
+import { sfx, primeAudio, playCardAudio, updateAudioScene, syncAudio } from './sfx.js';
 import { RESOURCE_SLOTS, displayAsset } from './asset-slots.js';
 
 const validRoutes = new Set(['home', 'table', 'workshop', 'gallery', 'inspector']);
@@ -10,6 +11,7 @@ const state = {
   replay: null, entry: false, npcTimer: null,
   pals: [], palIndex: {}, defaultSeats: null, seats: null, walletBalance: 100, galleryCards: [], galleryTab: 'all', galleryQuick: null,
   detail: null, detailReturnCard: null, imagePreview: null, resourcePlanDetail: null, flownFor: null, sfxFiredFor: null,
+  collection: null, studioGame: null, photoDraft: null,
   closeup: null, closeupKey: null, closeupTimer: null
 };
 const WORKSHOP_CLOTHING_OPTIONS = [
@@ -257,7 +259,7 @@ function renderHome() {
   app.innerHTML = `<section class="lounge-home">
     <div class="lounge-scrim" aria-hidden="true"></div><p class="lounge-kicker">DRESSBATTLE CLUB · SOLO TABLE</p>
     <div class="lounge-character left">${palStandee(chosenSeats()[0], 'lounge-pal')}</div><div class="lounge-character right">${palStandee(chosenSeats()[1], 'lounge-pal')}</div>
-    <div class="lounge-copy"><p class="eyebrow">今晚的牌局 · 两位 AI 牌友已入席</p><h1>月光落桌，<br/><span>以牌会友。</span></h1><p>单机经典斗地主。观察她们的动作、台词与出牌，赢下一局，看一场现场换装演出，把定格的写真卡收入卡册。</p>${seatPicker()}<div class="hero-actions"><button class="primary lounge-cta" data-action="start">进入今晚牌局 <span>→</span></button><button class="secondary lounge-secondary" data-route="workshop">创建虚构牌友</button></div><p class="guard">当前 ${state.walletBalance ?? 100} Token · 开局消耗 1 Token，结算按倍率增加或扣减（余额不足扣至 0）· 无现金价值</p></div>
+    <div class="lounge-copy"><p class="eyebrow">今晚的牌局 · 两位 AI 牌友已入席</p><h1>月光落桌，<br/><span>以牌会友。</span></h1><p>赢一局，解锁或升级写真。看完演出，亲手搭配、命名并定格，收藏属于你的作品。</p>${seatPicker()}<div class="hero-actions"><button class="primary lounge-cta" data-action="start">进入今晚牌局 <span>→</span></button><button class="secondary lounge-secondary" data-route="workshop">创建虚构牌友</button></div><p class="guard">当前 ${state.walletBalance ?? 100} Token · 开局消耗 1 Token，结算按倍率增加或扣减（余额不足扣至 0）· 不可购买、转赠或提现，无现金价值</p></div>
     <div class="lounge-brief"><div><b>01</b><span>服务端权威判定</span></div><div><b>02</b><span>逐位 AI 回合</span></div><div><b>03</b><span>现场换装与写真收集</span></div></div>
   </section>`;
 }
@@ -335,7 +337,7 @@ function renderTable() {
 /* ---------- settlement: live dress-up performance ---------- */
 /* RESULT 阶段的主按钮文案按胜负内联在 settlementOverlay 里（赢：「xxx将为你跳舞」/ 输：「继续」），
    这里的映射只覆盖 RESULT 之后的阶段；RESULT 兜底落到「继续」。 */
-function settlementLabel(stage) { return ({ PERFORMANCE: '揭晓写真卡', PHOTO_REVEAL: '前往写真馆', DESTINATION: '再开一局' })[stage] || '继续'; }
+function settlementLabel(stage) { return ({ PERFORMANCE: '揭晓写真卡', PHOTO_REVEAL: '完成收藏', DESTINATION: '再开一局' })[stage] || '继续'; }
 /* A4 倍数必须可解释：把「这个 ×N 是怎么来的」摊开写，封顶也要如实标注。 */
 function multiplierLine(s) {
   const b = s.breakdown;
@@ -453,7 +455,7 @@ function settlementOverlay(game) {
     : stage === 'PERFORMANCE' ? settlementPerformanceBody(cardRecord)
     : dressupFigure(cardRecord);
   const primary = stage === 'RESULT' ? (playerWon ? `${name}将为你跳舞` : '继续') : settlementLabel(stage);
-  return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="dressup-stage"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${stage !== 'DESTINATION' ? '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button>' : ''}<button class="primary" data-action="advance">${primary}</button>${stage === 'DESTINATION' ? '<button class="secondary" data-route="gallery">打开写真馆</button>' : ''}${stage === 'DESTINATION' && state.partner && !state.partner.submitted ? '<button class="primary" data-action="partner-return">创作完成 · 返回平台</button>' : ''}</div></div></div></div></section>`;
+  return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="dressup-stage"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${stage !== 'DESTINATION' ? '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button>' : ''}<button class="primary" data-action="advance">${primary}</button>${stage === 'DESTINATION' ? '<button class="secondary" data-route="gallery">打开写真馆</button><button class="secondary" data-action="open-studio">搭配我的写真</button>' : ''}${stage === 'DESTINATION' && state.partner && !state.partner.submitted ? '<button class="primary" data-action="partner-return">创作完成 · 返回平台</button>' : ''}</div></div></div></div></section>`;
 }
 
 /* ---------- photo cards ---------- */
@@ -538,7 +540,7 @@ function renderGallery() {
   app.innerHTML = `<section class="gallery">
     <div class="gallery-head"><div><p class="eyebrow">COLLECTION · LIVE DRESS-UP</p><h1>写真馆</h1><p>每张卡都是一场现场换装演出的定格。重复解锁同一服装会让卡面升级，纯视觉、无数值。</p></div>
       <div class="collection-progress" role="status"><b>${unlocked} / ${total}</b><span>已解锁写真卡</span><div class="progress-track"><i style="width:${total ? Math.round(unlocked / total * 100) : 0}%"></i></div><span class="points">收藏点 ◆ ${points}</span></div></div>
-    <div class="gallery-filters">${tab('all', '全部')}${tab('pal-linxing', '林星')}${tab('pal-mia', '米娅')}${tab('pal-yinlan', '银岚')}${state.pals.some((pal) => /^pal-user-/.test(pal.palId)) ? tab('custom', '自定义牌友') : ''}<span class="filter-gap"></span>${quick('new', '新！')}${quick('first', '金框')}${quick('missing', '缺失')}<span class="gallery-result-count" role="status" aria-live="polite">显示 ${slots.filter((slot) => slot.record).length} / ${slots.length} 张</span></div>
+    ${collectionMarkup(state.collection, palName)}<div class="gallery-filters">${tab('all', '全部')}${tab('pal-linxing', '林星')}${tab('pal-mia', '米娅')}${tab('pal-yinlan', '银岚')}${state.pals.some((pal) => /^pal-user-/.test(pal.palId)) ? tab('custom', '自定义牌友') : ''}<span class="filter-gap"></span>${quick('new', '新！')}${quick('first', '金框')}${quick('missing', '缺失')}<span class="gallery-result-count" role="status" aria-live="polite">显示 ${slots.filter((slot) => slot.record).length} / ${slots.length} 张</span></div>
     <div class="card-level-legend" aria-label="写真卡等级图例"><span>重复解锁升级</span>${['初见','流光','绮影','华彩','典藏'].map((name, index) => `<b class="lv${index + 1}"><i>Lv.${index + 1}</i>${name}</b>`).join('')}</div>
     <!-- 筛选只改变卡池，不改变卡型：写真馆始终使用同一套 3:4 竖卡栅格，避免少卡时突然切成横向大卡造成视觉跳变。 -->
     <div class="gallery-grid" id="galleryGrid">${slots.length ? slots.map(gallerySlot).join('') : '<div class="empty-line">当前筛选下没有写真卡。</div>'}</div>
@@ -915,7 +917,7 @@ function scheduleNpcTurn() {
       const path = bidding ? '/api/game/advance-bid' : '/api/game/advance-turn';
       state.game = await api(path, { method: 'POST', body: JSON.stringify({ gameId: state.game.id, commandId: commandId() }) });
       const last = state.game.events.slice().reverse().find((item) => item.type === 'PAL_ACTION');
-      if (last) sfx(last.decision === 'PLAY' ? 'play' : 'pass');
+      if (last) { if (last.decision === 'PLAY') playCardAudio(last.combo, { ai: true }); else sfx('pass', { volume: .65 }); }
       else sfx('select');
       render();
     }
@@ -923,10 +925,21 @@ function scheduleNpcTurn() {
   }, npcDelay());
 }
 function render() {
+  const activePhotoOption = document.activeElement?.dataset?.photoOption;
   updateToken();
   applyPrefs();
   document.querySelectorAll('nav a').forEach((link) => { const active = link.dataset.route === state.route; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); });
   ({ home: renderHome, table: renderTable, workshop: renderWorkshop, gallery: renderGallery, inspector: renderInspector }[state.route] || renderHome)();
+  document.querySelector('.photo-studio')?.remove();
+  document.body.classList.toggle('studio-open', Boolean(state.studioGame));
+  app.inert = Boolean(state.studioGame);
+  document.querySelector('.topbar').inert = Boolean(state.studioGame);
+  if (state.studioGame && state.photoDraft) {
+    const cards = state.galleryCards.filter((c) => c.palId === state.photoDraft.palId);
+    document.body.insertAdjacentHTML('beforeend', studioMarkup({ gameId: state.studioGame, draft: state.photoDraft, cards, name: palName(state.photoDraft.palId) }));
+  }
+  syncVideoAudio();
+  updateAudioScene(state.game, state.route, Boolean(document.querySelector('.dance-stage video')));
   scheduleNpcTurn();
   updateGalleryBadge();
   if (state.game?.phase === 'SETTLED' && state.game?.settlement && state.sfxFiredFor !== state.game.id) {
@@ -934,7 +947,11 @@ function render() {
     sfx(state.game.settlement.winnerId === 'player' ? 'win' : 'lose');
   }
   if (state.game?.phase === 'SETTLED' && state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) flyCardOnce(state.game);
-  if (state.entry) requestAnimationFrame(() => {
+  if (state.studioGame) requestAnimationFrame(() => {
+    const target = activePhotoOption ? document.querySelector(`[data-photo-option="${activePhotoOption}"]`) : document.querySelector('#studio-title');
+    target?.focus({ preventScroll: true });
+  });
+  else if (state.entry) requestAnimationFrame(() => {
     document.querySelector('[data-action="close-entry"]')?.focus();
     const segs = Array.from(document.querySelectorAll('[data-entry-seg]'));
     const caption = document.querySelector('[data-entry-caption]');
@@ -1020,7 +1037,7 @@ function flyCardOnce(game) {
     ], { duration: 1100, easing: 'cubic-bezier(.3,.7,.3,1)' }).onfinish = () => { ghost.remove(); target.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { duration: 420 }); };
   });
 }
-async function refreshGallery() { const payload = await api('/api/gallery'); state.galleryCards = (payload.cards || []).map(repairGalleryCard); }
+async function refreshGallery() { const payload = await api('/api/gallery'); state.galleryCards = (payload.cards || []).map(repairGalleryCard); state.collection = payload.collection || null; }
 async function refreshWallet() { const wallet = await api('/api/game/wallet'); state.walletBalance = wallet.tokenBalance ?? wallet.balance; }
 async function markSeen(cardId) {
   const record = state.galleryCards.find((entry) => entry.cardId === cardId);
@@ -1099,6 +1116,7 @@ async function navigate(route, { updateHash = true } = {}) {
 
 /* ---------- events ---------- */
 document.addEventListener('click', async (event) => {
+  primeAudio();
   const route = event.target.closest('[data-route]')?.dataset.route; if (route) { event.preventDefault(); return navigate(route); }
   const actionNode = event.target.closest('[data-action]');
   if (!actionNode) {
@@ -1224,8 +1242,14 @@ document.addEventListener('click', async (event) => {
       }
       return;
     }
+    if (action === 'open-studio') { await openStudio(state.game.id, state.game.settlement.card); return; }
+    if (action === 'close-studio') { state.studioGame = null; state.photoDraft = null; render(); return; }
+    if (action === 'compose-pending') { const reward = state.collection.pending.find((r) => r.gameId === actionNode.dataset.game); const card = state.galleryCards.find((c) => c.cardId === reward?.cardId) || state.galleryCards.find((c) => c.palId === reward?.palId); if (reward && card) await openStudio(reward.gameId, card); return; }
+    if (action === 'edit-creation') { const c = state.collection.creations.find((c) => c.gameId === actionNode.dataset.game); if (c) await openStudio(c.gameId, c); return; }
+    if (action === 'export-creation') { const c = state.collection.creations.find((c) => c.creationId === actionNode.dataset.creation); if (c) await exportPhoto(c); return; }
+    if (action === 'audio-settings') { document.querySelector('#audio-settings').hidden = !document.querySelector('#audio-settings').hidden; return; }
     if (action === 'toggle-speed') { cycleSpeed(); applyPrefs(); const label = SPEED_LABEL[prefs().speed]; notice(`牌友思考速度：${label}`); return; }
-    if (action === 'toggle-sfx') { setPref('sfx', !prefs().sfx); applyPrefs(); primeAudio(); sfx('select'); notice(prefs().sfx ? '音效已开启。' : '音效已关闭。'); return; }
+    if (action === 'toggle-sfx') { setPref('sfx', !prefs().sfx); applyPrefs(); primeAudio(); syncVideoAudio(); sfx('select'); notice(prefs().sfx ? '音效已开启。' : '音效已关闭。'); return; }
     if (action === 'start' || action === 'restart') return start();
     if (action === 'partner-return') {
       if (!state.partner?.sessionId) return;
@@ -1240,10 +1264,11 @@ document.addEventListener('click', async (event) => {
       return;
     }
     if (action === 'cycle-seat') { cycleSeat(Number(actionNode.dataset.index)); sfx('select'); render(); return; }
+    if (action === 'bid') sfx('deal');
     if (action === 'bid') state.game = await api('/api/game/bid', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, score: Number(actionNode.dataset.score), commandId: commandId() }) });
     if (action === 'grab') state.game = await api('/api/game/grab', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, accept: actionNode.dataset.accept === '1', commandId: commandId() }) });
     if (action === 'hint') { const hint = await api(`/api/game/hint?gameId=${state.game.id}`); state.selected = new Set(hint.cards); notice(hint.message); }
-    if (action === 'play') { state.game = await api('/api/game/play', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, cards: [...state.selected], commandId: commandId() }) }); state.selected.clear(); const combo = state.game.currentCombo; sfx(combo?.type === 'BOMB' || combo?.type === 'ROCKET' ? 'bomb' : 'play'); }
+    if (action === 'play') { state.game = await api('/api/game/play', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, cards: [...state.selected], commandId: commandId() }) }); state.selected.clear(); const combo = state.game.currentCombo; playCardAudio(combo); }
     if (action === 'pass') { state.game = await api('/api/game/pass', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, commandId: commandId() }) }); state.selected.clear(); sfx('pass'); }
     if (action === 'advance') {
       if (state.game.settlementStage === 'DESTINATION') return start();
@@ -1251,7 +1276,7 @@ document.addEventListener('click', async (event) => {
       state.walletBalance = state.game.tokenBalance;
       if (state.partner?.sessionId && state.game.settlementStage === 'RESULT') api('/api/partner/progress', { method: 'POST', body: JSON.stringify({ sessionId: state.partner.sessionId, percent: 80, stage: 'settlement', message: '进入结算演出' }) }).catch(() => {});
       if (['PHOTO_REVEAL', 'DESTINATION'].includes(state.game.settlementStage)) await refreshGallery();
-      if (state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) sfx('unlock');
+      if (state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) { sfx('unlock'); await openStudio(state.game.id, state.game.settlement.card); return; }
     }
     if (action === 'skip-settlement') {
       for (let step = 0; step < 5 && state.game.settlementStage !== 'DESTINATION'; step += 1) {
@@ -1323,6 +1348,11 @@ document.addEventListener('error', (event) => {
   image.parentElement?.classList.add('image-load-failed');
 }, true);
 document.addEventListener('keydown', (event) => {
+  if (state.studioGame) {
+    if (event.key === 'Escape') { state.studioGame = null; state.photoDraft = null; render(); }
+    if (event.key === 'Tab') { const nodes = [...document.querySelectorAll('.photo-studio input,.photo-studio select,.photo-studio button')]; const first = nodes[0], last = nodes.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
+    return;
+  }
   if ((event.key === 'Enter' || event.key === ' ') && event.target.matches?.('.pcard[data-card]')) { event.preventDefault(); event.target.click(); }
   if (state.imagePreview && event.key === 'Escape') { state.imagePreview = null; render(); }
   else if (state.detail) {
@@ -1423,3 +1453,40 @@ async function boot() {
   await navigate(state.route, { updateHash: false });
 }
 boot().catch((err) => { notice(err.message, true); render(); });
+
+async function openStudio(gameId, source) {
+  if (!source) return;
+  await refreshGallery();
+  const existing = state.collection?.creations.find((c) => c.gameId === gameId);
+  const value = existing || source;
+  state.studioGame = gameId;
+  state.photoDraft = { palId: value.palId, cardId: value.cardId, name: value.name || '', background: value.background || 'midnight', filter: value.filter || 'natural', framing: value.framing || 'full' };
+  render();
+  document.querySelector('#studio-title')?.focus({ preventScroll: true });
+}
+document.addEventListener('change', (event) => {
+  const key = event.target.dataset.photoOption;
+  if (!key || !state.photoDraft) return;
+  state.photoDraft[key] = event.target.value;
+  sfx('cloth'); render();
+  document.querySelector(`[data-photo-option="${key}"]`)?.focus();
+});
+document.addEventListener('input', (event) => {
+  if (event.target.id === 'photo-name' && state.photoDraft) { state.photoDraft.name = event.target.value; const title = document.querySelector('.studio-preview .my-photo-caption strong'); if (title) title.textContent = event.target.value || '我的定格'; }
+});
+document.addEventListener('submit', async (event) => {
+  if (event.target.id !== 'photo-studio-form') return;
+  event.preventDefault();
+  const button = event.target.querySelector('[type="submit"]'); button.disabled = true;
+  try {
+    await api('/api/gallery/compose', { method: 'POST', body: JSON.stringify({ ...state.photoDraft, gameId: state.studioGame }) });
+    sfx('shutter'); state.studioGame = null; state.photoDraft = null;
+    await navigate('gallery'); notice('专属写真已收藏，可在“我的定格”导出分享图。');
+  } catch (error) { button.disabled = false; notice(error.message, true); }
+});
+
+document.addEventListener('input', (event) => { const key = event.target.dataset.audioVolume; if (key) { setPref(key, Number(event.target.value)); syncAudio(); syncVideoAudio(); } });
+for (const input of document.querySelectorAll('[data-audio-volume]')) input.value = prefs()[input.dataset.audioVolume];
+
+function syncVideoAudio() { document.querySelectorAll('.dance-stage video').forEach((v) => { v.volume = prefs().masterVolume; v.muted = !prefs().sfx || document.hidden; }); }
+document.addEventListener('visibilitychange', () => { syncVideoAudio(); if (document.hidden) document.querySelectorAll('.dance-stage video').forEach((v) => v.pause()); });
