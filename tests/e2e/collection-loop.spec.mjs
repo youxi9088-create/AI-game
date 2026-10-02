@@ -1,4 +1,42 @@
-import { test, expect } from '@playwright/test';
+import { test as base, expect } from '@playwright/test';
+import { spawn } from 'node:child_process';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+// A real, independent API process keeps this win out of the other specs' gallery.
+const test = base.extend({
+  baseURL: async ({}, use) => {
+    const dir = await mkdtemp(join(tmpdir(), 'dressbattle-collection-'));
+    const child = spawn(process.execPath, ['--input-type=module', '-e',
+      "import { server } from './apps/api/server.mjs'; server.listen(0, '127.0.0.1', () => console.log('TEST_PORT=' + server.address().port));"
+    ], { cwd: process.cwd(), env: { ...process.env, NODE_ENV: 'test',
+      GALLERY_STATE_PATH: join(dir, 'gallery.json'), TOKEN_STATE_PATH: join(dir, 'wallet.json'),
+      CONFIRMED_PALS_PATH: join(dir, 'pals.json'), PAL_RESOURCE_STATE_PATH: join(dir, 'tasks.json')
+    }, stdio: ['ignore', 'pipe', 'pipe'] });
+    const exited = new Promise((resolve) => child.once('exit', resolve));
+    let output = '';
+    child.stderr.on('data', (data) => { output += data; });
+    try {
+      const port = await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error(`API startup timed out: ${output}`)), 10_000);
+        const finish = (error, port) => { clearTimeout(timer); error ? reject(error) : resolve(port); };
+        child.once('error', (error) => finish(error));
+        child.once('exit', (code) => finish(new Error(`API exited ${code}: ${output}`)));
+        child.stdout.on('data', (data) => {
+          output += data;
+          const match = /TEST_PORT=(\d+)/.exec(output);
+          if (match) finish(null, match[1]);
+        });
+      });
+      await use(`http://127.0.0.1:${port}`);
+    } finally {
+      child.kill('SIGKILL');
+      await exited;
+      await rm(dir, { recursive: true, force: true });
+    }
+  }
+});
 test('a real win opens the photo studio, persists composition and exports a PNG', async ({ page, request }) => {
   const errors = []; page.on('pageerror', (e) => errors.push(e.message));
   const post = async (path, data) => { const r = await request.post(path, { data }); expect(r.ok(), await r.text()).toBeTruthy(); return r.json(); };

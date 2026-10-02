@@ -207,6 +207,8 @@ nav a:hover, nav a.active { background: #d7a74a24; color: #fff5da; }
 .self-seat { position: absolute; z-index: 3; right: 50%; bottom: 14px; transform: translateX(50%); color: #e5dac6; font-size: 11px; font-weight: 800; letter-spacing: .3px; }
 .hand-wrap { margin-top: 12px; border-color: #d3b06c55; background: linear-gradient(180deg,#151d2bea,#0d131ff5); box-shadow: 0 14px 32px #00000070; }
 .hand-header { color: #f2ebde; }
+/* Keep compact controls within the 35px header budget across CJK fallback fonts. */
+.hand-header .compact { line-height: 17px; }
 .hand-header b { background: #3b2b18; color: #f2c972; }
 .hand-wrap .secondary { border-color: #d8b36f88; background: #161d2a; color: #f0d49a; }
 .hand-wrap .secondary:hover { background: #2a2630; color: #fff3d6; }

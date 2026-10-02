@@ -92,12 +92,14 @@ test('browser main loop reaches live dress-up settlement and a collected photo c
   expect(geometry.shown, '全屏舞台必须保持源片比例，不裁切').toBeCloseTo(geometry.natural, 2);
   await page.screenshot({ path: 'test-results/settlement-video-performance.png', fullPage: true });
   await page.getByRole('button', { name: '揭晓写真卡' }).click();
+  await expect(page.locator('.photo-studio')).toBeVisible();
+  await page.getByRole('button', { name: '稍后再搭配', exact: true }).click();
   const reveal = page.locator('.photo-card-reveal');
   await expect(reveal).toBeVisible();
   await expect(reveal.locator('.pcard-art')).toBeVisible();
   await expect(reveal.locator('.pcard-serial')).toContainText('No.001');
   await page.screenshot({ path: 'test-results/settlement-photo-reveal.png', fullPage: true });
-  await page.getByRole('button', { name: '前往写真馆' }).click();
+  await page.getByRole('button', { name: '完成收藏' }).click();
   await page.getByRole('button', { name: '打开写真馆' }).click();
   await expect(page).toHaveURL(/#\/gallery$/);
   /* 林星 4 套 + 米娅 1 套 + 银岚 1 套 = 6 张；每张均有独立回放视频。 */
@@ -137,8 +139,8 @@ test('production workshop exposes resource-pack plan, provider state and policy 
   await page.getByRole('button', { name: '建立完整资产计划' }).click();
   await expect(page.locator('.resource-plan').getByRole('heading', { name: '完整首发包' })).toBeVisible();
   await page.getByRole('button', { name: '查看详情' }).first().click();
-  await expect(page.getByText('A05 失败 WebM')).toBeVisible();
-  await expect(page.getByText('首套换装 / 写真演出视频')).toBeVisible();
+  await expect(page.getByText('A05 失败透明 WebM（3:4）')).toBeVisible();
+  await expect(page.getByText('首套跳舞换装演出视频')).toBeVisible();
   await page.getByRole('button', { name: '只生成角色资料卡' }).click();
   await expect(page.locator('#toast')).toContainText('PL-PROVIDER');
   await expect(page.locator('.resource-row.locked')).not.toHaveCount(0);

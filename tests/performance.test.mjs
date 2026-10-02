@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { MAX_UPGRADE_LEVEL } from '../packages/contracts/index.mjs';
 import { planSettlement, nextSettlementStage, planCloseup } from '../packages/performance-core/index.mjs';
 
 const library = {
@@ -115,4 +116,20 @@ test('a closeup fires only on moments worth cutting to', () => {
   assert.equal(planCloseup({ event: { type: 'BID_CALL', playerId: 'pal-mia', score: 1 } }), null);
   assert.equal(planCloseup({ event: { type: 'BID_GRAB', playerId: 'pal-mia', accepted: true } }).tone, 'grab');
   assert.equal(planCloseup({ event: { type: 'BID_GRAB', playerId: 'pal-mia', accepted: false } }), null);
+});
+
+
+test('a persisted unique-card gallery upgrades every outfit evenly and respects the cap', () => {
+  const cards = new Map();
+  for (let i = 0; i < 3 * (MAX_UPGRADE_LEVEL + 1); i++) {
+    const result = planSettlement(win(`persisted-${i}`, [...cards.values()]));
+    cards.set(result.cardId, result.card);
+    if (i < 3 * MAX_UPGRADE_LEVEL) {
+      assert.equal(result.card.outfitId, library['pal-linxing'][i % 3].outfitId);
+      assert.equal(result.card.upgradeLevel, Math.floor(i / 3) + 1);
+    }
+    assert.equal(result.card.serialNo, library['pal-linxing'].findIndex((o) => o.outfitId === result.card.outfitId) + 1);
+    assert.ok(result.card.upgradeLevel <= MAX_UPGRADE_LEVEL);
+  }
+  assert.deepEqual([...cards.values()].map((c) => c.upgradeLevel), [5, 5, 5]);
 });

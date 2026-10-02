@@ -11,6 +11,8 @@
 - 服务端校验胜利资格、角色与已解锁服装，忽略客户端提供的图片路径和胜场等字段。
 - 每次牌友作为胜利奖励登台 +10 羁绊；30/60/100 阈值开放新的羁绊文字；1/3/6 款收藏自动获得称号。下一套服装按现有确定顺序展示。旧版收藏保留，不臆造历史羁绊。
 - 修正农民队友先出完牌时玩家也应获胜；finisherId 单独保存实际出完牌者。
+- 修正集齐服装后固定升级首卡的问题：优先升级最低等级服装，同级按目录顺序，保持原编号并遵守 5 级上限。兼容同一卡的历史重复记录。
+- 固定牌桌操作按钮行高，避免中文备用字体使桌面布局多出滚动。
 - gallery.json 从 v1 兼容读取、写入 v2；卡册、奖励资格、作品和羁绊共用一次原子文件替换。损坏文件阻止启动，避免以空档覆盖。
 - 音频事件统一入口；单张/对子/三张类/顺子/炸弹/王炸差异音色，AI 降音量，服装与定格反馈；首次点击解锁音频，分组音量持久化，后台暂停，减少动态不再等同静音。合成音同时最多 24 声，播放结束回收节点。
 - FMOD 接口适配器使用 getEvent → EventDescription.createInstance 输出对象模式，含播放失败时实例释放。事件层提供 TableTension、PerformanceReveal、VideoPlaying 参数。
@@ -28,9 +30,11 @@ FMOD 集成：宿主用自身获授权 SDK 初始化 Studio System 并加载 Ban
 ## 验证
 
 - npm run lint：JS 语法检查（项目的 typecheck 同为语法检查，不是静态类型分析）。
-- npm test：规则、AI、收藏迁移、幂等、解锁防伪和 FMOD 适配器回归。
+- npm test：117/117 通过；覆盖规则、AI、收藏迁移、幂等、解锁防伪、连续升级封顶和 FMOD 适配器回归。
 - npm run build：现有构建边界文件检查，无打包编译步骤。
-- PLAYWRIGHT_CHANNEL=bundled npx playwright test tests/e2e/collection-loop.spec.mjs
+- PLAYWRIGHT_CHANNEL=bundled npx playwright test tests/e2e/collection-loop.spec.mjs tests/e2e/first-loop.spec.mjs tests/e2e/ui-hardening.spec.mjs
+- 上述 17 项浏览器用例首轮 14 项通过；3 项失败定位为原有工坊测试文案过期和字体行高溢出，修复后定向复测均通过。没有声称运行全部 E2E 文件。
+- 新写真用例使用独立服务进程及临时存档，避免新增胜局污染原有首局收藏断言。原有主流程同时验证跳过搭配后进入卡册与视频回放。
 - 可用 PLAYWRIGHT_EXECUTABLE_PATH 指向已安装 Chromium。本环境标准下载失败，使用临时安装的 Chromium 执行，未改项目依赖。
 - E2E 从真实规则 API 完成胜局，再通过浏览器执行编辑、保存、刷新、PNG 导出、移动端布局与音量记忆。不是以伪造胜利快照代替结算。
 

@@ -11,7 +11,11 @@ const defaultOutfit = (palId) => ({
   layerSnapshot: { base: `preset://${palId}/portrait-v1`, outfit: `preset://${palId}/portrait-v1` }
 });
 
-const normalizeRecords = (alreadyUnlocked) => (alreadyUnlocked || []).map((entry) => (typeof entry === 'string' ? { cardId: entry } : entry));
+// 同一卡的历史记录以最后一次为准，与存档按 cardId 更新的行为一致。
+const normalizeRecords = (alreadyUnlocked) => [...new Map((alreadyUnlocked || []).map((entry) => {
+  const record = typeof entry === 'string' ? { cardId: entry } : entry;
+  return [record.cardId, record];
+})).values()];
 
 /* 败方可能同时有两位牌友（地主赢时两个农民都败）。挑收藏数最少的那位，
    让两条收藏线保持均衡；收藏数相同则按传入顺序取第一位，保证可复现。 */
@@ -62,7 +66,9 @@ export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier 
     const palRecords = records.filter((record) => record.palId === losingPal);
     const unlockedOutfitIds = new Set(palRecords.map((record) => record.outfitId));
     const fresh = outfits.find((entry) => !unlockedOutfitIds.has(entry.outfitId));
-    const chosen = fresh || outfits[palRecords.length % outfits.length];
+    // 集齐后优先升级等级最低的服装；同级按目录顺序，避免卡册长度固定后永远升级第一张。
+    const level = (outfit) => palRecords.find((record) => record.outfitId === outfit.outfitId)?.upgradeLevel || 1;
+    const chosen = fresh || outfits.reduce((lowest, outfit) => level(outfit) < level(lowest) ? outfit : lowest);
     isFirstUnlock = Boolean(fresh);
     cardId = `${losingPal}:${chosen.outfitId}`;
     const existing = records.find((record) => record.cardId === cardId);

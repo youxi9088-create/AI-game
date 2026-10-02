@@ -1,8 +1,8 @@
 import { defineConfig } from '@playwright/test';
 import { join } from 'node:path';
 
-// Each spec boots its own API process. Game state is per-process, while the player's gallery
-// is persisted in apps/api/data/gallery.json so a normal server restart does not erase unlocks.
+// Existing specs share one API process. The collection spec uses an isolated server
+// so its completed win cannot change the first-loop spec's initial gallery.
 export default defineConfig({
   testDir: './tests/e2e',
   globalSetup: './tests/e2e/global-setup.mjs',
