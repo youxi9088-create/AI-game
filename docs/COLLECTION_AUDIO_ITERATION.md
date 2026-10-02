@@ -30,7 +30,7 @@ FMOD 集成：宿主用自身获授权 SDK 初始化 Studio System 并加载 Ban
 ## 验证
 
 - npm run lint：JS 语法检查（项目的 typecheck 同为语法检查，不是静态类型分析）。
-- npm test：117/117 通过；覆盖规则、AI、收藏迁移、幂等、解锁防伪、连续升级封顶和 FMOD 适配器回归。
+- npm test：122/122 通过；覆盖规则、AI、收藏迁移、幂等、解锁防伪、连续升级封顶、FMOD 适配器及生产启动/备份恢复回归。
 - npm run build：现有构建边界文件检查，无打包编译步骤。
 - PLAYWRIGHT_CHANNEL=bundled npx playwright test tests/e2e/collection-loop.spec.mjs tests/e2e/first-loop.spec.mjs tests/e2e/ui-hardening.spec.mjs
 - 上述 17 项浏览器用例首轮 14 项通过；3 项失败定位为原有工坊测试文案过期和字体行高溢出，修复后定向复测均通过。没有声称运行全部 E2E 文件。
@@ -39,6 +39,8 @@ FMOD 集成：宿主用自身获授权 SDK 初始化 Studio System 并加载 Ban
 - E2E 从真实规则 API 完成胜局，再通过浏览器执行编辑、保存、刷新、PNG 导出、移动端布局与音量记忆。不是以伪造胜利快照代替结算。
 
 ## 发布与回滚
+
+已补齐只读生产检查、带 SHA-256 校验的离线存档快照与新目录恢复工具，详见 [发布操作说明](RELEASE_OPERATIONS.md)。生产启动要求至少 32 字符的非模板 receipt 密钥，并拒绝调试覆盖开关。Docker 排除本地配置与运行存档、配置容器监听和独立数据目录；本环境没有 Docker 引擎，镜像未实际构建验收。
 
 尚未发布 yyxx101.online。仓库无 Actions 发布记录，当前没有服务器管理连接。不能仅依据域名推断生产工程目录或服务重启命令。
 

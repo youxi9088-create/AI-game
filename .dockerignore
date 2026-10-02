@@ -2,3 +2,13 @@ node_modules
 test-results
 .git
 .env
+**/.env*
+**/*.pem
+**/*.key
+apps/api/data/*
+!apps/api/data/official-assets.json
+apps/web/assets/pals/ugc
+release
+_inbox
+_asset_delivery
+*.log
