@@ -124,19 +124,20 @@ function palStandee(palId, variant = '', action = null) {
   /* 已被目检打回的透明动作绝不能继续覆盖牌桌立绘。此前只要 WebM
      带 ALPHA_MODE=1 就播放，导致灰白底板和不合格动作仍被玩家看到。
      打回后回退到已验收的牌桌立绘；不能退到同样未验收的白底动作图。 */
-  const actionRejected = actionAsset?.alphaVisualApproved === false;
+  const actionRejected = actionAsset?.alphaVisualApproved === false || (isTable && prefs().renderer === '3d' && actionAsset?.alphaVisualApproved !== true);
+  // In the composited salon, unverified opaque action media must not replace a transparent seated figure.
   const videoRef = !actionRejected ? actionAsset?.videoRef || null : null;
   const videoMotion = videoRef ? `<video class="action-video" autoplay muted playsinline preload="metadata" aria-label="${alt}，${label}动作">${videoSource(videoRef)}</video>` : '';
   const actionImage = !actionRejected ? actionAsset?.imageRef : null;
   /* 五态拼图只作源文件：运行时只加载拆出的单张动作图（或动作视频），不再用整张拼图的 CSS sprite。 */
   const actionStill = !videoRef && actionImage ? `<img class="layer layer-action" src="${escape(actionImage)}" alt="${escape(name)}，${label}动作" />` : '';
   if (standeeRef) {
-    return `<div class="pal-avatar pal-standee cutout ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}">
+    return `<div class="pal-avatar pal-standee cutout ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}" data-seat-action="${actionKey}">
     <img class="layer layer-base" src="${standeeRef}" width="600" height="750" alt="${alt}" />
     ${videoMotion || actionStill}<div class="pal-caption"><strong>${name}</strong><i>AI 虚构成年</i></div></div>`;
   }
   if (palId.startsWith('pal-user-')) return `<div class="pal-avatar pal-standee ${variant}" data-pal="${escape(palId)}"><p role="status">${escape(name)} · ${isTable ? '牌桌' : '大厅'}立绘待验收</p></div>`;
-  return `<div class="pal-avatar pal-standee ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}">
+  return `<div class="pal-avatar pal-standee ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}" data-seat-action="${actionKey}">
     <img class="layer layer-base" src="${layers.base}" width="600" height="800" alt="${alt}" aria-hidden="false" />
     ${layers.outfit && layers.outfit !== layers.base ? `<img class="layer layer-outfit" src="${layers.outfit}" width="600" height="800" alt="" aria-hidden="true" />` : ''}
     ${videoMotion || actionStill}<div class="pal-caption"><strong>${name}</strong><i>AI 虚构成年</i></div></div>`;
@@ -324,15 +325,15 @@ function renderTable() {
     <aside class="table-side"><div class="round-tag">引导牌局 · 第 1 局</div><h1>${statusTitle}</h1><p>${statusCopy}</p></aside>
     <section class="table-board">
       <div class="table-felt theme-${theme.id}" data-table-theme="${theme.id}"><div class="match-hud"><span>第 1 局 / BO3</span><b>${bidding ? '叫分中' : `地主 ×${game.multiplier}`}</b><span>${settled ? '本局结算' : game.turn === 'player' ? '轮到你' : `${activePlayer.name}回合`}</span></div><div class="felt-label">DRESSBATTLE <small>${theme.label}</small><em>${theme.name}</em></div>
-        <div class="opponent top">${palStandee(topSeat, 'table-seat', seatAction(topSeat))}<div><b>${players[topSeat].role || '等待叫分'}</b><span>${players[topSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(topSeat)}</div>
-        <div class="opponent right">${palStandee(rightSeat, 'table-seat', seatAction(rightSeat))}<div><b>${players[rightSeat].role || '等待叫分'}</b><span>${players[rightSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(rightSeat)}</div>
+        <div class="opponent top ${game.turn === topSeat ? 'seat-active' : ''}">${palStandee(topSeat, 'table-seat', seatAction(topSeat))}<div><b>${players[topSeat].role || '等待叫分'}</b><span>${players[topSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(topSeat)}</div>
+        <div class="opponent right ${game.turn === rightSeat ? 'seat-active' : ''}">${palStandee(rightSeat, 'table-seat', seatAction(rightSeat))}<div><b>${players[rightSeat].role || '等待叫分'}</b><span>${players[rightSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(rightSeat)}</div>
         <div class="play-stage" role="status" aria-live="polite">${game.currentCombo ? `<div class="played-stack from-${game.lastPlayerId} seat-${seatKeyOf(game, game.lastPlayerId)}"><p>桌面牌型 · ${game.currentCombo.label}</p><div class="table-card-fan">${(game.currentCards || []).map(tableCard).join('')}</div><b>${players[game.lastPlayerId]?.name || '未知'}已出</b></div>` : `<div class="lead-marker">${game.turn === 'player' ? '等待你领出第一手牌' : `${activePlayer.name}等待领出`}</div>`}<div class="turn-dock ${game.turn === 'player' ? 'active' : ''}">${settled ? '结算中' : game.turn === 'player' ? (game.currentCombo && game.lastPlayerId !== 'player' ? '轮到你 · 选择压制或不出' : '轮到你领出') : `${activePlayer.name}思考中…`}</div></div>
         <div class="self-seat"><span>${players.player.role || '你'} · ${players.player.count} 张</span></div>
         ${state.closeup ? closeupMarkup(state.closeup) : ''}
       </div>
       <div class="hand-wrap"><div class="hand-header"><span>你的手牌 <b>${game.playerHand.length}</b></span><div>${bidding ? bidControls(game) : settled ? '<span class="settlement-progress">结算演出进行中</span>' : game.turn !== 'player' ? `<span class="turn-wait" aria-live="polite">${activePlayer.name}正在思考…</span>` : `<button class="secondary compact" data-action="hint">提示</button>${game.currentCombo && game.lastPlayerId !== 'player' ? '<button class="secondary compact" data-action="pass">不出</button>' : ''}<button class="primary compact" data-action="play">出牌</button>`}</div></div><div class="hand" aria-label="你的手牌">${game.playerHand.map((item) => card(item, state.selected.has(item), bidding || settled || game.turn !== 'player')).join('')}</div></div>
     </section>
-    <aside class="event-feed"><h2>牌局记录</h2>${game.events.slice().reverse().slice(0, 4).map((event) => `<div class="event"><p>${escape(eventText(event))}</p></div>`).join('')}</aside>
+    <aside class="event-feed"><details ${prefs().renderer === '3d' ? '' : 'open'}><summary>牌局记录</summary>${game.events.slice().reverse().slice(0, 4).map((event) => `<div class="event"><p>${escape(eventText(event))}</p></div>`).join('')}</details></aside>
   </section>${state.entry ? entryCinematic() : ''}${settled ? settlementOverlay(game) : ''}`;
 }
 
