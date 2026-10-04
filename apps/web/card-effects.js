@@ -12,7 +12,7 @@ export function syncCardEffects(game){
  const key=`${game.id}:${event.seq}`;if(key===lastKey)return;lastKey=key;if(reduced())return;
  const stack=document.querySelector('.played-stack');if(!stack)return;const type=event.combo?.type||'',strong=/BOMB|ROCKET/.test(type);
  stack.querySelectorAll('.table-card').forEach((card,i)=>card.animate([{opacity:.2,transform:'translateY(-24px) rotate(-7deg)'},{opacity:1,transform:'translateY(0) rotate(0)'}],{duration:210,delay:i*18,easing:'cubic-bezier(.2,.8,.2,1)'}));
- const b=stack.getBoundingClientRect();burst(b.left+b.width/2,b.top+20,strong);
+ const b=(document.querySelector('.has-three')?stack.querySelector('p'):stack).getBoundingClientRect();burst(b.left+b.width/2,b.top+20,strong);
  if(strong||/STRAIGHT|AIRPLANE/.test(type)){const label=document.createElement('div');label.className='card-effect-label';label.textContent=event.combo.label;label.style.left=Math.max(80,Math.min(innerWidth-160,b.left+b.width/2))+'px';label.style.top=Math.max(80,b.top-45)+'px';document.body.append(label);setTimeout(()=>label.remove(),1000);}
 }
 let tiltFrame=0;

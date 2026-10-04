@@ -1,3 +1,4 @@
+import {drawPlayingCard} from './playing-card-art.js';
 import {prefs} from './runtime.js';
 let world,loading,target,lastGame,failed=false;
 export function syncTable3D(game,route){
@@ -31,23 +32,48 @@ function createWorld(T){
  const fill=new T.DirectionalLight('#8facce',.8);fill.position.set(6,4,-4);scene.add(fill);
  const insignia=texture((c,w,h)=>{c.strokeStyle='#c7ae73';c.fillStyle='#c7ae73';c.lineWidth=1.5;c.beginPath();c.ellipse(w/2,h/2,225,92,0,0,Math.PI*2);c.stroke();c.beginPath();c.moveTo(45,h/2);c.lineTo(w/2,12);c.lineTo(w-45,h/2);c.lineTo(w/2,h-12);c.closePath();c.stroke();c.textAlign='center';c.font='24px Georgia';c.fillText('D R E S S B A T T L E',w/2,h/2+5);c.font='12px Georgia';c.fillText('M O O N L I T   S A L O N',w/2,h/2+32);},768,256);
  const print=mesh(new T.PlaneGeometry(4.2,1.4),new T.MeshBasicMaterial({map:insignia,transparent:true,opacity:.28,depthWrite:false}),0,1.19,-.2);print.rotation.x=-Math.PI/2;print.castShadow=false;
- const cards=new T.Group();scene.add(cards);let key='',birth=0,host=null,raf=0,frames=0,mx=0,my=0,tx=0,ty=0,last=0,skin='';
+ const cards=new T.Group();scene.add(cards);let key='',sourceSeat='player',birth=0,host=null,raf=0,frames=0,mx=0,my=0,tx=0,ty=0,last=0,skin='';
  function clearCards(){for(const m of [...cards.children]){m.geometry.dispose();for(const material of m.material){material.map?.dispose();material.dispose();}cards.remove(m);}}
  function updateCards(game){const next=JSON.stringify([game?.id,game?.currentCards,game?.lastPlayerId]);if(next===key)return;key=next;clearCards();birth=performance.now();const values=game?.currentCards||[];
-  values.forEach((value,i)=>{const map=texture((c,w,h)=>{c.fillStyle='#fff4dc';c.fillRect(0,0,w,h);c.strokeStyle='#c5a775';c.lineWidth=7;c.strokeRect(8,8,w-16,h-16);const suit=value.match(/[♠♥♦♣]/)?.[0]||'★',rank=value.replace(/[♠♥♦♣]/g,'');c.fillStyle=/[♥♦]/.test(value)?'#ae334b':'#17283b';c.font='bold 64px Georgia';c.fillText(rank,22,70);c.font='58px serif';c.fillText(suit,23,131);c.textAlign='center';c.font='112px serif';c.fillText(suit,w/2,245);c.save();c.translate(w,h);c.rotate(Math.PI);c.textAlign='left';c.font='bold 44px Georgia';c.fillText(rank,18,55);c.restore();},256,360);
-   const materials=Array.from({length:6},(_,side)=>side===2?new T.MeshStandardMaterial({map,roughness:.7}):mat(side===3?'#203653':'#e0c994'));
-   const m=new T.Mesh(new T.BoxGeometry(.95,.028,1.35),materials);m.position.set((i-(values.length-1)/2)*Math.min(.99,7.8/Math.max(values.length,1)),1.23,-1.3);m.rotation.y=(i-(values.length-1)/2)*-.012;m.castShadow=true;m.receiveShadow=true;cards.add(m);
+  sourceSeat=game?.lastPlayerId==='player'?'player':game?.lastPlayerId===game?.seats?.[0]?'left':'right';
+  values.forEach((value,i)=>{
+   const map=texture((c,w,h)=>drawPlayingCard(c,w,h,value),256,360);
+   const shape=new T.Shape(),w=.95,h=1.35,r=.055,x=-w/2,y=-h/2;
+   shape.moveTo(x+r,y);shape.lineTo(x+w-r,y);shape.quadraticCurveTo(x+w,y,x+w,y+r);shape.lineTo(x+w,y+h-r);shape.quadraticCurveTo(x+w,y+h,x+w-r,y+h);shape.lineTo(x+r,y+h);shape.quadraticCurveTo(x,y+h,x,y+h-r);shape.lineTo(x,y+r);shape.quadraticCurveTo(x,y,x+r,y);
+   const geometry=new T.ExtrudeGeometry(shape,{depth:.025,bevelEnabled:false,curveSegments:5,UVGenerator:{generateTopUV(g,v,a,b,c){return[a,b,c].map(i=>new T.Vector2(v[i*3]/w+.5,v[i*3+1]/h+.5));},generateSideWallUV(){return[new T.Vector2(0,0),new T.Vector2(1,0),new T.Vector2(1,1),new T.Vector2(0,1)];}}});geometry.rotateX(-Math.PI/2);
+   const materials=[new T.MeshStandardMaterial({map,roughness:.76}),mat('#d6c6a4',.7)];
+   const m=new T.Mesh(geometry,materials);m.userData.index=i;m.castShadow=true;m.receiveShadow=true;cards.add(m);
   });
+
  }
  const reduced=()=>prefs().effects==='off'||matchMedia('(prefers-reduced-motion: reduce)').matches;
  function schedule(){if(!raf&&host?.isConnected&&!document.hidden)raf=requestAnimationFrame(draw);}
  function draw(now){raf=0;if(!host?.isConnected||document.hidden)return;const dt=Math.min((now-last)/1000,.1);last=now;mx+=(tx-mx)*Math.min(1,dt*7);my+=(ty-my)*Math.min(1,dt*7);camera.position.set(mx*.12,9.4+my*.06,12);camera.lookAt(goal);
-  const t=reduced()?1:Math.min(1,(now-birth)/350);for(const m of cards.children){m.position.z=(camera.right<4?-2.1:-1.3)+(1-t)**3;m.position.y=1.23+(1-t)*.4;}renderer.render(scene,camera);frames++;if(t<1||Math.abs(mx-tx)+Math.abs(my-ty)>.002)schedule();
+  const mobile=camera.right<4,n=cards.children.length,columns=mobile?Math.min(n,7):n;
+  const spacing=mobile?Math.min(.62,(camera.right*2-1.2)/Math.max(1,columns-1)):Math.min(.99,5.8/Math.max(n-1,1));
+  const scale=mobile?.72:1;let moving=false;
+  for(const m of cards.children){
+   const i=m.userData.index,row=Math.floor(i/Math.max(1,columns)),inRow=Math.min(columns,n-row*columns);
+   const t=reduced()?1:Math.max(0,Math.min(1,(now-birth-i*18)/420)),ease=1-(1-t)**3;moving ||= t<1;
+   const x=(i%columns-(inRow-1)/2)*spacing,z=(mobile?-2.1:-1.3)+row*.65;
+   const startX=sourceSeat==='player'?x:sourceSeat==='left'?-Math.min(5,camera.right):Math.min(5,camera.right);
+   const startZ=sourceSeat==='player'?2.2:-3.2;
+   m.scale.setScalar(scale);m.position.set(startX+(x-startX)*ease,1.205+row*.02+i*.004+Math.sin(t*Math.PI)*.45,startZ+(z-startZ)*ease);
+   m.rotation.y=(i%columns-(inRow-1)/2)*-.014+(1-ease)*(sourceSeat==='left'?.22:-.22);
+  }
+  renderer.render(scene,camera);const labelPoint=new T.Vector3(0,1.25,(mobile?-2.1:-1.3)-.675*scale).project(camera);host.style.setProperty('--play-label-y',`${(1-labelPoint.y)*host.clientHeight/2-30}px`);frames++;if(moving||Math.abs(mx-tx)+Math.abs(my-ty)>.002)schedule();
+
  }
- const observer=new ResizeObserver(()=>{if(!host)return;const {width,height}=host.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);cards.scale.x=Math.min(1,(8.2*width/height-1)/(.95+Math.max(0,cards.children.length-1)*Math.min(.99,7.8/Math.max(cards.children.length,1))));camera.left=-4.1*width/height;camera.right=4.1*width/height;camera.updateProjectionMatrix();schedule();});
+ const observer=new ResizeObserver(()=>{if(!host)return;const {width,height}=host.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.left=-4.1*width/height;camera.right=4.1*width/height;camera.updateProjectionMatrix();schedule();});
  function move(e){if(reduced())return;const b=host.getBoundingClientRect();tx=(e.clientX-b.left)/b.width-.5;ty=(e.clientY-b.top)/b.height-.5;schedule();}
  function detach(){cancelAnimationFrame(raf);raf=0;observer.disconnect();if(host){host.removeEventListener('pointermove',move);host.classList.remove('has-three');}host=null;canvas.remove();}
+ function cardBounds(){
+  if(!host||!cards.children.length)return null;
+  const box=new T.Box3().setFromObject(cards),rect=host.getBoundingClientRect(),points=[];
+  for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const p=new T.Vector3(x,y,z).project(camera);points.push({x:rect.left+(p.x+1)*rect.width/2,y:rect.top+(1-p.y)*rect.height/2});}
+  return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))};
+ }
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else schedule();});
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failed=true;const old=host;detach();if(old)old.dataset.renderFallback='3D 已暂停，已使用标准牌桌';});
- return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
+ return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,sourceSeat,cardBounds:cardBounds(),cardRows:camera.right<4?Math.ceil(cards.children.length/7):1,characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
 }

@@ -1,3 +1,4 @@
+import {playingCardSVG} from './playing-card-art.js';
 import {syncCardEffects,installHandBrush} from './card-effects.js';
 import {syncTable3D} from './table-3d.js';
 import { studioMarkup, collectionMarkup, exportPhoto, hydratePhotos, updatePhotoMoment } from './photo-studio.js';
@@ -81,7 +82,7 @@ function applyPrefs() {
 }
 function rank(card) { return card.replace(/[♣♦♥♠]/g, ''); }
 function suit(card) { return card.match(/[♣♦♥♠]/)?.[0] || ''; }
-function card(card, selected = false, disabled = false) { const red = /[♦♥]/.test(card); return `<button class="card ${red ? 'red' : ''} ${selected ? 'selected' : ''}" data-card="${card}" aria-pressed="${selected}"${disabled ? ' disabled aria-disabled="true"' : ''}><b>${rank(card)}</b><small>${suit(card)}</small></button>`; }
+function card(card, selected = false, disabled = false) { const red = /[♦♥]/.test(card) || card === 'BJ'; return `<button class="card ${red ? 'red' : ''} ${selected ? 'selected' : ''}" data-card="${card}" aria-label="${card === 'BJ' ? '大王' : card === 'SJ' ? '小王' : card}" aria-pressed="${selected}"${disabled ? ' disabled aria-disabled="true"' : ''}>${prefs().renderer === '3d' ? playingCardSVG(card) : ''}<b>${prefs().renderer === '3d' && /^(BJ|SJ)$/.test(card) ? (card === 'BJ' ? '大' : '小') : rank(card)}</b><small>${prefs().renderer === '3d' && /^(BJ|SJ)$/.test(card) ? '王' : suit(card)}</small></button>`; }
 function tableCard(value) { const red = /[♦♥]/.test(value); return `<div class="table-card ${red ? 'red' : ''}" role="img" aria-label="桌面牌 ${value}"><b>${rank(value)}</b><small>${suit(value)}</small></div>`; }
 
 /* ---------- pal assets & layered appearance ---------- */
@@ -327,7 +328,7 @@ function renderTable() {
       <div class="table-felt theme-${theme.id}" data-table-theme="${theme.id}"><div class="match-hud"><span>第 1 局 / BO3</span><b>${bidding ? '叫分中' : `地主 ×${game.multiplier}`}</b><span>${settled ? '本局结算' : game.turn === 'player' ? '轮到你' : `${activePlayer.name}回合`}</span></div><div class="felt-label">DRESSBATTLE <small>${theme.label}</small><em>${theme.name}</em></div>
         <div class="opponent top ${game.turn === topSeat ? 'seat-active' : ''}">${palStandee(topSeat, 'table-seat', seatAction(topSeat))}<div><b>${players[topSeat].role || '等待叫分'}</b><span>${players[topSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(topSeat)}</div>
         <div class="opponent right ${game.turn === rightSeat ? 'seat-active' : ''}">${palStandee(rightSeat, 'table-seat', seatAction(rightSeat))}<div><b>${players[rightSeat].role || '等待叫分'}</b><span>${players[rightSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(rightSeat)}</div>
-        <div class="play-stage" role="status" aria-live="polite">${game.currentCombo ? `<div class="played-stack from-${game.lastPlayerId} seat-${seatKeyOf(game, game.lastPlayerId)}"><p>桌面牌型 · ${game.currentCombo.label}</p><div class="table-card-fan">${(game.currentCards || []).map(tableCard).join('')}</div><b>${players[game.lastPlayerId]?.name || '未知'}已出</b></div>` : `<div class="lead-marker">${game.turn === 'player' ? '等待你领出第一手牌' : `${activePlayer.name}等待领出`}</div>`}<div class="turn-dock ${game.turn === 'player' ? 'active' : ''}">${settled ? '结算中' : game.turn === 'player' ? (game.currentCombo && game.lastPlayerId !== 'player' ? '轮到你 · 选择压制或不出' : '轮到你领出') : `${activePlayer.name}思考中…`}</div></div>
+        <div class="play-stage" role="status" aria-live="polite">${game.currentCombo ? `<div class="played-stack from-${game.lastPlayerId} seat-${seatKeyOf(game, game.lastPlayerId)}"><p>${prefs().renderer === '3d' ? escape(players[game.lastPlayerId]?.name || '') : '桌面牌型'} · ${game.currentCombo.label}</p><div class="table-card-fan">${(game.currentCards || []).map(tableCard).join('')}</div><b>${players[game.lastPlayerId]?.name || '未知'}已出</b></div>` : `<div class="lead-marker">${game.turn === 'player' ? '等待你领出第一手牌' : `${activePlayer.name}等待领出`}</div>`}<div class="turn-dock ${game.turn === 'player' ? 'active' : ''}">${settled ? '结算中' : game.turn === 'player' ? (game.currentCombo && game.lastPlayerId !== 'player' ? '轮到你 · 选择压制或不出' : '轮到你领出') : `${activePlayer.name}思考中…`}</div></div>
         <div class="self-seat"><span>${players.player.role || '你'} · ${players.player.count} 张</span></div>
         ${state.closeup ? closeupMarkup(state.closeup) : ''}
       </div>
