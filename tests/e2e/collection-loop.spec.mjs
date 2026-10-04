@@ -51,13 +51,16 @@ test('a real win opens the photo studio, persists composition and exports a PNG'
   }
   expect(game.settlement.winnerId).toBe('player');
   await page.goto('/#/table');
+  if(process.env.DRESS_PREVIEW_DIR)await page.screenshot({path:join(process.env.DRESS_PREVIEW_DIR,'07-reward-choice.png'),fullPage:true});
   await page.locator('.settlement [data-action="advance"]').click();
   await page.locator('.dance-stage [data-action="advance"]').click();
   await expect(page.locator('.photo-studio')).toBeVisible();
   await page.locator('[data-photo-option="filter"]').selectOption('warm');
   await page.locator('[data-photo-option="background"]').selectOption('plum');
   await page.locator('[data-photo-option="framing"]').selectOption('close');
+  await page.locator('[data-photo-option="finish"]').selectOption('foil');
   await page.locator('#photo-name').fill('月光里的第一场胜利');
+  if(process.env.DRESS_PREVIEW_DIR)await page.screenshot({path:join(process.env.DRESS_PREVIEW_DIR,'08-active-studio.png'),fullPage:true});
   await page.screenshot({ path: 'test-results/collection-studio-desktop.png', fullPage: true });
   await page.getByRole('button', { name: '定格并收藏', exact: true }).click();
   await expect(page.locator('.my-creations')).toContainText('月光里的第一场胜利');

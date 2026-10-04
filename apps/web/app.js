@@ -1,4 +1,6 @@
-import { studioMarkup, collectionMarkup, exportPhoto } from './photo-studio.js';
+import {syncCardEffects,installHandBrush} from './card-effects.js';
+import {syncTable3D} from './table-3d.js';
+import { studioMarkup, collectionMarkup, exportPhoto, hydratePhotos, updatePhotoMoment } from './photo-studio.js';
 import { npcDelay, prefs, SPEED_LABEL, cycleSpeed, setPref } from './runtime.js';
 import { sfx, primeAudio, playCardAudio, updateAudioScene, syncAudio } from './sfx.js';
 import { RESOURCE_SLOTS, displayAsset } from './asset-slots.js';
@@ -412,7 +414,7 @@ function danceStagePage(cardRecord) {
       ? `<video class="dance-stage-video" controls autoplay playsinline preload="auto" aria-label="${escape(label)}">${videoSource(actionRef)}</video>`
       : dressupFigure(cardRecord);
   }
-  return `<section class="dance-stage" role="dialog" aria-modal="true" aria-labelledby="dance-stage-title"><div class="dance-stage-spotlight" aria-hidden="true"></div>${body}<div class="dance-stage-head"><p class="eyebrow">舞台演出</p><h2 id="dance-stage-title">${escape(label)}</h2></div><div class="dance-stage-actions"><button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">${settlementLabel('PERFORMANCE')}</button></div></section>`;
+  return `<section class="dance-stage" role="dialog" aria-modal="true" aria-labelledby="dance-stage-title"><div class="dance-stage-spotlight" aria-hidden="true"></div>${body}<div class="dance-stage-head"><p class="eyebrow">舞台演出</p><h2 id="dance-stage-title">${escape(label)}</h2></div><div class="dance-stage-actions"><button class="primary capture-live" data-action="capture-moment">定格这一刻</button><button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">${settlementLabel('PERFORMANCE')}</button></div></section>`;
 }
 function settlementOverlay(game) {
   const s = game.settlement; const stage = game.settlementStage;
@@ -440,6 +442,10 @@ function settlementOverlay(game) {
     return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="${stageClass}"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${actions}</div></div></div></div></section>`;
   }
   const name = palName(cardRecord.palId);
+  if(stage==='RESULT' && playerWon){
+    const outfits=state.palIndex[cardRecord.palId]?.appearance?.outfitLibrary || [];
+    return `<section class="settlement show reward-choice" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="reward-choice-panel"><div class="reward-cover">${photoCardArt(cardRecord,{large:true,motion:false})}</div><div class="reward-choice-controls"><p class="eyebrow">胜利由你赢下 · 奖励由你决定</p><h2 id="settlement-title">你赢下了这一局</h2><p>${multiplierLine(s)} · ${tokenLine(s)}</p><h3>今晚，想看哪一套？</h3><p>选一套确定解锁；已有服装将升级。只获得一份奖励，不额外消耗 Token。</p><div class="reward-choice-grid">${outfits.map(o=>{const id=cardRecord.palId+':'+o.outfitId;return `<button class="reward-outfit ${id===cardRecord.cardId?'chosen':''}" data-action="choose-reward" data-reward-card="${escape(id)}"><img src="${escape(o.layerSnapshot.cardPoster || o.layerSnapshot.outfit)}" alt="" /><b>${escape(o.name)}</b><small>${id===cardRecord.cardId?'本次选择':state.galleryCards.some(c=>c.cardId===id)?'选择升级':'选择解锁'}</small></button>`;}).join('')}</div><p>${outfits.length>1?'先选服装，再从演出中亲手定格喜欢的姿态。':'这套服装已解锁，接下来亲手选择定格时机。'}</p><div class="modal-actions"><button class="primary" data-action="advance">${escape(name)}将为你跳舞</button><button class="secondary" data-action="skip-settlement">稍后拍摄</button></div></div></div></section>`;
+  }
   const isUpgrade = !s.isFirstUnlock;
   /* 只有玩家胜利才会有 cardRecord 并进入这条套装演出分支；玩家输局在 RESULT 后直接散场。 */
   const title = stage === 'RESULT' ? (playerWon ? '你赢下了这一局' : '这一局惜败')
@@ -911,6 +917,7 @@ function scheduleNpcTurn() {
   const needsNpcTurn = state.route === 'table' && (bidding || state.game?.phase === 'PLAYING') && state.game.turn !== 'player';
   if (!needsNpcTurn) { clearTimeout(state.npcTimer); state.npcTimer = null; return; }
   if (state.npcTimer) return;
+  sfx('think',{volume:.3,ai:true});
   state.npcTimer = window.setTimeout(async () => {
     state.npcTimer = null;
     try {
@@ -925,6 +932,8 @@ function scheduleNpcTurn() {
   }, npcDelay());
 }
 function render() {
+  document.body.dataset.effects=reducedMotion()?'off':prefs().effects;
+  document.body.dataset.tableSkin=prefs().tableSkin;
   const activePhotoOption = document.activeElement?.dataset?.photoOption;
   updateToken();
   applyPrefs();
@@ -938,6 +947,9 @@ function render() {
     const cards = state.galleryCards.filter((c) => c.palId === state.photoDraft.palId);
     document.body.insertAdjacentHTML('beforeend', studioMarkup({ gameId: state.studioGame, draft: state.photoDraft, cards, name: palName(state.photoDraft.palId) }));
   }
+  hydratePhotos();
+  syncTable3D(state.game,state.route);
+  if(state.route==='table')syncCardEffects(state.game);
   syncVideoAudio();
   updateAudioScene(state.game, state.route, Boolean(document.querySelector('.dance-stage video')));
   scheduleNpcTurn();
@@ -945,6 +957,7 @@ function render() {
   if (state.game?.phase === 'SETTLED' && state.game?.settlement && state.sfxFiredFor !== state.game.id) {
     state.sfxFiredFor = state.game.id;
     sfx(state.game.settlement.winnerId === 'player' ? 'win' : 'lose');
+    setTimeout(()=>sfx('token',{volume:.5}),350);
   }
   if (state.game?.phase === 'SETTLED' && state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) flyCardOnce(state.game);
   if (state.studioGame) requestAnimationFrame(() => {
@@ -1054,6 +1067,7 @@ async function start() {
   if (chosenSeats().length === 2) payload.seats = chosenSeats();
   state.game = await api('/api/game/new', { method: 'POST', body: JSON.stringify(payload) });
   state.walletBalance = state.game.tokenBalance;
+  sfx('shuffle');setTimeout(()=>sfx('deal'),160);
   state.selected.clear(); state.entry = !window.__DRESSBATTLE_SKIP_ENTRY && entrySegments().length > 0; state.flownFor = null; state.route = 'table';
   if (location.hash !== '#/table') location.hash = '/table';
   if (state.partner?.sessionId) api('/api/partner/progress', { method: 'POST', body: JSON.stringify({ sessionId: state.partner.sessionId, percent: 30, stage: 'playing', message: '牌局开始' }) }).catch(() => {});
@@ -1242,12 +1256,16 @@ document.addEventListener('click', async (event) => {
       }
       return;
     }
+    if(action==='choose-reward'){state.game=await api('/api/game/reward/select',{method:'POST',body:JSON.stringify({gameId:state.game.id,cardId:actionNode.dataset.rewardCard})});await refreshGallery();sfx('cloth');render();return;}
+    if(action==='capture-moment'){const v=document.querySelector('.dance-stage video.vframe-main');const moment=v?.duration?Math.min(.95,v.currentTime/v.duration):null;v?.pause();state.game=await api('/api/game/settlement/advance',{method:'POST',body:JSON.stringify({gameId:state.game.id})});await openStudio(state.game.id,{...state.game.settlement.card,moment});sfx('shutter');return;}
+    if(action==='pose-preset'){if(state.photoDraft){state.photoDraft.moment=Number(actionNode.dataset.moment);updatePhotoMoment(state.photoDraft.moment);sfx('cloth');}return;}
+    if(action==='test-audio'){sfx('straight');setTimeout(()=>sfx('unlock'),450);return;}
     if (action === 'open-studio') { await openStudio(state.game.id, state.game.settlement.card); return; }
     if (action === 'close-studio') { state.studioGame = null; state.photoDraft = null; render(); return; }
     if (action === 'compose-pending') { const reward = state.collection.pending.find((r) => r.gameId === actionNode.dataset.game); const card = state.galleryCards.find((c) => c.cardId === reward?.cardId) || state.galleryCards.find((c) => c.palId === reward?.palId); if (reward && card) await openStudio(reward.gameId, card); return; }
     if (action === 'edit-creation') { const c = state.collection.creations.find((c) => c.gameId === actionNode.dataset.game); if (c) await openStudio(c.gameId, c); return; }
     if (action === 'export-creation') { const c = state.collection.creations.find((c) => c.creationId === actionNode.dataset.creation); if (c) await exportPhoto(c); return; }
-    if (action === 'audio-settings') { document.querySelector('#audio-settings').hidden = !document.querySelector('#audio-settings').hidden; return; }
+    if (action === 'audio-settings') { sfx('menu'); document.querySelector('#audio-settings').hidden = !document.querySelector('#audio-settings').hidden; return; }
     if (action === 'toggle-speed') { cycleSpeed(); applyPrefs(); const label = SPEED_LABEL[prefs().speed]; notice(`牌友思考速度：${label}`); return; }
     if (action === 'toggle-sfx') { setPref('sfx', !prefs().sfx); applyPrefs(); primeAudio(); syncVideoAudio(); sfx('select'); notice(prefs().sfx ? '音效已开启。' : '音效已关闭。'); return; }
     if (action === 'start' || action === 'restart') return start();
@@ -1460,18 +1478,20 @@ async function openStudio(gameId, source) {
   const existing = state.collection?.creations.find((c) => c.gameId === gameId);
   const value = existing || source;
   state.studioGame = gameId;
-  state.photoDraft = { palId: value.palId, cardId: value.cardId, name: value.name || '', background: value.background || 'midnight', filter: value.filter || 'natural', framing: value.framing || 'full' };
+  state.photoDraft = { palId: value.palId, cardId: value.cardId, name: value.name || '', background: value.background || 'midnight', filter: value.filter || 'natural', framing: value.framing || 'full', moment: value.moment ?? (value.layerSnapshot?.cardVideo ? .08 : null), finish: value.finish || 'classic', bondPoints: state.collection?.pals.find(p=>p.palId===value.palId)?.points || 0 };
   render();
   document.querySelector('#studio-title')?.focus({ preventScroll: true });
 }
 document.addEventListener('change', (event) => {
   const key = event.target.dataset.photoOption;
   if (!key || !state.photoDraft) return;
-  state.photoDraft[key] = event.target.value;
-  sfx('cloth'); render();
+  state.photoDraft[key] = key === 'moment' ? Number(event.target.value) : event.target.value;
+  if(key==='cardId'){const source=state.galleryCards.find(c=>c.cardId===state.photoDraft.cardId);state.photoDraft.moment=source?.layerSnapshot?.cardVideo ? .08 : null;}
+  sfx('cloth'); if(key !== 'moment') render();
   document.querySelector(`[data-photo-option="${key}"]`)?.focus();
 });
 document.addEventListener('input', (event) => {
+  if(event.target.dataset.photoOption === 'moment' && state.photoDraft){state.photoDraft.moment=Number(event.target.value);updatePhotoMoment(state.photoDraft.moment);}
   if (event.target.id === 'photo-name' && state.photoDraft) { state.photoDraft.name = event.target.value; const title = document.querySelector('.studio-preview .my-photo-caption strong'); if (title) title.textContent = event.target.value || '我的定格'; }
 });
 document.addEventListener('submit', async (event) => {
@@ -1490,3 +1510,8 @@ for (const input of document.querySelectorAll('[data-audio-volume]')) input.valu
 
 function syncVideoAudio() { document.querySelectorAll('.dance-stage video').forEach((v) => { v.volume = prefs().masterVolume; v.muted = !prefs().sfx || document.hidden; }); }
 document.addEventListener('visibilitychange', () => { syncVideoAudio(); if (document.hidden) document.querySelectorAll('.dance-stage video').forEach((v) => v.pause()); });
+
+document.addEventListener('change',event=>{const key=event.target.dataset.displayPref;if(key){setPref(key,event.target.value);render();}});
+for(const input of document.querySelectorAll('[data-display-pref]'))input.value=prefs()[input.dataset.displayPref];
+
+installHandBrush((cards,select)=>{for(const c of cards)select?state.selected.add(c):state.selected.delete(c);sfx('select');render();},render);

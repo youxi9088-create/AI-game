@@ -8,6 +8,7 @@ COPY apps/api/data/official-assets.json ./apps/api/data/official-assets.json
 COPY apps/web ./apps/web
 COPY packages ./packages
 COPY scripts ./scripts
+RUN node scripts/sync-vendors.mjs
 RUN mkdir -p /data /app/apps/web/assets/pals/ugc && chown -R node:node /data /app/apps/web/assets/pals/ugc
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=4173 PYTHON=python3 \
     GALLERY_STATE_PATH=/data/gallery.json TOKEN_STATE_PATH=/data/player-wallet.json \
