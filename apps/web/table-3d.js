@@ -51,7 +51,15 @@ function createWorld(T){
  function draw(now){raf=0;if(!host?.isConnected||document.hidden)return;const dt=Math.min((now-last)/1000,.1);last=now;mx+=(tx-mx)*Math.min(1,dt*7);my+=(ty-my)*Math.min(1,dt*7);camera.position.set(mx*.12,9.4+my*.06,12);camera.lookAt(goal);
   const mobile=camera.right<4,n=cards.children.length,columns=mobile?Math.min(n,7):n;
   const spacing=mobile?Math.min(.62,(camera.right*2-1.2)/Math.max(1,columns-1)):Math.min(.99,5.8/Math.max(n-1,1));
-  const scale=mobile?.72:1;let moving=false;
+  const scale=mobile?.72:.84;let moving=false;
+  camera.updateMatrixWorld();
+  const facing=new T.Quaternion().copy(camera.quaternion).multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2));
+  const screenUp=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion);
+  const towardCamera=new T.Vector3(0,0,1).applyQuaternion(camera.quaternion);
+  const hostRect=host.getBoundingClientRect(),handTop=host.parentElement.querySelector('.hand-header')?.getBoundingClientRect().top??hostRect.bottom;
+  const anchor=new T.Vector3(0,1.205,-1.3).project(camera),pixelsPerUnit=hostRect.height/8.2;
+  // Desktop faces remain camera-aligned: perspective belongs to the room, not the readable rank/suit.
+  const lift=mobile?0:Math.max(0,(1-anchor.y)*hostRect.height/2+1.35*scale*pixelsPerUnit/2-(handTop-hostRect.top-18))/pixelsPerUnit;
   for(const m of cards.children){
    const i=m.userData.index,row=Math.floor(i/Math.max(1,columns)),inRow=Math.min(columns,n-row*columns);
    const t=reduced()?1:Math.max(0,Math.min(1,(now-birth-i*18)/420)),ease=1-(1-t)**3;moving ||= t<1;
@@ -59,9 +67,10 @@ function createWorld(T){
    const startX=sourceSeat==='player'?x:sourceSeat==='left'?-Math.min(5,camera.right):Math.min(5,camera.right);
    const startZ=sourceSeat==='player'?2.2:-3.2;
    m.scale.setScalar(scale);m.position.set(startX+(x-startX)*ease,1.205+row*.02+i*.004+Math.sin(t*Math.PI)*.45,startZ+(z-startZ)*ease);
-   m.rotation.y=(i%columns-(inRow-1)/2)*-.014+(1-ease)*(sourceSeat==='left'?.22:-.22);
+   if(mobile)m.rotation.set(0,(i%columns-(inRow-1)/2)*-.014+(1-ease)*(sourceSeat==='left'?.22:-.22),0);
+   else {m.quaternion.copy(facing);m.rotateY((i-(n-1)/2)*-.008+(1-ease)*(sourceSeat==='left'?.12:-.12));m.position.addScaledVector(screenUp,lift*ease).addScaledVector(towardCamera,1.25);}
   }
-  renderer.render(scene,camera);const labelPoint=new T.Vector3(0,1.25,(mobile?-2.1:-1.3)-.675*scale).project(camera);host.style.setProperty('--play-label-y',`${(1-labelPoint.y)*host.clientHeight/2-30}px`);frames++;if(moving||Math.abs(mx-tx)+Math.abs(my-ty)>.002)schedule();
+  renderer.render(scene,camera);const bounds=cardBounds();if(bounds)host.style.setProperty('--play-label-y',`${bounds.top-hostRect.top-30}px`);frames++;if(moving||Math.abs(mx-tx)+Math.abs(my-ty)>.002)schedule();
 
  }
  const observer=new ResizeObserver(()=>{if(!host)return;const {width,height}=host.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.left=-4.1*width/height;camera.right=4.1*width/height;camera.updateProjectionMatrix();schedule();});
@@ -69,11 +78,18 @@ function createWorld(T){
  function detach(){cancelAnimationFrame(raf);raf=0;observer.disconnect();if(host){host.removeEventListener('pointermove',move);host.classList.remove('has-three');}host=null;canvas.remove();}
  function cardBounds(){
   if(!host||!cards.children.length)return null;
-  const box=new T.Box3().setFromObject(cards),rect=host.getBoundingClientRect(),points=[];
-  for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const p=new T.Vector3(x,y,z).project(camera);points.push({x:rect.left+(p.x+1)*rect.width/2,y:rect.top+(1-p.y)*rect.height/2});}
+  const rect=host.getBoundingClientRect(),points=[];
+  for(const m of cards.children){if(!m.geometry.boundingBox)m.geometry.computeBoundingBox();const box=m.geometry.boundingBox;
+   for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const p=new T.Vector3(x,y,z).applyMatrix4(m.matrixWorld).project(camera);points.push({x:rect.left+(p.x+1)*rect.width/2,y:rect.top+(1-p.y)*rect.height/2});}
+  }
   return {left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))};
+ }
+ function cardFaceRatios(){
+  if(!host)return[];
+  const rect=host.getBoundingClientRect();
+  return cards.children.map(m=>{const pts=[[-.475,.025,-.675],[.475,.025,-.675],[-.475,.025,.675]].map(v=>{const p=new T.Vector3(...v).applyMatrix4(m.matrixWorld).project(camera);return new T.Vector2(p.x*rect.width/2,p.y*rect.height/2);});return pts[0].distanceTo(pts[1])/pts[0].distanceTo(pts[2]);});
  }
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else schedule();});
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failed=true;const old=host;detach();if(old)old.dataset.renderFallback='3D 已暂停，已使用标准牌桌';});
- return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,sourceSeat,cardBounds:cardBounds(),cardRows:camera.right<4?Math.ceil(cards.children.length/7):1,characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
+ return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,sourceSeat,cardBounds:cardBounds(),cardFaceRatios:cardFaceRatios(),cardRows:camera.right<4?Math.ceil(cards.children.length/7):1,characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
 }

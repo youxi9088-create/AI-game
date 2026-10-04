@@ -64,6 +64,12 @@ test('a real ten-card straight stays readable across desktop and portrait layout
  await expect(page.locator('.hand .card')).toHaveCount(10);
  await expect.poll(()=>page.evaluate(async()=>(await import('/table-3d.js')).table3DStatus())).toMatchObject({cards:10,cardRows:1,sourceSeat:'player'});
  await page.waitForTimeout(1100);await expectSeatsClear(page);await page.screenshot({path:join(output,'12-straight-desktop.png'),fullPage:true});
+ for(const viewport of [{width:1440,height:900},{width:1280,height:720},{width:1920,height:1080}]){
+  await page.setViewportSize(viewport);await page.waitForTimeout(250);await expectSeatsClear(page);
+  const geometry=await page.evaluate(async()=>{const status=(await import('/table-3d.js')).table3DStatus();return {ratios:status.cardFaceRatios,bottom:status.cardBounds.bottom,controls:document.querySelector('.hand-header').getBoundingClientRect().top};});
+  for(const ratio of geometry.ratios)expect(Math.abs(ratio-.95/1.35),'screen-space card proportions must match the authored card').toBeLessThan(.015);
+  expect(geometry.bottom,'played cards must clear hand controls').toBeLessThan(geometry.controls-5);
+ }
  await page.setViewportSize({width:390,height:844});
  await expect.poll(()=>page.evaluate(async()=>(await import('/table-3d.js')).table3DStatus())).toMatchObject({cards:10,cardRows:2});
  await page.waitForTimeout(500);await expectSeatsClear(page);await page.screenshot({path:join(output,'13-straight-mobile.png'),fullPage:true});
