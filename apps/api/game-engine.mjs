@@ -401,6 +401,8 @@ export class GameService {
     const rounds = game.eventLog.filter((event) => event.type === 'ROUND_RESET').length + 1;
     const dynamicOutfits = { ...this.palOutfits };
     this.registryAssets().forEach((asset) => { if (asset?.appearance?.outfitLibrary?.length) dynamicOutfits[asset.palId] = asset.appearance.outfitLibrary; });
+    game.rewardBaseline = structuredClone(unlocked);
+    game.rewardLibrary = dynamicOutfits;
     game.settlement = planSettlement({
       gameId: game.id, winnerId: (winnerId === 'player' || (landlordId !== 'player' && !winnerIsLandlord)) ? 'player' : winnerId, loserPalIds, multiplier: game.multiplier, breakdown,
       playerIsLandlord: landlordId === 'player',
@@ -425,6 +427,28 @@ export class GameService {
     }
     assertCardIntegrity(game, 'settlement');
     this.emit(game, 'ROUND_SETTLED', { settlement: game.settlement, message: '牌局结束，进入结算演出。' });
+  }
+  selectReward(gameId, cardId) {
+    const game = this.get(gameId);
+    if (game.settlementStage !== 'RESULT' || !game.settlement?.card || this.collection.latestRewardGameId !== gameId || this.collection.creations.some(c => c.gameId === gameId)) throw new Error('只能在最新胜局演出前选择奖励。');
+    const palId = game.settlement.card.palId;
+    const chosen = game.rewardLibrary[palId]?.find(o => `${palId}:${o.outfitId}` === cardId);
+    if (!chosen) throw new Error('服装不属于本场奖励牌友。');
+    const before = {cards:this.getGallery(), collection:this.collection, settlement:game.settlement};
+    const result = planSettlement({gameId, winnerId:'player', loserPalIds:[palId], alreadyUnlocked:game.rewardBaseline,
+      outfitLibrary:game.rewardLibrary, preferredOutfitId:chosen.outfitId, multiplier:game.settlement.multiplier,
+      gameStats:game.settlement.card.gameStats, unlockedAt:game.settlement.card.unlockedAt});
+    const oldId = game.settlement.card.cardId;
+    let cards = this.getGallery().filter(c => c.cardId !== oldId);
+    const old = game.rewardBaseline.find(c => c.cardId === oldId);
+    if (old) cards.push(old);
+    cards = cards.filter(c => c.cardId !== result.cardId); cards.push(result.card);
+    game.settlement = {...game.settlement, card:result.card, cardId:result.cardId, outfit:result.outfit, dance:result.dance, isFirstUnlock:result.isFirstUnlock, upgradeLevel:result.upgradeLevel};
+    this.collection = {...this.collection, rewards:{...this.collection.rewards, [gameId]:{palId, cardId:result.cardId}}};
+    this.gallery.set('player',cards);
+    try { this.persistGallery(); } catch(error) { this.gallery.set('player',before.cards); this.collection=before.collection; game.settlement=before.settlement; throw error; }
+    this.emit(game,'REWARD_SELECTED',{cardId:result.cardId, message:'玩家主动选择本场确定奖励。'});
+    return this.snapshot(game);
   }
   advanceSettlement(gameId) {
     const game = this.get(gameId);

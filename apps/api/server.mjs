@@ -212,6 +212,7 @@ async function api(req, res, pathname) {
   if (req.method === 'POST' && pathname === '/api/game/play') { const data = await body(req); return send(res, 200, game.play(data.gameId, data.cards, data.commandId)); }
   if (req.method === 'POST' && pathname === '/api/game/pass') { const data = await body(req); return send(res, 200, game.pass(data.gameId, data.commandId)); }
   if (req.method === 'POST' && pathname === '/api/game/advance-turn') { const data = await body(req); return send(res, 200, game.advanceTurn(data.gameId, data.commandId)); }
+  if (req.method === 'POST' && pathname === '/api/game/reward/select') { const data = await body(req); return send(res, 200, game.selectReward(data.gameId, data.cardId)); }
   if (req.method === 'POST' && pathname === '/api/game/settlement/advance') { const data = await body(req); return send(res, 200, game.advanceSettlement(data.gameId)); }
   if (req.method === 'GET' && pathname === '/api/pals') return send(res, 200, { official: officialPals, pals: [...palRoster().values()], defaultSeats: DEFAULT_SEATS, workshop: await workshopPayload() });
   if (req.method === 'GET' && pathname === '/api/assets/registry') return send(res, 200, await assetRegistry.build());

@@ -47,3 +47,32 @@ test('a farmer teammate finishing grants the player a win, photo and one bond re
   assert.ok(svc.walletBalance > before); assert.ok(game.settlement.card);
   svc.settle(game, 'pal-mia'); assert.equal(svc.getCollection().wins, 1);
 });
+
+test('reward reselection cannot multiply tokens, bonds, card upgrades or stale rewards', () => {
+ const outfits={'pal-linxing':['a','b','c'].map(outfitId=>({outfitId,name:outfitId,dance:'step',layerSnapshot:{base:'/assets/base.png',outfit:'/assets/test.png'}}))};
+ const svc=new GameService({palOutfits:outfits});
+ const win=()=>{const g=svc.get(svc.newGame({seed:2}).id);g.landlordId='pal-linxing';g.baseBid=1;svc.settle(g,'player');return g;};
+ const g=win(),balance=svc.walletBalance;
+ for(const id of ['b','c','b'])svc.selectReward(g.id,`pal-linxing:${id}`);
+ assert.deepEqual(svc.getGallery().map(c=>[c.cardId,c.upgradeLevel]),[['pal-linxing:b',1]]);
+ assert.equal(svc.walletBalance,balance);assert.equal(svc.getCollection().wins,1);
+ assert.throws(()=>svc.selectReward(g.id,'pal-mia:b'),/不属于/);
+ const before=structuredClone(svc.getGallery()),persist=svc.persistGallery;
+ svc.persistGallery=()=>{throw new Error('disk failed');};assert.throws(()=>svc.selectReward(g.id,'pal-linxing:a'),/disk failed/);assert.deepEqual(svc.getGallery(),before);svc.persistGallery=persist;
+ svc.advanceSettlement(g.id);assert.throws(()=>svc.selectReward(g.id,'pal-linxing:a'),/演出前/);
+ const next=win();svc.selectReward(next.id,'pal-linxing:b');assert.equal(svc.getGallery()[0].upgradeLevel,2);
+ svc.selectReward(next.id,'pal-linxing:c');assert.equal(svc.getGallery().find(c=>c.cardId==='pal-linxing:b').upgradeLevel,1);
+ assert.equal(svc.getGallery().length,2);
+ const latest=win();assert.throws(()=>svc.selectReward(next.id,'pal-linxing:a'),/演出前/);assert.ok(latest.id);
+});
+test('video moments, unlocked finishes and server-owned source URLs are enforced',()=>{
+ let p=recordWin(emptyCollection(),{gameId:'g1',palId:source.palId});
+ const video={...source,layerSnapshot:{...source.layerSnapshot,cardVideo:'/assets/real.mp4'}};
+ const input={gameId:'g1',cardId:source.cardId};
+ assert.throws(()=>composePhoto(p,[source],{...input,moment:.5}));
+ for(const moment of [-1,1,NaN,'0.5'])assert.throws(()=>composePhoto(p,[video],{...input,moment}));
+ assert.throws(()=>composePhoto(p,[video],{...input,finish:'prism'}));
+ for(const gameId of ['g2','g3'])p=recordWin(p,{gameId,palId:source.palId});
+ p=composePhoto(p,[video],{...input,moment:.45,finish:'prism',layerSnapshot:{cardVideo:'https://forged.invalid/video'}});
+ assert.equal(p.creations[0].moment,.45);assert.equal(p.creations[0].finish,'prism');assert.equal(p.creations[0].layerSnapshot.cardVideo,'/assets/real.mp4');
+});

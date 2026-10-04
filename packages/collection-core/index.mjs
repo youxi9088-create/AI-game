@@ -12,11 +12,11 @@ export function emptyCollection() { return { wins: 0, bonds: {}, rewards: {}, cr
 export function bondLevel(points = 0) { return [...BOND_STEPS].reverse().find((step) => points >= step.points) || BOND_STEPS[0]; }
 export function recordWin(progress, { gameId, palId, cardId = null }) {
   if (Object.hasOwn(progress.rewards, gameId)) return progress;
-  return { ...progress, wins: progress.wins + 1,
+  return { ...progress, wins: progress.wins + 1, latestRewardGameId: gameId,
     bonds: { ...progress.bonds, [palId]: (progress.bonds[palId] || 0) + 10 },
     rewards: { ...progress.rewards, [gameId]: { palId, cardId } } };
 }
-export function composePhoto(progress, cards, { gameId, cardId, name = '', background = 'midnight', filter = 'natural', framing = 'full' }) {
+export function composePhoto(progress, cards, { gameId, cardId, name = '', background = 'midnight', filter = 'natural', framing = 'full', moment = null, finish = 'classic' }) {
   const reward = Object.hasOwn(progress.rewards, gameId) && progress.rewards[gameId];
   const source = cards.find((card) => card.cardId === cardId && card.palId === reward?.palId);
   if (!reward || !source) throw new Error('只能用本次胜利牌友的已解锁服装定格。');
@@ -24,9 +24,11 @@ export function composePhoto(progress, cards, { gameId, cardId, name = '', backg
     if (!PHOTO_OPTIONS[key].includes(value)) throw new Error('写真选项无效。');
   }
   if (typeof name !== 'string' || [...name.trim()].length > 24 || /[\u0000-\u001f]/.test(name)) throw new Error('写真名称最多 24 字，不能包含控制字符。');
+  if (moment !== null && (!Number.isFinite(moment) || moment < 0 || moment > .95 || !source.layerSnapshot?.cardVideo)) throw new Error('定格时间无效或该服装没有演出视频。');
+  if (!['classic','foil','prism'].includes(finish) || (finish === 'prism' && (progress.bonds[source.palId] || 0) < 30)) throw new Error('卡面工艺尚未解锁。');
   const previous = progress.creations.find((item) => item.gameId === gameId);
   const creation = { ...source, creationId: `photo-${gameId}`, gameId,
-    name: name.trim() || `${source.outfitName} · 我的定格`, background, filter, framing,
+    name: name.trim() || `${source.outfitName} · 我的定格`, background, filter, framing, moment, finish,
     createdAt: previous?.createdAt || new Date().toISOString() };
   return { ...progress, creations: [...progress.creations.filter((item) => item.gameId !== gameId), creation] };
 }

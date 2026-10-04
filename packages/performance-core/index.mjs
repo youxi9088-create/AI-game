@@ -45,7 +45,7 @@ export function buildMultiplier({ base = 1, bombs = 0, rocket = false, spring = 
   };
 }
 
-export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier = 1, breakdown = null, playerIsLandlord = false, alreadyUnlocked = [], outfitLibrary = {}, gameStats = {}, unlockedAt = DETERMINISTIC_TIME }) {
+export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier = 1, breakdown = null, playerIsLandlord = false, alreadyUnlocked = [], outfitLibrary = {}, gameStats = {}, preferredOutfitId = null, unlockedAt = DETERMINISTIC_TIME }) {
   const records = normalizeRecords(alreadyUnlocked);
   /* 演出是玩家胜利奖励，不是输局惩罚：只有玩家赢时才从败方 AI 中选择一名牌友登台，
      并为这名牌友选择/升级一张与演出视频绑定的写真卡。玩家输局不生成演出卡，也不播放舞蹈。 */
@@ -68,8 +68,9 @@ export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier 
     const fresh = outfits.find((entry) => !unlockedOutfitIds.has(entry.outfitId));
     // 集齐后优先升级等级最低的服装；同级按目录顺序，避免卡册长度固定后永远升级第一张。
     const level = (outfit) => palRecords.find((record) => record.outfitId === outfit.outfitId)?.upgradeLevel || 1;
-    const chosen = fresh || outfits.reduce((lowest, outfit) => level(outfit) < level(lowest) ? outfit : lowest);
-    isFirstUnlock = Boolean(fresh);
+    const preferred = outfits.find((o) => o.outfitId === preferredOutfitId);
+    const chosen = preferred || fresh || outfits.reduce((lowest, outfit) => level(outfit) < level(lowest) ? outfit : lowest);
+    isFirstUnlock = !unlockedOutfitIds.has(chosen.outfitId);
     cardId = `${losingPal}:${chosen.outfitId}`;
     const existing = records.find((record) => record.cardId === cardId);
     upgradeLevel = isFirstUnlock ? 1 : Math.min((existing?.upgradeLevel || 1) + 1, MAX_UPGRADE_LEVEL);
