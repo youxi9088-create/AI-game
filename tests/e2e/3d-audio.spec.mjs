@@ -62,12 +62,13 @@ test('a real ten-card straight stays readable across desktop and portrait layout
  await expect(page.locator('.hand .card[aria-pressed="true"]')).toHaveCount(10);
  await page.getByRole('button',{name:'出牌',exact:true}).click();
  await expect(page.locator('.hand .card')).toHaveCount(10);
- await expect.poll(()=>page.evaluate(async()=>(await import('/table-3d.js')).table3DStatus())).toMatchObject({cards:10,cardRows:1,sourceSeat:'player'});
+ await expect.poll(()=>page.evaluate(async()=>(await import('/table-3d.js')).table3DStatus())).toMatchObject({cards:10,cardRows:2,sourceSeat:'player'});
  await page.waitForTimeout(1100);await expectSeatsClear(page);await page.screenshot({path:join(output,'12-straight-desktop.png'),fullPage:true});
  for(const viewport of [{width:1440,height:900},{width:1280,height:720},{width:1920,height:1080}]){
   await page.setViewportSize(viewport);await page.waitForTimeout(250);await expectSeatsClear(page);
-  const geometry=await page.evaluate(async()=>{const status=(await import('/table-3d.js')).table3DStatus();return {ratios:status.cardFaceRatios,bottom:status.cardBounds.bottom,controls:document.querySelector('.hand-header').getBoundingClientRect().top};});
-  for(const ratio of geometry.ratios)expect(Math.abs(ratio-.95/1.35),'screen-space card proportions must match the authored card').toBeLessThan(.015);
+  const geometry=await page.evaluate(async()=>{const status=(await import('/table-3d.js')).table3DStatus();return {readable:status.readableRanks,span:status.cardBounds.right-status.cardBounds.left,ratios:status.cardFaceRatios,bottom:status.cardBounds.bottom,controls:document.querySelector('.hand-header').getBoundingClientRect().top};});
+  for(const ratio of geometry.ratios){expect(ratio).toBeGreaterThan(.69);expect(ratio,'natural shallow tilt must not flatten ranks').toBeLessThan(.79);}
+  expect(geometry.readable.every(Boolean),'each rank corner must remain visible through the pile').toBe(true);expect(geometry.span).toBeLessThan(viewport.width*.4);
   expect(geometry.bottom,'played cards must clear hand controls').toBeLessThan(geometry.controls-5);
  }
  await page.setViewportSize({width:390,height:844});

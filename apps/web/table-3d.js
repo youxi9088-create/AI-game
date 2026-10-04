@@ -32,8 +32,10 @@ function createWorld(T){
  const fill=new T.DirectionalLight('#8facce',.8);fill.position.set(6,4,-4);scene.add(fill);
  const insignia=texture((c,w,h)=>{c.strokeStyle='#c7ae73';c.fillStyle='#c7ae73';c.lineWidth=1.5;c.beginPath();c.ellipse(w/2,h/2,225,92,0,0,Math.PI*2);c.stroke();c.beginPath();c.moveTo(45,h/2);c.lineTo(w/2,12);c.lineTo(w-45,h/2);c.lineTo(w/2,h-12);c.closePath();c.stroke();c.textAlign='center';c.font='24px Georgia';c.fillText('D R E S S B A T T L E',w/2,h/2+5);c.font='12px Georgia';c.fillText('M O O N L I T   S A L O N',w/2,h/2+32);},768,256);
  const print=mesh(new T.PlaneGeometry(4.2,1.4),new T.MeshBasicMaterial({map:insignia,transparent:true,opacity:.28,depthWrite:false}),0,1.19,-.2);print.rotation.x=-Math.PI/2;print.castShadow=false;
+ const contactMap=texture((c,w,h)=>{c.filter='blur(9px)';c.fillStyle='#000';c.beginPath();c.roundRect(18,18,w-36,h-36,16);c.fill();},256,360);
+ const contactGeometry=new T.PlaneGeometry(1.1,1.5);contactGeometry.rotateX(-Math.PI/2);
  const cards=new T.Group();scene.add(cards);let key='',sourceSeat='player',birth=0,host=null,raf=0,frames=0,mx=0,my=0,tx=0,ty=0,last=0,skin='';
- function clearCards(){for(const m of [...cards.children]){m.geometry.dispose();for(const material of m.material){material.map?.dispose();material.dispose();}cards.remove(m);}}
+ function clearCards(){for(const m of [...cards.children]){m.geometry.dispose();m.children.forEach(child=>child.material.dispose());for(const material of m.material){material.map?.dispose();material.dispose();}cards.remove(m);}}
  function updateCards(game){const next=JSON.stringify([game?.id,game?.currentCards,game?.lastPlayerId]);if(next===key)return;key=next;clearCards();birth=performance.now();const values=game?.currentCards||[];
   sourceSeat=game?.lastPlayerId==='player'?'player':game?.lastPlayerId===game?.seats?.[0]?'left':'right';
   values.forEach((value,i)=>{
@@ -42,33 +44,43 @@ function createWorld(T){
    shape.moveTo(x+r,y);shape.lineTo(x+w-r,y);shape.quadraticCurveTo(x+w,y,x+w,y+r);shape.lineTo(x+w,y+h-r);shape.quadraticCurveTo(x+w,y+h,x+w-r,y+h);shape.lineTo(x+r,y+h);shape.quadraticCurveTo(x,y+h,x,y+h-r);shape.lineTo(x,y+r);shape.quadraticCurveTo(x,y,x+r,y);
    const geometry=new T.ExtrudeGeometry(shape,{depth:.025,bevelEnabled:false,curveSegments:5,UVGenerator:{generateTopUV(g,v,a,b,c){return[a,b,c].map(i=>new T.Vector2(v[i*3]/w+.5,v[i*3+1]/h+.5));},generateSideWallUV(){return[new T.Vector2(0,0),new T.Vector2(1,0),new T.Vector2(1,1),new T.Vector2(0,1)];}}});geometry.rotateX(-Math.PI/2);
    const materials=[new T.MeshStandardMaterial({map,roughness:.76}),mat('#d6c6a4',.7)];
-   const m=new T.Mesh(geometry,materials);m.userData.index=i;m.castShadow=true;m.receiveShadow=true;cards.add(m);
+   const m=new T.Mesh(geometry,materials);let seed=2166136261;for(const c of `${game.id}:${value}:${sourceSeat}`)seed=Math.imul(seed^c.charCodeAt(0),16777619)>>>0;
+   m.userData={index:i,dx:((seed%101)/100-.5)*.12,dy:(((seed>>>8)%101)/100-.5)*.14,roll:(((seed>>>16)%101)/100-.5)*.28};
+   const shadow=new T.Mesh(contactGeometry,new T.MeshBasicMaterial({map:contactMap,transparent:true,opacity:.22,depthWrite:false}));shadow.position.set(.025,-.04,.035);shadow.renderOrder=1;m.add(shadow);
+   m.castShadow=true;m.receiveShadow=true;cards.add(m);
   });
 
  }
  const reduced=()=>prefs().effects==='off'||matchMedia('(prefers-reduced-motion: reduce)').matches;
  function schedule(){if(!raf&&host?.isConnected&&!document.hidden)raf=requestAnimationFrame(draw);}
  function draw(now){raf=0;if(!host?.isConnected||document.hidden)return;const dt=Math.min((now-last)/1000,.1);last=now;mx+=(tx-mx)*Math.min(1,dt*7);my+=(ty-my)*Math.min(1,dt*7);camera.position.set(mx*.12,9.4+my*.06,12);camera.lookAt(goal);
-  const mobile=camera.right<4,n=cards.children.length,columns=mobile?Math.min(n,7):n;
-  const spacing=mobile?Math.min(.62,(camera.right*2-1.2)/Math.max(1,columns-1)):Math.min(.99,5.8/Math.max(n-1,1));
-  const scale=mobile?.72:.84;let moving=false;
-  camera.updateMatrixWorld();
-  const facing=new T.Quaternion().copy(camera.quaternion).multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2));
-  const screenUp=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion);
-  const towardCamera=new T.Vector3(0,0,1).applyQuaternion(camera.quaternion);
+  const mobile=camera.right<4,n=cards.children.length,rows=mobile?Math.ceil(n/7):Math.ceil(n/6),columns=mobile?Math.min(n,7):Math.ceil(n/Math.max(1,rows));
+  const scale=mobile?.72:.74,spacing=mobile?Math.min(.62,(camera.right*2-1.2)/Math.max(1,columns-1)):.64*scale,pitch=.74*scale;
+  let moving=false;camera.updateMatrixWorld();
+  const facing=new T.Quaternion().copy(camera.quaternion).multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2-.32));
+  const screenUp=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion),screenRight=new T.Vector3(1,0,0).applyQuaternion(camera.quaternion),towardCamera=new T.Vector3(0,0,1).applyQuaternion(camera.quaternion);
   const hostRect=host.getBoundingClientRect(),handTop=host.parentElement.querySelector('.hand-header')?.getBoundingClientRect().top??hostRect.bottom;
-  const anchor=new T.Vector3(0,1.205,-1.3).project(camera),pixelsPerUnit=hostRect.height/8.2;
-  // Desktop faces remain camera-aligned: perspective belongs to the room, not the readable rank/suit.
-  const lift=mobile?0:Math.max(0,(1-anchor.y)*hostRect.height/2+1.35*scale*pixelsPerUnit/2-(handTop-hostRect.top-18))/pixelsPerUnit;
+  const anchor=new T.Vector3(0,1.205,.15),screenAnchor=anchor.clone().project(camera),pixelsPerUnit=hostRect.height/8.2;
+  const spreadHeight=(Math.max(0,rows-1)*pitch+1.65*scale)*pixelsPerUnit;
+  const lift=mobile?0:Math.max(0,(1-screenAnchor.y)*hostRect.height/2+spreadHeight/2-(handTop-hostRect.top-18))/pixelsPerUnit;
   for(const m of cards.children){
-   const i=m.userData.index,row=Math.floor(i/Math.max(1,columns)),inRow=Math.min(columns,n-row*columns);
-   const t=reduced()?1:Math.max(0,Math.min(1,(now-birth-i*18)/420)),ease=1-(1-t)**3;moving ||= t<1;
-   const x=(i%columns-(inRow-1)/2)*spacing,z=(mobile?-2.1:-1.3)+row*.65;
-   const startX=sourceSeat==='player'?x:sourceSeat==='left'?-Math.min(5,camera.right):Math.min(5,camera.right);
-   const startZ=sourceSeat==='player'?2.2:-3.2;
-   m.scale.setScalar(scale);m.position.set(startX+(x-startX)*ease,1.205+row*.02+i*.004+Math.sin(t*Math.PI)*.45,startZ+(z-startZ)*ease);
-   if(mobile)m.rotation.set(0,(i%columns-(inRow-1)/2)*-.014+(1-ease)*(sourceSeat==='left'?.22:-.22),0);
-   else {m.quaternion.copy(facing);m.rotateY((i-(n-1)/2)*-.008+(1-ease)*(sourceSeat==='left'?.12:-.12));m.position.addScaledVector(screenUp,lift*ease).addScaledVector(towardCamera,1.25);}
+   const {index:i,dx,dy,roll}=m.userData,row=Math.floor(i/Math.max(1,columns)),inRow=Math.min(columns,n-row*columns),col=i%columns-(inRow-1)/2;
+   const t=reduced()?1:Math.max(0,Math.min(1,(now-birth-i*24)/560));
+   // A short throw, a small overshoot, then friction brings the pile to rest.
+   const ease=t<.72?1.025*(1-(1-t/.72)**3):1+.025*(1-(t-.72)/.28)**2;moving ||= t<1;
+   const x=col*spacing+(mobile?dx*.3:dx+(row%2?.16:-.16)),z=(mobile?-2.1:-1.3)+row*.65;
+   const startX=sourceSeat==='player'?x*.4:sourceSeat==='left'?-Math.min(5,camera.right):Math.min(5,camera.right),startZ=sourceSeat==='player'?2.2:-3.2;
+   m.scale.setScalar(scale);m.castShadow=mobile;m.children[0].visible=!mobile;
+   if(mobile){m.position.set(startX+(x-startX)*ease,1.205+row*.02+i*.004+Math.sin(t*Math.PI)*.45,startZ+(z-startZ)*ease);m.rotation.set(0,roll*.4+col*-.014+(1-ease)*(sourceSeat==='left'?.22:-.22),0);}
+   else {
+    const y=(rows-1)*pitch/2-row*pitch+dy+col*col*.018+lift;
+    // Keep all card faces on one shallow plane; the layer offset exposes lower-row ranks.
+    const destination=anchor.clone().addScaledVector(screenRight,x).addScaledVector(screenUp,y).addScaledVector(towardCamera,1.3-y*Math.tan(.32)+i*.03);
+    const start=new T.Vector3(startX,1.205,startZ).addScaledVector(towardCamera,1.3);
+    m.position.copy(start).lerp(destination,ease).addScaledVector(screenUp,Math.sin(t*Math.PI)*.32);
+    m.quaternion.copy(facing);m.rotateY(roll+col*-.035+(1-ease)*(sourceSeat==='left'?.35:-.35));
+    m.children[0].material.opacity=.22*Math.min(1,t/.75);m.children[0].scale.setScalar(1+(1-Math.min(1,t/.75))*.18);
+   }
   }
   renderer.render(scene,camera);const bounds=cardBounds();if(bounds)host.style.setProperty('--play-label-y',`${bounds.top-hostRect.top-30}px`);frames++;if(moving||Math.abs(mx-tx)+Math.abs(my-ty)>.002)schedule();
 
@@ -89,7 +101,11 @@ function createWorld(T){
   const rect=host.getBoundingClientRect();
   return cards.children.map(m=>{const pts=[[-.475,.025,-.675],[.475,.025,-.675],[-.475,.025,.675]].map(v=>{const p=new T.Vector3(...v).applyMatrix4(m.matrixWorld).project(camera);return new T.Vector2(p.x*rect.width/2,p.y*rect.height/2);});return pts[0].distanceTo(pts[1])/pts[0].distanceTo(pts[2]);});
  }
+ function readableRanks(){
+  const ray=new T.Raycaster();
+  return cards.children.map(m=>{const point=new T.Vector3(-.32,.026,-.46).applyMatrix4(m.matrixWorld).project(camera);ray.setFromCamera(new T.Vector2(point.x,point.y),camera);return ray.intersectObjects(cards.children,false)[0]?.object===m;});
+ }
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else schedule();});
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failed=true;const old=host;detach();if(old)old.dataset.renderFallback='3D 已暂停，已使用标准牌桌';});
- return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,sourceSeat,cardBounds:cardBounds(),cardFaceRatios:cardFaceRatios(),cardRows:camera.right<4?Math.ceil(cards.children.length/7):1,characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
+ return {detach,attach(node,game){if(host!==node){detach();host=node;node.prepend(canvas);node.classList.add('has-three');observer.observe(node);node.addEventListener('pointermove',move);}if(skin!==prefs().tableSkin){skin=prefs().tableSkin;felt.color.set(skin==='velvet'?'#4a314b':skin==='moon'?'#21495c':'#185448');}updateCards(game);schedule();},status(){return{ready:true,attached:!!host,frames,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,cards:cards.children.length,sourceSeat,cardBounds:cardBounds(),cardFaceRatios:cardFaceRatios(),readableRanks:readableRanks(),cardRows:Math.ceil(cards.children.length/(camera.right<4?7:6)),layout:'center-scatter',characterMode:'2d-existing-media',roomMode:'authored-art-plate'};}};
 }
