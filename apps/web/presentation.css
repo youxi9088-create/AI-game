@@ -93,3 +93,6 @@ body:has(.has-three) .hand .card:focus-visible{outline:3px solid #fff0b9;outline
 .has-three .played-stack>b{display:none}
 /* A lifted card must not steal the exposed click strip of its next neighbour. */
 body:has(.has-three) .hand .card:hover,body:has(.has-three) .hand .card.selected{z-index:auto}
+
+/* Leave a continuous felt area below the mobile portraits for grounded cards. */
+@media(max-width:560px){.has-three .opponent{top:16%!important;height:26%}}
