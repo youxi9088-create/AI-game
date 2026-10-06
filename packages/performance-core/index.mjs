@@ -1,3 +1,4 @@
+import { ECONOMY } from '../economy-core/index.mjs';
 import { SETTLEMENT_STAGES, MAX_UPGRADE_LEVEL, MULTIPLIER_CAP, validatePhotoCard } from '../contracts/index.mjs';
 
 export const PERFORMANCE_CONTRACT_VERSION = '1.2.0';
@@ -50,10 +51,8 @@ export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier 
   /* 演出是玩家胜利奖励，不是输局惩罚：只有玩家赢时才从败方 AI 中选择一名牌友登台，
      并为这名牌友选择/升级一张与演出视频绑定的写真卡。玩家输局不生成演出卡，也不播放舞蹈。 */
   const losingPal = winnerId === 'player' ? pickLosingPal(loserPalIds, records) : null;
-  /* Token 双向记账：赢要真的加、输要真的减，否则玩家的余额只会单向归零。
-     地主同时对两家结算，所以地主方的输赢是农民方的两倍。 */
-  const stake = Math.max(1, multiplier) * (playerIsLandlord ? 2 : 1);
-  const tokenDelta = winnerId === 'player' ? stake : -stake;
+  // Multipliers remain match statistics; completed rounds have fixed cosmetic-currency rewards.
+  const tokenDelta = winnerId === 'player' ? ECONOMY.winReward : ECONOMY.lossReward;
   let card = null;
   let cardId = null;
   let isFirstUnlock = false;

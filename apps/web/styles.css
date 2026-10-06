@@ -1176,3 +1176,18 @@ h1, h2, h3  {
     transition:none
   }
 }
+
+/* Token collection economy */
+.economy-panel { display:grid; grid-template-columns:minmax(180px,1fr) 2fr; gap:24px; padding:24px; margin:24px 0; border:1px solid #bfa17d55; border-radius:18px; background:linear-gradient(120deg,#253331,#191e29); color:#f2e3cf; }
+.economy-panel h2 { margin:8px 0; font-size:32px; }
+.economy-panel h2 small { font-size:15px; }
+.economy-panel p { line-height:1.7; margin:6px 0; }
+.economy-panel small,.card-purchase small { color:#b8b3aa; line-height:1.6; }
+.economy-milestones { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.economy-milestones span { padding:6px 10px; border-radius:8px; background:#ffffff0b; font-size:12px; }
+.gallery-item { min-width:0; }
+.gallery-item .pcard { width:100%; }
+.card-purchase { display:grid; gap:8px; padding:12px 2px 20px; text-align:center; }
+.card-purchase button { width:100%; white-space:normal; }
+.card-purchase small { font-size:12px; min-height:20px; }
+@media(max-width:600px) { .economy-panel { grid-template-columns:1fr; gap:8px; padding:18px; } }

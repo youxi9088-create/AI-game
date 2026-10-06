@@ -41,11 +41,11 @@ test('each win unlocks the next outfit, then repeats upgrade the same card', () 
   assert.equal(fifth.card.upgradeLevel, 2);
 });
 
-test('losing player gets no photo card and token delta stays negative', () => {
+test('losing player gets no photo card and earns a fixed completion reward', () => {
   const lost = planSettlement({ gameId: 'g6', winnerId: 'pal-linxing', loserPalIds: [], multiplier: 3, outfitLibrary: library });
   assert.equal(lost.card, null);
   assert.equal(lost.cardId, null);
-  assert.equal(lost.tokenDelta, -3);
+  assert.equal(lost.tokenDelta, 2);
   assert.equal(lost.outcome.playerWon, false);
   assert.equal(lost.outcome.danceEligible, false);
 });

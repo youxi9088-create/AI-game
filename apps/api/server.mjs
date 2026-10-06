@@ -127,7 +127,7 @@ const game = new GameService({
   receiptSecret: process.env.TOKEN_RECEIPT_SECRET,
   galleryPath: process.env.GALLERY_STATE_PATH || join(root, '../api/data/gallery.json'),
   walletPath: process.env.TOKEN_STATE_PATH || join(root, '../api/data/player-wallet.json'),
-  initialTokenBalance: Number(process.env.INITIAL_TOKEN_BALANCE || 100),
+  initialTokenBalance: Number(process.env.INITIAL_TOKEN_BALANCE ?? 20),
   palDialogue: Object.fromEntries(officialPals.map((pal) => [pal.palId, pal.dialoguePack])),
   palOutfits: { 'pal-linxing': linxingOutfits, 'pal-mia': miaOutfits, 'pal-yinlan': yinlanOutfits },
   palRegistry: palRoster
@@ -371,7 +371,8 @@ async function api(req, res, pathname) {
     const removed = confirmedPalStore.remove(palId);
     return send(res, 200, { status: removed ? 'DELETED' : 'NOT_FOUND', palId });
   }
-  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals, collection: game.getCollection() });
+  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals, collection: game.getCollection(), economy: game.getEconomy() });
+  if (req.method === 'POST' && pathname === '/api/gallery/purchase') { const data = await body(req); return send(res, 200, game.purchaseCard(data)); }
   if (req.method === 'POST' && pathname === '/api/gallery/compose') { const data = await body(req); return send(res, 200, { creation: game.savePhoto(data) }); }
   if (req.method === 'POST' && pathname === '/api/gallery/seen') { const data = await body(req); return send(res, 200, { cards: game.markCardSeen(data.cardId) }); }
   if (req.method === 'GET' && pathname === '/api/inspect') {

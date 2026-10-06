@@ -1,3 +1,4 @@
+import { ECONOMY, MILESTONES, quoteCard } from '../../packages/economy-core/index.mjs';
 import { emptyCollection, recordWin, composePhoto, collectionSummary } from '../../packages/collection-core/index.mjs';
 import { createHmac, randomBytes, randomUUID } from 'node:crypto';
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
@@ -8,9 +9,9 @@ import { classify, canBeat, enumerateMoves, hasAllCards, removeCards, shuffledDe
 import { chooseMove, suggestMove, bidScore, shouldGrab, personalityFor } from '../../packages/ddz-ai/index.mjs';
 import { DEFAULT_SEATS, validateSeats } from '../../packages/contracts/index.mjs';
 
-const DEFAULT_TOKEN_BALANCE = 100;
-/* 每次进入一局先扣入场 Token；胜负结算再按倍率加减，余额与账本均由服务端掌管。 */
-export const GAME_ENTRY_TOKEN_COST = 1;
+const DEFAULT_TOKEN_BALANCE = ECONOMY.initialBalance;
+/* 免费入场，完成对局赚取 Token；仅消费于确定性的收藏与视觉升级。 */
+export const GAME_ENTRY_TOKEN_COST = ECONOMY.entryCost;
 
 /* 牌型与压制判定由 packages/ddz-rules 独占；这里只做转发，避免既有调用点断链。 */
 export { classify, canBeat, shuffledDeck, sortCards, rankOf, cardValue };
@@ -51,7 +52,9 @@ export class GameService {
        任何未建档或未就绪的 palId 都会被拒绝上桌——前端不能凭空造一个座位出来。 */
     this.palRegistry = palRegistry;
     this.galleryPath = galleryPath;
-    this.walletPath = walletPath;
+    this.walletPath = walletPath || galleryPath;
+    this.economyCommands = {};
+    this.claimedMilestones = [];
     this.initialTokenBalance = Math.max(0, Math.floor(Number(initialTokenBalance) || 0));
     this.gameEntryTokenCost = Math.max(0, Math.floor(Number(gameEntryTokenCost) || 0));
     this.games = new Map();
@@ -60,27 +63,39 @@ export class GameService {
     this.ledger = [];
     this.walletBalance = this.initialTokenBalance;
     this.restoreWallet();
-    this.restoreGallery();
+    if (!this.canonicalAccount) this.restoreGallery();
+    this.persistWallet();
   }
   restoreWallet() {
     if (!this.walletPath) return;
     try {
       const parsed = JSON.parse(readFileSync(this.walletPath, 'utf8'));
-      if (parsed?.version !== 1 || !Number.isSafeInteger(parsed.balance) || parsed.balance < 0 || !Array.isArray(parsed.ledger)) {
+      if (this.walletPath === this.galleryPath && !Object.hasOwn(parsed, 'balance')) return;
+      if (![1, 2].includes(parsed?.version) || !Number.isSafeInteger(parsed.balance) || parsed.balance < 0 || !Array.isArray(parsed.ledger)) {
         throw new Error('Token 存档格式无效；为避免覆盖余额，服务未启动。');
       }
+      if (Number.isSafeInteger(parsed.initialBalance) && parsed.initialBalance >= 0) this.initialTokenBalance = parsed.initialBalance;
       this.walletBalance = parsed.balance;
       this.ledger = parsed.ledger;
+      if (parsed.version === 2) {
+        const c = parsed.collection;
+        if (!Array.isArray(parsed.player) || !c || !Number.isSafeInteger(c.wins) || c.wins < 0 || !Array.isArray(c.creations) || !c.bonds || !c.rewards || !Array.isArray(parsed.claimedMilestones) || !parsed.economyCommands || typeof parsed.economyCommands !== 'object' || Array.isArray(parsed.economyCommands)) throw new Error('收藏经济存档格式无效；为避免丢失卡牌，服务未启动。');
+        this.gallery.set('player', parsed.player);
+        this.collection = c;
+        this.economyCommands = parsed.economyCommands;
+        this.claimedMilestones = parsed.claimedMilestones;
+        this.canonicalAccount = true;
+      }
     } catch (error) {
       if (error?.code !== 'ENOENT') throw error;
-      this.persistWallet();
     }
   }
   persistWallet() {
+    if (this.transactionActive) { this.transactionDirty = true; return; }
     if (!this.walletPath) return;
     mkdirSync(dirname(this.walletPath), { recursive: true });
     const temp = `${this.walletPath}.${randomUUID()}.tmp`;
-    writeFileSync(temp, JSON.stringify({ version: 1, initialBalance: this.initialTokenBalance, balance: this.walletBalance, ledger: this.ledger }, null, 2), 'utf8');
+    writeFileSync(temp, JSON.stringify({ version: 2, initialBalance: this.initialTokenBalance, balance: this.walletBalance, ledger: this.ledger, player: this.getGallery(), collection: this.collection, economyCommands: this.economyCommands, claimedMilestones: this.claimedMilestones }, null, 2), 'utf8');
     renameSync(temp, this.walletPath);
   }
   restoreGallery() {
@@ -97,12 +112,78 @@ export class GameService {
       if (error?.code !== 'ENOENT') throw error; // Never overwrite an unreadable collection.
     }
   }
-  persistGallery() {
-    if (!this.galleryPath) return;
-    mkdirSync(dirname(this.galleryPath), { recursive: true });
-    const temp = `${this.galleryPath}.${randomUUID()}.tmp`;
-    writeFileSync(temp, JSON.stringify({ version: 2, player: this.getGallery(), collection: this.collection }, null, 2), 'utf8');
-    renameSync(temp, this.galleryPath);
+  persistGallery() { this.persistWallet(); }
+  // One atomic account file: a failed write rolls back both currency and inventory.
+  accountTransaction(fn, game = null) {
+    if (this.transactionActive) return fn();
+    const before = structuredClone({ balance: this.walletBalance, ledger: this.ledger, cards: this.getGallery(), collection: this.collection, commands: this.economyCommands, milestones: this.claimedMilestones, game });
+    this.transactionActive = true; this.transactionDirty = false;
+    try {
+      const result = fn();
+      this.transactionActive = false;
+      if (this.transactionDirty) this.persistWallet();
+      return result;
+    } catch (error) {
+      this.walletBalance = before.balance; this.ledger = before.ledger;
+      this.gallery.set('player', before.cards); this.collection = before.collection;
+      this.economyCommands = before.commands; this.claimedMilestones = before.milestones;
+      if (game) { for (const key of Object.keys(game)) delete game[key]; Object.assign(game, before.game); }
+      throw error;
+    } finally { this.transactionActive = false; this.transactionDirty = false; }
+  }
+  outfitLibraries() {
+    const libraries = { ...this.palOutfits };
+    this.registryAssets().forEach(asset => { if (asset?.appearance?.outfitLibrary?.length) libraries[asset.palId] = asset.appearance.outfitLibrary; });
+    return libraries;
+  }
+  getEconomy() {
+    const cards = this.getGallery();
+    return { ...ECONOMY, balance: this.walletBalance, wins: this.collection.wins,
+      milestones: MILESTONES.map(m => ({ ...m, claimed: this.claimedMilestones.includes(m.count) })),
+      catalog: Object.entries(this.outfitLibraries()).flatMap(([palId, outfits]) => outfits.map((outfit, index) => {
+        const cardId = `${palId}:${outfit.outfitId}`;
+        const level = cards.find(c => c.cardId === cardId)?.upgradeLevel || 0;
+        return { cardId, palId, outfitId: outfit.outfitId, name: outfit.name, ...quoteCard({ index, level, wins: this.collection.wins, balance: this.walletBalance }) };
+      })) };
+  }
+  awardMilestones(game) {
+    const count = this.getCollection().owned;
+    let reward = 0;
+    for (const milestone of MILESTONES) {
+      if (count < milestone.count || this.claimedMilestones.includes(milestone.count)) continue;
+      this.claimedMilestones.push(milestone.count);
+      this.recordLedger(game, milestone.reward, { type: `COLLECTION_${milestone.count}` });
+      reward += milestone.reward;
+    }
+    return reward;
+  }
+  purchaseCard({ commandId, cardId, expectedLevel, expectedCost }) {
+    if (typeof commandId !== 'string' || !/^[a-zA-Z0-9_-]{8,100}$/.test(commandId)) throw new Error('购买命令缺少有效幂等键。');
+    const signature = JSON.stringify([cardId, expectedLevel, expectedCost]);
+    if (Object.hasOwn(this.economyCommands, commandId)) {
+      const cached = this.economyCommands[commandId];
+      if (cached.signature !== signature) throw new Error('幂等键不能用于另一笔购买。');
+      return { ...cached.result, account: this.getAccount(), economy: this.getEconomy(), cards: this.getGallery(), collection: this.getCollection() };
+    }
+    return this.accountTransaction(() => {
+      const quote = this.getEconomy().catalog.find(c => c.cardId === cardId);
+      if (!quote) throw new Error('卡牌不在可解锁目录中。');
+      if (quote.level !== expectedLevel || quote.cost !== expectedCost) throw new Error('卡牌等级或价格已变化，请刷新后重试。');
+      if (!quote.canPurchase) throw new Error(quote.reason);
+      const receiptGame = { id: `purchase-${commandId}` };
+      const planned = planSettlement({ gameId: receiptGame.id, winnerId: 'player', loserPalIds: [quote.palId], alreadyUnlocked: this.getGallery(), outfitLibrary: this.outfitLibraries(), preferredOutfitId: quote.outfitId, unlockedAt: new Date().toISOString() });
+      const previous = this.getGallery().find(c => c.cardId === cardId);
+      const card = previous ? { ...previous, upgradeLevel: planned.card.upgradeLevel, seen: false } : planned.card;
+      this.recordLedger(receiptGame, -quote.cost, { type: quote.action === 'unlock' ? 'CARD_UNLOCK' : 'CARD_UPGRADE' });
+      this.gallery.set('player', [...this.getGallery().filter(c => c.cardId !== cardId), card]);
+      // Purchasing confirms the first-win selection, preventing a later reselect from undoing a paid upgrade.
+      this.collection = { ...this.collection, freeRewardFinalized: true };
+      const milestoneReward = this.awardMilestones(receiptGame);
+      const result = { card, spent: quote.cost, milestoneReward, balanceAfter: this.walletBalance };
+      this.economyCommands[commandId] = { signature, result };
+      this.persistGallery();
+      return { ...result, account: this.getAccount(), economy: this.getEconomy(), cards: this.getGallery(), collection: this.getCollection() };
+    });
   }
   /* 座位解析：形状由契约校验，资格由名册校验，两者缺一不可。 */
   resolveSeats(seats = DEFAULT_SEATS) {
@@ -381,7 +462,8 @@ export class GameService {
   }
 
   /* ---------- A4 结算 ---------- */
-  settle(game, winnerId) {
+  settle(game, winnerId) { return this.accountTransaction(() => this.settleRound(game, winnerId), game); }
+  settleRound(game, winnerId) {
     if (game.phase === 'SETTLED') return;
     game.phase = 'SETTLED';
     const landlordId = game.landlordId;
@@ -416,20 +498,28 @@ export class GameService {
       const receipt = this.recordLedger(game, game.settlement.tokenDelta, { type: 'SETTLEMENT' });
       game.settlement = { ...game.settlement, tokenEffectiveDelta: receipt.effective, tokenBalanceAfter: receipt.balance };
     }
-    if (game.settlement.card) {
-      const cards = [...unlocked];
-      const index = cards.findIndex((entry) => entry.cardId === game.settlement.card.cardId);
-      this.collection = recordWin(this.collection, { gameId: game.id, palId: game.settlement.card.palId, cardId: game.settlement.card.cardId });
-      if (index >= 0) cards[index] = { ...game.settlement.card, serialNo: cards[index].serialNo };
-      else cards.push(game.settlement.card);
-      this.gallery.set('player', cards);
+    const s = game.settlement;
+    s.freeCardReward = s.outcome.playerWon && this.collection.wins === 0 && unlocked.length === 0;
+    if (s.outcome.playerWon) {
+      if (s.freeCardReward && s.card) {
+        this.gallery.set('player', [...unlocked, s.card]);
+      } else {
+        // Victory can replay an owned outfit; it never silently grants or upgrades another card.
+        const owned = unlocked.find(c => c.palId === s.loserPalId) || null;
+        Object.assign(s, { card: owned, cardId: owned?.cardId || null, outfit: owned?.outfitName || null, dance: owned?.dance || null, upgradeLevel: owned?.upgradeLevel || 0, isFirstUnlock: false });
+        s.outcome.danceEligible = Boolean(owned);
+      }
+      this.collection = recordWin(this.collection, { gameId: game.id, palId: s.loserPalId, cardId: s.cardId });
+      s.milestoneReward = this.awardMilestones(game);
       this.persistGallery();
     }
+    s.tokenBalanceAfter = this.walletBalance;
     assertCardIntegrity(game, 'settlement');
     this.emit(game, 'ROUND_SETTLED', { settlement: game.settlement, message: '牌局结束，进入结算演出。' });
   }
   selectReward(gameId, cardId) {
     const game = this.get(gameId);
+    if (!game.settlement?.freeCardReward || this.collection.freeRewardFinalized) throw new Error('只有首胜赠卡可以选择；后续请用 Token 定向解锁或升级。');
     if (game.settlementStage !== 'RESULT' || !game.settlement?.card || this.collection.latestRewardGameId !== gameId || this.collection.creations.some(c => c.gameId === gameId)) throw new Error('只能在最新胜局演出前选择奖励。');
     const palId = game.settlement.card.palId;
     const chosen = game.rewardLibrary[palId]?.find(o => `${palId}:${o.outfitId}` === cardId);
@@ -474,8 +564,9 @@ export class GameService {
       tokenBalance: this.walletBalance, multiplier: game.multiplier
     });
   }
-  /* Token 双向记账：赢要真的入账，输要真的出账。余额不足时按余额结算，账本如实记录实际变动。 */
-  recordLedger(game, delta, { type = 'SETTLEMENT' } = {}) {
+  /* 账本与卡牌在同一个原子存档中提交。 */
+  recordLedger(game, delta, options = {}) { return this.accountTransaction(() => this.appendLedger(game, delta, options), game); }
+  appendLedger(game, delta, { type = 'SETTLEMENT' } = {}) {
     const effective = -Math.min(this.walletBalance, Math.max(0, -delta)) + Math.max(0, delta);
     this.walletBalance = Math.max(0, this.walletBalance + effective);
     game.tokenBalance = this.walletBalance;
@@ -509,14 +600,14 @@ export class GameService {
       if (cached.kind !== kind) throw new Error('幂等键已被另一条命令占用，不能复用。');
       return cached.result;
     }
-    const result = fn(game);
+    const result = this.accountTransaction(() => fn(game), game);
     game.commandCache.set(commandId, { kind, result });
     return result;
   }
   getCollection() {
     const libraries = { ...this.palOutfits };
     this.registryAssets().forEach((asset) => { if (asset?.appearance?.outfitLibrary?.length) libraries[asset.palId] = asset.appearance.outfitLibrary; });
-    return { ...collectionSummary(this.collection, this.getGallery(), libraries), creations: this.collection.creations, pending: Object.entries(this.collection.rewards).filter(([gameId]) => !this.collection.creations.some((c) => c.gameId === gameId)).map(([gameId, reward]) => ({ gameId, ...reward })) };
+    return { ...collectionSummary(this.collection, this.getGallery(), libraries), freeRewardFinalized: Boolean(this.collection.freeRewardFinalized), creations: this.collection.creations, pending: Object.entries(this.collection.rewards).filter(([gameId]) => !this.collection.creations.some((c) => c.gameId === gameId)).map(([gameId, reward]) => ({ gameId, ...reward, hasCard: this.getGallery().some(c => c.palId === reward.palId) })) };
   }
   savePhoto(input) {
     const before = this.collection;

@@ -60,10 +60,11 @@ test('reward reselection cannot multiply tokens, bonds, card upgrades or stale r
  const before=structuredClone(svc.getGallery()),persist=svc.persistGallery;
  svc.persistGallery=()=>{throw new Error('disk failed');};assert.throws(()=>svc.selectReward(g.id,'pal-linxing:a'),/disk failed/);assert.deepEqual(svc.getGallery(),before);svc.persistGallery=persist;
  svc.advanceSettlement(g.id);assert.throws(()=>svc.selectReward(g.id,'pal-linxing:a'),/演出前/);
- const next=win();svc.selectReward(next.id,'pal-linxing:b');assert.equal(svc.getGallery()[0].upgradeLevel,2);
- svc.selectReward(next.id,'pal-linxing:c');assert.equal(svc.getGallery().find(c=>c.cardId==='pal-linxing:b').upgradeLevel,1);
- assert.equal(svc.getGallery().length,2);
- const latest=win();assert.throws(()=>svc.selectReward(next.id,'pal-linxing:a'),/演出前/);assert.ok(latest.id);
+ const next=win();assert.throws(()=>svc.selectReward(next.id,'pal-linxing:b'),/首胜/);
+ assert.equal(svc.getGallery()[0].upgradeLevel,1);assert.equal(svc.getGallery().length,1);
+ assert.equal(next.settlement.card.cardId,'pal-linxing:b');
+ assert.equal(svc.getCollection().wins,2);
+
 });
 test('video moments, unlocked finishes and server-owned source URLs are enforced',()=>{
  let p=recordWin(emptyCollection(),{gameId:'g1',palId:source.palId});
