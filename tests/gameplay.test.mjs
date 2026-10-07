@@ -299,24 +299,20 @@ test('landlord win with untouched farmers is a spring and pays out to the player
   const game = settleWith(service, created.id, { landlordId: 'player', winnerId: 'player', bombs: 1, playCounts: { player: 3, 'pal-linxing': 0, 'pal-mia': 0 } });
   assert.equal(game.settlement.breakdown.spring, true);
   assert.equal(game.multiplier, 2 * 2 * 2);
-  assert.equal(game.settlement.tokenDelta, 8 * 2, '地主同时对两家结算，收益翻倍');
-  assert.equal(game.tokenBalance, 100 - 1 + 16);
-  const receipt = service.getLedger().at(-1);
-  assert.equal(receipt.delta, 16);
-  assert.equal(receipt.balance, 115);
-  assert.equal(service.getLedger().at(-2).type, 'GAME_ENTRY');
+  assert.equal(game.settlement.tokenDelta, 8, '倍率与身份不放大 Token 收益');
+  assert.equal(game.tokenBalance, 28);
+  assert.equal(service.getLedger().at(-1).delta, 8);
+  assert.equal(service.getLedger().length, 1);
 });
 
-test('a loss is really deducted and cannot push the balance below zero', () => {
-  const service = new GameService({ initialTokenBalance: 12 });
+test('a completed loss earns consolation tokens even at zero balance', () => {
+  const service = new GameService({ initialTokenBalance: 0 });
   const created = service.newGame({ seed: 13 });
   const game = settleWith(service, created.id, { landlordId: 'pal-linxing', winnerId: 'pal-linxing', bombs: 4, playCounts: { player: 5, 'pal-linxing': 4, 'pal-mia': 5 } });
-  assert.equal(game.settlement.breakdown.spring, false);
-  assert.ok(game.settlement.tokenDelta < 0, '输了必须真的扣 Token');
-  assert.equal(game.settlement.tokenEffectiveDelta, -11, '结算展示实际扣除额，不把超额名义倍率冒充成扣款');
-  assert.equal(game.settlement.tokenBalanceAfter, 0);
-  assert.equal(game.tokenBalance, 0, '扣到 0 为止，不会变成负数');
-  assert.equal(service.getLedger().at(-1).balance, 0);
+  assert.equal(game.settlement.tokenDelta, 2);
+  assert.equal(game.settlement.tokenEffectiveDelta, 2);
+  assert.equal(game.settlement.tokenBalanceAfter, 2);
+  assert.equal(game.tokenBalance, 2);
 });
 
 test('结算先展示结果：玩家赢才进入演出，玩家输直接散场', () => {
@@ -344,32 +340,29 @@ test('the Token wallet persists across rounds and service restarts', async () =>
   try {
     const firstService = new GameService({ walletPath });
     const first = firstService.newGame({ seed: 51 });
-    assert.equal(first.tokenBalance, 99);
+    assert.equal(first.tokenBalance, 20);
     settleWith(firstService, first.id, { landlordId: 'pal-linxing', winnerId: 'player' });
-    assert.equal(firstService.getAccount().balance, 103, '结算收益应计入 Token');
+    assert.equal(firstService.getAccount().balance, 28, '结算收益应计入 Token');
 
     const restartedService = new GameService({ walletPath });
-    assert.equal(restartedService.getAccount().balance, 103);
+    assert.equal(restartedService.getAccount().balance, 28);
     const next = restartedService.newGame({ seed: 52 });
-    assert.equal(next.tokenBalance, 102);
+    assert.equal(next.tokenBalance, 28);
     settleWith(restartedService, next.id, { landlordId: 'pal-linxing', winnerId: 'pal-linxing' });
-    assert.equal(restartedService.getAccount().balance, 98, '玩家输掉反春天后按倍率扣除 4 Token');
+    assert.equal(restartedService.getAccount().balance, 30, '完整负局增加 2 Token');
 
     const afterLossRestart = new GameService({ walletPath });
-    assert.equal(afterLossRestart.getAccount().balance, 98);
-    assert.equal(afterLossRestart.getLedger().length, 4);
+    assert.equal(afterLossRestart.getAccount().balance, 30);
+    assert.equal(afterLossRestart.getLedger().length, 2);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
 });
 
-test('starting a game consumes one Token and blocks when the wallet is empty', () => {
-  const service = new GameService({ initialTokenBalance: 1 });
-  const created = service.newGame({ seed: 71 });
-  assert.equal(created.tokenBalance, 0);
-  assert.equal(service.getAccount().balance, 0);
-  assert.equal(service.getLedger().at(-1).type, 'GAME_ENTRY');
-  assert.throws(() => service.newGame({ seed: 72 }), /Token 不足/);
+test('starting and abandoning a game costs nothing and grants no income', () => {
+  const service = new GameService({ initialTokenBalance: 0 });
+  for (let seed = 1; seed < 4; seed++) assert.equal(service.newGame({ seed }).tokenBalance, 0);
+  assert.equal(service.getLedger().length, 0);
 });
 
 test('只有玩家胜利才选择败方牌友演出，玩家输局不掉卡不演出', () => {

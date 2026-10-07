@@ -1,5 +1,9 @@
+import {playingCardSVG} from './playing-card-art.js';
+import {syncCardEffects,installHandBrush} from './card-effects.js';
+import {syncTable3D} from './table-3d.js';
+import { studioMarkup, collectionMarkup, exportPhoto, hydratePhotos, updatePhotoMoment } from './photo-studio.js';
 import { npcDelay, prefs, SPEED_LABEL, cycleSpeed, setPref } from './runtime.js';
-import { sfx, primeAudio } from './sfx.js';
+import { sfx, primeAudio, playCardAudio, updateAudioScene, syncAudio } from './sfx.js';
 import { RESOURCE_SLOTS, displayAsset } from './asset-slots.js';
 
 const validRoutes = new Set(['home', 'table', 'workshop', 'gallery', 'inspector']);
@@ -8,8 +12,9 @@ const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)'
 const state = {
   route: routeFromHash(), game: null, selected: new Set(), workshop: null, workshopError: '', workshopPrompt: '', workshopName: '', workshopVideoReferenceUrl: '', workshopClothing: 'described', workshopAccessory: 'none', workshopTier: 'launch', workshopBusy: false, workshopJob: null, workshopPoller: null, workshopTaskPlanFilter: '',
   replay: null, entry: false, npcTimer: null,
-  pals: [], palIndex: {}, defaultSeats: null, seats: null, walletBalance: 100, galleryCards: [], galleryTab: 'all', galleryQuick: null,
+  pals: [], palIndex: {}, defaultSeats: null, seats: null, walletBalance: 20, economy: null, purchaseBusy: false, purchaseRequests: {}, galleryCards: [], galleryTab: 'all', galleryQuick: null,
   detail: null, detailReturnCard: null, imagePreview: null, resourcePlanDetail: null, flownFor: null, sfxFiredFor: null,
+  collection: null, studioGame: null, photoDraft: null,
   closeup: null, closeupKey: null, closeupTimer: null
 };
 const WORKSHOP_CLOTHING_OPTIONS = [
@@ -61,7 +66,7 @@ function letterboxVideo({ src, poster = null, label, className = '', autoplay = 
 function letterboxStill({ poster, label, className = '' }) {
   return `<div class="vframe ${className}"><img class="vframe-blur" src="${escape(poster)}" alt="" aria-hidden="true" /><img class="vframe-main" src="${escape(poster)}" alt="${escape(label)}" /></div>`;
 }
-function updateToken() { document.querySelector('#tokenBalance').textContent = `◇ ${state.game?.tokenBalance ?? state.walletBalance ?? 100} Token`; }
+function updateToken() { if (state.game) state.walletBalance = state.game.tokenBalance; document.querySelector('#tokenBalance').textContent = `◇ ${state.walletBalance ?? 20} Token`; }
 function applyPrefs() {
   const current = prefs();
   const speedLabel = document.querySelector('#speedLabel');
@@ -77,7 +82,7 @@ function applyPrefs() {
 }
 function rank(card) { return card.replace(/[♣♦♥♠]/g, ''); }
 function suit(card) { return card.match(/[♣♦♥♠]/)?.[0] || ''; }
-function card(card, selected = false, disabled = false) { const red = /[♦♥]/.test(card); return `<button class="card ${red ? 'red' : ''} ${selected ? 'selected' : ''}" data-card="${card}" aria-pressed="${selected}"${disabled ? ' disabled aria-disabled="true"' : ''}><b>${rank(card)}</b><small>${suit(card)}</small></button>`; }
+function card(card, selected = false, disabled = false) { const red = /[♦♥]/.test(card) || card === 'BJ'; return `<button class="card ${red ? 'red' : ''} ${selected ? 'selected' : ''}" data-card="${card}" aria-label="${card === 'BJ' ? '大王' : card === 'SJ' ? '小王' : card}" aria-pressed="${selected}"${disabled ? ' disabled aria-disabled="true"' : ''}>${prefs().renderer === '3d' ? playingCardSVG(card) : ''}<b>${prefs().renderer === '3d' && /^(BJ|SJ)$/.test(card) ? (card === 'BJ' ? '大' : '小') : rank(card)}</b><small>${prefs().renderer === '3d' && /^(BJ|SJ)$/.test(card) ? '王' : suit(card)}</small></button>`; }
 function tableCard(value) { const red = /[♦♥]/.test(value); return `<div class="table-card ${red ? 'red' : ''}" role="img" aria-label="桌面牌 ${value}"><b>${rank(value)}</b><small>${suit(value)}</small></div>`; }
 
 /* ---------- pal assets & layered appearance ---------- */
@@ -120,19 +125,20 @@ function palStandee(palId, variant = '', action = null) {
   /* 已被目检打回的透明动作绝不能继续覆盖牌桌立绘。此前只要 WebM
      带 ALPHA_MODE=1 就播放，导致灰白底板和不合格动作仍被玩家看到。
      打回后回退到已验收的牌桌立绘；不能退到同样未验收的白底动作图。 */
-  const actionRejected = actionAsset?.alphaVisualApproved === false;
+  const actionRejected = actionAsset?.alphaVisualApproved === false || (isTable && prefs().renderer === '3d' && actionAsset?.alphaVisualApproved !== true);
+  // In the composited salon, unverified opaque action media must not replace a transparent seated figure.
   const videoRef = !actionRejected ? actionAsset?.videoRef || null : null;
   const videoMotion = videoRef ? `<video class="action-video" autoplay muted playsinline preload="metadata" aria-label="${alt}，${label}动作">${videoSource(videoRef)}</video>` : '';
   const actionImage = !actionRejected ? actionAsset?.imageRef : null;
   /* 五态拼图只作源文件：运行时只加载拆出的单张动作图（或动作视频），不再用整张拼图的 CSS sprite。 */
   const actionStill = !videoRef && actionImage ? `<img class="layer layer-action" src="${escape(actionImage)}" alt="${escape(name)}，${label}动作" />` : '';
   if (standeeRef) {
-    return `<div class="pal-avatar pal-standee cutout ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}">
+    return `<div class="pal-avatar pal-standee cutout ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}" data-seat-action="${actionKey}">
     <img class="layer layer-base" src="${standeeRef}" width="600" height="750" alt="${alt}" />
     ${videoMotion || actionStill}<div class="pal-caption"><strong>${name}</strong><i>AI 虚构成年</i></div></div>`;
   }
   if (palId.startsWith('pal-user-')) return `<div class="pal-avatar pal-standee ${variant}" data-pal="${escape(palId)}"><p role="status">${escape(name)} · ${isTable ? '牌桌' : '大厅'}立绘待验收</p></div>`;
-  return `<div class="pal-avatar pal-standee ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}">
+  return `<div class="pal-avatar pal-standee ${palId} ${variant} ${videoRef ? 'with-video' : ''}" data-pal="${palId}" data-seat-action="${actionKey}">
     <img class="layer layer-base" src="${layers.base}" width="600" height="800" alt="${alt}" aria-hidden="false" />
     ${layers.outfit && layers.outfit !== layers.base ? `<img class="layer layer-outfit" src="${layers.outfit}" width="600" height="800" alt="" aria-hidden="true" />` : ''}
     ${videoMotion || actionStill}<div class="pal-caption"><strong>${name}</strong><i>AI 虚构成年</i></div></div>`;
@@ -257,7 +263,7 @@ function renderHome() {
   app.innerHTML = `<section class="lounge-home">
     <div class="lounge-scrim" aria-hidden="true"></div><p class="lounge-kicker">DRESSBATTLE CLUB · SOLO TABLE</p>
     <div class="lounge-character left">${palStandee(chosenSeats()[0], 'lounge-pal')}</div><div class="lounge-character right">${palStandee(chosenSeats()[1], 'lounge-pal')}</div>
-    <div class="lounge-copy"><p class="eyebrow">今晚的牌局 · 两位 AI 牌友已入席</p><h1>月光落桌，<br/><span>以牌会友。</span></h1><p>单机经典斗地主。观察她们的动作、台词与出牌，赢下一局，看一场现场换装演出，把定格的写真卡收入卡册。</p>${seatPicker()}<div class="hero-actions"><button class="primary lounge-cta" data-action="start">进入今晚牌局 <span>→</span></button><button class="secondary lounge-secondary" data-route="workshop">创建虚构牌友</button></div><p class="guard">当前 ${state.walletBalance ?? 100} Token · 开局消耗 1 Token，结算按倍率增加或扣减（余额不足扣至 0）· 无现金价值</p></div>
+    <div class="lounge-copy"><p class="eyebrow">今晚的牌局 · 两位 AI 牌友已入席</p><h1>月光落桌，<br/><span>以牌会友。</span></h1><p>首胜赠写真，之后赚 Token 自选解锁与升级。看完演出，亲手搭配、命名并定格，收藏属于你的作品。</p>${seatPicker()}<div class="hero-actions"><button class="primary lounge-cta" data-action="start">进入今晚牌局 <span>→</span></button><button class="secondary lounge-secondary" data-route="workshop">创建虚构牌友</button></div><p class="guard">当前 ${state.walletBalance ?? 20} Token · 免费开局 · 完成对局胜 +8 / 负 +2 · 倍率不影响 Token · 不可购买、转赠或提现，无现金价值</p></div>
     <div class="lounge-brief"><div><b>01</b><span>服务端权威判定</span></div><div><b>02</b><span>逐位 AI 回合</span></div><div><b>03</b><span>现场换装与写真收集</span></div></div>
   </section>`;
 }
@@ -320,22 +326,22 @@ function renderTable() {
     <aside class="table-side"><div class="round-tag">引导牌局 · 第 1 局</div><h1>${statusTitle}</h1><p>${statusCopy}</p></aside>
     <section class="table-board">
       <div class="table-felt theme-${theme.id}" data-table-theme="${theme.id}"><div class="match-hud"><span>第 1 局 / BO3</span><b>${bidding ? '叫分中' : `地主 ×${game.multiplier}`}</b><span>${settled ? '本局结算' : game.turn === 'player' ? '轮到你' : `${activePlayer.name}回合`}</span></div><div class="felt-label">DRESSBATTLE <small>${theme.label}</small><em>${theme.name}</em></div>
-        <div class="opponent top">${palStandee(topSeat, 'table-seat', seatAction(topSeat))}<div><b>${players[topSeat].role || '等待叫分'}</b><span>${players[topSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(topSeat)}</div>
-        <div class="opponent right">${palStandee(rightSeat, 'table-seat', seatAction(rightSeat))}<div><b>${players[rightSeat].role || '等待叫分'}</b><span>${players[rightSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(rightSeat)}</div>
-        <div class="play-stage" role="status" aria-live="polite">${game.currentCombo ? `<div class="played-stack from-${game.lastPlayerId} seat-${seatKeyOf(game, game.lastPlayerId)}"><p>桌面牌型 · ${game.currentCombo.label}</p><div class="table-card-fan">${(game.currentCards || []).map(tableCard).join('')}</div><b>${players[game.lastPlayerId]?.name || '未知'}已出</b></div>` : `<div class="lead-marker">${game.turn === 'player' ? '等待你领出第一手牌' : `${activePlayer.name}等待领出`}</div>`}<div class="turn-dock ${game.turn === 'player' ? 'active' : ''}">${settled ? '结算中' : game.turn === 'player' ? (game.currentCombo && game.lastPlayerId !== 'player' ? '轮到你 · 选择压制或不出' : '轮到你领出') : `${activePlayer.name}思考中…`}</div></div>
+        <div class="opponent top ${game.turn === topSeat ? 'seat-active' : ''}">${palStandee(topSeat, 'table-seat', seatAction(topSeat))}<div><b>${players[topSeat].role || '等待叫分'}</b><span>${players[topSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(topSeat)}</div>
+        <div class="opponent right ${game.turn === rightSeat ? 'seat-active' : ''}">${palStandee(rightSeat, 'table-seat', seatAction(rightSeat))}<div><b>${players[rightSeat].role || '等待叫分'}</b><span>${players[rightSeat].count} 张</span></div><div class="back-cards">▣ ▣ ▣</div>${palBubble(rightSeat)}</div>
+        <div class="play-stage" role="status" aria-live="polite">${game.currentCombo ? `<div class="played-stack from-${game.lastPlayerId} seat-${seatKeyOf(game, game.lastPlayerId)}"><p>${prefs().renderer === '3d' ? escape(players[game.lastPlayerId]?.name || '') : '桌面牌型'} · ${game.currentCombo.label}</p><div class="table-card-fan">${(game.currentCards || []).map(tableCard).join('')}</div><b>${players[game.lastPlayerId]?.name || '未知'}已出</b></div>` : `<div class="lead-marker">${game.turn === 'player' ? '等待你领出第一手牌' : `${activePlayer.name}等待领出`}</div>`}<div class="turn-dock ${game.turn === 'player' ? 'active' : ''}">${settled ? '结算中' : game.turn === 'player' ? (game.currentCombo && game.lastPlayerId !== 'player' ? '轮到你 · 选择压制或不出' : '轮到你领出') : `${activePlayer.name}思考中…`}</div></div>
         <div class="self-seat"><span>${players.player.role || '你'} · ${players.player.count} 张</span></div>
         ${state.closeup ? closeupMarkup(state.closeup) : ''}
       </div>
       <div class="hand-wrap"><div class="hand-header"><span>你的手牌 <b>${game.playerHand.length}</b></span><div>${bidding ? bidControls(game) : settled ? '<span class="settlement-progress">结算演出进行中</span>' : game.turn !== 'player' ? `<span class="turn-wait" aria-live="polite">${activePlayer.name}正在思考…</span>` : `<button class="secondary compact" data-action="hint">提示</button>${game.currentCombo && game.lastPlayerId !== 'player' ? '<button class="secondary compact" data-action="pass">不出</button>' : ''}<button class="primary compact" data-action="play">出牌</button>`}</div></div><div class="hand" aria-label="你的手牌">${game.playerHand.map((item) => card(item, state.selected.has(item), bidding || settled || game.turn !== 'player')).join('')}</div></div>
     </section>
-    <aside class="event-feed"><h2>牌局记录</h2>${game.events.slice().reverse().slice(0, 4).map((event) => `<div class="event"><p>${escape(eventText(event))}</p></div>`).join('')}</aside>
+    <aside class="event-feed"><details ${prefs().renderer === '3d' ? '' : 'open'}><summary>牌局记录</summary>${game.events.slice().reverse().slice(0, 4).map((event) => `<div class="event"><p>${escape(eventText(event))}</p></div>`).join('')}</details></aside>
   </section>${state.entry ? entryCinematic() : ''}${settled ? settlementOverlay(game) : ''}`;
 }
 
 /* ---------- settlement: live dress-up performance ---------- */
 /* RESULT 阶段的主按钮文案按胜负内联在 settlementOverlay 里（赢：「xxx将为你跳舞」/ 输：「继续」），
    这里的映射只覆盖 RESULT 之后的阶段；RESULT 兜底落到「继续」。 */
-function settlementLabel(stage) { return ({ PERFORMANCE: '揭晓写真卡', PHOTO_REVEAL: '前往写真馆', DESTINATION: '再开一局' })[stage] || '继续'; }
+function settlementLabel(stage) { return ({ PERFORMANCE: '揭晓写真卡', PHOTO_REVEAL: '完成收藏', DESTINATION: '再开一局' })[stage] || '继续'; }
 /* A4 倍数必须可解释：把「这个 ×N 是怎么来的」摊开写，封顶也要如实标注。 */
 function multiplierLine(s) {
   const b = s.breakdown;
@@ -349,7 +355,7 @@ function multiplierLine(s) {
 function tokenLine(s) {
   const delta = s.tokenEffectiveDelta ?? s.tokenDelta ?? 0;
   const stake = Math.abs(delta);
-  return `${delta >= 0 ? '+' : '−'}${stake} Token${s.playerIsLandlord ? '（地主同时对两家结算）' : ''}`;
+  return `${delta >= 0 ? '+' : '−'}${stake} Token${s.milestoneReward ? ` · 收藏里程碑 +${s.milestoneReward} Token` : ''}`;
 }
 function dressupFigure(cardRecord, { autoplay = true } = {}) {
   cardRecord = repairGalleryCard(cardRecord);
@@ -410,12 +416,36 @@ function danceStagePage(cardRecord) {
       ? `<video class="dance-stage-video" controls autoplay playsinline preload="auto" aria-label="${escape(label)}">${videoSource(actionRef)}</video>`
       : dressupFigure(cardRecord);
   }
-  return `<section class="dance-stage" role="dialog" aria-modal="true" aria-labelledby="dance-stage-title"><div class="dance-stage-spotlight" aria-hidden="true"></div>${body}<div class="dance-stage-head"><p class="eyebrow">舞台演出</p><h2 id="dance-stage-title">${escape(label)}</h2></div><div class="dance-stage-actions"><button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">${settlementLabel('PERFORMANCE')}</button></div></section>`;
+  return `<section class="dance-stage" role="dialog" aria-modal="true" aria-labelledby="dance-stage-title"><div class="dance-stage-spotlight" aria-hidden="true"></div>${body}<div class="dance-stage-head"><p class="eyebrow">舞台演出</p><h2 id="dance-stage-title">${escape(label)}</h2></div><div class="dance-stage-actions"><button class="primary capture-live" data-action="capture-moment">定格这一刻</button><button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">${settlementLabel('PERFORMANCE')}</button></div></section>`;
+}
+function settlementResult(game, card) {
+  const s = game.settlement, won = s.outcome?.playerWon ?? s.winnerId === 'player';
+  const gift = Boolean(s.freeCardReward && !state.collection?.freeRewardFinalized && card);
+  const gain = s.tokenEffectiveDelta ?? s.tokenDelta ?? 0, bonus = s.milestoneReward || 0;
+  const name = card ? palName(card.palId) : palName(s.loserPalId || s.finisherId || s.winnerId);
+  const outfits = gift ? state.palIndex[card.palId]?.appearance?.outfitLibrary || [] : [];
+  const entering = state.resultShown !== game.id; state.resultShown = game.id;
+  const art = card ? photoCardArt(card, { large: true, motion: false })
+    : `<div class="result-emblem" aria-hidden="true"><i>♠</i><i>♡</i><i>♣</i><span>${won ? '✦' : '◇'}</span></div>`;
+  const options = outfits.map(o => {
+    const id = `${card.palId}:${o.outfitId}`, selected = id === card.cardId;
+    return `<button class="reward-outfit ${selected ? 'chosen' : ''}" data-action="choose-reward" data-reward-card="${escape(id)}" aria-pressed="${selected}"><img src="${escape(o.layerSnapshot.cardPoster || o.layerSnapshot.outfit)}" alt="" /><span><b>${escape(o.name)}</b><small>${selected ? '✓ 已选择' : '免费换选'}</small></span></button>`;
+  }).join('');
+  return `<section class="settlement show result-screen ${won ? 'result-win' : 'result-loss'} ${entering ? 'result-enter' : ''}" role="dialog" aria-modal="true" aria-labelledby="settlement-title" aria-describedby="result-description">
+    <div class="result-panel"><div class="result-halo" aria-hidden="true"></div>
+      <header class="result-heading"><span class="result-kicker">${won ? 'VICTORY · 胜方时刻' : 'ROUND COMPLETE · 本局结束'}</span><h2 id="settlement-title">${won ? '这一局，属于你' : '惜败，也有收获'}</h2><p id="result-description">${gift ? '首胜礼遇 · 选一套喜欢的服装，把这一刻留下。' : won ? card ? '熟悉的身影，再为你登台。' : '胜利已入账，下一张心动的卡由你决定。' : '完成对局的奖励已到账，下一手好牌等你开场。'}</p></header>
+      <div class="result-main"><div class="result-art"><div class="result-orbit" aria-hidden="true"></div><div class="result-card">${art}</div><p class="result-card-tag">${gift ? '首胜赠卡 · 1 份' : card ? '已拥有 · 可再次定格' : won ? '下一份收藏，等你揭晓' : '每一局，都是新的机会'}</p>${card ? `<h3>${escape(card.outfitName)}</h3><p class="result-pal">${escape(name)} · ${escape(card.dance)}</p>` : ''}</div>
+      <div class="result-content"><section class="result-receipt" aria-label="本局 Token 收益"><div class="result-receipt-head"><span>本局获得</span><span>已到账 ✓</span></div><div class="result-gain">+${gain + bonus}<small>Token</small></div><dl><div><dt>${won ? '胜局奖励' : '完局奖励'}</dt><dd>+${gain}</dd></div>${bonus ? `<div><dt>收藏里程碑</dt><dd>+${bonus}</dd></div>` : ''}<div class="result-balance"><dt>当前余额</dt><dd>${state.walletBalance} <small>Token</small></dd></div></dl></section>
+      <details class="result-breakdown"><summary>本局倍率 ×${s.multiplier} <span>查看明细</span></summary><p>${escape(multiplierLine(s))}</p><p>倍率记录牌局表现，不放大 Token 奖励。</p></details>
+      ${gift ? `<section class="result-choice"><div class="result-section-title"><h3>选你的首胜礼物</h3><span>确定获得 · 不扣 Token</span></div><div class="reward-choice-grid">${options}</div></section>` : `<section class="result-next"><span>${won ? '下一步' : '继续积累'}</span><h3>${card ? '从演出中，定格喜欢的瞬间' : '用 Token 解锁下一张写真'}</h3><p>${card ? '已拥有的卡不会重复发放或自动升级。想换新服装，也可以去写真馆挑选。' : '写真馆明码标价，显示胜场条件与余额差额。零余额也能免费继续打牌。'}</p></section>`}
+      </div></div><footer class="result-actions"><p>${gift ? '所选赠卡已收入写真馆，可在演出前换选。' : '奖励已保存，离开此页不会丢失。'}</p><div>${card ? `<button class="secondary" data-action="skip-settlement">稍后拍摄</button><button class="primary" data-action="advance">${escape(name)}将为你跳舞 <span aria-hidden="true">→</span></button>` : `<button class="secondary" data-route="gallery">打开写真馆</button><button class="primary" data-action="restart">${won ? '再赢一局' : '再来一局'} <span aria-hidden="true">→</span></button>`}</div></footer>
+    </div></section>`;
 }
 function settlementOverlay(game) {
   const s = game.settlement; const stage = game.settlementStage;
   const playerWon = s.winnerId === 'player';
   const cardRecord = repairGalleryCard(s.card);
+  if (stage === 'RESULT') return settlementResult(game, cardRecord);
   if (stage === 'PERFORMANCE' && playerWon && cardRecord) return danceStagePage(cardRecord);
   const eyebrow = ({ RESULT: '胜负已分', PERFORMANCE: '舞台演出', PHOTO_REVEAL: '写真卡', DESTINATION: '散场' })[stage] || stage;
   if (!cardRecord) {
@@ -430,10 +460,10 @@ function settlementOverlay(game) {
       ? letterboxVideo({ src: winDance, poster: winnerPal?.appearance?.dancePosterRef || null, label: `${winnerName}守住舞台`, className: 'stage-vframe' })
       : `<video class="settlement-action-video" autoplay muted playsinline preload="auto" aria-label="${escape(winnerName)}守住舞台">${videoSource(winVideo)}</video>`;
     const summary = stage === 'RESULT'
-      ? (playerWon ? `${multiplierLine(s)}。${tokenLine(s)}。` : `${multiplierLine(s)}。${tokenLine(s)}。${winnerName}守住了舞台，本局不触发演出。`)
+      ? (playerWon ? `${multiplierLine(s)}。${tokenLine(s)}。前往写真馆用 Token 定向解锁新服装，再为这场胜利定格。` : `${multiplierLine(s)}。${tokenLine(s)}。${winnerName}守住了舞台，本局不触发演出。`)
       : (s.outcome?.danceEligible ? `${multiplierLine(s)}。${tokenLine(s)}。「${winnerName}」保住了自己的服装。` : `${multiplierLine(s)}。${tokenLine(s)}。本局没有演出，重开一局再挑战。`);
     const actions = stage === 'RESULT'
-      ? '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">继续</button>'
+      ? '<button class="secondary" data-route="gallery">用 Token 解锁卡牌</button><button class="primary" data-action="advance">继续</button>'
       : '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="restart">再开一局</button><button class="secondary" data-route="gallery">打开写真馆</button>';
     return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="${stageClass}"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${actions}</div></div></div></div></section>`;
   }
@@ -442,18 +472,18 @@ function settlementOverlay(game) {
   /* 只有玩家胜利才会有 cardRecord 并进入这条套装演出分支；玩家输局在 RESULT 后直接散场。 */
   const title = stage === 'RESULT' ? (playerWon ? '你赢下了这一局' : '这一局惜败')
     : stage === 'PERFORMANCE' ? `${name}现场换上「${cardRecord.outfitName}」`
-    : stage === 'PHOTO_REVEAL' ? (isUpgrade ? `写真卡升级 · Lv.${cardRecord.upgradeLevel}` : '首次收藏已解锁')
+    : stage === 'PHOTO_REVEAL' ? (isUpgrade ? `再次定格 · Lv.${cardRecord.upgradeLevel}` : '首胜赠卡已解锁')
     : '下一局等你开场';
-  const summary = stage === 'RESULT' ? `${multiplierLine(s)}。${tokenLine(s)}。${playerWon ? `牌友「${name}」将为你跳一支舞，作为胜方奖励；演出的定格写真卡也会收入写真馆。` : '本局没有演出，结算结果已记录。'}`
+  const summary = stage === 'RESULT' ? `${multiplierLine(s)}。${tokenLine(s)}。${playerWon ? `牌友「${name}」将为你跳一支舞，作为胜方奖励；可以使用已拥有的服装创作写真。` : '本局没有演出，结算结果已记录。'}`
     : stage === 'PERFORMANCE' ? `${multiplierLine(s)}。${tokenLine(s)}。「${cardRecord.outfitName} × ${cardRecord.dance}」正在登台。`
-    : stage === 'PHOTO_REVEAL' ? (isUpgrade ? `「${cardRecord.outfitName}」再次解锁，卡面升至 Lv.${cardRecord.upgradeLevel}。` : `「${cardRecord.outfitName} × ${cardRecord.dance}」已写入写真馆 No.${String(cardRecord.serialNo).padStart(3, '0')}。`)
+    : stage === 'PHOTO_REVEAL' ? (isUpgrade ? `「${cardRecord.outfitName}」已拥有，等级保持 Lv.${cardRecord.upgradeLevel}；在写真馆消费 Token 可升级卡面。` : `「${cardRecord.outfitName} × ${cardRecord.dance}」已写入写真馆 No.${String(cardRecord.serialNo).padStart(3, '0')}。`)
     : '重开引导局，或查看已收集的写真。';
   const stageBody = stage === 'PHOTO_REVEAL' || stage === 'DESTINATION'
     ? `<div class="photo-card-reveal" data-card="${cardRecord.cardId}">${photoCardArt(cardRecord, { large: true })}</div>`
     : stage === 'PERFORMANCE' ? settlementPerformanceBody(cardRecord)
     : dressupFigure(cardRecord);
   const primary = stage === 'RESULT' ? (playerWon ? `${name}将为你跳舞` : '继续') : settlementLabel(stage);
-  return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="dressup-stage"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${stage !== 'DESTINATION' ? '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button>' : ''}<button class="primary" data-action="advance">${primary}</button>${stage === 'DESTINATION' ? '<button class="secondary" data-route="gallery">打开写真馆</button>' : ''}${stage === 'DESTINATION' && state.partner && !state.partner.submitted ? '<button class="primary" data-action="partner-return">创作完成 · 返回平台</button>' : ''}</div></div></div></div></section>`;
+  return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="dressup-stage"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${stage !== 'DESTINATION' ? '<button class="secondary compact" data-action="skip-settlement">跳过演出 →</button>' : ''}<button class="primary" data-action="advance">${primary}</button>${stage === 'DESTINATION' ? '<button class="secondary" data-route="gallery">打开写真馆</button><button class="secondary" data-action="open-studio">搭配我的写真</button>' : ''}${stage === 'DESTINATION' && state.partner && !state.partner.submitted ? '<button class="primary" data-action="partner-return">创作完成 · 返回平台</button>' : ''}</div></div></div></div></section>`;
 }
 
 /* ---------- photo cards ---------- */
@@ -528,6 +558,16 @@ function filteredSlots() {
     return true;
   });
 }
+function economyMarkup() {
+  const e = state.economy;
+  if (!e) return '';
+  return `<section class="economy-panel" aria-label="Token 与卡牌成长"><div><p class="eyebrow">打牌赚取 · 自选收藏 · 卡面成长</p><h2>◇ ${e.balance} <small>Token</small></h2><p>免费开局 · 胜 +${e.winReward} / 负 +${e.lossReward} · 首胜赠卡</p></div><div><p>解锁 24 / 40 / 64 Token，对应累计 1 / 3 / 6 胜开放。</p><p>升级 Lv.2 → Lv.5：12 / 24 / 40 / 60 Token。不影响牌力。</p><div class="economy-milestones">${e.milestones.map(m => `<span>${m.count} 款收藏 · +${m.reward} Token · ${m.claimed ? '已到账' : '达成自动到账'}</span>`).join('')}</div><small>退出未完成的对局不发奖励。Token 不可购买、转赠或提现，无现金价值。</small></div></section>`;
+}
+function purchaseButton(cardId) {
+  const q = state.economy?.catalog.find(c => c.cardId === cardId);
+  if (!q) return '';
+  return `<div class="card-purchase"><button class="${q.action === 'unlock' ? 'primary' : 'secondary'} compact" data-action="purchase-card" data-purchase-card="${escape(cardId)}" ${!q.canPurchase || state.purchaseBusy ? 'disabled' : ''}>${q.cost === null ? '已达典藏 Lv.5' : `${q.cost} Token · ${q.action === 'unlock' ? '解锁' : `升级 Lv.${q.nextLevel}`}`}</button><small>${escape(q.reason || (q.action === 'unlock' ? '确定获得这张卡与对应演出' : '提升光效与卡面表现'))}</small></div>`;
+}
 function renderGallery() {
   const unlocked = state.galleryCards.length;
   const total = totalOutfits();
@@ -536,12 +576,12 @@ function renderGallery() {
   const quick = (id, label) => `<button class="chip ${state.galleryQuick === id ? 'active' : ''}" data-action="gallery-quick" data-quick="${id}" aria-pressed="${state.galleryQuick === id}">${label}</button>`;
   const slots = filteredSlots();
   app.innerHTML = `<section class="gallery">
-    <div class="gallery-head"><div><p class="eyebrow">COLLECTION · LIVE DRESS-UP</p><h1>写真馆</h1><p>每张卡都是一场现场换装演出的定格。重复解锁同一服装会让卡面升级，纯视觉、无数值。</p></div>
+    <div class="gallery-head"><div><p class="eyebrow">COLLECTION · LIVE DRESS-UP</p><h1>写真馆</h1><p>每张卡都是一场现场换装演出的定格。赚取 Token，按喜好解锁新服装，或升级已拥有的卡面。全部明码标价，纯视觉、无数值。</p></div>
       <div class="collection-progress" role="status"><b>${unlocked} / ${total}</b><span>已解锁写真卡</span><div class="progress-track"><i style="width:${total ? Math.round(unlocked / total * 100) : 0}%"></i></div><span class="points">收藏点 ◆ ${points}</span></div></div>
-    <div class="gallery-filters">${tab('all', '全部')}${tab('pal-linxing', '林星')}${tab('pal-mia', '米娅')}${tab('pal-yinlan', '银岚')}${state.pals.some((pal) => /^pal-user-/.test(pal.palId)) ? tab('custom', '自定义牌友') : ''}<span class="filter-gap"></span>${quick('new', '新！')}${quick('first', '金框')}${quick('missing', '缺失')}<span class="gallery-result-count" role="status" aria-live="polite">显示 ${slots.filter((slot) => slot.record).length} / ${slots.length} 张</span></div>
-    <div class="card-level-legend" aria-label="写真卡等级图例"><span>重复解锁升级</span>${['初见','流光','绮影','华彩','典藏'].map((name, index) => `<b class="lv${index + 1}"><i>Lv.${index + 1}</i>${name}</b>`).join('')}</div>
+    ${economyMarkup()}${collectionMarkup(state.collection, palName)}<div class="gallery-filters">${tab('all', '全部')}${tab('pal-linxing', '林星')}${tab('pal-mia', '米娅')}${tab('pal-yinlan', '银岚')}${state.pals.some((pal) => /^pal-user-/.test(pal.palId)) ? tab('custom', '自定义牌友') : ''}<span class="filter-gap"></span>${quick('new', '新！')}${quick('first', '金框')}${quick('missing', '缺失')}<span class="gallery-result-count" role="status" aria-live="polite">显示 ${slots.filter((slot) => slot.record).length} / ${slots.length} 张</span></div>
+    <div class="card-level-legend" aria-label="写真卡等级图例"><span>Token 升级卡面</span>${['初见','流光','绮影','华彩','典藏'].map((name, index) => `<b class="lv${index + 1}"><i>Lv.${index + 1}</i>${name}</b>`).join('')}</div>
     <!-- 筛选只改变卡池，不改变卡型：写真馆始终使用同一套 3:4 竖卡栅格，避免少卡时突然切成横向大卡造成视觉跳变。 -->
-    <div class="gallery-grid" id="galleryGrid">${slots.length ? slots.map(gallerySlot).join('') : '<div class="empty-line">当前筛选下没有写真卡。</div>'}</div>
+    <div class="gallery-grid" id="galleryGrid">${slots.length ? slots.map(slot => `<div class="gallery-item">${gallerySlot(slot)}${purchaseButton(slot.cardId)}</div>`).join('') : '<div class="empty-line">当前筛选下没有写真卡。</div>'}</div>
   </section>${state.detail ? detailOverlay() : ''}${state.replay ? replayOverlay(state.replay) : ''}`;
 }
 /* 未解锁卡要有光影和色彩线索，但不该让玩家在卡册里直接看清角色、服装或舞台动作。
@@ -556,16 +596,16 @@ function lockedCardArt(pal, outfit) {
     <span class="locked-preview-scrim" aria-hidden="true"></span>
     <span class="locked-preview-fog" aria-hidden="true"></span>
     <span class="locked-preview-kind">未知片段</span><span class="locked-preview-lock" aria-hidden="true">⌁</span>
-    <span class="locked-preview-unlock">胜局解锁</span>
+    <span class="locked-preview-unlock">Token 定向解锁</span>
     <span class="pcard-frame" aria-hidden="true"></span><span class="pcard-serial">No.???</span>
   </div>`;
 }
 function gallerySlot({ pal, outfit, cardId, record }) {
   const name = pal.identity.name;
   if (!record) {
-    return `<article class="pcard locked" data-card="${cardId}" tabindex="0" role="button" aria-label="未解锁写真预告，赢下${name}解锁">
+    return `<article class="pcard locked" data-card="${cardId}" tabindex="0" role="button" aria-label="未解锁写真预告，使用 Token 解锁${name}写真">
       ${lockedCardArt(pal, outfit)}
-      <div class="pcard-copy"><h2>未解锁写真</h2><p>${escape(name)} · 胜局解锁</p></div></article>`;
+      <div class="pcard-copy"><h2>未解锁写真</h2><p>${escape(name)} · Token 定向解锁</p></div></article>`;
   }
   return `<article class="pcard ${record.seen ? '' : 'is-new'}" data-card="${cardId}" tabindex="0" role="button" aria-label="写真卡：${escape(record.outfitName)} × ${escape(record.dance)}，${record.rarity === 'first' ? '初回限定' : '常规'}，等级 ${record.upgradeLevel}">
     ${photoCardArt(record, { motion: false })}${record.seen ? '' : '<span class="pcard-new" aria-hidden="true">新！</span>'}
@@ -909,13 +949,14 @@ function scheduleNpcTurn() {
   const needsNpcTurn = state.route === 'table' && (bidding || state.game?.phase === 'PLAYING') && state.game.turn !== 'player';
   if (!needsNpcTurn) { clearTimeout(state.npcTimer); state.npcTimer = null; return; }
   if (state.npcTimer) return;
+  sfx('think',{volume:.3,ai:true});
   state.npcTimer = window.setTimeout(async () => {
     state.npcTimer = null;
     try {
       const path = bidding ? '/api/game/advance-bid' : '/api/game/advance-turn';
       state.game = await api(path, { method: 'POST', body: JSON.stringify({ gameId: state.game.id, commandId: commandId() }) });
       const last = state.game.events.slice().reverse().find((item) => item.type === 'PAL_ACTION');
-      if (last) sfx(last.decision === 'PLAY' ? 'play' : 'pass');
+      if (last) { if (last.decision === 'PLAY') playCardAudio(last.combo, { ai: true }); else sfx('pass', { volume: .65 }); }
       else sfx('select');
       render();
     }
@@ -923,18 +964,42 @@ function scheduleNpcTurn() {
   }, npcDelay());
 }
 function render() {
+  document.body.dataset.view = state.route;
+  document.body.dataset.effects=reducedMotion()?'off':prefs().effects;
+  document.body.dataset.tableSkin=prefs().tableSkin;
+  const activePhotoOption = document.activeElement?.dataset?.photoOption;
   updateToken();
   applyPrefs();
   document.querySelectorAll('nav a').forEach((link) => { const active = link.dataset.route === state.route; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); });
   ({ home: renderHome, table: renderTable, workshop: renderWorkshop, gallery: renderGallery, inspector: renderInspector }[state.route] || renderHome)();
+  document.querySelector('.photo-studio')?.remove();
+  document.body.classList.toggle('studio-open', Boolean(state.studioGame));
+  app.inert = Boolean(state.studioGame);
+  document.querySelector('.topbar').inert = Boolean(state.studioGame);
+  if (state.studioGame && state.photoDraft) {
+    const cards = state.galleryCards.filter((c) => c.palId === state.photoDraft.palId);
+    document.body.insertAdjacentHTML('beforeend', studioMarkup({ gameId: state.studioGame, draft: state.photoDraft, cards, name: palName(state.photoDraft.palId) }));
+  }
+  const resultDialog = document.querySelector('.result-screen');
+  if(resultDialog && !resultDialog.contains(document.activeElement)) requestAnimationFrame(()=>resultDialog.querySelector('.reward-outfit.chosen, .result-actions .primary')?.focus({preventScroll:true}));
+  hydratePhotos();
+  syncTable3D(state.game,state.route);
+  if(state.route==='table')syncCardEffects(state.game);
+  syncVideoAudio();
+  updateAudioScene(state.game, state.route, Boolean(document.querySelector('.dance-stage video')));
   scheduleNpcTurn();
   updateGalleryBadge();
   if (state.game?.phase === 'SETTLED' && state.game?.settlement && state.sfxFiredFor !== state.game.id) {
     state.sfxFiredFor = state.game.id;
     sfx(state.game.settlement.winnerId === 'player' ? 'win' : 'lose');
+    setTimeout(()=>sfx('token',{volume:.5}),350);
   }
   if (state.game?.phase === 'SETTLED' && state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) flyCardOnce(state.game);
-  if (state.entry) requestAnimationFrame(() => {
+  if (state.studioGame) requestAnimationFrame(() => {
+    const target = activePhotoOption ? document.querySelector(`[data-photo-option="${activePhotoOption}"]`) : document.querySelector('#studio-title');
+    target?.focus({ preventScroll: true });
+  });
+  else if (state.entry) requestAnimationFrame(() => {
     document.querySelector('[data-action="close-entry"]')?.focus();
     const segs = Array.from(document.querySelectorAll('[data-entry-seg]'));
     const caption = document.querySelector('[data-entry-caption]');
@@ -1020,8 +1085,8 @@ function flyCardOnce(game) {
     ], { duration: 1100, easing: 'cubic-bezier(.3,.7,.3,1)' }).onfinish = () => { ghost.remove(); target.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { duration: 420 }); };
   });
 }
-async function refreshGallery() { const payload = await api('/api/gallery'); state.galleryCards = (payload.cards || []).map(repairGalleryCard); }
-async function refreshWallet() { const wallet = await api('/api/game/wallet'); state.walletBalance = wallet.tokenBalance ?? wallet.balance; }
+async function refreshGallery() { const payload = await api('/api/gallery'); state.galleryCards = (payload.cards || []).map(repairGalleryCard); state.collection = payload.collection || null; state.economy = payload.economy || null; if (state.economy) { state.walletBalance = state.economy.balance; if (state.game) state.game.tokenBalance = state.walletBalance; } }
+async function refreshWallet() { const wallet = await api('/api/game/wallet'); state.walletBalance = wallet.tokenBalance ?? wallet.balance; if (state.game) state.game.tokenBalance = state.walletBalance; }
 async function markSeen(cardId) {
   const record = state.galleryCards.find((entry) => entry.cardId === cardId);
   if (!record || record.seen) return;
@@ -1037,10 +1102,11 @@ async function start() {
   if (chosenSeats().length === 2) payload.seats = chosenSeats();
   state.game = await api('/api/game/new', { method: 'POST', body: JSON.stringify(payload) });
   state.walletBalance = state.game.tokenBalance;
+  sfx('shuffle');setTimeout(()=>sfx('deal'),160);
   state.selected.clear(); state.entry = !window.__DRESSBATTLE_SKIP_ENTRY && entrySegments().length > 0; state.flownFor = null; state.route = 'table';
   if (location.hash !== '#/table') location.hash = '/table';
   if (state.partner?.sessionId) api('/api/partner/progress', { method: 'POST', body: JSON.stringify({ sessionId: state.partner.sessionId, percent: 30, stage: 'playing', message: '牌局开始' }) }).catch(() => {});
-  render(); notice(`牌局已创建：已消耗 1 Token。轮到你叫分，叫 3 分可直接定地主。`);
+  render(); notice(`免费牌局已创建：完成对局胜 +8 / 负 +2 Token。轮到你叫分，叫 3 分可直接定地主。`);
 }
 /* 平台跳转入口：ticket 一次性，立即交后端兑换并从地址栏清除（协议 5.1 节）。 */
 async function handlePartnerEntry() {
@@ -1099,6 +1165,7 @@ async function navigate(route, { updateHash = true } = {}) {
 
 /* ---------- events ---------- */
 document.addEventListener('click', async (event) => {
+  primeAudio();
   const route = event.target.closest('[data-route]')?.dataset.route; if (route) { event.preventDefault(); return navigate(route); }
   const actionNode = event.target.closest('[data-action]');
   if (!actionNode) {
@@ -1224,8 +1291,36 @@ document.addEventListener('click', async (event) => {
       }
       return;
     }
+    if (action === 'purchase-card') {
+      if (state.purchaseBusy) return;
+      const q = state.economy?.catalog.find(c => c.cardId === actionNode.dataset.purchaseCard);
+      if (!q?.canPurchase) return;
+      const key = `${q.cardId}:${q.level}:${q.cost}`;
+      const commandId = state.purchaseRequests[key] ||= crypto.randomUUID();
+      state.purchaseBusy = true; render();
+      try {
+        const result = await api('/api/gallery/purchase', { method: 'POST', body: JSON.stringify({ commandId, cardId: q.cardId, expectedLevel: q.level, expectedCost: q.cost }) });
+        state.galleryCards = result.cards.map(repairGalleryCard); state.collection = result.collection;
+        state.economy = result.economy; state.walletBalance = result.account.balance;
+        if (state.game) { state.game.tokenBalance = result.account.balance; if (state.game.settlement?.cardId === result.card.cardId) { state.game.settlement.card = result.card; state.game.settlement.upgradeLevel = result.card.upgradeLevel; } }
+        sfx('unlock');
+        notice(`${result.card.outfitName} ${q.action === 'unlock' ? '已解锁' : `已升级 Lv.${result.card.upgradeLevel}`} · 消耗 ${result.spent} Token${result.milestoneReward ? ` · 收藏奖励 +${result.milestoneReward}` : ''} · 余额 ${result.account.balance}`);
+      } catch (error) { await refreshGallery().catch(() => {}); throw error; }
+      finally { state.purchaseBusy = false; render(); }
+      return;
+    }
+    if(action==='choose-reward'){if(state.rewardSelecting)return;state.rewardSelecting=true;document.querySelectorAll('.result-screen button').forEach(b=>b.disabled=true);try{state.game=await api('/api/game/reward/select',{method:'POST',body:JSON.stringify({gameId:state.game.id,cardId:actionNode.dataset.rewardCard})});await refreshGallery();sfx('cloth');}finally{state.rewardSelecting=false;render();}return;}
+    if(action==='capture-moment'){const v=document.querySelector('.dance-stage video.vframe-main');const moment=v?.duration?Math.min(.95,v.currentTime/v.duration):null;v?.pause();state.game=await api('/api/game/settlement/advance',{method:'POST',body:JSON.stringify({gameId:state.game.id})});await openStudio(state.game.id,{...state.game.settlement.card,moment});sfx('shutter');return;}
+    if(action==='pose-preset'){if(state.photoDraft){state.photoDraft.moment=Number(actionNode.dataset.moment);updatePhotoMoment(state.photoDraft.moment);sfx('cloth');}return;}
+    if(action==='test-audio'){sfx('straight');setTimeout(()=>sfx('unlock'),450);return;}
+    if (action === 'open-studio') { await openStudio(state.game.id, state.game.settlement.card); return; }
+    if (action === 'close-studio') { state.studioGame = null; state.photoDraft = null; render(); return; }
+    if (action === 'compose-pending') { const reward = state.collection.pending.find((r) => r.gameId === actionNode.dataset.game); const card = state.galleryCards.find((c) => c.cardId === reward?.cardId) || state.galleryCards.find((c) => c.palId === reward?.palId); if (reward && card) await openStudio(reward.gameId, card); return; }
+    if (action === 'edit-creation') { const c = state.collection.creations.find((c) => c.gameId === actionNode.dataset.game); if (c) await openStudio(c.gameId, c); return; }
+    if (action === 'export-creation') { const c = state.collection.creations.find((c) => c.creationId === actionNode.dataset.creation); if (c) await exportPhoto(c); return; }
+    if (action === 'audio-settings') { sfx('menu'); document.querySelector('#audio-settings').hidden = !document.querySelector('#audio-settings').hidden; return; }
     if (action === 'toggle-speed') { cycleSpeed(); applyPrefs(); const label = SPEED_LABEL[prefs().speed]; notice(`牌友思考速度：${label}`); return; }
-    if (action === 'toggle-sfx') { setPref('sfx', !prefs().sfx); applyPrefs(); primeAudio(); sfx('select'); notice(prefs().sfx ? '音效已开启。' : '音效已关闭。'); return; }
+    if (action === 'toggle-sfx') { setPref('sfx', !prefs().sfx); applyPrefs(); primeAudio(); syncVideoAudio(); sfx('select'); notice(prefs().sfx ? '音效已开启。' : '音效已关闭。'); return; }
     if (action === 'start' || action === 'restart') return start();
     if (action === 'partner-return') {
       if (!state.partner?.sessionId) return;
@@ -1240,10 +1335,11 @@ document.addEventListener('click', async (event) => {
       return;
     }
     if (action === 'cycle-seat') { cycleSeat(Number(actionNode.dataset.index)); sfx('select'); render(); return; }
+    if (action === 'bid') sfx('deal');
     if (action === 'bid') state.game = await api('/api/game/bid', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, score: Number(actionNode.dataset.score), commandId: commandId() }) });
     if (action === 'grab') state.game = await api('/api/game/grab', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, accept: actionNode.dataset.accept === '1', commandId: commandId() }) });
     if (action === 'hint') { const hint = await api(`/api/game/hint?gameId=${state.game.id}`); state.selected = new Set(hint.cards); notice(hint.message); }
-    if (action === 'play') { state.game = await api('/api/game/play', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, cards: [...state.selected], commandId: commandId() }) }); state.selected.clear(); const combo = state.game.currentCombo; sfx(combo?.type === 'BOMB' || combo?.type === 'ROCKET' ? 'bomb' : 'play'); }
+    if (action === 'play') { state.game = await api('/api/game/play', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, cards: [...state.selected], commandId: commandId() }) }); state.selected.clear(); const combo = state.game.currentCombo; playCardAudio(combo); }
     if (action === 'pass') { state.game = await api('/api/game/pass', { method: 'POST', body: JSON.stringify({ gameId: state.game.id, commandId: commandId() }) }); state.selected.clear(); sfx('pass'); }
     if (action === 'advance') {
       if (state.game.settlementStage === 'DESTINATION') return start();
@@ -1251,7 +1347,7 @@ document.addEventListener('click', async (event) => {
       state.walletBalance = state.game.tokenBalance;
       if (state.partner?.sessionId && state.game.settlementStage === 'RESULT') api('/api/partner/progress', { method: 'POST', body: JSON.stringify({ sessionId: state.partner.sessionId, percent: 80, stage: 'settlement', message: '进入结算演出' }) }).catch(() => {});
       if (['PHOTO_REVEAL', 'DESTINATION'].includes(state.game.settlementStage)) await refreshGallery();
-      if (state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) sfx('unlock');
+      if (state.game.settlementStage === 'PHOTO_REVEAL' && state.game.settlement?.card) { sfx('unlock'); await openStudio(state.game.id, state.game.settlement.card); return; }
     }
     if (action === 'skip-settlement') {
       for (let step = 0; step < 5 && state.game.settlementStage !== 'DESTINATION'; step += 1) {
@@ -1305,7 +1401,7 @@ document.addEventListener('click', (event) => {
   if (!slot || state.route !== 'gallery' || state.detail) return;
   const record = state.galleryCards.find((entry) => entry.cardId === slot.dataset.card);
   if (record) { state.detailReturnCard = record.cardId; state.detail = record.cardId; markSeen(record.cardId); render(); }
-  else { slot.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 260 }); notice('还未解锁：赢下对应牌友，把这场换装演出带回写真馆。'); }
+  else { slot.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 260 }); notice('还未解锁：卡片下方显示价格和胜场条件。完成对局赚 Token，首胜还赠送一张卡。'); }
 });
 document.addEventListener('mouseover', (event) => {
   const slot = event.target.closest('.pcard.is-new[data-card]');
@@ -1323,6 +1419,16 @@ document.addEventListener('error', (event) => {
   image.parentElement?.classList.add('image-load-failed');
 }, true);
 document.addEventListener('keydown', (event) => {
+  const resultDialog = document.querySelector('.result-screen');
+  if(resultDialog && !state.studioGame){
+    if(event.key==='Tab'){const nodes=[...resultDialog.querySelectorAll('button:not(:disabled),summary')];const first=nodes[0],last=nodes.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}}
+    if(event.key==='Escape'){resultDialog.querySelector('[data-action="skip-settlement"], [data-route="gallery"]')?.click();return;}
+  }
+  if (state.studioGame) {
+    if (event.key === 'Escape') { state.studioGame = null; state.photoDraft = null; render(); }
+    if (event.key === 'Tab') { const nodes = [...document.querySelectorAll('.photo-studio input,.photo-studio select,.photo-studio button')]; const first = nodes[0], last = nodes.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
+    return;
+  }
   if ((event.key === 'Enter' || event.key === ' ') && event.target.matches?.('.pcard[data-card]')) { event.preventDefault(); event.target.click(); }
   if (state.imagePreview && event.key === 'Escape') { state.imagePreview = null; render(); }
   else if (state.detail) {
@@ -1410,7 +1516,7 @@ window.addEventListener('hashchange', () => navigate(routeFromHash(), { updateHa
 async function boot() {
   applyPrefs();
   await handlePartnerEntry();
-  try { await refreshWallet(); } catch { /* backend may be an older local build; keep the visible 100-point default */ }
+  try { await refreshWallet(); } catch { /* backend may be an older local build; keep the visible starter balance */ }
   try {
     const payload = await api('/api/pals');
     /* pals 是「可上桌名册」= 官方牌友 + 工坊已确认建档的自定义牌友。候选资产不提前入席。 */
@@ -1423,3 +1529,47 @@ async function boot() {
   await navigate(state.route, { updateHash: false });
 }
 boot().catch((err) => { notice(err.message, true); render(); });
+
+async function openStudio(gameId, source) {
+  if (!source) return;
+  await refreshGallery();
+  const existing = state.collection?.creations.find((c) => c.gameId === gameId);
+  const value = existing || source;
+  state.studioGame = gameId;
+  state.photoDraft = { palId: value.palId, cardId: value.cardId, name: value.name || '', background: value.background || 'midnight', filter: value.filter || 'natural', framing: value.framing || 'full', moment: value.moment ?? (value.layerSnapshot?.cardVideo ? .08 : null), finish: value.finish || 'classic', bondPoints: state.collection?.pals.find(p=>p.palId===value.palId)?.points || 0 };
+  render();
+  document.querySelector('#studio-title')?.focus({ preventScroll: true });
+}
+document.addEventListener('change', (event) => {
+  const key = event.target.dataset.photoOption;
+  if (!key || !state.photoDraft) return;
+  state.photoDraft[key] = key === 'moment' ? Number(event.target.value) : event.target.value;
+  if(key==='cardId'){const source=state.galleryCards.find(c=>c.cardId===state.photoDraft.cardId);state.photoDraft.moment=source?.layerSnapshot?.cardVideo ? .08 : null;}
+  sfx('cloth'); if(key !== 'moment') render();
+  document.querySelector(`[data-photo-option="${key}"]`)?.focus();
+});
+document.addEventListener('input', (event) => {
+  if(event.target.dataset.photoOption === 'moment' && state.photoDraft){state.photoDraft.moment=Number(event.target.value);updatePhotoMoment(state.photoDraft.moment);}
+  if (event.target.id === 'photo-name' && state.photoDraft) { state.photoDraft.name = event.target.value; const title = document.querySelector('.studio-preview .my-photo-caption strong'); if (title) title.textContent = event.target.value || '我的定格'; }
+});
+document.addEventListener('submit', async (event) => {
+  if (event.target.id !== 'photo-studio-form') return;
+  event.preventDefault();
+  const button = event.target.querySelector('[type="submit"]'); button.disabled = true;
+  try {
+    await api('/api/gallery/compose', { method: 'POST', body: JSON.stringify({ ...state.photoDraft, gameId: state.studioGame }) });
+    sfx('shutter'); state.studioGame = null; state.photoDraft = null;
+    await navigate('gallery'); notice('专属写真已收藏，可在“我的定格”导出分享图。');
+  } catch (error) { button.disabled = false; notice(error.message, true); }
+});
+
+document.addEventListener('input', (event) => { const key = event.target.dataset.audioVolume; if (key) { setPref(key, Number(event.target.value)); syncAudio(); syncVideoAudio(); } });
+for (const input of document.querySelectorAll('[data-audio-volume]')) input.value = prefs()[input.dataset.audioVolume];
+
+function syncVideoAudio() { document.querySelectorAll('.dance-stage video').forEach((v) => { v.volume = prefs().masterVolume; v.muted = !prefs().sfx || document.hidden; }); }
+document.addEventListener('visibilitychange', () => { syncVideoAudio(); if (document.hidden) document.querySelectorAll('.dance-stage video').forEach((v) => v.pause()); });
+
+document.addEventListener('change',event=>{const key=event.target.dataset.displayPref;if(key){setPref(key,event.target.value);render();}});
+for(const input of document.querySelectorAll('[data-display-pref]'))input.value=prefs()[input.dataset.displayPref];
+
+installHandBrush((cards,select)=>{for(const c of cards)select?state.selected.add(c):state.selected.delete(c);sfx('select');render();},render);

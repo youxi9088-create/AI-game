@@ -8,6 +8,9 @@
     <title>换装斗地主 · DressBattle</title>
     <link rel="stylesheet" href="./styles.css" data-page-node-id="897JaZBtEHAb5TCfms81dT" />
     <link rel="stylesheet" href="./styles-overrides.css" data-page-node-id="6yMXLjy2sn5bjrOPBdhQMt" />
+    <link rel="stylesheet" href="./collection.css" />
+    <link rel="stylesheet" href="./presentation.css" />
+    <link rel="stylesheet" href="./settlement.css" />
   </head>
   <body data-page-node-id="v8DZM5WvO2Yx7zSTMlnsWV">
     <a class="skip-link" href="#app" data-page-node-id="pkFARcMKivCkFFPLZndrcx">跳到主要内容</a>
@@ -18,14 +21,15 @@
         <a href="#/home" data-route="home" data-page-node-id="3d7iMq1RLSXuU0gwPwN1Kj">大厅</a><a href="#/table" data-route="table" data-page-node-id="9ipDCBnh7TuHLKAh3iRiM4">牌桌</a><a href="#/workshop" data-route="workshop" data-page-node-id="7qyt3FEU8WvXsyWxSPD6z9">牌友工坊</a><a href="#/gallery" data-route="gallery" data-page-node-id="SwHZmKTvyHa1YHV9AYJYfv">写真馆</a>
         <!-- 检查器不对玩家展示：导航不下放，内部 QA 仍由 #/inspector 直达；/api/inspect 在生产环境返回 403。 -->
       </nav>
-      <div class="top-controls" role="group" aria-label="牌局偏好" data-page-node-id="YhpPD13Pu82pLi9G1YITRj">
+      <button class="ctl-btn" type="button" data-action="audio-settings">音量</button><div class="top-controls" role="group" aria-label="牌局偏好" data-page-node-id="YhpPD13Pu82pLi9G1YITRj">
         <button class="ctl-btn" type="button" data-action="toggle-speed" aria-label="切换牌友思考速度" data-page-node-id="FNB8Imq4eeqkAqVHTordOF"><span id="speedLabel" data-page-node-id="oSPRO1kloGK5Ba5FF2Ygyr">标准</span><i aria-hidden="true" data-page-node-id="SCmQoRydV9DDu333Q9CeDV">⏱</i></button>
         <button class="ctl-btn" type="button" data-action="toggle-sfx" aria-pressed="true" aria-label="音效开关" data-page-node-id="ashgmowAbKLR5A8XEi82ZS"><span id="sfxLabel" data-page-node-id="LTukBKHv9GxVsKSOVhquDc">音效开</span><i aria-hidden="true" data-page-node-id="QrlRsyGC8UC0svAScSz3FJ">♪</i></button>
       </div>
-      <div class="top-token" id="tokenBalance" data-page-node-id="3zPMttF7UPFg0GMAlMbiKA">◇ 100 Token</div>
+      <div class="top-token" id="tokenBalance" data-page-node-id="3zPMttF7UPFg0GMAlMbiKA">◇ — Token</div>
     </header>
-    <main id="app" tabindex="-1" data-page-node-id="cFAnCJjAm80JuBOZDhyarf"></main>
+    <aside id="audio-settings" class="audio-settings" hidden aria-label="音量设置"><b>音量设置</b><label>总音量<input type="range" min="0" max="1" step=".05" data-audio-volume="masterVolume" /></label><label>牌局与收藏音效<input type="range" min="0" max="1" step=".05" data-audio-volume="sfxVolume" /></label><label>背景音乐<input type="range" min="0" max="1" step=".05" data-audio-volume="musicVolume" /></label><label>环境氛围<input type="range" min="0" max="1" step=".05" data-audio-volume="ambienceVolume" /></label><button class="secondary compact" data-action="test-audio">试听出牌与收藏</button><label>牌桌渲染<select data-display-pref="renderer"><option value="2d">标准牌桌</option><option value="3d">3D 月夜会客厅（预览）</option></select></label><label>卡牌特效<select data-display-pref="effects"><option value="full">完整</option><option value="soft">轻量</option><option value="off">关闭</option></select></label><label>牌桌主题<select data-display-pref="tableSkin"><option value="auto">随角色</option><option value="moon">月夜蓝</option><option value="jade">翡翠绿</option><option value="velvet">暮紫绒</option></select></label><label>按钮音效<input type="range" min="0" max="1" step=".05" data-audio-volume="uiVolume" /></label><button class="secondary compact" data-action="audio-settings">关闭</button></aside><main id="app" tabindex="-1" data-page-node-id="cFAnCJjAm80JuBOZDhyarf"></main>
     <div class="toast" id="toast" role="status" data-page-node-id="iSlO4wfiV9j8LoSfNIAYMW"></div>
+    <script src="./vendor/tone-15.1.22.js"></script>
     <script type="module" src="./app.js"></script>
   </body>
 </html>

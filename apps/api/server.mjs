@@ -48,6 +48,14 @@ async function loadLocalEnv() {
 }
 
 await loadLocalEnv();
+if (process.env.NODE_ENV === 'production') {
+  const secret = process.env.TOKEN_RECEIPT_SECRET || '';
+  if (secret.length < 32 || secret === 'development-only-change-before-production' || secret.includes('<')) {
+    throw new Error('Production requires a non-placeholder TOKEN_RECEIPT_SECRET of at least 32 characters.');
+  }
+  if (process.env.ALLOW_DEBUG_ROUTES === '1') throw new Error('Production cannot enable ALLOW_DEBUG_ROUTES.');
+}
+const { version: appVersion } = JSON.parse(await readFile(join(projectRoot, 'package.json'), 'utf8'));
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webm': 'video/webm', '.mp4': 'video/mp4' };
 const linxingOutfits = [
   /* 写真馆只收录有独立回放视频的套装。静态服装图可作为牌桌表现资源，但不能冒充
@@ -119,7 +127,7 @@ const game = new GameService({
   receiptSecret: process.env.TOKEN_RECEIPT_SECRET,
   galleryPath: process.env.GALLERY_STATE_PATH || join(root, '../api/data/gallery.json'),
   walletPath: process.env.TOKEN_STATE_PATH || join(root, '../api/data/player-wallet.json'),
-  initialTokenBalance: Number(process.env.INITIAL_TOKEN_BALANCE || 100),
+  initialTokenBalance: Number(process.env.INITIAL_TOKEN_BALANCE ?? 20),
   palDialogue: Object.fromEntries(officialPals.map((pal) => [pal.palId, pal.dialoguePack])),
   palOutfits: { 'pal-linxing': linxingOutfits, 'pal-mia': miaOutfits, 'pal-yinlan': yinlanOutfits },
   palRegistry: palRoster
@@ -204,6 +212,7 @@ async function api(req, res, pathname) {
   if (req.method === 'POST' && pathname === '/api/game/play') { const data = await body(req); return send(res, 200, game.play(data.gameId, data.cards, data.commandId)); }
   if (req.method === 'POST' && pathname === '/api/game/pass') { const data = await body(req); return send(res, 200, game.pass(data.gameId, data.commandId)); }
   if (req.method === 'POST' && pathname === '/api/game/advance-turn') { const data = await body(req); return send(res, 200, game.advanceTurn(data.gameId, data.commandId)); }
+  if (req.method === 'POST' && pathname === '/api/game/reward/select') { const data = await body(req); return send(res, 200, game.selectReward(data.gameId, data.cardId)); }
   if (req.method === 'POST' && pathname === '/api/game/settlement/advance') { const data = await body(req); return send(res, 200, game.advanceSettlement(data.gameId)); }
   if (req.method === 'GET' && pathname === '/api/pals') return send(res, 200, { official: officialPals, pals: [...palRoster().values()], defaultSeats: DEFAULT_SEATS, workshop: await workshopPayload() });
   if (req.method === 'GET' && pathname === '/api/assets/registry') return send(res, 200, await assetRegistry.build());
@@ -362,13 +371,15 @@ async function api(req, res, pathname) {
     const removed = confirmedPalStore.remove(palId);
     return send(res, 200, { status: removed ? 'DELETED' : 'NOT_FOUND', palId });
   }
-  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals });
+  if (req.method === 'GET' && pathname === '/api/gallery') return send(res, 200, { cards: game.getGallery(), officialPals, collection: game.getCollection(), economy: game.getEconomy() });
+  if (req.method === 'POST' && pathname === '/api/gallery/purchase') { const data = await body(req); return send(res, 200, game.purchaseCard(data)); }
+  if (req.method === 'POST' && pathname === '/api/gallery/compose') { const data = await body(req); return send(res, 200, { creation: game.savePhoto(data) }); }
   if (req.method === 'POST' && pathname === '/api/gallery/seen') { const data = await body(req); return send(res, 200, { cards: game.markCardSeen(data.cardId) }); }
   if (req.method === 'GET' && pathname === '/api/inspect') {
     if (guarded(res)) return error(res, '调试入口已关闭：生产环境不开放运行检查器。', 403);
     const assetSummary = await assetRegistry.summary();
     return send(res, 200, { assets: assetSummary, generatorMode: palResources.capability().configured ? 'route-locked-production' : 'provider-unavailable', moderationMode: 'local-policy-gates', game: latestGameId ? game.snapshot(game.get(latestGameId)) : null, ledger: game.getLedger(), workshop: await workshopPayload(), officialPals, providerNote: '角色资料卡、上桌/大厅立绘、五态动作图和服装特效使用 AIHub GPT Image 2 透明输出；首套服装写真与海报等非透明图片使用 AIHub 即梦；入场与五态动作视频使用 AIHub Seedance；只有首套跳舞视频使用指定 AIHub 跳舞工作流。所有任务都通过 run/status/outputs 回读，未配置或失败项不会晋升为可上桌资产。' }); }
-  if (req.method === 'GET' && pathname === '/health') return send(res, 200, { ok: true, mode: palResources.capability().configured ? 'production-routes' : 'provider-unavailable', ruleRuntime: 'local authoritative adapter' });
+  if (req.method === 'GET' && pathname === '/health') return send(res, 200, { ok: true, version: appVersion, environment: process.env.NODE_ENV || 'development', debugEnabled, mode: palResources.capability().configured ? 'production-routes' : 'provider-unavailable', ruleRuntime: 'local authoritative adapter' });
   return false;
 }
 export const server = createServer(async (req, res) => {
@@ -406,5 +417,6 @@ export const server = createServer(async (req, res) => {
 });
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 4173);
-  server.listen(port, '127.0.0.1', () => console.log(`换装斗地主 MVP: http://127.0.0.1:${port}`));
+  const host = process.env.HOST || '127.0.0.1';
+  server.listen(port, host, () => console.log(`换装斗地主 MVP: http://${host}:${server.address().port}`));
 }

@@ -1,3 +1,4 @@
+import { ECONOMY } from '../economy-core/index.mjs';
 import { SETTLEMENT_STAGES, MAX_UPGRADE_LEVEL, MULTIPLIER_CAP, validatePhotoCard } from '../contracts/index.mjs';
 
 export const PERFORMANCE_CONTRACT_VERSION = '1.2.0';
@@ -11,7 +12,11 @@ const defaultOutfit = (palId) => ({
   layerSnapshot: { base: `preset://${palId}/portrait-v1`, outfit: `preset://${palId}/portrait-v1` }
 });
 
-const normalizeRecords = (alreadyUnlocked) => (alreadyUnlocked || []).map((entry) => (typeof entry === 'string' ? { cardId: entry } : entry));
+// 同一卡的历史记录以最后一次为准，与存档按 cardId 更新的行为一致。
+const normalizeRecords = (alreadyUnlocked) => [...new Map((alreadyUnlocked || []).map((entry) => {
+  const record = typeof entry === 'string' ? { cardId: entry } : entry;
+  return [record.cardId, record];
+})).values()];
 
 /* 败方可能同时有两位牌友（地主赢时两个农民都败）。挑收藏数最少的那位，
    让两条收藏线保持均衡；收藏数相同则按传入顺序取第一位，保证可复现。 */
@@ -41,15 +46,13 @@ export function buildMultiplier({ base = 1, bombs = 0, rocket = false, spring = 
   };
 }
 
-export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier = 1, breakdown = null, playerIsLandlord = false, alreadyUnlocked = [], outfitLibrary = {}, gameStats = {}, unlockedAt = DETERMINISTIC_TIME }) {
+export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier = 1, breakdown = null, playerIsLandlord = false, alreadyUnlocked = [], outfitLibrary = {}, gameStats = {}, preferredOutfitId = null, unlockedAt = DETERMINISTIC_TIME }) {
   const records = normalizeRecords(alreadyUnlocked);
   /* 演出是玩家胜利奖励，不是输局惩罚：只有玩家赢时才从败方 AI 中选择一名牌友登台，
      并为这名牌友选择/升级一张与演出视频绑定的写真卡。玩家输局不生成演出卡，也不播放舞蹈。 */
   const losingPal = winnerId === 'player' ? pickLosingPal(loserPalIds, records) : null;
-  /* Token 双向记账：赢要真的加、输要真的减，否则玩家的余额只会单向归零。
-     地主同时对两家结算，所以地主方的输赢是农民方的两倍。 */
-  const stake = Math.max(1, multiplier) * (playerIsLandlord ? 2 : 1);
-  const tokenDelta = winnerId === 'player' ? stake : -stake;
+  // Multipliers remain match statistics; completed rounds have fixed cosmetic-currency rewards.
+  const tokenDelta = winnerId === 'player' ? ECONOMY.winReward : ECONOMY.lossReward;
   let card = null;
   let cardId = null;
   let isFirstUnlock = false;
@@ -62,8 +65,11 @@ export function planSettlement({ gameId, winnerId, loserPalIds = [], multiplier 
     const palRecords = records.filter((record) => record.palId === losingPal);
     const unlockedOutfitIds = new Set(palRecords.map((record) => record.outfitId));
     const fresh = outfits.find((entry) => !unlockedOutfitIds.has(entry.outfitId));
-    const chosen = fresh || outfits[palRecords.length % outfits.length];
-    isFirstUnlock = Boolean(fresh);
+    // 集齐后优先升级等级最低的服装；同级按目录顺序，避免卡册长度固定后永远升级第一张。
+    const level = (outfit) => palRecords.find((record) => record.outfitId === outfit.outfitId)?.upgradeLevel || 1;
+    const preferred = outfits.find((o) => o.outfitId === preferredOutfitId);
+    const chosen = preferred || fresh || outfits.reduce((lowest, outfit) => level(outfit) < level(lowest) ? outfit : lowest);
+    isFirstUnlock = !unlockedOutfitIds.has(chosen.outfitId);
     cardId = `${losingPal}:${chosen.outfitId}`;
     const existing = records.find((record) => record.cardId === cardId);
     upgradeLevel = isFirstUnlock ? 1 : Math.min((existing?.upgradeLevel || 1) + 1, MAX_UPGRADE_LEVEL);

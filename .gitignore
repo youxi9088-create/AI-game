@@ -12,3 +12,7 @@ __pycache__/
 refresh.out
 probe.tmp.mjs
 .DS_Store
+
+# Generated from pinned npm dependencies
+apps/web/vendor/**/*.js
+apps/web/vendor/*.js

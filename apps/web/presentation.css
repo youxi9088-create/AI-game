@@ -1,0 +1,98 @@
+.my-photo{position:relative}.my-photo.finish-foil{border:2px solid #e7c279;box-shadow:0 0 20px #e4b25a22}.my-photo.finish-prism{border:2px solid #a4cfe4;box-shadow:0 0 25px #b993f344}.my-photo.finish-foil::after,.my-photo.finish-prism::after{content:'';position:absolute;inset:0 0 15%;pointer-events:none;background:linear-gradient(120deg,transparent 20%,#e8c97b22 40%,#fff9bd44 50%,transparent 70%);background-size:220% 100%;background-position:var(--shine-x,50%) center;mix-blend-mode:screen}.my-photo.finish-prism::after{background-image:linear-gradient(120deg,transparent,#67e4e52b,#f3aef633,#f7eab444,transparent)}
+.my-photo-image video{width:100%;height:100%;object-fit:contain}.my-photo-image.close video{object-fit:cover;transform:scale(1.12)}.pose-picker{border:1px solid #526079;border-radius:12px;padding:12px;display:grid;gap:10px}.pose-picker legend{font-size:14px;color:#dac390;padding:0 8px}.pose-picker>div{display:flex;gap:8px}.pose-picker button{flex:1;padding:8px;background:#233048;border:1px solid #69738b;color:#f7edd9;border-radius:8px}.pose-picker small{font-size:12px;color:#a8b2c4}.pose-picker input{padding:0;accent-color:#edc779}.photo-studio{padding:28px 40px}.studio-controls{gap:10px;align-self:start;margin:auto 0}.studio-controls h2{font-size:25px}.studio-controls p,.studio-controls label{font-size:14px}.studio-controls select,.studio-controls input{padding:8px}.studio-actions .primary,.capture-live{background:linear-gradient(135deg,#e5be79,#b9843e)!important;color:#15131a!important}.studio-controls .eyebrow{color:#d7b879}.studio-preview{position:sticky;top:20px}
+.reward-choice{padding:24px;overflow:auto}.reward-choice-panel{display:grid;grid-template-columns:minmax(240px,340px) minmax(380px,560px);gap:42px;padding:36px;background:radial-gradient(ellipse at 0 10%,#35425755,transparent),#0d1420;border:1px solid #af8c504f;border-radius:24px;max-width:1000px;box-shadow:0 35px 100px #000b}.reward-cover{align-self:center}.reward-cover .pcard-art{width:100%;height:auto;aspect-ratio:3/4}.reward-choice-controls h2{font-size:32px;margin:8px 0 18px}.reward-choice-controls h3{margin:24px 0 8px;color:#f4d5a1}.reward-choice-controls p{font-size:14px;line-height:1.6;color:#c7cedb}.reward-choice-controls .eyebrow{color:#ddbc7e;font-size:12px}.reward-choice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.reward-outfit{display:grid;gap:6px;background:#151e2f;color:#e7e6e3;border:1px solid #4a5468;border-radius:12px;padding:6px;cursor:pointer}.reward-outfit img{width:100%;height:125px;object-fit:cover;border-radius:8px}.reward-outfit b{font-size:13px}.reward-outfit small{font-size:11px;color:#acb7c9}.reward-outfit.chosen{border-color:#edcc86;box-shadow:0 0 0 2px #d7b46844;background:#353021}.reward-choice-controls .secondary,.creation-grid .secondary{background:#243044!important;color:#efdfc0!important;border:1px solid #9b8259!important}.audio-settings{max-height:calc(100dvh - 100px);overflow:auto}.audio-settings select{padding:8px;background:#17243b;color:#fff;border:1px solid #69758e;border-radius:6px}
+@media(max-width:720px){.reward-choice-panel{grid-template-columns:1fr;gap:20px;padding:20px}.reward-cover{max-width:190px;justify-self:center}.reward-choice-controls h2{font-size:25px}.reward-choice-grid{grid-template-columns:repeat(2,1fr)}.photo-studio{padding:20px}.studio-preview{position:relative;top:0}}
+/* Salon composition: one play surface, edge seating, readable foreground hand. */
+.table-three{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+body:has(.has-three) .table-page{position:relative;display:block;max-width:1800px;padding:0 20px;margin:12px auto 0}
+body:has(.has-three) .table-board{position:relative;min-width:0;border:1px solid #aa8a4e66;border-radius:18px;overflow:hidden;box-shadow:0 20px 70px #0009}
+.table-felt.has-three{height:clamp(700px,calc(100dvh - 112px),1000px);min-height:700px;border:0;border-radius:0;box-shadow:none!important;background:linear-gradient(180deg,#050d1822,transparent 50%,#07171733),url('/assets/club-night-v2.png') center 38% / cover no-repeat!important}
+.has-three::after,.has-three .felt-label{display:none!important}
+.has-three .match-hud{top:20px;left:50%;right:auto;transform:translateX(-50%);z-index:4;min-width:360px;justify-content:center;padding:10px 24px;gap:24px;border:1px solid #b7985c66;border-radius:4px;background:#091821bb;backdrop-filter:blur(12px);font-size:12px;box-shadow:0 4px 20px #0004}
+body:has(.has-three) .table-side{position:absolute;top:75px;left:50%;transform:translateX(-50%);z-index:4;display:block!important;text-align:center;pointer-events:none;min-height:0;width:340px;padding:0}
+body:has(.has-three) .table-side .round-tag{font-size:10px;letter-spacing:3px;color:#c3a679;background:none;padding:0;border:0}
+body:has(.has-three) .table-side h1{font-size:24px;letter-spacing:3px;line-height:1.2;margin:10px 0;color:#f7edd8;text-shadow:0 2px 12px #000}
+body:has(.has-three) .table-side p{display:none}
+.has-three .opponent{top:13%!important;width:24%;height:43%;display:block;transform:none!important;z-index:2}
+.has-three .opponent.top{left:6%!important;right:auto!important}.has-three .opponent.right{right:6%!important;left:auto!important}
+.has-three .opponent .pal-standee,.has-three .opponent .pal-standee.cutout{width:100%;height:100%;aspect-ratio:auto;border:0;background:none;box-shadow:none;filter:drop-shadow(0 5px 14px #0005)}
+.has-three .opponent .layer-base{object-fit:contain;object-position:center bottom;transform:none!important;filter:none;mask-image:linear-gradient(#000 0 86%,transparent 100%)}
+.has-three .opponent .pal-caption{position:absolute;top:auto;bottom:8px;left:12%;right:12%;width:auto;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#091b24ee,#0c222bdd);border:1px solid #bda56b66;border-radius:4px;box-shadow:0 5px 12px #0004}
+.has-three .pal-caption strong{font-size:17px;letter-spacing:3px}.has-three .pal-caption i{font-size:9px;color:#b4b6ad}
+.has-three .opponent>div:not([class]){position:absolute;bottom:-25px;left:22%;right:22%;display:flex;justify-content:center;gap:20px;padding:5px 8px;background:#0b2028d9;border:1px solid #bda56b44;border-radius:3px;color:#e5d5af}
+.has-three .opponent>div:not([class]) b,.has-three .opponent>div:not([class]) span{font-size:12px;white-space:nowrap}
+.has-three .seat-active .pal-caption{border-color:#e5c686;box-shadow:0 0 20px #d4b76c40}
+.has-three .seat-active .pal-caption::before{content:'';width:6px;height:6px;border-radius:50%;background:#eacd88;box-shadow:0 0 10px #dfb34e}
+.has-three .back-cards{display:none}.has-three .opponent .pal-bubble{top:14%;bottom:auto;left:85%;right:auto;width:145px;background:#0b1c26dd;color:#e6d8bb;border:1px solid #ab905066;font-size:12px;line-height:1.6;border-radius:10px 10px 10px 0;transform:none}
+.has-three .opponent.right .pal-bubble{left:auto;right:85%;border-radius:10px 10px 0 10px}
+.has-three .play-stage{z-index:3;pointer-events:none}.has-three .table-card-fan{visibility:hidden}
+.has-three .played-stack{top:59%!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important;min-width:0;filter:none}
+.has-three .played-stack>p{position:relative;top:-18px;font-size:12px;letter-spacing:2px;background:none;border:0;text-shadow:0 1px 5px #000;color:#d8d5bd}
+.has-three .played-stack>b{position:relative;top:20px;background:none;border:0;font-size:11px;color:#c5cfb7}
+.has-three .turn-dock{top:auto!important;bottom:27%!important;left:50%!important;transform:translateX(-50%);padding:8px 20px;background:#0b272dcc;border:1px solid #a58f5566;box-shadow:0 4px 16px #0003;color:#ede0bf;letter-spacing:2px}
+.has-three .lead-marker{top:58%;background:none;border:0;color:#cbccb6;font-size:13px;letter-spacing:2px}.has-three .self-seat{bottom:16px;left:24px;right:auto;transform:none;color:#c3c4ab;font-size:12px}
+body:has(.has-three) .hand-wrap{position:absolute;z-index:5;left:12%;right:12%;bottom:32px;margin:0;padding:0 16px;border:0;background:none;box-shadow:none;overflow:visible}
+body:has(.has-three) .hand-header{justify-content:center;height:44px;margin-bottom:16px;gap:25px}body:has(.has-three) .hand-header>span{position:absolute;left:0;font-size:11px;color:#c6c9af}body:has(.has-three) .hand-header>div{display:flex;gap:12px;justify-content:center}
+body:has(.has-three) .hand-header .compact{min-width:100px;font-size:15px;padding:10px 24px;border-radius:8px}body:has(.has-three) .hand-header .primary{background:linear-gradient(#f3d69a,#b98845);color:#382711;border:1px solid #ffe6ab;box-shadow:0 4px 0 #72552f,0 8px 15px #0005}
+body:has(.has-three) .hand{justify-content:center;overflow:visible;min-height:134px;padding:8px 0 0;height:142px}body:has(.has-three) .hand .card{flex:0 0 82px;width:82px;height:130px;border-radius:8px;box-shadow:0 7px 12px #0006;padding:12px 10px}body:has(.has-three) .hand .card+.card{margin-left:clamp(-43px,calc((100vw - 1800px)/10),-20px)}body:has(.has-three) .card:disabled{opacity:1;filter:none}body:has(.has-three) .card b{font-size:30px}body:has(.has-three) .card small{font-size:28px}body:has(.has-three) .card.red{color:#b22d47}
+body:has(.has-three) .event-feed{position:absolute;z-index:6;right:40px;top:20px;display:block!important;max-width:240px;padding:0;background:none;border:0;box-shadow:none}body:has(.has-three) .event-feed summary{cursor:pointer;padding:10px 12px;border:1px solid #af915955;background:#0a1724b3;border-radius:4px;font-size:12px;color:#cbbc9d}body:has(.has-three) .event-feed details[open]{background:#0b192af0;border:1px solid #af915955;border-radius:5px}body:has(.has-three) .event{padding:8px 12px;font-size:11px;line-height:1.6;border-bottom:1px solid #ffffff12}
+.table-felt[data-render-fallback]::before{content:attr(data-render-fallback);position:absolute;bottom:8px;left:12px;font-size:11px;color:#fff;z-index:4}
+@media(max-width:800px){body:has(.has-three) .table-page{padding:0 6px}.table-felt.has-three{height:700px}.has-three .match-hud{min-width:280px;gap:10px;padding:10px}.has-three .opponent{width:31%;height:35%;top:20%!important}.has-three .opponent.top{left:1%!important}.has-three .opponent.right{right:1%!important}.has-three .pal-caption i{display:none}.has-three .opponent .pal-caption{left:5%;right:5%;padding:7px}.has-three .opponent .pal-bubble{display:none}body:has(.has-three) .event-feed{top:auto;bottom:8px;right:20px}.has-three .opponent>div:not([class]){left:5%;right:5%;gap:8px}body:has(.has-three) .hand-wrap{left:0;right:0;bottom:50px;padding:0 10px}body:has(.has-three) .hand{justify-content:center;overflow-x:auto;padding-top:15px}body:has(.has-three) .hand .card{flex-basis:60px;width:60px;height:114px;padding:9px 5px}body:has(.has-three) .hand .card+.card{margin-left:-43px}body:has(.has-three) .card b{font-size:24px}body:has(.has-three) .card small{font-size:22px}body:has(.has-three) .hand-header>span{display:none}body:has(.has-three) .hand-header .compact{min-width:75px;padding:10px 15px}}
+
+.card{transition:transform 120ms ease,border-color 120ms,box-shadow 120ms;background:linear-gradient(155deg,#fffdf5 15%,#e9dfc9 100%);border-color:#d9bd88!important}.card b,.card small{position:relative;z-index:2;text-shadow:0 1px #fff9}.card.selected,.card.brush-preview{outline:2px solid #f4cc78;outline-offset:-2px;box-shadow:0 0 0 1px #fff3,0 8px 20px #d9a74144!important}.card.brush-preview{transform:translateY(-9px)}.hand{touch-action:pan-y;user-select:none}.card-particles{position:fixed;inset:0;z-index:85;pointer-events:none}.card-effect-label{position:fixed;z-index:86;pointer-events:none;transform:translateX(-50%);font-size:24px;letter-spacing:6px;color:#e8d8af;text-shadow:0 2px 8px #000,0 0 20px #f0bc5180;animation:combo-label 900ms both}@keyframes combo-label{0%{opacity:0;translate:0 12px;scale:.8}20%,70%{opacity:1;translate:0 0;scale:1}100%{opacity:0;translate:0 -12px}}
+.pcard:not(.locked) .pcard-art,.my-photo{transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform 180ms ease}
+body[data-effects="off"] .pcard-art,body[data-effects="off"] .my-photo{transform:none!important}body[data-effects="off"] .my-photo::after{display:none}body[data-effects="off"] .card,body[data-effects="soft"] .card{transition:none}
+body[data-table-skin="jade"] .table-felt:not(.has-three){background:radial-gradient(ellipse at 50% 80%,#285443,#091e1a)!important}body[data-table-skin="velvet"] .table-felt:not(.has-three){background:radial-gradient(ellipse at 50% 80%,#513453,#1a102a)!important}body[data-table-skin="moon"] .table-felt:not(.has-three){background:radial-gradient(ellipse at 50% 80%,#304767,#0a1424)!important}
+@media(prefers-reduced-motion:reduce){.card,.my-photo,.pcard-art{transition:none!important;transform:none!important}.my-photo::after,.card-particles,.card-effect-label{display:none}}
+
+body:has(.has-three) .turn-wait{visibility:hidden}
+body:has(.has-three) .card{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.has-three .played-stack>b{top:12px}
+.has-three .table-seat[data-seat-action="A02"] .layer-base{animation:salon-play 500ms ease-out}
+@keyframes salon-play{40%{translate:0 -5px;rotate:1deg}100%{translate:0 0;rotate:0deg}}
+@media(prefers-reduced-motion:reduce){.has-three .layer-base{animation:none!important}}
+body[data-effects="off"] .has-three .layer-base{animation:none!important}
+body:has(.has-three){min-width:0}
+.has-three .turn-dock{bottom:32%!important}
+@media(max-width:800px){
+ body:has(.has-three) .topbar{height:auto;min-height:106px;display:flex;flex-wrap:wrap;padding:10px 14px;gap:8px 12px}
+ body:has(.has-three) .topbar .brand{font-size:15px;margin-right:auto}
+ body:has(.has-three) .topbar nav{order:5;width:100%;display:flex;justify-content:center;margin:0;gap:8px}
+ body:has(.has-three) .topbar nav a{font-size:13px;padding:7px 12px}
+ body:has(.has-three) .top-controls{display:none}
+ body:has(.has-three) .top-token{font-size:11px;padding:6px 8px;margin:0}
+ .table-felt.has-three{height:760px}.has-three .opponent{top:18%!important;height:30%}
+ .has-three .match-hud{font-size:10px;min-width:260px;gap:12px}.has-three .pal-caption strong{font-size:14px}
+ body:has(.has-three) .table-side{width:280px}.has-three .opponent>div:not([class]) b,.has-three .opponent>div:not([class]) span{font-size:10px}
+ body:has(.has-three) .hand-wrap{bottom:40px}.has-three .turn-dock{bottom:39%!important;font-size:11px;letter-spacing:0}
+ body:has(.has-three) .hand{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-auto-rows:90px;align-content:end;gap:7px 0;height:202px;min-height:0;overflow:visible;padding:12px 0 0}
+ body:has(.has-three) .hand .card{width:100%;height:90px;min-width:0;border-radius:4px;padding:8px 2px}
+ body:has(.has-three) .hand .card+.card{margin-left:0}body:has(.has-three) .card b{font-size:21px}body:has(.has-three) .card small{font-size:22px}
+ body:has(.has-three) .hand-header{margin-bottom:8px;height:40px}
+ .has-three .played-stack{top:53%!important}.has-three .lead-marker{top:54%;font-size:11px}
+ body:has(.has-three) .toast{max-width:calc(100vw - 30px);box-sizing:border-box}
+}
+
+.has-three .turn-dock{top:150px!important;bottom:auto!important}
+/* Card artwork keeps its proportions; ranks remain crisp when the hand overlaps. */
+body:has(.has-three) .hand .card{position:relative;padding:0;background:#fffaf0;isolation:isolate}
+.card-face{display:none;width:100%;height:100%;pointer-events:none;border-radius:inherit}
+body:has(.has-three) .card-face{display:block}
+body:has(.has-three) .hand .card>b,body:has(.has-three) .hand .card>small{display:none}
+body:has(.has-three) .hand .card.selected{box-shadow:0 0 0 2px #edcd84,0 0 22px #d8b66a50!important}
+body:has(.has-three) .hand .card:focus-visible{outline:3px solid #fff0b9;outline-offset:3px}
+@media(max-width:800px){
+ body:has(.has-three) .hand .card .card-corner{display:none}
+ body:has(.has-three) .hand .card>b,body:has(.has-three) .hand .card>small{display:block;position:absolute;left:3px}
+ body:has(.has-three) .hand .card>b{top:8px;font-size:19px}
+ body:has(.has-three) .hand .card>small{top:30px;font-size:19px}
+ body:has(.has-three) .hand .card .card-face{opacity:.2}
+}
+.has-three .played-stack{inset:0!important;width:100%;height:100%;transform:none!important}
+.has-three .played-stack>p{position:absolute;left:50%;top:var(--play-label-y,48%);transform:translateX(-50%);margin:0;white-space:nowrap}
+.has-three .played-stack>b{display:none}
+/* A lifted card must not steal the exposed click strip of its next neighbour. */
+body:has(.has-three) .hand .card:hover,body:has(.has-three) .hand .card.selected{z-index:auto}
+
+/* Leave a continuous felt area below the mobile portraits for grounded cards. */
+@media(max-width:560px){.has-three .opponent{top:16%!important;height:26%}}
