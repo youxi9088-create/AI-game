@@ -418,10 +418,34 @@ function danceStagePage(cardRecord) {
   }
   return `<section class="dance-stage" role="dialog" aria-modal="true" aria-labelledby="dance-stage-title"><div class="dance-stage-spotlight" aria-hidden="true"></div>${body}<div class="dance-stage-head"><p class="eyebrow">舞台演出</p><h2 id="dance-stage-title">${escape(label)}</h2></div><div class="dance-stage-actions"><button class="primary capture-live" data-action="capture-moment">定格这一刻</button><button class="secondary compact" data-action="skip-settlement">跳过演出 →</button><button class="primary" data-action="advance">${settlementLabel('PERFORMANCE')}</button></div></section>`;
 }
+function settlementResult(game, card) {
+  const s = game.settlement, won = s.outcome?.playerWon ?? s.winnerId === 'player';
+  const gift = Boolean(s.freeCardReward && !state.collection?.freeRewardFinalized && card);
+  const gain = s.tokenEffectiveDelta ?? s.tokenDelta ?? 0, bonus = s.milestoneReward || 0;
+  const name = card ? palName(card.palId) : palName(s.loserPalId || s.finisherId || s.winnerId);
+  const outfits = gift ? state.palIndex[card.palId]?.appearance?.outfitLibrary || [] : [];
+  const entering = state.resultShown !== game.id; state.resultShown = game.id;
+  const art = card ? photoCardArt(card, { large: true, motion: false })
+    : `<div class="result-emblem" aria-hidden="true"><i>♠</i><i>♡</i><i>♣</i><span>${won ? '✦' : '◇'}</span></div>`;
+  const options = outfits.map(o => {
+    const id = `${card.palId}:${o.outfitId}`, selected = id === card.cardId;
+    return `<button class="reward-outfit ${selected ? 'chosen' : ''}" data-action="choose-reward" data-reward-card="${escape(id)}" aria-pressed="${selected}"><img src="${escape(o.layerSnapshot.cardPoster || o.layerSnapshot.outfit)}" alt="" /><span><b>${escape(o.name)}</b><small>${selected ? '✓ 已选择' : '免费换选'}</small></span></button>`;
+  }).join('');
+  return `<section class="settlement show result-screen ${won ? 'result-win' : 'result-loss'} ${entering ? 'result-enter' : ''}" role="dialog" aria-modal="true" aria-labelledby="settlement-title" aria-describedby="result-description">
+    <div class="result-panel"><div class="result-halo" aria-hidden="true"></div>
+      <header class="result-heading"><span class="result-kicker">${won ? 'VICTORY · 胜方时刻' : 'ROUND COMPLETE · 本局结束'}</span><h2 id="settlement-title">${won ? '这一局，属于你' : '惜败，也有收获'}</h2><p id="result-description">${gift ? '首胜礼遇 · 选一套喜欢的服装，把这一刻留下。' : won ? card ? '熟悉的身影，再为你登台。' : '胜利已入账，下一张心动的卡由你决定。' : '完成对局的奖励已到账，下一手好牌等你开场。'}</p></header>
+      <div class="result-main"><div class="result-art"><div class="result-orbit" aria-hidden="true"></div><div class="result-card">${art}</div><p class="result-card-tag">${gift ? '首胜赠卡 · 1 份' : card ? '已拥有 · 可再次定格' : won ? '下一份收藏，等你揭晓' : '每一局，都是新的机会'}</p>${card ? `<h3>${escape(card.outfitName)}</h3><p class="result-pal">${escape(name)} · ${escape(card.dance)}</p>` : ''}</div>
+      <div class="result-content"><section class="result-receipt" aria-label="本局 Token 收益"><div class="result-receipt-head"><span>本局获得</span><span>已到账 ✓</span></div><div class="result-gain">+${gain + bonus}<small>Token</small></div><dl><div><dt>${won ? '胜局奖励' : '完局奖励'}</dt><dd>+${gain}</dd></div>${bonus ? `<div><dt>收藏里程碑</dt><dd>+${bonus}</dd></div>` : ''}<div class="result-balance"><dt>当前余额</dt><dd>${state.walletBalance} <small>Token</small></dd></div></dl></section>
+      <details class="result-breakdown"><summary>本局倍率 ×${s.multiplier} <span>查看明细</span></summary><p>${escape(multiplierLine(s))}</p><p>倍率记录牌局表现，不放大 Token 奖励。</p></details>
+      ${gift ? `<section class="result-choice"><div class="result-section-title"><h3>选你的首胜礼物</h3><span>确定获得 · 不扣 Token</span></div><div class="reward-choice-grid">${options}</div></section>` : `<section class="result-next"><span>${won ? '下一步' : '继续积累'}</span><h3>${card ? '从演出中，定格喜欢的瞬间' : '用 Token 解锁下一张写真'}</h3><p>${card ? '已拥有的卡不会重复发放或自动升级。想换新服装，也可以去写真馆挑选。' : '写真馆明码标价，显示胜场条件与余额差额。零余额也能免费继续打牌。'}</p></section>`}
+      </div></div><footer class="result-actions"><p>${gift ? '所选赠卡已收入写真馆，可在演出前换选。' : '奖励已保存，离开此页不会丢失。'}</p><div>${card ? `<button class="secondary" data-action="skip-settlement">稍后拍摄</button><button class="primary" data-action="advance">${escape(name)}将为你跳舞 <span aria-hidden="true">→</span></button>` : `<button class="secondary" data-route="gallery">打开写真馆</button><button class="primary" data-action="restart">${won ? '再赢一局' : '再来一局'} <span aria-hidden="true">→</span></button>`}</div></footer>
+    </div></section>`;
+}
 function settlementOverlay(game) {
   const s = game.settlement; const stage = game.settlementStage;
   const playerWon = s.winnerId === 'player';
   const cardRecord = repairGalleryCard(s.card);
+  if (stage === 'RESULT') return settlementResult(game, cardRecord);
   if (stage === 'PERFORMANCE' && playerWon && cardRecord) return danceStagePage(cardRecord);
   const eyebrow = ({ RESULT: '胜负已分', PERFORMANCE: '舞台演出', PHOTO_REVEAL: '写真卡', DESTINATION: '散场' })[stage] || stage;
   if (!cardRecord) {
@@ -444,10 +468,6 @@ function settlementOverlay(game) {
     return `<section class="settlement show" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="settlement-card dressup-modal"><div class="${stageClass}"><div class="dressup-spotlight" aria-hidden="true"></div>${stageBody}<div class="settlement-stage-head"><p class="eyebrow">${eyebrow}</p><h2 id="settlement-title">${title}</h2></div><div class="settlement-video-footer"><p class="settlement-video-description">${summary}</p><div class="modal-actions">${actions}</div></div></div></div></section>`;
   }
   const name = palName(cardRecord.palId);
-  if(stage==='RESULT' && playerWon && s.freeCardReward && !state.collection?.freeRewardFinalized){
-    const outfits=state.palIndex[cardRecord.palId]?.appearance?.outfitLibrary || [];
-    return `<section class="settlement show reward-choice" role="dialog" aria-modal="true" aria-labelledby="settlement-title"><div class="reward-choice-panel"><div class="reward-cover">${photoCardArt(cardRecord,{large:true,motion:false})}</div><div class="reward-choice-controls"><p class="eyebrow">胜利由你赢下 · 奖励由你决定</p><h2 id="settlement-title">你赢下了这一局</h2><p>${multiplierLine(s)} · ${tokenLine(s)}</p><h3>今晚，想看哪一套？</h3><p>首胜免费赠送一套，由你选择。之后使用 Token 解锁新卡或升级卡面；购买会确认本次赠卡选择。</p><div class="reward-choice-grid">${outfits.map(o=>{const id=cardRecord.palId+':'+o.outfitId;return `<button class="reward-outfit ${id===cardRecord.cardId?'chosen':''}" data-action="choose-reward" data-reward-card="${escape(id)}"><img src="${escape(o.layerSnapshot.cardPoster || o.layerSnapshot.outfit)}" alt="" /><b>${escape(o.name)}</b><small>${id===cardRecord.cardId?'本次选择':state.galleryCards.some(c=>c.cardId===id)?'选择升级':'选择解锁'}</small></button>`;}).join('')}</div><p>${outfits.length>1?'先选服装，再从演出中亲手定格喜欢的姿态。':'这套服装已解锁，接下来亲手选择定格时机。'}</p><div class="modal-actions"><button class="primary" data-action="advance">${escape(name)}将为你跳舞</button><button class="secondary" data-action="skip-settlement">稍后拍摄</button></div></div></div></section>`;
-  }
   const isUpgrade = !s.isFirstUnlock;
   /* 只有玩家胜利才会有 cardRecord 并进入这条套装演出分支；玩家输局在 RESULT 后直接散场。 */
   const title = stage === 'RESULT' ? (playerWon ? '你赢下了这一局' : '这一局惜败')
@@ -960,6 +980,8 @@ function render() {
     const cards = state.galleryCards.filter((c) => c.palId === state.photoDraft.palId);
     document.body.insertAdjacentHTML('beforeend', studioMarkup({ gameId: state.studioGame, draft: state.photoDraft, cards, name: palName(state.photoDraft.palId) }));
   }
+  const resultDialog = document.querySelector('.result-screen');
+  if(resultDialog && !resultDialog.contains(document.activeElement)) requestAnimationFrame(()=>resultDialog.querySelector('.reward-outfit.chosen, .result-actions .primary')?.focus({preventScroll:true}));
   hydratePhotos();
   syncTable3D(state.game,state.route);
   if(state.route==='table')syncCardEffects(state.game);
@@ -1287,7 +1309,7 @@ document.addEventListener('click', async (event) => {
       finally { state.purchaseBusy = false; render(); }
       return;
     }
-    if(action==='choose-reward'){state.game=await api('/api/game/reward/select',{method:'POST',body:JSON.stringify({gameId:state.game.id,cardId:actionNode.dataset.rewardCard})});await refreshGallery();sfx('cloth');render();return;}
+    if(action==='choose-reward'){if(state.rewardSelecting)return;state.rewardSelecting=true;document.querySelectorAll('.result-screen button').forEach(b=>b.disabled=true);try{state.game=await api('/api/game/reward/select',{method:'POST',body:JSON.stringify({gameId:state.game.id,cardId:actionNode.dataset.rewardCard})});await refreshGallery();sfx('cloth');}finally{state.rewardSelecting=false;render();}return;}
     if(action==='capture-moment'){const v=document.querySelector('.dance-stage video.vframe-main');const moment=v?.duration?Math.min(.95,v.currentTime/v.duration):null;v?.pause();state.game=await api('/api/game/settlement/advance',{method:'POST',body:JSON.stringify({gameId:state.game.id})});await openStudio(state.game.id,{...state.game.settlement.card,moment});sfx('shutter');return;}
     if(action==='pose-preset'){if(state.photoDraft){state.photoDraft.moment=Number(actionNode.dataset.moment);updatePhotoMoment(state.photoDraft.moment);sfx('cloth');}return;}
     if(action==='test-audio'){sfx('straight');setTimeout(()=>sfx('unlock'),450);return;}
@@ -1397,6 +1419,11 @@ document.addEventListener('error', (event) => {
   image.parentElement?.classList.add('image-load-failed');
 }, true);
 document.addEventListener('keydown', (event) => {
+  const resultDialog = document.querySelector('.result-screen');
+  if(resultDialog && !state.studioGame){
+    if(event.key==='Tab'){const nodes=[...resultDialog.querySelectorAll('button:not(:disabled),summary')];const first=nodes[0],last=nodes.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}}
+    if(event.key==='Escape'){resultDialog.querySelector('[data-action="skip-settlement"], [data-route="gallery"]')?.click();return;}
+  }
   if (state.studioGame) {
     if (event.key === 'Escape') { state.studioGame = null; state.photoDraft = null; render(); }
     if (event.key === 'Tab') { const nodes = [...document.querySelectorAll('.photo-studio input,.photo-studio select,.photo-studio button')]; const first = nodes[0], last = nodes.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
