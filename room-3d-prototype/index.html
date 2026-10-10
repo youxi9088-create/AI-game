@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>奇想收藏室 · 3D 寻物场景原型</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene"></div>
+      <header class="topbar">
+        <div><span class="eyebrow" id="level-eyebrow">3D 寻物场景 · 风格试验</span><h1 id="level-title">奇想收藏室</h1><nav class="level-switch" aria-label="试验关卡"><a href="/">关卡一 · 寻物</a><a href="/?level=2">关卡二 · 创作</a></nav></div>
+        <div class="top-actions"><span class="counter">找到 <b id="found-count">0</b> / 8</span><button id="export-glb" type="button">导出 GLB</button><button id="reset-view" type="button">复位视角</button></div>
+      </header>
+      <aside class="help" id="scene-help">拖动旋转 · 滚轮缩放 · 点击房间里的小物件</aside>
+      <nav class="home-switch" id="home-switch" aria-label="选择小屋" hidden></nav>
+      <div id="toast" role="status" aria-live="polite"></div>
+      <footer class="target-bar" id="playbar" aria-label="寻找物品">
+        <div class="target-head"><span>寻找这 8 件藏物</span><small>点击图标查看线索</small></div>
+        <div id="targets"></div>
+      </footer>
+      <section class="creator-panel" id="creator-panel" aria-label="创作物品" hidden>
+        <div class="creator-heading"><strong>给这个家添一件小物</strong><span>AI 生成后，拖进小屋摆放；单击可快速摆放</span></div>
+        <form id="generate-form" class="generate-form">
+          <label class="sr-only" for="object-prompt">描述要生成的物件</label>
+          <input id="object-prompt" maxlength="160" placeholder="例如：一盏奶油色陶瓷台灯" autocomplete="off" required />
+          <button id="generate-button" type="submit">✦ 生成物件</button>
+        </form>
+        <p id="generation-status" role="status" aria-live="polite">输入一句话，生成可摆放的 3D 小物件。</p>
+        <div class="inventory-row"><span class="inventory-label">我的物品栏</span><div id="generated-inventory" aria-label="已生成物件"></div></div>
+      </section>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

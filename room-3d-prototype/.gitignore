@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.asset-work/
+.env
+.env.*
+!.env.example
+*.log
+*.unitypackage
+*.glb
+*.fbx
+public/content/
+.*-reference.jpg
+__pycache__/
